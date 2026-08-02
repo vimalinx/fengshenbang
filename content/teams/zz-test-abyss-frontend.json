@@ -1,0 +1,22 @@
+{
+  "slug": "zz-test-abyss-frontend",
+  "name": { "zh": "前端日常深渊", "en": "Frontend Dailies" },
+  "scenario": { "zh": "日常前端开发：组件编写、样式调整、小步重构。", "en": "Day-to-day frontend: components, styling, incremental refactors." },
+  "members": [
+    {
+      "position": "main-dps",
+      "character": "zz-test-orion-ultra",
+      "weapon": "zz-test-forge-cli",
+      "note": { "zh": "主 C，负责复杂组件与跨文件改动。", "en": "Main carry for complex components and cross-file edits." }
+    },
+    {
+      "position": "sub-dps",
+      "character": "zz-test-spark-lite",
+      "weapon": "zz-test-forge-cli",
+      "note": { "zh": "副 C，处理重复性小任务，控制成本。", "en": "Sub carry for repetitive small tasks to keep cost down." }
+    }
+  ],
+  "rotation": { "zh": "先由主 C 拆解需求出方案 → 副 C 批量执行 → 主 C 终审合入。", "en": "Main carry plans → sub carry executes in batch → main carry reviews and merges." },
+  "budgetAlt": { "zh": "全队换 Spark Lite 2，速度换成本，适合非关键路径。", "en": "Swap the whole team to Spark Lite 2 for non-critical work." },
+  "tierRating": "S"
+}

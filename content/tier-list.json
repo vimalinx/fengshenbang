@@ -1,0 +1,16 @@
+{
+  "updatedAt": "2026-07-31",
+  "note": { "zh": "测试榜单，数据为占位内容。", "en": "Test board; placeholder data." },
+  "tiers": [
+    {
+      "tier": "SS",
+      "characters": ["zz-test-orion-ultra"],
+      "comment": { "zh": "当期幻神，敕封正神。", "en": "Current apex, duly invested." }
+    },
+    {
+      "tier": "A",
+      "characters": ["zz-test-spark-lite"],
+      "comment": { "zh": "四星之光，低配深渊常客。", "en": "Four-star shine; budget abyss staple." }
+    }
+  ]
+}

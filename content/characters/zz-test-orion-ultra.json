@@ -1,0 +1,32 @@
+{
+  "slug": "zz-test-orion-ultra",
+  "name": { "zh": "Orion Ultra 1.0", "en": "Orion Ultra 1.0" },
+  "title": { "zh": "「万象神机」", "en": "The Omni Engine" },
+  "series": "google",
+  "rarity": 6,
+  "roles": ["coding", "agent", "reasoning", "multimodal"],
+  "releaseDate": "2026-07-15",
+  "contextWindow": 1000000,
+  "pricing": { "inputPer1M": 8.0, "outputPer1M": 32.0, "currency": "USD" },
+  "benchmarks": [
+    { "name": "SWE-bench Verified", "score": 88.4, "unit": "%" },
+    { "name": "Terminal-Bench", "score": 71.2, "unit": "%" },
+    { "name": "AIME 2026", "score": 96.0, "unit": "%" }
+  ],
+  "tagline": { "zh": "当期幻神，长任务自主执行的天花板。", "en": "The apex of autonomous long-horizon execution." },
+  "lore": {
+    "zh": "夜观星象，紫微东移。此模一出，众榜重排。传闻其一口气重构整个遗留仓库而不喘。",
+    "en": "Stars realigned the night it shipped; every leaderboard rewrote itself."
+  },
+  "skills": [
+    { "name": { "zh": "万象归一", "en": "All-in-One" }, "desc": { "zh": "单轮内完成规划、编码、自测闭环。", "en": "Plans, codes, and self-tests in a single loop." } },
+    { "name": { "zh": "洞若观火", "en": "Deep Insight" }, "desc": { "zh": "百万 token 上下文中精准定位跨文件依赖。", "en": "Pinpoints cross-file dependencies across a 1M-token window." } }
+  ],
+  "constellations": [
+    { "level": 1, "name": { "zh": "启明", "en": "Dawn" }, "desc": { "zh": "标准档，日常开发足够。", "en": "Standard tier, enough for daily work." } },
+    { "level": 2, "name": { "zh": "蚀月", "en": "Eclipse" }, "desc": { "zh": "解锁超长后台任务队列。", "en": "Unlocks long-running background task queues." } }
+  ],
+  "bestWeapons": ["zz-test-forge-cli"],
+  "bestTeams": ["zz-test-abyss-frontend"],
+  "weaknesses": { "zh": "价格昂贵，轻量任务大材小用。", "en": "Expensive; overkill for light tasks." }
+}

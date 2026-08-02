@@ -1,0 +1,29 @@
+{
+  "slug": "zz-test-spark-lite",
+  "name": { "zh": "Spark Lite 2", "en": "Spark Lite 2" },
+  "title": { "zh": "「流萤微光」", "en": "The Firefly" },
+  "series": "deepseek",
+  "rarity": 4,
+  "roles": ["coding", "writing"],
+  "releaseDate": "2026-05-20",
+  "contextWindow": 128000,
+  "pricing": { "inputPer1M": 0.3, "outputPer1M": 1.2, "currency": "USD" },
+  "benchmarks": [
+    { "name": "SWE-bench Verified", "score": 52.6, "unit": "%" },
+    { "name": "HumanEval", "score": 90.1, "unit": "%" }
+  ],
+  "tagline": { "zh": "平民战神，性价比之王。", "en": "The budget workhorse with unbeatable value." },
+  "lore": {
+    "zh": "虽非天潢贵胄，却以微薄身价屡立战功。深渊低配队的常驻主力。",
+    "en": "No royal blood, but a battle-proven staple of budget teams."
+  },
+  "skills": [
+    { "name": { "zh": "萤火连击", "en": "Firefly Combo" }, "desc": { "zh": "响应极快，适合高频短任务。", "en": "Blazing fast for short, frequent tasks." } }
+  ],
+  "constellations": [
+    { "level": 1, "name": { "zh": "初燃", "en": "First Spark" }, "desc": { "zh": "免费档可用。", "en": "Usable on the free tier." } }
+  ],
+  "bestWeapons": ["zz-test-forge-cli"],
+  "bestTeams": [],
+  "weaknesses": { "zh": "复杂多步推理容易断链。", "en": "Drops the thread on complex multi-step reasoning." }
+}

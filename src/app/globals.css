@@ -1,0 +1,412 @@
+@import "tailwindcss";
+
+@theme {
+  /* 「夜观星象」墨蓝/玄黑底 */
+  --color-ink-950: #070a10;
+  --color-ink-900: #0a0e16;
+  --color-ink-850: #10141f;
+  --color-ink-800: #151b29;
+  --color-ink-700: #1c2436;
+  --color-ink-600: #273150;
+
+  /* 哑光金 */
+  --color-gold-200: #efdfb8;
+  --color-gold-300: #dcc394;
+  --color-gold-400: #c9a86a;
+  --color-gold-500: #b28f56;
+  --color-gold-600: #8f7343;
+
+  /* 稀有度色：4 星紫 / 5 星金 / 6 星朱红 */
+  --color-rarity-4: #a37fb9;
+  --color-rarity-5: #c9a86a;
+  --color-rarity-6: #c1543c;
+  /* 别名：榜单分桶徽章用 */
+  --color-star-4: #a37fb9;
+  --color-star-5: #c9a86a;
+  --color-star-6: #c1543c;
+
+  /* 朱红（敕封印章） */
+  --color-seal: #c1543c;
+  --color-seal-deep: #8e3524;
+
+  /* 中文标题衬线，正文无衬线。--font-zh-serif 由 next/font 注入。 */
+  --font-title: var(--font-zh-serif, "Noto Serif SC"), "Noto Serif SC",
+    "Songti SC", "STSong", "SimSun", serif;
+  --font-display: var(--font-zh-serif, "Noto Serif SC"), "Noto Serif SC",
+    "Songti SC", "STSong", "SimSun", serif;
+  --font-body: "Noto Sans SC", "Inter", "PingFang SC", "Microsoft YaHei",
+    system-ui, sans-serif;
+
+  /* 正文字色：宣纸暖白 + 次级灰 */
+  --color-parchment: #e3ddcd;
+  --color-muted: #8b93a3;
+}
+
+html {
+  background-color: var(--color-ink-950);
+}
+
+body {
+  color: #d6dae3;
+  font-family: var(--font-body);
+  /* 夜空星象：星点 + 银河带 + 墨色云纹，纯 CSS */
+  background-color: var(--color-ink-900);
+  background-image:
+    /* 银河带：横贯的淡金辉光 */
+    linear-gradient(
+      115deg,
+      transparent 38%,
+      rgba(201, 168, 106, 0.045) 46%,
+      rgba(214, 222, 240, 0.06) 50%,
+      rgba(201, 168, 106, 0.045) 54%,
+      transparent 62%
+    ),
+    /* 亮星（偏金） */
+    radial-gradient(circle, rgba(239, 223, 184, 0.85) 0 1px, transparent 1.6px),
+    radial-gradient(circle, rgba(239, 223, 184, 0.5) 0 1px, transparent 1.5px),
+    /* 普通星（冷白） */
+    radial-gradient(circle, rgba(214, 218, 227, 0.6) 0 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(214, 218, 227, 0.35) 0 1px, transparent 1.3px),
+    radial-gradient(circle, rgba(214, 218, 227, 0.22) 0 1px, transparent 1.2px),
+    /* 云纹：极淡的墨色团 */
+    radial-gradient(ellipse 60% 45% at 15% 8%, rgba(28, 36, 54, 0.5), transparent 70%),
+    radial-gradient(ellipse 55% 40% at 85% 20%, rgba(28, 36, 54, 0.4), transparent 70%),
+    radial-gradient(ellipse 70% 50% at 50% 95%, rgba(20, 26, 40, 0.55), transparent 70%);
+  background-size:
+    100% 100%,
+    337px 337px,
+    523px 523px,
+    269px 269px,
+    421px 421px,
+    613px 613px,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+  background-attachment: fixed;
+}
+
+/* 标题统一走衬线 */
+.font-title {
+  font-family: var(--font-title);
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-gold-400) 30%, transparent);
+}
+
+/* ========== 金饰 ========== */
+
+/* 哑光金渐变填充文字（榜单题名用） */
+.text-gold-gradient {
+  background-image: linear-gradient(
+    180deg,
+    #f2e3ba 0%,
+    #dcc394 38%,
+    #c9a86a 62%,
+    #93764a 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 朱红渐变文字 */
+.text-seal-gradient {
+  background-image: linear-gradient(180deg, #d98a6f 0%, #c1543c 55%, #8e3524 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 分区标题：◆── 标题 ──◆ 渐变金线 */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.gold-divider::before,
+.gold-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1 1 0%;
+  min-width: 2rem;
+}
+.gold-divider::before {
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 106, 0.55));
+}
+.gold-divider::after {
+  background: linear-gradient(270deg, transparent, rgba(201, 168, 106, 0.55));
+}
+
+/* 卷轴轴杆（敕令横幅两端/上下的圆柱金杆） */
+.scroll-rod {
+  height: 10px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    180deg,
+    #93764a 0%,
+    #dcc394 35%,
+    #b28f56 65%,
+    #6e5732 100%
+  );
+  box-shadow:
+    0 1px 0 rgba(239, 223, 184, 0.35) inset,
+    0 2px 8px rgba(0, 0, 0, 0.55);
+  position: relative;
+}
+.scroll-rod::before,
+.scroll-rod::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 35% 30%, #efdfb8, #b28f56 60%, #6e5732);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+.scroll-rod::before {
+  left: -6px;
+}
+.scroll-rod::after {
+  right: -6px;
+}
+
+/* ========== 敕封印章 ========== */
+
+/* 朱红方印：篆体感白字，盖在榜上 */
+.seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-title);
+  font-weight: 900;
+  color: #f5e9d8;
+  background: linear-gradient(150deg, #c95f45 0%, #b04a33 55%, #8e3524 100%);
+  border-radius: 3px;
+  box-shadow:
+    0 0 0 1px rgba(245, 233, 216, 0.28) inset,
+    0 1px 3px rgba(0, 0, 0, 0.5);
+  transform: rotate(-4deg);
+  line-height: 1;
+  user-select: none;
+}
+
+/* ========== 角色/装备卡：稀有度待遇 ========== */
+
+.card-base {
+  position: relative;
+  display: block;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: linear-gradient(180deg, var(--color-ink-800), var(--color-ink-850));
+  transition-property: transform, border-color, box-shadow, outline-color;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+.card-base:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+.card-base:active {
+  transform: scale(0.96);
+  transition-duration: 80ms;
+}
+
+/* 顶部稀有度色带 */
+.card-base::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 6px 6px 0 0;
+  background: var(--rarity-band, rgba(255, 255, 255, 0.14));
+}
+
+/* 稀有度定制 */
+.card-rarity-4 {
+  --rarity: var(--color-rarity-4);
+  --rarity-band: linear-gradient(90deg, transparent, rgba(163, 127, 185, 0.7), transparent);
+  border-color: rgba(163, 127, 185, 0.35);
+}
+.card-rarity-4:hover {
+  border-color: rgba(163, 127, 185, 0.65);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 18px rgba(163, 127, 185, 0.12);
+}
+
+.card-rarity-5 {
+  --rarity: var(--color-rarity-5);
+  --rarity-band: linear-gradient(90deg, transparent, rgba(220, 195, 148, 0.85), transparent);
+  border-color: rgba(201, 168, 106, 0.45);
+  outline: 1px solid rgba(201, 168, 106, 0.22);
+  outline-offset: 3px;
+}
+.card-rarity-5:hover {
+  border-color: rgba(220, 195, 148, 0.8);
+  outline-color: rgba(220, 195, 148, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 22px rgba(201, 168, 106, 0.16);
+}
+
+.card-rarity-6 {
+  --rarity: var(--color-rarity-6);
+  --rarity-band: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 168, 106, 0.9),
+    rgba(201, 84, 60, 0.9),
+    rgba(201, 168, 106, 0.9),
+    transparent
+  );
+  border-color: rgba(201, 84, 60, 0.55);
+  outline: 1px solid rgba(201, 168, 106, 0.28);
+  outline-offset: 3px;
+  background:
+    radial-gradient(ellipse 120% 60% at 50% -10%, rgba(201, 84, 60, 0.12), transparent 60%),
+    linear-gradient(180deg, var(--color-ink-800), var(--color-ink-850));
+}
+.card-rarity-6:hover {
+  border-color: rgba(217, 138, 111, 0.85);
+  outline-color: rgba(220, 195, 148, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 26px rgba(201, 84, 60, 0.2);
+}
+
+/* 5 星以上：四角金饰（伪元素画的 L 形角花） */
+.card-rarity-5::after,
+.card-rarity-6::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  pointer-events: none;
+  --corner: rgba(220, 195, 148, 0.55);
+  background:
+    linear-gradient(var(--corner), var(--corner)) top left / 12px 1px,
+    linear-gradient(var(--corner), var(--corner)) top left / 1px 12px,
+    linear-gradient(var(--corner), var(--corner)) top right / 12px 1px,
+    linear-gradient(var(--corner), var(--corner)) top right / 1px 12px,
+    linear-gradient(var(--corner), var(--corner)) bottom left / 12px 1px,
+    linear-gradient(var(--corner), var(--corner)) bottom left / 1px 12px,
+    linear-gradient(var(--corner), var(--corner)) bottom right / 12px 1px,
+    linear-gradient(var(--corner), var(--corner)) bottom right / 1px 12px;
+  background-repeat: no-repeat;
+  transition: opacity 200ms ease;
+  opacity: 0.65;
+}
+.card-rarity-6::after {
+  --corner: rgba(217, 138, 111, 0.6);
+}
+.card-rarity-5:hover::after,
+.card-rarity-6:hover::after {
+  opacity: 1;
+}
+
+/* ========== 金榜（节奏榜） ========== */
+
+/* 榜文面板：双层描边 + 轴杆 */
+.edict-panel {
+  position: relative;
+  border: 1px solid rgba(201, 168, 106, 0.4);
+  outline: 1px solid rgba(201, 168, 106, 0.18);
+  outline-offset: 4px;
+  border-radius: 4px;
+  background:
+    radial-gradient(ellipse 100% 40% at 50% 0%, rgba(201, 168, 106, 0.06), transparent 70%),
+    linear-gradient(180deg, var(--color-ink-850), var(--color-ink-900));
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* 榜上的一行名字 */
+.edict-row {
+  transition-property: background-color;
+  transition-duration: 150ms;
+}
+.edict-row:hover {
+  background-color: rgba(201, 168, 106, 0.06);
+}
+
+/* ========== 导航 ========== */
+
+.nav-link {
+  position: relative;
+  padding-bottom: 2px;
+  transition-property: color;
+  transition-duration: 150ms;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-400), transparent);
+  transform: scaleX(0);
+  transition: transform 200ms ease;
+}
+.nav-link:hover::after {
+  transform: scaleX(0.6);
+}
+.nav-link-active {
+  color: var(--color-gold-300);
+}
+.nav-link-active::after {
+  transform: scaleX(1);
+}
+
+/* ========== 空状态卷轴 ========== */
+
+.empty-scroll {
+  position: relative;
+  border: 1px solid rgba(201, 168, 106, 0.25);
+  border-radius: 4px;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(201, 168, 106, 0.05), transparent 70%),
+    var(--color-ink-850);
+}
+.empty-scroll::before,
+.empty-scroll::after {
+  content: "卷";
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  font-family: var(--font-title);
+  color: rgba(201, 168, 106, 0.25);
+  font-size: 1.5rem;
+}
+.empty-scroll::before {
+  left: 1rem;
+}
+.empty-scroll::after {
+  right: 1rem;
+}
+
+/* ========== 动效 ========== */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 进入 stagger 淡入，只跑一次 */
+.fade-up {
+  animation: fade-up 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up {
+    animation: none;
+  }
+}
+
+/* 数字等宽 */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}

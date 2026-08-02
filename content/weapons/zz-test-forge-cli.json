@@ -1,0 +1,20 @@
+{
+  "slug": "zz-test-forge-cli",
+  "name": { "zh": "Forge CLI", "en": "Forge CLI" },
+  "type": "cli-agent",
+  "rarity": 5,
+  "vendor": "TestWorks",
+  "tagline": { "zh": "终端里的炼器炉，Agent 工作流一锅端。", "en": "A crucible in your terminal for agentic workflows." },
+  "desc": { "zh": "命令行智能体，支持 hooks、子代理与 MCP 扩展，是深渊开荒的标准装备。", "en": "A CLI agent with hooks, subagents, and MCP — standard issue for abyss runs." },
+  "passive": {
+    "name": { "zh": "百炼成钢", "en": "Hundredfold Tempering" },
+    "desc": { "zh": "每次任务结束后自动复盘并写入配置，越用越强。", "en": "Self-reviews after every task and writes learnings into config." }
+  },
+  "stats": [
+    { "name": { "zh": "基础攻击 · 代码生成", "en": "Base ATK · Code Gen" }, "value": "S" },
+    { "name": { "zh": "暴击率 · 一次通过率", "en": "CRIT Rate · First-pass" }, "value": "78%" },
+    { "name": { "zh": "元素精通 · 工具调用", "en": "Mastery · Tool Use" }, "value": "A+" }
+  ],
+  "bestFor": ["zz-test-orion-ultra", "zz-test-spark-lite"],
+  "pricing": { "zh": "订阅制，$20/月起；按量另计。", "en": "Subscription from $20/mo; usage billed separately." }
+}
