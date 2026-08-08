@@ -616,8 +616,22 @@ function DisclaimerCard() {
 export default function Home() {
   return (
     <div>
-      {/* S1 本期推荐轮播（页面顶部，替代原大标题 Hero） */}
+      {/* S0 品牌 H1（SEO 唯一 H1；视觉克制，不抢轮播焦点） */}
       <div className="mx-auto max-w-[1280px] px-4 pt-6 md:px-6 md:pt-8">
+        <Reveal>
+          <header className="mb-4 flex flex-wrap items-baseline justify-between gap-2 border-b border-line pb-3">
+            <h1 className="font-serif text-xl font-bold tracking-[0.02em] text-ink-1 md:text-2xl">
+              封神榜 · AI 编程模型与工具图鉴
+            </h1>
+            <p className="text-xs leading-relaxed text-ink-2 md:text-[13px]">
+              模型即神将，工具即神兵。图鉴 / 配队 / 对决，一榜看懂 AI 编程生态。
+            </p>
+          </header>
+        </Reveal>
+      </div>
+
+      {/* S1 本期推荐轮播（页面顶部，替代原大标题 Hero） */}
+      <div className="mx-auto max-w-[1280px] px-4 md:px-6">
         <Reveal>
           <UpCarousel />
         </Reveal>
@@ -645,6 +659,41 @@ export default function Home() {
           <UpdateLog />
           <DisclaimerCard />
         </aside>
+      </div>
+
+      {/* S3 对决入口（人无我有：工具 × 模型两两对决） */}
+      <div className="mx-auto max-w-[1280px] px-4 pb-12 md:px-6">
+        <Reveal>
+          <div className="rounded-[6px] border border-line bg-white p-5 md:p-6">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <h2 className="font-serif text-lg font-bold text-ink-1">装备与模型对决</h2>
+                <p className="mt-1 text-[13px] text-ink-2">选型不再拍脑袋：Claude Code vs Cursor、DeepSeek-V4 vs Kimi K3，维度对比 + 场景结论一页看懂。</p>
+              </div>
+              <Link to="/compare" className="group flex items-center gap-1 rounded-[4px] border border-gold/50 bg-gold/5 px-3 py-1.5 text-[13px] font-semibold text-accent transition-colors hover:bg-gold/10">
+                全部对决
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+              </Link>
+            </div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {[
+                ['claude-code-vs-cursor', 'Claude Code vs Cursor'],
+                ['kimi-code-vs-claude-code', 'Kimi Code vs Claude Code'],
+                ['deepseek-v4-vs-kimi-k3', 'DeepSeek-V4 vs Kimi K3'],
+                ['gemini-3-pro-vs-claude-opus-4-7', 'Gemini 3 Pro vs Claude Opus 4.7'],
+                ['cline-vs-aider', 'Cline vs Aider'],
+              ].map(([id, label]) => (
+                <Link
+                  key={id}
+                  to={`/compare/${id}`}
+                  className="rounded-[4px] border border-line bg-bg-alt px-3 py-1.5 text-[13px] text-ink-1 transition-colors hover:border-gold/60 hover:text-accent"
+                >
+                  {label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Link, Navigate, useParams } from 'react-router';
 import { motion } from 'framer-motion';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
@@ -232,10 +232,6 @@ function Radar3D({ data }: { data: { axis: string; value: number }[] }) {
   );
 }
 
-
-
-
-
 /* ---------- 背景弹幕层（前景浮动） ---------- */
 const PLATFORM_ICON: Record<PlatformId, string | null> = {
   reddit: '/platform-reddit.svg',
@@ -302,6 +298,16 @@ function DanmakuLayer({ items }: { items: DanmakuItem[] }) {
   );
 }
 
+/* ---------- 版块小标（编辑部分栏题） ---------- */
+function SubHead({ children, en }: { children: ReactNode; en: string }) {
+  return (
+    <h3 className="mb-3 flex items-baseline gap-2 border-b border-line pb-1.5 font-serif text-sm font-semibold text-ink">
+      {children}
+      <span className="font-mono text-[11px] font-normal tracking-[0.08em] text-ink-3">// {en}</span>
+    </h3>
+  );
+}
+
 /* ---------- 页面 ---------- */
 export default function ModelDetail() {
   const { modelId } = useParams();
@@ -324,16 +330,14 @@ export default function ModelDetail() {
     );
   }, [community, model]);
 
-  // 词条内锚点标签页（按数据有无动态生成）
+  // 词条内锚点标签页（按报纸版面顺序生成）
   const tabs = useMemo(() => {
-    const t = [{ id: 'md-overview', label: '总览' }];
-    if (community) t.push({ id: 'md-voice', label: '口碑 · 榜单' });
-    else t.push({ id: 'md-bench', label: '榜单测评' });
-    if (community?.versionDelta || community?.timeline || community?.demos) {
-      t.push({ id: 'md-patch', label: '版本变迁' });
-    }
-    t.push({ id: community?.harnessReviews ? 'md-harness' : 'md-slot', label: '法宝' });
-    t.push({ id: 'md-teams', label: '配队' }, { id: 'md-guides', label: '攻略' });
+    const t = [
+      { id: 'md-overview', label: '头版' },
+      { id: 'md-gear', label: '装备配队' },
+    ];
+    if (community) t.push({ id: 'md-voice', label: '口碑现场' });
+    t.push({ id: 'md-record', label: '数据档案' }, { id: 'md-guides', label: '攻略信源' });
     return t;
   }, [community]);
 
@@ -469,7 +473,7 @@ export default function ModelDetail() {
     <div className="relative">
       <DanmakuLayer items={community?.danmaku ?? []} />
 
-      {/* S1 PageHero（紧凑版） */}
+      {/* S1 报头行：面包屑 + 日期线 */}
       <section className="relative overflow-hidden border-b border-line bg-paper-alt py-5">
         <div className="cloud-line pointer-events-none absolute inset-x-0 bottom-0 h-[20px] opacity-50" aria-hidden />
         <div className="relative mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-3 px-4 md:px-6">
@@ -492,16 +496,135 @@ export default function ModelDetail() {
             transition={{ duration: 0.4, delay: 0.15 }}
             className="font-mono text-xs text-ink-3"
           >
-            收录于 {model.releaseDate} · 本词条更新于 07-31
+            发布 {model.releaseDate} · 收录 {model.collectedDate} · 本词条持续更新
           </motion.span>
         </div>
       </section>
 
       <div className="relative z-10 mx-auto max-w-[1280px] px-4 md:px-6">
-        {/* S2 角色主面板「仙籍玉册」 */}
-        <section id="md-overview" className="mt-6 scroll-mt-[130px] overflow-hidden rounded-xl border border-line bg-white shadow-card lg:grid lg:grid-cols-[5fr_6fr]">
-          {/* 左：3D 立体雷达 */}
-          <div className="relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-gold-soft via-gold-soft/70 to-paper-alt p-6 lg:min-h-[430px]">
+        {/* S2 头版：头条 + 导语 + 速览栏 + 柱阵雷达 */}
+        <section id="md-overview" className="mt-6 scroll-mt-[130px] overflow-hidden rounded-xl border border-line bg-white shadow-card lg:grid lg:grid-cols-[6fr_5fr]">
+          {/* 左：头条文字区 */}
+          <div className="flex flex-col p-6 md:p-8">
+            {/* 栏题（kicker） */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4 }}
+              className="flex items-center gap-3"
+            >
+              <span className="shrink-0 font-mono text-[11px] font-semibold tracking-[0.25em] text-gold">MODEL FILE · 角色档案</span>
+              <span className="h-px flex-1 bg-gold/40" aria-hidden />
+              <span className="shrink-0 font-mono text-[11px] tracking-[0.12em] text-ink-3">{detail.profile.vendor}</span>
+            </motion.div>
+
+            {/* 身份行：徽记 + 段位 + 体系 + 标签 */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.1 }}
+              className="mt-4 flex flex-wrap items-center gap-3"
+            >
+              <div className="gold-sheen animate-gold-shine shrink-0 rounded-full p-[2px]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-line bg-white">
+                  <img src={sys.sigil} alt={`${sys.name}徽记`} className="h-7 w-7 object-contain" />
+                </div>
+              </div>
+              <TierSeal tier={model.tier} size={22} />
+              <StarRating stars={model.stars} size={11} />
+              <span
+                className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium tracking-[0.04em] text-white"
+                style={{ backgroundColor: SYS }}
+              >
+                <img src={sys.sigil} alt="" className="h-3 w-3" />
+                {sys.name}
+              </span>
+              {model.tags.map((t) => (
+                <span key={t} className="rounded-full bg-paper px-2.5 py-0.5 text-xs tracking-[0.04em] text-ink-2">
+                  {t}
+                </span>
+              ))}
+            </motion.div>
+
+            {/* 头条标题 + 封号 */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.18 }}
+              className="mt-3 flex flex-wrap items-baseline gap-x-3 gap-y-1"
+            >
+              <h1 className="font-serif text-4xl font-bold leading-tight tracking-tight text-ink md:text-5xl">{model.name}</h1>
+              <span className="font-brand text-xl text-cinnabar md:text-2xl">「{model.title}」</span>
+            </motion.div>
+
+            {/* 导语（lede）：首字下沉，结论先行 */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-4 font-serif text-lg leading-loose text-ink-2 first-letter:float-left first-letter:mr-2 first-letter:font-serif first-letter:text-[2.6rem] first-letter:font-bold first-letter:leading-[1.05] first-letter:text-cinnabar"
+            >
+              {model.verdict}
+            </motion.p>
+
+            {/* 速览栏 + 档案注脚 + CTA */}
+            <div className="mt-auto pt-6">
+              <div className="flex items-center gap-3">
+                <span className="shrink-0 font-mono text-[11px] tracking-[0.2em] text-ink-3">速览 // AT A GLANCE</span>
+                <span className="h-px flex-1 bg-line" aria-hidden />
+              </div>
+              <div className="mt-2 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-4">
+                {specRows.map((r, i) => (
+                  <motion.div
+                    key={r.label}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.35, delay: 0.3 + i * 0.05 }}
+                    className="bg-white px-3 py-2.5"
+                  >
+                    <div className="text-xs text-ink-3">{r.label}</div>
+                    <div className="mt-0.5 break-words font-mono text-sm font-bold leading-snug text-gold">{r.value}</div>
+                  </motion.div>
+                ))}
+                {/* 补足网格末格：综合战力 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: 0.3 + specRows.length * 0.05 }}
+                  className="bg-gold-soft/60 px-3 py-2.5"
+                >
+                  <div className="text-xs text-ink-3">综合战力</div>
+                  <div className="mt-0.5 font-mono text-sm font-bold leading-snug text-cinnabar">{model.composite}</div>
+                </motion.div>
+              </div>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.55 }}
+                className="mt-2.5 font-mono text-[11px] leading-relaxed text-ink-3"
+              >
+                诨名 {detail.profile.nicknames.join(' / ')} · 招牌 {detail.profile.signature} · {detail.profile.costNote}
+              </motion.p>
+              {/* CTA */}
+              <div className="mt-4 flex flex-wrap gap-3">
+                <Link
+                  to="/tools"
+                  className="rounded-lg bg-cinnabar px-5 py-2.5 text-sm font-medium text-white shadow-card transition-all duration-200 hover:scale-[1.02] hover:bg-cinnabar-deep active:scale-[0.98]"
+                >
+                  加入配队模拟 →
+                </Link>
+                <Link
+                  to="/guides"
+                  className="rounded-lg border border-line-strong bg-white px-5 py-2.5 text-sm font-medium text-gold transition-all duration-200 hover:border-gold hover:text-cinnabar"
+                >
+                  查看相关攻略
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* 右：3D 立体雷达 */}
+          <div className="relative flex items-center justify-center overflow-hidden border-t border-line bg-gradient-to-bl from-gold-soft via-gold-soft/70 to-paper-alt p-6 lg:min-h-[430px] lg:border-l lg:border-t-0">
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -522,103 +645,58 @@ export default function ModelDetail() {
             )}
           </div>
 
-          {/* 右：身份（上） + 参数（下） */}
-          <div className="flex flex-col p-6 md:p-8">
-            {/* 右上：徽记 + 名称 */}
-            <div className="flex items-center gap-4">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="gold-sheen animate-gold-shine shrink-0 rounded-full p-[2px]"
-              >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-line bg-white">
-                  <img src={sys.sigil} alt={`${sys.name}徽记`} className="h-9 w-9 object-contain" />
-                </div>
-              </motion.div>
-              <div className="min-w-0">
-                <div className="flex flex-wrap items-center gap-2">
-                  <TierSeal tier={model.tier} size={24} />
-                  <StarRating stars={model.stars} size={11} />
-                  <span
-                    className="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium tracking-[0.04em] text-white"
-                    style={{ backgroundColor: SYS }}
+          {/* 要点栏：擅长 / 不擅长（并入头版的 KEY POINTS 框） */}
+          <div className="grid gap-x-8 gap-y-4 border-t border-line px-6 py-4 sm:grid-cols-2 md:px-8 lg:col-span-2">
+            <div>
+              <h3 className="font-serif text-sm font-semibold text-cinnabar">
+                擅长 <span className="ml-1 font-mono text-[11px] font-normal text-ink-3">// BEST AT</span>
+              </h3>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {detail.trialGood.map((t, i) => (
+                  <motion.span
+                    key={t.label}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ type: 'spring', stiffness: 360, damping: 16, delay: 0.5 + i * 0.06 }}
                   >
-                    <img src={sys.sigil} alt="" className="h-3 w-3" />
-                    {sys.name}
-                  </span>
-                </div>
-                <div className="mt-1.5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <h1 className="font-serif text-3xl font-bold leading-tight text-ink md:text-4xl">{model.name}</h1>
-                  <span className="font-brand text-lg text-cinnabar md:text-[22px]">「{model.title}」</span>
-                </div>
-              </div>
-            </div>
-
-            {/* 标签 */}
-            <div className="mt-3 flex flex-wrap gap-2">
-              {model.tags.map((t, i) => (
-                <motion.span
-                  key={t}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: 0.2 + i * 0.06 }}
-                  className="rounded-full bg-paper px-2.5 py-0.5 text-xs tracking-[0.04em] text-ink-2"
-                >
-                  {t}
-                </motion.span>
-              ))}
-            </div>
-
-            {/* 判词 */}
-            <div className="mt-4 flex gap-3">
-              <motion.span
-                className="w-[3px] shrink-0 rounded-full bg-cinnabar"
-                initial={{ scaleY: 0 }}
-                animate={{ scaleY: 1 }}
-                transition={{ duration: 0.5, delay: 0.35 }}
-                style={{ transformOrigin: 'top' }}
-                aria-hidden
-              />
-              <p className="font-serif text-base italic leading-relaxed text-ink-2">「{model.verdict}」</p>
-            </div>
-
-            {/* 右下：规格参数（醒目） */}
-            <div className="mt-auto pt-6">
-              <div className="grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-3">
-                {specRows.map((r, i) => (
-                  <motion.div
-                    key={r.label}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.35, delay: 0.3 + i * 0.05 }}
-                    className="bg-white px-3 py-2.5"
-                  >
-                    <div className="text-xs text-ink-3">{r.label}</div>
-                    <div className="mt-0.5 font-mono text-base font-bold leading-snug text-gold">{r.value}</div>
-                  </motion.div>
+                    <Link
+                      to={t.to}
+                      className="inline-block rounded-full bg-cinnabar/10 px-3 py-1.5 text-sm font-medium text-cinnabar transition-colors duration-200 hover:bg-cinnabar hover:text-white"
+                    >
+                      {t.label}
+                    </Link>
+                  </motion.span>
                 ))}
               </div>
-              {/* CTA */}
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Link
-                  to="/tools"
-                  className="rounded-lg bg-cinnabar px-5 py-2.5 text-sm font-medium text-white shadow-card transition-all duration-200 hover:scale-[1.02] hover:bg-cinnabar-deep active:scale-[0.98]"
-                >
-                  加入配队模拟 →
-                </Link>
-                <Link
-                  to="/guides"
-                  className="rounded-lg border border-line-strong bg-white px-5 py-2.5 text-sm font-medium text-gold transition-all duration-200 hover:border-gold hover:text-cinnabar"
-                >
-                  查看相关攻略
-                </Link>
-              </div>
+            </div>
+            <div>
+              <h3 className="font-serif text-sm font-semibold text-ink-3">
+                不擅长 <span className="ml-1 font-mono text-[11px] font-normal text-ink-3">// NOT FOR</span>
+              </h3>
+              <ul className="mt-2 space-y-1.5">
+                {detail.trialBad.map((t, i) => (
+                  <motion.li
+                    key={t.label}
+                    initial={{ opacity: 0, x: 8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.55 + i * 0.06 }}
+                    className="flex flex-wrap items-center gap-2"
+                  >
+                    <Link
+                      to={t.to}
+                      className="inline-block rounded-full bg-paper px-3 py-1.5 text-sm font-medium text-ink-2 transition-colors duration-200 hover:bg-ink-3 hover:text-white"
+                    >
+                      {t.label}
+                    </Link>
+                    {t.note && <span className="font-mono text-xs text-ink-3">（{t.note}）</span>}
+                  </motion.li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
 
-        {/* S2.5 词条锚点标签页（吸顶，承担页内导航；轻量幽灵风） */}
+        {/* S2.5 版面标签页（吸顶页内导航） */}
         <nav
           className="sticky top-[60px] z-30 -mx-4 mt-4 overflow-x-auto bg-paper/45 px-4 py-1.5 backdrop-blur-[6px] md:-mx-6 md:px-6"
           aria-label="词条导航"
@@ -651,86 +729,142 @@ export default function ModelDetail() {
           </div>
         </nav>
 
-        {/* S3 双栏：左社区口碑 · 右榜单档位 */}
-        {community ? (
-          <section id="md-voice" className="mt-12 scroll-mt-[130px] grid items-start gap-6 lg:grid-cols-[7fr_5fr]">
-            {/* 左栏：社区口碑 · 体感雷达 */}
+        {/* S4 装备与配队：怎么把它用起来 */}
+        <section id="md-gear" className="mt-12 scroll-mt-[130px]">
+          <SectionHeader title="装备与配队 · 上手" en="// LOADOUT" moreTo="/harnesses" moreLabel="全部装备 →" barColor={SECTION_BAR} />
+          <div className="space-y-8">
+            {/* 推荐装备（实战评测并入卡内） */}
             <div>
-              <SectionHeader title="社区口碑 · 体感雷达" en="// REPUTATION" barColor={SECTION_BAR} />
-              <div className="space-y-4">
-                {/* 十维体感雷达（左右夹强弱项） */}
-                <Reveal>
-                  <div className="flex flex-col rounded-[10px] border border-line bg-white p-4 shadow-card">
-                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                      {/* 左：公认强项 */}
-                      <div className="sm:w-[26%] sm:shrink-0">
-                        <h3 className="font-serif text-sm font-semibold text-gold">公认强项</h3>
-                        <div className="mt-2 flex flex-wrap gap-1.5 sm:flex-col sm:items-start">
-                          {community.strengths.map((s, i) => (
-                            <motion.span
-                              key={s}
-                              initial={{ opacity: 0, x: -8 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 0.3, delay: i * 0.06 }}
-                              className="rounded-full bg-gold/10 px-2.5 py-1 text-sm font-medium text-gold"
-                            >
-                              {s}
-                            </motion.span>
-                          ))}
+              <SubHead en="BEST IN SLOT">推荐装备</SubHead>
+              <div className="grid gap-4 md:grid-cols-3">
+                {detail.bestInSlot.map((b, i) => {
+                  const h = harnessMap[b.id];
+                  if (!h) return null;
+                  const fit = h.topFits.find((f) => f.modelId === model.id)?.pct ?? null;
+                  const review = community?.harnessReviews?.find((r) => r.id === b.id);
+                  return (
+                    <Reveal key={b.id} delay={i * 0.1}>
+                      <div className="relative pt-3">
+                        {fit != null && (
+                          <div className="absolute right-3 top-0 z-10">
+                            <FitRing pct={fit} />
+                          </div>
+                        )}
+                        <HarnessCard harness={h} />
+                        <div className="mt-2 space-y-1.5 px-1">
+                          <p className="font-serif text-sm italic text-ink-2">「{b.note}」</p>
+                          {review && (
+                            <p className="border-t border-line/70 pt-1.5 text-[13px] leading-[1.7] text-ink-2">
+                              <span className="mr-1 font-mono text-[11px] font-semibold text-gold">实战 //</span>
+                              {review.text}
+                              {review.placeholder && <span className="ml-1 font-mono text-[11px] text-ink-3">（占位 · 待补）</span>}
+                            </p>
+                          )}
                         </div>
                       </div>
-                      {/* 中：雷达 */}
-                      <motion.div
-                        className="min-w-0 flex-1"
-                        initial={{ scale: 0, opacity: 0 }}
-                        whileInView={{ scale: 1, opacity: 1 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{ type: 'spring', stiffness: 180, damping: 15 }}
-                        style={{ transformOrigin: 'center' }}
-                      >
-                        <ResponsiveContainer width="100%" height={300}>
-                          <RadarChart data={community.radar} outerRadius="62%">
-                            <PolarGrid stroke="#E7DFCC" />
-                            <PolarAngleAxis dataKey="axis" tick={{ fill: '#6E6455', fontSize: 11 }} />
-                            <Radar
-                              name={model.name}
-                              dataKey="value"
-                              stroke="#B8860B"
-                              strokeWidth={2}
-                              fill="#B8860B"
-                              fillOpacity={0.25}
-                              dot={{ r: 3, fill: '#B8860B', strokeWidth: 0 }}
-                            />
-                          </RadarChart>
-                        </ResponsiveContainer>
-                      </motion.div>
-                      {/* 右：公认弱项 */}
-                      <div className="sm:w-[26%] sm:shrink-0">
-                        <h3 className="font-serif text-sm font-semibold text-cinnabar sm:text-right">公认弱项</h3>
-                        <div className="mt-2 flex flex-wrap gap-1.5 sm:flex-col sm:items-end">
-                          {community.weaknesses.map((s, i) => (
-                            <motion.span
-                              key={s}
-                              initial={{ opacity: 0, x: 8 }}
-                              whileInView={{ opacity: 1, x: 0 }}
-                              viewport={{ once: true }}
-                              transition={{ duration: 0.3, delay: i * 0.06 }}
-                              className="rounded-full bg-cinnabar/10 px-2.5 py-1 text-sm font-medium text-cinnabar"
-                            >
-                              {s}
-                            </motion.span>
-                          ))}
-                        </div>
+                    </Reveal>
+                  );
+                })}
+              </div>
+            </div>
+            {/* 推荐配队 */}
+            <div>
+              <SubHead en="TEAMS">推荐配队</SubHead>
+              <div className="space-y-4">
+                {detail.teamIds.map((id, i) => {
+                  const team = teams.find((t) => t.id === id);
+                  if (!team) return null;
+                  return (
+                    <Reveal key={id} delay={i * 0.1}>
+                      <TeamCard team={team} />
+                    </Reveal>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* S5 口碑现场：情绪、引语与社区原声 */}
+        {community && (
+          <section id="md-voice" className="mt-12 scroll-mt-[130px]">
+            <SectionHeader title="口碑现场 · 社区体感" en="// VOX POP" barColor={SECTION_BAR} />
+            <div className="space-y-4">
+              {/* 十维体感雷达（左右夹强弱项） */}
+              <Reveal>
+                <div className="flex flex-col rounded-[10px] border border-line bg-white p-4 shadow-card">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                    {/* 左：公认强项 */}
+                    <div className="sm:w-[26%] sm:shrink-0">
+                      <h3 className="font-serif text-sm font-semibold text-gold">公认强项</h3>
+                      <div className="mt-2 flex flex-wrap gap-1.5 sm:flex-col sm:items-start">
+                        {community.strengths.map((s, i) => (
+                          <motion.span
+                            key={s}
+                            initial={{ opacity: 0, x: -8 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.3, delay: i * 0.06 }}
+                            className="rounded-full bg-gold/10 px-2.5 py-1 text-sm font-medium text-gold"
+                          >
+                            {s}
+                          </motion.span>
+                        ))}
                       </div>
                     </div>
-                    <p className="mt-1 text-center font-mono text-xs text-ink-3">
-                      社区体感评分（0–100，非官方跑分）· 聚合多平台讨论
-                    </p>
+                    {/* 中：雷达 */}
+                    <motion.div
+                      className="min-w-0 flex-1"
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ type: 'spring', stiffness: 180, damping: 15 }}
+                      style={{ transformOrigin: 'center' }}
+                    >
+                      <ResponsiveContainer width="100%" height={300}>
+                        <RadarChart data={community.radar} outerRadius="62%">
+                          <PolarGrid stroke="#E7DFCC" />
+                          <PolarAngleAxis dataKey="axis" tick={{ fill: '#6E6455', fontSize: 11 }} />
+                          <Radar
+                            name={model.name}
+                            dataKey="value"
+                            stroke="#B8860B"
+                            strokeWidth={2}
+                            fill="#B8860B"
+                            fillOpacity={0.25}
+                            dot={{ r: 3, fill: '#B8860B', strokeWidth: 0 }}
+                          />
+                        </RadarChart>
+                      </ResponsiveContainer>
+                    </motion.div>
+                    {/* 右：公认弱项 */}
+                    <div className="sm:w-[26%] sm:shrink-0">
+                      <h3 className="font-serif text-sm font-semibold text-cinnabar sm:text-right">公认弱项</h3>
+                      <div className="mt-2 flex flex-wrap gap-1.5 sm:flex-col sm:items-end">
+                        {community.weaknesses.map((s, i) => (
+                          <motion.span
+                            key={s}
+                            initial={{ opacity: 0, x: 8 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.3, delay: i * 0.06 }}
+                            className="rounded-full bg-cinnabar/10 px-2.5 py-1 text-sm font-medium text-cinnabar"
+                          >
+                            {s}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </Reveal>
+                  <p className="mt-1 text-center font-mono text-xs text-ink-3">
+                    社区体感评分（0–100，非官方跑分）· 聚合多平台讨论
+                  </p>
+                </div>
+              </Reveal>
+
+              <div className="grid items-start gap-4 lg:grid-cols-[7fr_5fr]">
                 {/* 情绪 + 分平台 */}
-                <Reveal delay={0.1}>
+                <Reveal delay={0.06}>
                   <div className="rounded-[10px] border border-line bg-white shadow-card">
                     <div className="px-4 pb-3 pt-3.5">
                       <h3 className="font-serif text-sm font-semibold text-ink">整体情绪倾向</h3>
@@ -763,62 +897,96 @@ export default function ModelDetail() {
                     ))}
                   </div>
                 </Reveal>
-                {/* 细分反馈 */}
-                <Reveal delay={0.14}>
-                  <div className="divide-y divide-line rounded-[10px] border border-line bg-white px-4 shadow-card">
-                    {community.notes.map((n) => (
-                      <div key={n.label} className="flex gap-3 py-2.5">
-                        <span className="w-10 shrink-0 pt-0.5 font-serif text-sm font-semibold text-gold">{n.label}</span>
-                        <p className="text-sm leading-[1.7] text-ink-2">{n.text}</p>
-                      </div>
-                    ))}
-                  </div>
-                </Reveal>
-                {/* 讨论热度 */}
-                {community.heat && (
-                  <Reveal delay={0.18}>
-                    <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[10px] border border-line bg-line shadow-card sm:grid-cols-4">
-                      {community.heat.map((hh) => (
-                        <div key={hh.label} className="bg-white px-3 py-2.5 text-center">
-                          <div className="font-mono text-base font-bold text-gold">{hh.value}</div>
-                          <div className="mt-0.5 text-xs text-ink-3">{hh.label}</div>
+                {/* 细分反馈 + 讨论热度 */}
+                <div className="space-y-4">
+                  <Reveal delay={0.1}>
+                    <div className="divide-y divide-line rounded-[10px] border border-line bg-white px-4 shadow-card">
+                      {community.notes.map((n) => (
+                        <div key={n.label} className="flex gap-3 py-2.5">
+                          <span className="w-10 shrink-0 pt-0.5 font-serif text-sm font-semibold text-gold">{n.label}</span>
+                          <p className="text-sm leading-[1.7] text-ink-2">{n.text}</p>
                         </div>
                       ))}
                     </div>
                   </Reveal>
-                )}
+                  {community.heat && (
+                    <Reveal delay={0.14}>
+                      <div className="grid grid-cols-2 gap-px overflow-hidden rounded-[10px] border border-line bg-line shadow-card sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+                        {community.heat.map((hh) => (
+                          <div key={hh.label} className="bg-white px-3 py-2.5 text-center">
+                            <div className="font-mono text-base font-bold text-gold">{hh.value}</div>
+                            <div className="mt-0.5 text-xs text-ink-3">{hh.label}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </Reveal>
+                  )}
+                </div>
               </div>
-            </div>
 
-            {/* 右栏：榜单成绩 + 思考强度 + 争议/共识 */}
-            <div>
-              <SectionHeader title="榜单成绩 · 档位实测" en="// BENCHMARKS" barColor={SECTION_BAR} />
-              <div className="space-y-4">
-                <Reveal>{benchCard}</Reveal>
-                {effortCard && <Reveal delay={0.06}>{effortCard}</Reveal>}
-                {/* 子榜单交叉 */}
-                {community.subBoards && (
-                  <Reveal delay={0.08}>
-                    <div className="rounded-[10px] border border-line bg-white shadow-card">
-                      <div className="border-b border-line bg-paper-alt px-4 py-1.5">
-                        <span className="font-serif text-sm font-semibold text-ink-2">
-                          子榜单交叉 <span className="ml-1 font-mono text-[11px] font-normal text-ink-3">// SUB-BOARDS</span>
-                        </span>
-                      </div>
-                      {community.subBoards.map((b, i) => (
-                        <div key={b.name} className={cn('flex items-baseline justify-between gap-3 px-4 py-2', i > 0 && 'border-t border-line')}>
-                          <span className="shrink-0 text-sm text-ink-2">{b.name}</span>
-                          <span className="text-right">
-                            <span className="font-mono text-sm font-bold text-gold">{b.rank}</span>
-                            {b.note && <span className="ml-1.5 font-mono text-[11px] text-ink-3">{b.note}</span>}
-                          </span>
+              {/* 名家锐评：双行右往左轮播，悬停暂停 */}
+              {community.expertQuotes && (
+                <div className="pt-2">
+                  <SubHead en="QUOTED">名家锐评</SubHead>
+                  <div className="space-y-3">
+                    {[0, 1].map((ri) => {
+                      const half = Math.ceil(community.expertQuotes!.length / 2);
+                      const row = community.expertQuotes!.slice(ri * half, ri * half + half);
+                      return (
+                        <div
+                          key={ri}
+                          className="overflow-hidden"
+                          style={{
+                            maskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
+                            WebkitMaskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
+                          }}
+                        >
+                          <div
+                            className="verdict-track flex w-max gap-3"
+                            style={{ animationDuration: ri === 0 ? '80s' : '105s' }}
+                          >
+                            {[...row, ...row].map((q, qi) => (
+                              <figure
+                                key={qi}
+                                className="relative w-[360px] shrink-0 overflow-hidden rounded-[10px] border border-line bg-white py-3 pl-4 pr-3.5 shadow-card"
+                              >
+                                <span
+                                  className="absolute left-0 top-0 h-full w-[3px]"
+                                  style={{ backgroundColor: TONE_META[q.tone].color }}
+                                  aria-hidden
+                                />
+                                <span className="pointer-events-none absolute -top-1 right-2 font-serif text-4xl leading-none text-gold/25" aria-hidden>
+                                  ”
+                                </span>
+                                <blockquote className="line-clamp-3 font-serif text-sm italic leading-[1.7] text-ink-2">
+                                  「{q.text}」
+                                </blockquote>
+                                <figcaption className="mt-1.5 text-right text-xs">
+                                  <span className="font-semibold text-ink">{q.name}</span>
+                                  <span className="ml-1.5 font-mono text-ink-3">{q.role}</span>
+                                </figcaption>
+                              </figure>
+                            ))}
+                          </div>
                         </div>
-                      ))}
-                    </div>
-                  </Reveal>
-                )}
-                {/* 争议事件 */}
-                <Reveal delay={0.1}>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* S6 数据档案：榜单、档位、争议共识、版本大事记（考据区，全量平铺） */}
+        <section id="md-record" className="mt-12 scroll-mt-[130px]">
+          <SectionHeader title="数据档案 · 榜单与变迁" en="// THE RECORD" barColor={SECTION_BAR} />
+          <div className="grid items-start gap-4 lg:grid-cols-2">
+            {/* 左：榜单成绩 + 争议事件 */}
+            <div className="space-y-4">
+              <Reveal>{benchCard}</Reveal>
+              {community && (
+                <Reveal delay={0.08}>
                   <div className="rounded-[10px] border border-line bg-white shadow-card">
                     <div className="border-b border-line px-4 py-2.5">
                       <h3 className="font-serif text-sm font-semibold text-ink">
@@ -843,8 +1011,33 @@ export default function ModelDetail() {
                     </div>
                   </div>
                 </Reveal>
-                {/* 升级共识 */}
-                <Reveal delay={0.14}>
+              )}
+            </div>
+            {/* 右：effort 档位 + 子榜单 + 升级共识 */}
+            <div className="space-y-4">
+              {effortCard && <Reveal delay={0.04}>{effortCard}</Reveal>}
+              {community?.subBoards && (
+                <Reveal delay={0.08}>
+                  <div className="rounded-[10px] border border-line bg-white shadow-card">
+                    <div className="border-b border-line bg-paper-alt px-4 py-1.5">
+                      <span className="font-serif text-sm font-semibold text-ink-2">
+                        子榜单交叉 <span className="ml-1 font-mono text-[11px] font-normal text-ink-3">// SUB-BOARDS</span>
+                      </span>
+                    </div>
+                    {community.subBoards.map((b, i) => (
+                      <div key={b.name} className={cn('flex items-baseline justify-between gap-3 px-4 py-2', i > 0 && 'border-t border-line')}>
+                        <span className="shrink-0 text-sm text-ink-2">{b.name}</span>
+                        <span className="text-right">
+                          <span className="font-mono text-sm font-bold text-gold">{b.rank}</span>
+                          {b.note && <span className="ml-1.5 font-mono text-[11px] text-ink-3">{b.note}</span>}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </Reveal>
+              )}
+              {community && (
+                <Reveal delay={0.12}>
                   <div className="rounded-[10px] border border-line bg-white p-4 shadow-card">
                     <h3 className="font-serif text-sm font-semibold text-ink">
                       升级共识 <span className="ml-1 font-mono text-xs font-normal text-ink-3">// UPGRADE?</span>
@@ -861,265 +1054,96 @@ export default function ModelDetail() {
                     <p className="mt-3 border-t border-line pt-2.5 font-mono text-[11px] text-ink-3">// 社区态度随版本与官方修复持续变化</p>
                   </div>
                 </Reveal>
-              </div>
-            </div>
-          </section>
-        ) : (
-          <>
-            {/* 无社区数据：榜单全宽 */}
-            <section id="md-bench" className="mt-12 scroll-mt-[130px]">
-              <SectionHeader title="榜单成绩" en="// BENCHMARKS" barColor={SECTION_BAR} />
-              <Reveal>{benchCard}</Reveal>
-            </section>
-            {effortCard && (
-              <section className="mt-12">
-                <SectionHeader title="思考强度 · 档位实测" en="// EFFORT" barColor={SECTION_BAR} />
-                <Reveal>{effortCard}</Reveal>
-              </section>
-            )}
-          </>
-        )}
-
-        {/* S4 发布大事记（左长条） + 版本变迁/官方演示（右） */}
-        {(community?.versionDelta || community?.timeline || community?.demos) && (
-          <section id="md-patch" className="mt-12 scroll-mt-[130px]">
-            <SectionHeader title="版本变迁 · 大事记" en="// PATCH NOTES & TIMELINE" barColor={SECTION_BAR} />
-            <div className={cn('grid items-stretch gap-4', community?.timeline && 'lg:grid-cols-[4fr_8fr]')}>
-              {/* 左：发布大事记长条 */}
-              {community?.timeline && (
-                <Reveal className="h-full">
-                  <div className="flex h-full flex-col rounded-[10px] border border-line bg-white shadow-card">
-                    <div className="border-b border-line px-4 py-2.5 font-serif text-sm font-semibold text-ink">
-                      发布大事记 <span className="ml-1 font-mono text-xs font-normal text-ink-3">// TIMELINE</span>
-                    </div>
-                    <ol className="ml-4 flex-1 border-l border-line py-2">
-                      {community.timeline.map((t) => (
-                        <li key={t.date} className="relative px-4 py-1.5">
-                          <span className="absolute -left-[5px] top-[13px] h-2 w-2 rounded-full bg-gold" aria-hidden />
-                          <span className="font-mono text-xs font-bold text-gold">{t.date}</span>
-                          <p className="text-sm leading-[1.6] text-ink-2">{t.event}</p>
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                </Reveal>
               )}
-              {/* 右：版本变迁（精进/失守）+ 官方演示 */}
-              <div className="space-y-4">
-                {community?.versionDelta && (
-                  <div>
-                    <p className="mb-3 text-sm text-ink-3">对照基准：{community.versionDelta.base}</p>
-                    <div className="grid items-start gap-4 sm:grid-cols-2">
-                      <Reveal>
-                        <div className="rounded-[10px] border border-line bg-white shadow-card">
-                          <div className="border-b border-line px-4 py-2.5 font-serif text-sm font-semibold text-gold">精进</div>
-                          <ul className="divide-y divide-line">
-                            {community.versionDelta.improves.map((s) => (
-                              <li key={s} className="flex gap-2.5 px-4 py-2 text-sm leading-[1.6] text-ink-2">
-                                <span className="shrink-0 font-mono font-bold text-gold">↑</span>
-                                {s}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </Reveal>
-                      <Reveal delay={0.08}>
-                        <div className="rounded-[10px] border border-line bg-white shadow-card">
-                          <div className="border-b border-line px-4 py-2.5 font-serif text-sm font-semibold text-cinnabar">失守</div>
-                          <ul className="divide-y divide-line">
-                            {community.versionDelta.regresses.map((s) => (
-                              <li key={s} className="flex gap-2.5 px-4 py-2 text-sm leading-[1.6] text-ink-2">
-                                <span className="shrink-0 font-mono font-bold text-cinnabar">↓</span>
-                                {s}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </Reveal>
-                    </div>
-                  </div>
-                )}
-                {community?.demos && (
-                  <div>
-                    <h3 className="mb-4 pt-1 font-serif text-sm font-semibold text-ink">
-                      官方演示 <span className="ml-1 font-mono text-xs font-normal text-ink-3">// DEMOS</span>
-                    </h3>
-                    <div className="grid gap-4 sm:grid-cols-3">
-                      {community.demos.map((d, i) => (
-                        <Reveal key={d.title} delay={0.06 + i * 0.06} className="h-full">
-                          <div className={cn('h-full rounded-[10px] border bg-white p-4 shadow-card', d.placeholder ? 'border-dashed border-line-strong' : 'border-line')}>
-                            <h4 className="font-serif text-[13px] font-semibold text-ink">{d.title}</h4>
-                            <p className="mt-2 text-sm leading-[1.7] text-ink-2">{d.desc}</p>
-                            {d.placeholder && <p className="mt-2 font-mono text-[11px] text-ink-3">// 占位 · 待补实测</p>}
-                          </div>
-                        </Reveal>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
             </div>
-          </section>
-        )}
+          </div>
 
-        {/* S6 法宝实战评测 */}
-        {community?.harnessReviews && (
-          <section id="md-harness" className="mt-12 scroll-mt-[130px]">
-            <SectionHeader title="法宝实战评测" en="// IN THE WILD" barColor={SECTION_BAR} />
-            <div className="grid gap-4 md:grid-cols-3">
-              {community.harnessReviews.map((r, i) => {
-                const h = harnessMap[r.id];
-                return (
-                  <Reveal key={r.id} delay={i * 0.06} className="h-full">
-                    <div className={cn('h-full rounded-[10px] border bg-white p-4 shadow-card', r.placeholder ? 'border-dashed border-line-strong' : 'border-line')}>
-                      <div className="flex items-center justify-between">
-                        <span className="font-serif text-sm font-semibold text-ink">{h?.name ?? r.id}</span>
-                        {r.placeholder && <span className="font-mono text-[11px] text-ink-3">// 占位 · 待补</span>}
+          {/* 版本变迁 · 大事记 */}
+          {(community?.versionDelta || community?.timeline || community?.demos) && (
+            <div className="mt-8">
+              <SubHead en="PATCH NOTES & TIMELINE">版本变迁 · 大事记</SubHead>
+              <div className={cn('grid items-stretch gap-4', community?.timeline && 'lg:grid-cols-[4fr_8fr]')}>
+                {/* 左：发布大事记长条 */}
+                {community?.timeline && (
+                  <Reveal className="h-full">
+                    <div className="flex h-full flex-col rounded-[10px] border border-line bg-white shadow-card">
+                      <div className="border-b border-line px-4 py-2.5 font-serif text-sm font-semibold text-ink">
+                        发布大事记 <span className="ml-1 font-mono text-xs font-normal text-ink-3">// TIMELINE</span>
                       </div>
-                      <p className="mt-2 text-sm leading-[1.7] text-ink-2">{r.text}</p>
+                      <ol className="ml-4 flex-1 border-l border-line py-2">
+                        {community.timeline.map((t) => (
+                          <li key={t.date} className="relative px-4 py-1.5">
+                            <span className="absolute -left-[5px] top-[13px] h-2 w-2 rounded-full bg-gold" aria-hidden />
+                            <span className="font-mono text-xs font-bold text-gold">{t.date}</span>
+                            <p className="text-sm leading-[1.6] text-ink-2">{t.event}</p>
+                          </li>
+                        ))}
+                      </ol>
                     </div>
                   </Reveal>
-                );
-              })}
-            </div>
-          </section>
-        )}
-
-        {/* S7 推荐法宝「配装」 */}
-        <section id="md-slot" className="mt-12 scroll-mt-[130px]">
-          <SectionHeader title="推荐法宝" en="// BEST IN SLOT" moreTo="/harnesses" moreLabel="全部法宝 →" barColor={SECTION_BAR} />
-          <div className="grid gap-4 md:grid-cols-3">
-            {detail.bestInSlot.map((b, i) => {
-              const h = harnessMap[b.id];
-              if (!h) return null;
-              const fit = h.topFits.find((f) => f.modelId === model.id)?.pct ?? null;
-              return (
-                <Reveal key={b.id} delay={i * 0.1}>
-                  <div className="relative pt-3">
-                    {fit != null && (
-                      <div className="absolute right-3 top-0 z-10">
-                        <FitRing pct={fit} />
+                )}
+                {/* 右：版本变迁（精进/失守）+ 官方演示 */}
+                <div className="space-y-4">
+                  {community?.versionDelta && (
+                    <div>
+                      <p className="mb-3 text-sm text-ink-3">对照基准：{community.versionDelta.base}</p>
+                      <div className="grid items-start gap-4 sm:grid-cols-2">
+                        <Reveal>
+                          <div className="rounded-[10px] border border-line bg-white shadow-card">
+                            <div className="border-b border-line px-4 py-2.5 font-serif text-sm font-semibold text-gold">精进</div>
+                            <ul className="divide-y divide-line">
+                              {community.versionDelta.improves.map((s) => (
+                                <li key={s} className="flex gap-2.5 px-4 py-2 text-sm leading-[1.6] text-ink-2">
+                                  <span className="shrink-0 font-mono font-bold text-gold">↑</span>
+                                  {s}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </Reveal>
+                        <Reveal delay={0.08}>
+                          <div className="rounded-[10px] border border-line bg-white shadow-card">
+                            <div className="border-b border-line px-4 py-2.5 font-serif text-sm font-semibold text-cinnabar">失守</div>
+                            <ul className="divide-y divide-line">
+                              {community.versionDelta.regresses.map((s) => (
+                                <li key={s} className="flex gap-2.5 px-4 py-2 text-sm leading-[1.6] text-ink-2">
+                                  <span className="shrink-0 font-mono font-bold text-cinnabar">↓</span>
+                                  {s}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </Reveal>
                       </div>
-                    )}
-                    <HarnessCard harness={h} />
-                    <p className="mt-2 px-1 font-serif text-sm italic text-ink-2">「{b.note}」</p>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* S8 推荐配队 */}
-        <section id="md-teams" className="mt-12 scroll-mt-[130px]">
-          <SectionHeader title="推荐配队" en="// TEAMS" moreTo="/teams" moreLabel="配队推演 →" barColor={SECTION_BAR} />
-          <div className="space-y-4">
-            {detail.teamIds.map((id, i) => {
-              const team = teams.find((t) => t.id === id);
-              if (!team) return null;
-              return (
-                <Reveal key={id} delay={i * 0.1}>
-                  <TeamCard team={team} />
-                </Reveal>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* S9 试炼相性 */}
-        <section className="mt-12">
-          <SectionHeader title="试炼相性 · 名家锐评" en="// AFFINITY & VERDICTS" barColor={SECTION_BAR} />
-          <div className="space-y-3">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="w-14 shrink-0 font-serif text-sm font-semibold text-cinnabar">擅长</span>
-              {detail.trialGood.map((t, i) => (
-                <motion.span
-                  key={t.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: 'spring', stiffness: 360, damping: 16, delay: i * 0.05 }}
-                >
-                  <Link
-                    to={t.to}
-                    className="inline-block rounded-full bg-cinnabar/10 px-3 py-1.5 text-sm font-medium text-cinnabar transition-colors duration-200 hover:bg-cinnabar hover:text-white"
-                  >
-                    {t.label}
-                  </Link>
-                </motion.span>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="w-14 shrink-0 font-serif text-sm font-semibold text-ink-3">不擅长</span>
-              {detail.trialBad.map((t, i) => (
-                <motion.span
-                  key={t.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ type: 'spring', stiffness: 360, damping: 16, delay: 0.15 + i * 0.05 }}
-                  className="flex items-center gap-2"
-                >
-                  <Link
-                    to={t.to}
-                    className="inline-block rounded-full bg-paper px-3 py-1.5 text-sm font-medium text-ink-2 transition-colors duration-200 hover:bg-ink-3 hover:text-white"
-                  >
-                    {t.label}
-                  </Link>
-                  {t.note && <span className="font-mono text-xs text-ink-3">（{t.note}）</span>}
-                </motion.span>
-              ))}
-            </div>
-          </div>
-          {/* 大佬与媒体评价：双行右往左轮播，悬停暂停 */}
-          {community?.expertQuotes && (
-            <div className="mt-6 space-y-3">
-              {[0, 1].map((ri) => {
-                const half = Math.ceil(community.expertQuotes!.length / 2);
-                const row = community.expertQuotes!.slice(ri * half, ri * half + half);
-                return (
-                  <div
-                    key={ri}
-                    className="overflow-hidden"
-                    style={{
-                      maskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
-                      WebkitMaskImage: 'linear-gradient(to right, transparent, black 4%, black 96%, transparent)',
-                    }}
-                  >
-                    <div
-                      className="verdict-track flex w-max gap-3"
-                      style={{ animationDuration: ri === 0 ? '80s' : '105s' }}
-                    >
-                      {[...row, ...row].map((q, qi) => (
-                        <figure
-                          key={qi}
-                          className="relative w-[360px] shrink-0 overflow-hidden rounded-[10px] border border-line bg-white py-3 pl-4 pr-3.5 shadow-card"
-                        >
-                          <span
-                            className="absolute left-0 top-0 h-full w-[3px]"
-                            style={{ backgroundColor: TONE_META[q.tone].color }}
-                            aria-hidden
-                          />
-                          <blockquote className="line-clamp-3 font-serif text-sm italic leading-[1.7] text-ink-2">
-                            「{q.text}」
-                          </blockquote>
-                          <figcaption className="mt-1.5 text-right text-xs">
-                            <span className="font-semibold text-ink">{q.name}</span>
-                            <span className="ml-1.5 font-mono text-ink-3">{q.role}</span>
-                          </figcaption>
-                        </figure>
-                      ))}
                     </div>
-                  </div>
-                );
-              })}
+                  )}
+                  {community?.demos && (
+                    <div>
+                      <h3 className="mb-4 pt-1 font-serif text-sm font-semibold text-ink">
+                        官方演示 <span className="ml-1 font-mono text-xs font-normal text-ink-3">// DEMOS</span>
+                      </h3>
+                      <div className="grid gap-4 sm:grid-cols-3">
+                        {community.demos.map((d, i) => (
+                          <Reveal key={d.title} delay={0.06 + i * 0.06} className="h-full">
+                            <div className={cn('h-full rounded-[10px] border bg-white p-4 shadow-card', d.placeholder ? 'border-dashed border-line-strong' : 'border-line')}>
+                              <h4 className="font-serif text-[13px] font-semibold text-ink">{d.title}</h4>
+                              <p className="mt-2 text-sm leading-[1.7] text-ink-2">{d.desc}</p>
+                              {d.placeholder && <p className="mt-2 font-mono text-[11px] text-ink-3">// 占位 · 待补实测</p>}
+                            </div>
+                          </Reveal>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           )}
         </section>
 
-        {/* S10 相关攻略 */}
-        <section id="md-guides" className="mt-12 scroll-mt-[130px]">
-          <SectionHeader title="相关攻略" en="// GUIDES" moreTo="/guides" moreLabel="攻略阁 →" barColor={SECTION_BAR} />
+        {/* S7 编辑室：相关攻略 + 存疑与信源 */}
+        <section id="md-guides" className="my-12 scroll-mt-[130px]">
+          <SectionHeader title="攻略与信源" en="// GUIDES & CITATIONS" moreTo="/guides" moreLabel="攻略阁 →" barColor={SECTION_BAR} />
           <Reveal>
             <div className="divide-y divide-line rounded-[10px] border border-line bg-white px-2 py-1 shadow-card">
               {relatedGuides.map((g) => {
@@ -1152,13 +1176,8 @@ export default function ModelDetail() {
               })}
             </div>
           </Reveal>
-        </section>
-
-        {/* S11 存疑与来源 */}
-        {(community?.uncertainties || community?.sources) && (
-          <section className="my-12">
-            <SectionHeader title="存疑与来源" en="// CITATIONS" barColor={SECTION_BAR} />
-            <div className="grid items-start gap-4 lg:grid-cols-[5fr_7fr]">
+          {(community?.uncertainties || community?.sources) && (
+            <div className="mt-4 grid items-start gap-4 lg:grid-cols-[5fr_7fr]">
               {community?.uncertainties && (
                 <Reveal>
                   <div className="rounded-[10px] border border-line bg-white shadow-card">
@@ -1201,6 +1220,35 @@ export default function ModelDetail() {
                 </Reveal>
               )}
             </div>
+          )}
+        </section>
+
+        {/* FAQ 区（SEO：SoftwareApplication + FAQPage 结构化数据承载） */}
+        {model && (
+          <section className="mt-10">
+            <Reveal>
+              <div className="rounded-[10px] border border-line bg-white shadow-card">
+                <div className="border-b border-line px-4 py-2.5 font-serif text-sm font-semibold text-ink">
+                  常见问题 <span className="ml-1 font-mono text-xs font-normal text-ink-3">// FAQ</span>
+                </div>
+                <div className="divide-y divide-line">
+                  {[
+                    { q: `${model.name} 适合写什么代码？`, a: `${model.name} 的定位是「${model.title}」：${model.verdict}。擅长标签：${model.tags.join(' / ')}。具体场景建议参考「配队」与「攻略」栏目。` },
+                    { q: `${model.name} 多少钱？`, a: `${model.name} ${model.priceIn == null ? model.priceLabel : `输入 $${model.priceIn} / 百万 token，输出 $${model.priceOut} / 百万 token`}。${model.system === 'deepseek' ? '开源可自部署，部署后按自有算力成本计。' : '具体按量计费见官方定价。'}` },
+                    { q: `${model.name} 的上下文多大？`, a: `${model.contextLabel} tokens${model.maxOutputTokens ? `，单次输出上限 ${model.maxOutputTokens.toLocaleString()} tokens` : ''}。适合${model.contextTokens >= 1_000_000 ? '整库级长文档、大仓理解' : model.contextTokens >= 200_000 ? '长文档与中型仓库' : '常规代码任务'}。` },
+                    { q: `${model.name} 和同档模型怎么选？`, a: `可到「对决」栏目查看 ${model.name} 参与的对比：SWE-bench、价格、上下文、场景结论一页看懂。` },
+                  ].map((f) => (
+                    <details key={f.q} className="group">
+                      <summary className="flex cursor-pointer items-center justify-between px-4 py-3 text-sm font-semibold text-ink">
+                        {f.q}
+                        <span className="font-mono text-xs text-ink-3 transition-transform duration-200 group-open:rotate-45">+</span>
+                      </summary>
+                      <p className="border-t border-line px-4 py-3 text-sm leading-[1.7] text-ink-2">{f.a}</p>
+                    </details>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
           </section>
         )}
       </div>

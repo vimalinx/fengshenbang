@@ -12,6 +12,7 @@ export const NAV_LINKS = [
   { to: '/scenarios', label: '场景' },
   { to: '/guides', label: '攻略' },
   { to: '/tools', label: '工具箱' },
+  { to: '/compare', label: '对决' },
   { to: '/changelog', label: '更新日志' },
 ];
 

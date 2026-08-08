@@ -9,6 +9,7 @@ import Scenarios from './pages/Scenarios';
 import Guides from './pages/Guides';
 import Tools from './pages/Tools';
 import Changelog from './pages/Changelog';
+import Compare from './pages/Compare';
 
 /**
  * 嵌套路由模式（Layout 渲染 <Outlet/>，此处使用嵌套 <Route> —— 不可混用 children 模式）。
@@ -26,6 +27,8 @@ export default function App() {
         <Route path="guides" element={<Guides />} />
         <Route path="tools" element={<Tools />} />
         <Route path="changelog" element={<Changelog />} />
+        <Route path="compare" element={<Compare />} />
+        <Route path="compare/:pairId" element={<Compare />} />
       </Route>
     </Routes>
   );
