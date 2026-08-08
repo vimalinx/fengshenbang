@@ -90,7 +90,7 @@ export interface CommunityFeedback {
   versionDelta?: { base: string; improves: string[]; regresses: string[] }; // 版本变迁（进步 vs 退步）
   subBoards?: { name: string; rank: string; note?: string }[]; // 子榜单交叉
   heat?: { label: string; value: string }[]; // 讨论热度数字
-  harnessReviews?: { id: string; text: string; placeholder?: boolean }[]; // 法宝实战评测
+  harnessReviews?: { id: string; text: string; placeholder?: boolean }[]; // 装备实战评测
   expertQuotes?: { text: string; name: string; role: string; tone: 'pos' | 'mix' | 'neg' }[]; // 大佬/媒体评价（试炼相性下方引用块）
   timeline?: { date: string; event: string }[]; // 发布大事记
   demos?: { title: string; desc: string; placeholder?: boolean }[]; // 官方演示场景
@@ -179,7 +179,7 @@ const OPUS_4_7: ModelDetailData = {
     { version: 'Opus 4.7', date: '2026-06', effect: '上下文 1M · 续航 40h · 登临 T0', current: true },
   ],
   bestInSlot: [
-    { id: 'claude-code', note: '本命法宝，同宗同源，自治神通满幅释放。' },
+    { id: 'claude-code', note: '本命装备，同宗同源，自治神通满幅释放。' },
     { id: 'cursor', note: '双模型槽位可组复核流。' },
     { id: 'openhands', note: '蜂群流的御灵底座。' },
   ],
@@ -391,7 +391,7 @@ const OPUS_5: ModelDetailData = {
       { label: '知乎浏览', value: '64 万+' },
     ],
     harnessReviews: [
-      { id: 'claude-code', text: '本命法宝。/doctor 精简 claude.md 后体感大幅改善；社区共识 medium effort + laconic mode 最佳。' },
+      { id: 'claude-code', text: '本命装备。/doctor 精简 claude.md 后体感大幅改善；社区共识 medium effort + laconic mode 最佳。' },
       { id: 'cursor', text: 'Cursor 联创：近 Fable 5 智能、Opus 速度与成本；CursorBench 最高 effort 仅差峰值 0.5%。' },
       { id: 'openhands', text: '蜂群实测数据收集中，占位待补。', placeholder: true },
     ],
@@ -548,7 +548,7 @@ const OPUS_5: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '本命法宝，同宗同源。effort 四档调节与 /doctor 配置体检全量支持：/doctor 精简 claude.md 后体感大幅改善，社区共识日常用 medium effort + laconic mode，复杂任务再切 High/Max。',
+      note: '本命装备，同宗同源。effort 四档调节与 /doctor 配置体检全量支持：/doctor 精简 claude.md 后体感大幅改善，社区共识日常用 medium effort + laconic mode，复杂任务再切 High/Max。',
     },
     {
       id: 'cursor',
