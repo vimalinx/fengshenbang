@@ -17,6 +17,7 @@ import { DETAIL as D_DOUBAO_2_0 } from './details/doubao-2-0';
 import { DETAIL as D_GEMINI_3_1_PRO } from './details/gemini-3-1-pro';
 import { DETAIL as D_GEMINI_3_5_PRO } from './details/gemini-3-5-pro';
 import { DETAIL as D_GEMINI_3_6_FLASH } from './details/gemini-3-6-flash';
+import { DETAIL as D_GEMINI_3_FLASH } from './details/gemini-3-flash';
 import { DETAIL as D_GEMINI_3_PRO } from './details/gemini-3-pro';
 import { DETAIL as D_GLM_4_6 } from './details/glm-4-6';
 import { DETAIL as D_GLM_5_2 } from './details/glm-5-2';
@@ -37,6 +38,12 @@ import { DETAIL as D_MISTRAL_LARGE_3 } from './details/mistral-large-3';
 import { DETAIL as D_QWEN3_7_MAX } from './details/qwen3-7-max';
 import { DETAIL as D_QWEN3_MAX } from './details/qwen3-max';
 import { DETAIL as D_QWEN3 } from './details/qwen3';
+import { DETAIL as D_CLAUDE_HAIKU_4_5 } from './details/claude-haiku-4-5';
+import { DETAIL as D_CLAUDE_SONNET_4_6 } from './details/claude-sonnet-4-6';
+import { DETAIL as D_DEEPSEEK_R2 } from './details/deepseek-r2';
+import { DETAIL as D_GROK_5 } from './details/grok-5';
+import { DETAIL as D_LLAMA_5_MAVERICK } from './details/llama-5-maverick';
+import { DETAIL as D_QWEN3_CODER } from './details/qwen3-coder';
 
 export interface ModelProfile {
   apiId: string; // API 模型标识
@@ -624,6 +631,7 @@ export const modelDetails: Record<string, ModelDetailData> = {
   'gemini-3-1-pro': D_GEMINI_3_1_PRO,
   'gemini-3-5-pro': D_GEMINI_3_5_PRO,
   'gemini-3-6-flash': D_GEMINI_3_6_FLASH,
+  'gemini-3-flash': D_GEMINI_3_FLASH,
   'gemini-3-pro': D_GEMINI_3_PRO,
   'glm-4-6': D_GLM_4_6,
   'glm-5-2': D_GLM_5_2,
@@ -644,4 +652,10 @@ export const modelDetails: Record<string, ModelDetailData> = {
   'qwen3-7-max': D_QWEN3_7_MAX,
   'qwen3-max': D_QWEN3_MAX,
   'qwen3': D_QWEN3,
+  'claude-haiku-4-5': D_CLAUDE_HAIKU_4_5,
+  'claude-sonnet-4-6': D_CLAUDE_SONNET_4_6,
+  'deepseek-r2': D_DEEPSEEK_R2,
+  'grok-5': D_GROK_5,
+  'llama-5-maverick': D_LLAMA_5_MAVERICK,
+  'qwen3-coder': D_QWEN3_CODER,
 };
