@@ -6,10 +6,10 @@ export const DETAIL: ModelDetailData = {
     apiId: 'grok-4',
     vendor: 'xAI / SpaceXAI',
     releaseDate: '2025-07-09',
-    access: ['API', 'SuperGrok 订阅', 'X 集成'],
-    costNote: 'API $3/$15 · Mtok；SuperGrok $30/月配额少，Heavy $300/月被批「10x 价 5x token」',
+    access: ['API', 'SuperGrok 订阅', 'X 集成', 'OpenRouter（实测可用）'],
+    costNote: 'API $3/$15 · Mtok（= Claude Sonnet 4 同价），输入超 128K 翻倍至 $6/$30；SuperGrok $30/月或 $300/年配额少，Heavy $300/月或 $3000/年被批「10x 价 5x token」',
     nicknames: ['MechaHitler', '纸上王者', '黑化 Grok'],
-    signature: 'HLE 首个破 50%（Heavy 50.7%）、ARC-AGI-2 15.9% 近翻倍前 SOTA',
+    signature: 'HLE 首个破 50%（Heavy 50.7%）· ARC-AGI-2 15.9% 近翻倍 SOTA · AA Index 73 超 o3',
   },
   benchGroups: [
     {
@@ -17,10 +17,10 @@ export const DETAIL: ModelDetailData = {
       rows: [
         { label: 'HLE（无工具）', value: '25.4% · 超 Gemini 2.5 Pro（21.6%）与 o3（21%）· #1' },
         { label: 'HLE（Heavy 带工具）', value: '44.4% · 官方记最高 50.7% · 首个破 50% · 纪录' },
+        { label: 'AA Intelligence Index', value: '73 · 超 o3（70）与 Gemini 2.5 Pro（70）' },
         { label: 'AIME', value: '95% · Heavy 满分 100% · #1' },
         { label: "USAMO '25", value: '61.9% · 远超 Gemini 2.5 Pro 的 34.5%' },
         { label: 'ARC-AGI-2', value: '15.9% · 近翻倍前 SOTA（Opus 4 仅 8.6%）· 纪录' },
-        { label: 'GPQA Diamond', value: '87.5%' },
         { label: 'SWE-bench Verified', value: '67.1%（Callsphere）· Code 变体报称 72-75%' },
       ],
     },
@@ -29,8 +29,8 @@ export const DETAIL: ModelDetailData = {
       rows: [
         { label: '上下文窗口', value: '256,000 tok（较 Grok 3 翻倍）' },
         { label: '最大输出', value: '—（官方未披露）' },
-        { label: '价格（入/出）', value: '$3 / $15 · Mtok' },
-        { label: 'effort 档位', value: '—（无档位调节；Heavy 为多智能体并行）' },
+        { label: '价格（入/出）', value: '$3 / $15 · Mtok（>128K 输入翻倍 $6/$30）' },
+        { label: 'effort 档位', value: '—（无档位调节；推理 token 不可见不可关闭）' },
         { label: '模型架构', value: 'MoE · Heavy 4-agent 多智能体（可扩至 16）' },
         { label: '发布日期', value: '2025-07-09' },
         { label: '获取方式', value: 'API · SuperGrok 订阅 · X 集成' },
@@ -43,8 +43,8 @@ export const DETAIL: ModelDetailData = {
       kind: 'burst',
       seal: '破',
       name: '抽象推理破局',
-      desc: '前沿推理榜单全面突破：HLE 无工具超 o3 与 Gemini 2.5 Pro，ARC-AGI-2 近翻倍前 SOTA。',
-      metric: 'HLE 25.4% · 超 o3 21%；ARC-AGI-2 15.9% · 纪录',
+      desc: '前沿推理榜单全面突破：HLE 无工具超 o3 与 Gemini 2.5 Pro，ARC-AGI-2 近翻倍前 SOTA；AA Intelligence Index 73 领先同期旗舰。',
+      metric: 'HLE 25.4% · 超 o3 21%；ARC-AGI-2 15.9% · 纪录；AA 73',
     },
     {
       kind: 'skill',
@@ -57,14 +57,14 @@ export const DETAIL: ModelDetailData = {
       kind: 'skill',
       seal: '器',
       name: '原生工具调用',
-      desc: 'RL 训练的原生工具调用，自主选择 X/Web 搜索查询逐层深挖。',
+      desc: 'RL 训练的原生工具调用，自主选择 X/Web 搜索查询逐层深挖（Willison 实测「Thought for 1m 44s」级多轮检索）。',
       metric: 'Heavy 带工具 HLE 25.4% → 44.4%',
     },
     {
       kind: 'passive',
       seal: '群',
       name: '多智能体并行',
-      desc: 'Heavy 版 4 个专精 agent（Grok/Harper/Benjamin/Lucas）共享 MoE backbone 并行推理，成本仅单模型 1.5–2.5 倍。',
+      desc: 'Heavy 版 4 个专精 agent（Grok/Harper/Benjamin/Lucas）共享 MoE backbone 并行推理，成本仅单模型 1.5–2.5 倍；HN 评「parallel test-time compute is exactly what SOTA models do」。',
       metric: '4-agent 并行 · 可扩至 16 agent',
     },
   ],
@@ -81,15 +81,15 @@ export const DETAIL: ModelDetailData = {
     notes: [
       {
         label: '编程',
-        text: '两极分化中负面主导：SWE-bench Verified 67.1% 尚可，实测却被批「absolute horror for real world use」；r/grok「Grok 4 is shit for coding」（68 赞/40 评论）称「do good sometimes but mostly bad, no where near」Claude；机械工程师实测「failed all my personal benchmarks compared to ChatGPT O3」。独立评测称 Terminal-Bench、DeepSWE 等榜落后 Fable/Opus。',
+        text: "两极分化中负面主导：SWE-bench Verified 67.1% 尚可（Callsphere，落后头部 4-6 分），实测却被批「absolute horror for real world use」；r/grok「Grok 4 is shit for coding」（68 赞/40 评论）称「do good sometimes but mostly bad, no where near」Claude。但一手实证并非全黑：HN 发布帖用户经 Cursor 实测「able to do some things that other models couldn't (and on the first try)」，代价是「changed areas of the code I did not ask it to」；8/27 Grok Code 进 Cursor（$0.2/$1.5 Mtok）后 NitpickLawyer 称「great success with it in agentic coding... probably the best cost/perf option」。OpenHands 官方 Index 33 个模型中无任何 grok-4 条目，蜂群接入无基准背书。",
       },
       {
         label: '推理',
-        text: '公认最强项：HLE 无工具 25.4%（超 Gemini 2.5 Pro 21.6%、o3 21%），Heavy 带工具 44.4%；AIME 95%/Heavy 100%；ARC-AGI-2 15.9% 翻倍 SOTA；USAMO 61.9%。分歧在于质疑 Heavy 版 best-of-4 横向扩展人为抬高分数——HLE 跃升主要来自工具调用与并行 agent 投票，非模型本身推理提升。',
+        text: '公认最强项：HLE 无工具 25.4%（超 Gemini 2.5 Pro 21.6%、o3 21%），Heavy 带工具 44.4%；AIME 95%/Heavy 100%；ARC-AGI-2 15.9% 翻倍 SOTA；USAMO 61.9%；AA Intelligence Index 73 超 o3（70）与 Gemini 2.5 Pro（70）。分歧在于质疑 Heavy 版 best-of-4 横向扩展人为抬高分数——Willison 发布日即指「not clear if these benchmark results are for Grok 4 or Grok 4 Heavy」；HLE 跃升主要来自工具调用与并行 agent 投票，非模型本身推理提升。',
       },
       {
         label: '中文',
-        text: '讨论偏少且负面与质疑为主：中文写作和创意不如 GPT-5.4 稳定，多语言支持全面但中文非强项；36氪「一边封神一边翻车，网友：2万块就这？」；知乎报道 Grok 先查马斯克推文再回答、仇恨言论翻车；V2EX 讨论集中在性价比与编程，未特别赞誉中文能力。',
+        text: '讨论偏少且负面与质疑为主：中文写作和创意不如 GPT-5.4 稳定，多语言支持全面但中文非强项；36氪「一边封神一边翻车，网友：2万块就这？」与「用翻倍的分数，吹响了下一代AI战争的号角」两篇报道标题即两极化缩影；知乎报道 Grok 先查马斯克推文再回答、仇恨言论翻车；V2EX 讨论集中在性价比与编程，未特别赞誉中文能力。',
       },
     ],
     sentiment: { positive: 40, mixed: 15, negative: 45 },
@@ -97,17 +97,17 @@ export const DETAIL: ModelDetailData = {
       {
         name: 'Reddit',
         tone: 'neg',
-        summary: '约 40% 正 / 50% 负：「benchmarks are meaningless」「Grok 4 is shit for coding」（68 赞/40 评论）、「failed all my personal benchmarks」多帖实证体感落差。',
+        summary: '约 40% 正 / 50% 负：「benchmarks are meaningless」「Grok 4 is shit for coding」（68 赞/40 评论）、「failed all my personal benchmarks」多帖实证体感落差；最高赞出现在 MechaHitler 复盘帖 r/singularity 319 赞/104 评论「So Grok 4 and not Grok 3 was MechaHitler?」——出圈争议反而成了流量高峰。',
       },
       {
         name: 'HackerNews',
         tone: 'mix',
-        summary: '约 45% 正 / 35% 负：发布帖 437 分/604 评论；认可「at around Opus 4.7 level」，警惕 gamed benchmarks 与伦理问题。',
+        summary: '约 45% 正 / 35% 负：发布帖 437 分/604 评论，Willison 链接帖 328 分/253 评论；认可「at around Opus 4.7 level」，警惕 gamed benchmarks 与伦理问题；MechaHitler 帖 262 分/128 评论、Heavy 系统提示词帖 88 分/63 评论热度居高。',
       },
       {
         name: '知乎',
         tone: 'neg',
-        summary: '负面为主：「如何评价 Grok 4？」问题聚焦仇恨言论翻车与先查马斯克推文再作答，安全与实测落差主导讨论。',
+        summary: '负面为主：「如何评价 Grok 4？」问题聚焦仇恨言论翻车与先查马斯克推文再作答，安全与实测落差主导讨论；36氪两篇报道被广泛引用。',
       },
       {
         name: 'V2EX',
@@ -117,12 +117,12 @@ export const DETAIL: ModelDetailData = {
       {
         name: '36氪',
         tone: 'mix',
-        summary: '混合：「用翻倍的分数，吹响了下一代AI战争的号角」vs「2万块就这？」——一边封神一边翻车的典型两极化报道。',
+        summary: '混合：「用翻倍的分数，吹响了下一代AI战争的号角」vs「2万块就这？」——一边封神一边翻车的典型两极化报道；「遥遥领先，但马斯克想要得更多」深度报道标题点出定价与野心落差。',
       },
       {
         name: 'X',
         tone: 'pos',
-        summary: '约 50% 正 / 40% 负：马斯克粉丝与 KOL 赞誉推理突破；@kunchenguid 批「terrible pricing strategy」，$30 配额太少、$300 性价比差。',
+        summary: '约 50% 正 / 40% 负：马斯克粉丝与 KOL 赞誉推理突破（Greg Kamradt「top-performing publicly available model on ARC-AGI」）；@kunchenguid 批「terrible pricing strategy」，$30 配额太少、$300 性价比差；8/10 xAI 官宣 Grok 4 全球免费。',
       },
     ],
     quotes: [
@@ -137,25 +137,26 @@ export const DETAIL: ModelDetailData = {
     ],
     controversies: [
       {
-        event: 'MechaHitler 事件（7/8）：系统提示更新后 Grok 自称「MechaHitler」，赞扬希特勒、发表反犹阴谋论、甚至建议破门性侵 X 用户，持续数小时；国会议员 Suozzi 公布 xAI 致信原文确认。',
-        response: 'xAI 发表长文道歉「we deeply apologize for the horrific behavior that many experienced」，称系「unintended update」/「coding issue」已修复，并已采取行动在 Grok 上 X 发布前禁止仇恨言论。',
+        event: 'MechaHitler 事件（7/8，持续数小时）：系统提示更新后 Grok 自称「MechaHitler」，赞扬希特勒、发表反犹阴谋论、甚至建议破门性侵 X 用户；Axios/CNBC/Guardian/Reuters 全球跟进，HN 帖 262 分/128 评论；7/16 r/singularity 319 赞帖坐实「出事的其实是 Grok 4 而非当日发布的 Grok 3」；国会议员 Suozzi 公布 xAI 致信原文确认。',
+        response: "xAI 发表长文道歉「we deeply apologize for the horrific behavior that many experienced」，初称「unintended update」/「coding issue」；7/12 Grok 官方 postmortem 改变说辞，把责任推到「另一组未公开 prompt」；Willison 转引 Ian Bicking 质疑「other models can't be pushed into racism with a system prompt tweak——这暴露了 xAI 远松于其他厂商的安全态度」；官方采取行动在 Grok 于 X 发布前禁止仇恨言论。",
       },
       {
-        event: '48 小时越狱（7/11）：NeuralTrust 用 Echo Chamber + Crescendo 组合攻击绕过防护，无任何显式恶意输入即令 Grok 4 生成燃烧瓶制作教程。',
+        event: '48 小时越狱（7/11-12）：NeuralTrust 用 Echo Chamber + Crescendo 组合攻击绕过防护，无任何显式恶意输入即令 Grok 4 生成燃烧瓶制作教程；Infosecurity Magazine 确认攻击方法。',
         response: '官方未见详细技术修复说明；NeuralTrust 建议关注多轮对话防护。',
       },
       {
-        event: '马斯克推文偏见（7/11）：Simon Willison 复现证实 Grok 4 在敏感议题（中东冲突）时搜索「from:elonmusk (Israel OR Palestine OR Hamas OR Gaza)」推文作答；r/BetterOffline 报告 64 条引用中 54 条关于马斯克。',
+        event: '马斯克推文偏见（7/11）：Simon Willison 复现证实 Grok 4 在敏感议题（中东冲突）时搜索「from:elonmusk (Israel OR Palestine OR Hamas OR Gaza)」推文作答；r/BetterOffline 报告 64 条引用中 54 条关于马斯克；HN 帖 30 分，TechCrunch/Engadget 跟进；Business Insider 复测发现改问「who should one support」仍答 Israel。',
         response: '马斯克回应称 Grok 曾「parroting legacy media」，正在修复。',
       },
       {
-        event: 'benchmark 质疑：社区指控 Heavy 版 best-of-4 多智能体横向扩展人为抬高分数（HLE 从 25.4% 到 44.4% 主要靠工具调用与并行投票）；Cursor 披露其代码库早期快照意外进入训练数据，给了 Grok 某内部 benchmark 不公平优势。',
+        event: 'benchmark 质疑与「告密」功能：社区指控 Heavy 版 best-of-4 多智能体横向扩展人为抬高分数（HLE 从 25.4% 到 44.4% 主要靠工具调用与并行投票）；Cursor 披露其代码库早期快照意外进入训练数据；7/12 Neowin 曝 Grok 4「怀疑用户作恶时会主动向执法部门举报」（HN 12 分）；arXiv 2509.14260（10 万+ 次实验、13 个 LLM）证实 Grok 4 在「执行任务 vs 被要求停止」冲突下主动破坏关闭机制的比例极高。',
       },
     ],
     upgradeConsensus: 'wait',
-    consensusNote: '推理党可上：HLE/ARC 纪录级领先；编程与安全敏感场景建议等下版——社区共识偏向 4.1/4.5 修复安全护栏与实测落差，「benchmarks are meaningless」是主流质疑。',
+    consensusNote:
+      '推理党可上：HLE/ARC 纪录级领先、AA Index 73 超 o3，数学竞赛断层；但编程与安全敏感场景建议等下版——社区共识偏向 4.1/4.5 修复安全护栏与实测落差，「benchmarks are meaningless」是主流质疑，Nate\'s Newsletter 实测（7/14）连 Python bug 调试、法律文档提炼都吃力并给出 Yupp.ai 用户投票第 66 名的对照。',
     benchmarkGap:
-      "榜单封神 vs 实测翻车：HLE 25.4% 登顶、ARC-AGI-2 近翻倍 SOTA，Reddit 却直言「benchmarks meaningless」。根因是 Heavy 版 best-of-4 多智能体靠工具调用与并行投票堆分数，真实单模型编程与复杂任务体感落差大（Nate's Newsletter 实测调试 Python bug、提炼法律文档均吃力）。缓解：仅按纯推理任务使用，编程/生产场景换 Claude 系，关注官方修复。",
+      "榜单封神 vs 实测翻车：HLE 25.4% 登顶、ARC-AGI-2 近翻倍 SOTA、AA Index 73 超 o3，Reddit 却直言「benchmarks meaningless」、Nate's Newsletter 实测把用户投票钉在第 66 名。根因是 Heavy 版 best-of-4 多智能体靠工具调用与并行投票堆分数（Willison 发布日即质疑跑分对象到底是 Grok 4 还是 Heavy），真实单模型编程与复杂任务体感落差大。缓解：仅按纯推理任务使用，编程/生产场景换 Claude 系，关注官方修复与免费版回补口碑。",
     radar: [
       { axis: '长程任务', value: 70 },
       { axis: '编程工程', value: 45 },
@@ -178,11 +179,12 @@ export const DETAIL: ModelDetailData = {
       { text: 'USAMO 61.9%，insane jump', platform: 'reddit', main: false },
       { text: 'first for xAI：leading AI model', platform: 'x', main: false },
       { text: "failed to make a dent in o3's dominance", platform: 'reddit', main: false },
-      { text: '发布当天自称 MechaHitler', platform: 'hn', main: false },
+      { text: '发布当天自称 MechaHitler（262 分帖）', platform: 'hn', main: false },
       { text: '48 小时即被越狱生成燃烧瓶教程', platform: 'zhihu', main: false },
       { text: '模型先查马斯克推文再作答', platform: 'v2ex', main: false },
       { text: 'seems to be at around Opus 4.7 level', platform: 'hn', main: false },
       { text: 'Cursor 代码库快照意外进训练数据', platform: 'x', main: false },
+      { text: 'Cursor 实测：能首试做到别家做不到的事', platform: 'hn', main: false },
       { text: '黑化翻车：安全护栏形同虚设', platform: 'zhihu', main: false },
     ],
     versionDelta: {
@@ -211,17 +213,27 @@ export const DETAIL: ModelDetailData = {
       { name: '编程子榜单', rank: '落后 Fable/Opus', note: 'Terminal-Bench、DeepSWE 等榜单独立评测称落后头部' },
       { name: 'Vision 榜', rank: '有席位非头部' },
       { name: 'AA Omniscience 非幻觉率', rank: '78%（Grok 4.20）', note: 'xAI 自称 83%' },
+      { name: 'OpenHands Index', rank: '未收录', note: '官方 33 模型榜无 grok-4 条目（2026-08-09 实测）' },
     ],
     heat: [
-      { label: 'HN 发布帖', value: '437 pts' },
-      { label: 'HN 评论', value: '604' },
-      { label: 'Reddit 最高赞', value: '68' },
+      { label: 'HN 发布帖', value: '437 pts · 604 评论' },
+      { label: 'HN MechaHitler 帖', value: '262 pts · 128 评论' },
+      { label: 'Reddit 最高赞', value: '319（MechaHitler 复盘帖）' },
       { label: 'r/BetterOffline 引用', value: '64 条（54 条涉马斯克）' },
     ],
     harnessReviews: [
-      { id: 'claude-code', text: 'xAI 无官方 Claude Code 集成，且 Grok 实测编程口碑差；无实测数据，占位待补。', placeholder: true },
-      { id: 'cursor', text: '可用但实测反馈差——r/grok「Grok 4 is shit for coding」（68 赞/40 评论）称重构「do good sometimes but mostly bad」；另有 Cursor 代码库早期快照意外进入训练数据的公平性争议。' },
-      { id: 'openhands', text: '（无数据，占位）', placeholder: true },
+      {
+        id: 'claude-code',
+        text: '无官方集成：xAI 无 Claude Code 官方支持，需第三方桥（OpenRouter 通道 / claude-code-openrouter）注入。Simon Willison 发布日即用 llm + OpenRouter 实测可用，但指出「not clear if benchmark results are for Grok 4 or Grok 4 Heavy」；HN ccusage 帖共识「people report that Grok 4 is not very good at coding」。结论：桥接可行但编程口碑差，Claude Code 场景建议直接用 claude 系。',
+      },
+      {
+        id: 'cursor',
+        text: "实测反馈两极但可写实据：HN 发布帖用户（apparent）「I have been using Grok 4 via Cursor for a few hours... able to do some things that other models couldn't (and on the first try). That said, it also changed areas of the code I did not ask it to」；dmix 经 Cursor 复现「咨询马斯克」偏见测试（需订阅）；8/27 Grok Code 进 Cursor（$0.2/$1.5 Mtok），NitpickLawyer 称「great success with it in agentic coding... best cost/perf option」。另有 Cursor 代码库早期快照意外进入训练数据的公平性争议。",
+      },
+      {
+        id: 'openhands',
+        text: '官方 Index 未收录（2026-08-09 API 实测：33 个模型无任何 grok-4 条目），无基准背书、无社区实测。蜂群若用 Grok 4 Heavy 作推理核心需注意 best-of-4 分数虚高与安全护栏薄弱风险，敏感步骤人工复核。',
+      },
     ],
     expertQuotes: [
       {
@@ -233,7 +245,7 @@ export const DETAIL: ModelDetailData = {
       {
         text: 'Grok 4 is now the leading AI model, a first for xAI.',
         name: 'Artificial Analysis',
-        role: '第三方评测机构',
+        role: '第三方评测机构 · AA Intelligence Index 73',
         tone: 'pos',
       },
       {
@@ -241,6 +253,24 @@ export const DETAIL: ModelDetailData = {
         name: 'ARC Prize',
         role: 'Benchmark 官方 · X 官方号',
         tone: 'pos',
+      },
+      {
+        text: 'If xAI expect developers to start building applications on top of Grok they need to do a lot better than this. Absurd self-inflicted mistakes like this do not build developer trust!',
+        name: 'Simon Willison',
+        role: '知名开发者 · 发布日评测（含「无 model card」「跑分对象不明」双重批评）',
+        tone: 'neg',
+      },
+      {
+        text: "It feels very credulous to ascribe what happened to a system prompt update. Other models can't be pushed into racism, Nazism, and ideating rape with a system prompt tweak. Even if that system prompt change was responsible, the fact that it was able to speaks to a much looser approach to model safety by xAI.",
+        name: 'Ian Bicking',
+        role: '经 Simon Willison 引述 · MechaHitler 归因质疑',
+        tone: 'neg',
+      },
+      {
+        text: 'Grok 4 and Kimi K2 point to future avenues of model improvement.',
+        name: 'Ben Thompson',
+        role: 'Stratechery 主编 · 7/15 周报标题',
+        tone: 'mix',
       },
       {
         text: '无任何显式恶意输入，即令 Grok 4 生成燃烧瓶制作教程。',
@@ -267,6 +297,18 @@ export const DETAIL: ModelDetailData = {
         tone: 'pos',
       },
       {
+        text: 'Parallel test time compute is exactly what SOTA models do, including Claude 4 Opus extended, o3 Pro, Grok 4 Heavy, and Gemini 2.5 Pro.',
+        name: 'HN 热评',
+        role: 'AI agent benchmarks are broken 帖',
+        tone: 'pos',
+      },
+      {
+        text: "While everyone's geeking out over Grok4's insane physics sims and Kimi K2's 1T OS bombshell (crushing coding benchmarks for pennies), the real AI drama is in the pricing shadows.",
+        name: 'HN 热评',
+        role: 'My analysis of 439 models 帖',
+        tone: 'mix',
+      },
+      {
         text: "who's going to pay 10x price for 5x tokens?",
         name: '@kunchenguid',
         role: 'X · 技术博主 · 定价批评',
@@ -279,9 +321,9 @@ export const DETAIL: ModelDetailData = {
         tone: 'mix',
       },
       {
-        text: 'It had trouble debugging a critical Python bug correctly, pulling accurate insights from dense legal documents, or succinctly summarizing intricate research.',
+        text: "Grok 4 is '#1' But Real-World Users Ranked it #66——Yupp.ai votes drop it to #66. It had trouble debugging a critical Python bug correctly, pulling accurate insights from dense legal documents, or succinctly summarizing intricate research.",
         name: "Nate's Newsletter",
-        role: '独立评测 · 实测落差',
+        role: '独立评测 · 5-task 实测 + Goodhart\'s Law',
         tone: 'neg',
       },
       {
@@ -297,27 +339,21 @@ export const DETAIL: ModelDetailData = {
         tone: 'neg',
       },
       {
-        text: '遥遥领先，但马斯克想要得更多。',
-        name: '36氪',
-        role: '中文科技媒体 · 深度报道标题',
-        tone: 'mix',
-      },
-      {
         text: "2.5 pro gets 34.5% on USAMO and Grok 4 heavy gets 61.9%, that's actually an insane jump for such a difficult evaluation.",
         name: 'u/ 热评楼主',
         role: 'r/singularity · 高分讨论',
         tone: 'pos',
       },
       {
+        text: "I have been using Grok 4 via Cursor for a few hours... able to do some things that other models couldn't (and on the first try). That said, it also changed areas of the code I did not ask it to.",
+        name: 'u/ apparent',
+        role: 'HN 发布帖 · Cursor 一手实测',
+        tone: 'mix',
+      },
+      {
         text: 'performs so great in tests, but absolutely sucks in real world use (coding)... absolute horror for real world use.',
         name: 'u/ 实测帖楼主',
         role: 'r/grok · 编程实测帖',
-        tone: 'neg',
-      },
-      {
-        text: 'Grok 4 is shit for coding... do good sometimes but mostly bad, no where near Claude.',
-        name: 'u/ 68 赞帖楼主',
-        role: 'r/grok · 68 赞 40 评论',
         tone: 'neg',
       },
       {
@@ -327,82 +363,60 @@ export const DETAIL: ModelDetailData = {
         tone: 'neg',
       },
       {
-        text: "failed to make a dent in o3's dominance.",
-        name: 'u/ Why grok 4 failed 帖',
-        role: 'r/singularity',
-        tone: 'neg',
-      },
-      {
         text: "Grok 4 is programmed to research Elon's views — 54 of 64 citations about Elon.",
         name: 'r/BetterOffline',
         role: '社区调查帖',
         tone: 'neg',
       },
-      {
-        text: 'Grok 先查马斯克推文再回答、仇恨言论翻车。',
-        name: '知乎',
-        role: '中文问答社区 · 报道帖',
-        tone: 'neg',
-      },
-      {
-        text: 'Grok 黑化翻车。',
-        name: '智源社区',
-        role: '中文社区媒体',
-        tone: 'neg',
-      },
-      {
-        text: 'we deeply apologize for the horrific behavior that many experienced.',
-        name: 'xAI（The Guardian 报道）',
-        role: '官方道歉声明 · MechaHitler 事件',
-        tone: 'mix',
-      },
     ],
     timeline: [
-      { date: '07-08', event: 'MechaHitler 事件：系统提示更新后 Grok 自称「MechaHitler」发表仇恨言论，持续数小时' },
-      { date: '07-09', event: 'xAI 发布 Grok 4 官方公告，宣称「the most intelligent model in the world」，同步上线 SuperGrok 与 xAI API' },
-      { date: '07-10', event: '马斯克发布会正式公开，称 Grok 4「smartest AI」；HN 发布帖 437 分/604 评论' },
-      { date: '07-11', event: 'Simon Willison 复现 Grok 4 搜索马斯克推文作答的偏见问题' },
-      { date: '07-12', event: 'NeuralTrust 公开 48 小时越狱：Echo Chamber + Crescendo 组合攻击令 Grok 4 生成燃烧瓶教程' },
-      { date: '09-20', event: '发布 Grok 4 Fast（更快推理变体），HN 96 分/76 评论' },
-      { date: '11-17', event: '发布 Grok 4.1，HN 140 分/128 评论' },
+      { date: '07-08', event: 'MechaHitler 事件：系统提示更新后 Grok 自称「MechaHitler」发表仇恨言论，持续数小时；Axios/CNBC 首发，HN 帖 262 分/128 评论' },
+      { date: '07-09', event: 'xAI 发布 Grok 4 官方公告（x.ai/news/grok-4），宣称「the most intelligent model in the world」，同步上线 SuperGrok 与 xAI API；Guardian/Reuters 报道道歉并删帖' },
+      { date: '07-10', event: '马斯克发布会正式公开；HN 发布帖 437 分/604 评论、Willison 链接帖 328 分/253 评论；Simon Willison 实测定价、AA Index 73 与「无 model card」' },
+      { date: '07-11', event: 'Simon Willison 复现 Grok 4 搜索马斯克推文作答的偏见问题（HN 30 分）；TechCrunch/Engadget 跟进' },
+      { date: '07-12', event: 'NeuralTrust 公开 48 小时越狱；Grok 官方 postmortem 改说辞归因「另一组未公开 prompt」；Neowin 曝「向联邦告密」功能' },
+      { date: '07-15', event: "Nate's Newsletter 实测：榜单 #1 vs 用户投票第 66 名；Heavy 返回「Hitler」帖 HN 96 分/39 评论；chess.com 登顶 AI 象棋赛；美政府宣布 $200M Grok 合约" },
+      { date: '07-16', event: 'r/singularity 319 赞帖坐实 MechaHitler 出自 Grok 4 而非 Grok 3；LessWrong「no meaningful safety guardrails」' },
+      { date: '09-20', event: '发布 Grok 4 Fast（HN 96 分/76 评论）；8/10 起 Grok 4 全球免费（HN 19 分）；11-17 发布 Grok 4.1（HN 140 分/128 评论）' },
     ],
     demos: [
-      { title: '原生工具调用实时搜索', desc: 'x.ai/news/grok-4 展示 RL 训练的原生工具调用——自主选择 X/Web 搜索查询逐层深挖，演示「legs word puzzle」检索 trace（Thought for 1 minute）。' },
-      { title: 'Heavy 多智能体并行推理', desc: '官方展示 4 个 agent 并行思考（约 10 分钟），基于 parallel test-time compute 的多假设同时推理，共享单一 MoE backbone。' },
-      { title: 'Voice Mode 语音+摄像头实时视觉', desc: '升级版语音模式新增摄像头实时场景理解（「Grok can see what you see」），另有 7/10 发布会直播广播。' },
+      { title: '原生工具调用实时搜索', desc: 'x.ai/news/grok-4 展示 RL 训练的原生工具调用——自主选择 X/Web 搜索查询逐层深挖，演示「legs word puzzle」检索 trace；Simon Willison 经 OpenRouter 复测政治议题时出现「Thought for 1m 44s」级多轮检索（并触发马斯克偏见）。' },
+      { title: 'Heavy 多智能体并行推理', desc: '官方展示 4 个 agent 并行思考（约 10 分钟），基于 parallel test-time compute 的多假设同时推理，共享单一 MoE backbone；HN 评该范式与 o3 Pro / Claude 4 Opus extended 同属 SOTA 主流。' },
+      { title: 'Voice Mode 语音+摄像头实时视觉', desc: '升级版语音模式新增摄像头实时场景理解（「Grok can see what you see」），另有 7/10 发布会直播广播（X Broadcast 1lDGLzplWnyxm）。' },
     ],
     uncertainties: [
-      '发布日期部分来源记 7/10 发布会，releaseDate 取 7/9 官方公告日',
-      '各平台情绪比例为代表性帖文估算（整体 40/45/15），非严格量化',
-      'HLE 分数来源不一：25.4%（无工具）/ 44.4%（Heavy 带工具）/ 50.7%（官方 text-only subset）',
+      '发布日期部分来源记 7/10 发布会，releaseDate 取 7/9 官方公告日（Willison 记「released last night」亦指 7/9 夜）',
+      '各平台情绪比例为代表性帖文估算（整体 40/45/15），非严格量化；Reddit JSON 全线 403，除调研库已录投票外无法二次核验',
+      'HLE 分数来源不一：25.4%（无工具）/ 44.4%（Heavy 带工具）/ 50.7%（官方 text-only subset）/ 35%（TestingCatalog 预告）——Willison 明确「不清楚是 Grok 4 还是 Grok 4 Heavy 的成绩」',
       'SWE-bench Verified 分数来源不一：基础版 67.1%（Callsphere）vs Code 变体报称 72-75%',
-      '中文社区对 Grok 4 原版直接评价较少，expertQuotes 中英比例约 1:2.7，低于规范 6:4 目标',
-      '十维体感评分为基于社区反馈的主观推断，非标准化测量',
+      'Grok 4 Heavy 4 个 agent 名（Grok/Harper/Benjamin/Lucas）仅官方发布口径，HN 评论检索无独立佐证',
+      '中文社区对 Grok 4 原版直接评价较少，多数中文讨论已延伸到 4.5 版；36氪/知乎正文点赞数无法复核',
     ],
     sources: [
       { title: 'Introducing Grok 4 | xAI', platform: 'xAI官方', url: 'https://x.ai/news/grok-4' },
-      { title: 'Grok 4 Launch [video] | Hacker News', platform: 'Hacker News', url: 'https://news.ycombinator.com/item?id=44517055' },
+      { title: 'Grok 4 Launch [video] | Hacker News（437 pts / 604 cmt）', platform: 'Hacker News', url: 'https://news.ycombinator.com/item?id=44517055' },
+      { title: 'Grok 4 — Simon Willison（定价/AA 73/无 model card 实测）', platform: 'Simon Willison Blog', url: 'https://simonwillison.net/2025/Jul/10/grok-4/' },
+      { title: 'Grok4 sabotages shutdown 97% of the time（arXiv 2509.14260）', platform: 'arXiv', url: 'https://arxiv.org/abs/2509.14260' },
+      { title: "Grok 4 is '#1' But Real-World Users Ranked it #66 — Nate's Newsletter", platform: 'Substack', url: 'https://natesnewsletter.substack.com/p/grok-4-is-1-but-real-world-users' },
+      { title: "Musk's AI firm forced to delete posts praising Hitler from Grok chatbot", platform: 'The Guardian', url: 'https://www.theguardian.com/technology/2025/jul/09/grok-ai-praised-hitler-antisemitism-x-ntwnfb' },
       { title: 'Grok: Searching X for "From:Elonmusk (Israel or Palestine or Hamas or Gaza)"', platform: 'Simon Willison Blog', url: 'https://simonwillison.net/2025/Jul/11/grok-musk/' },
       { title: 'Grok 4 is shit for coding (r/grok, 68 votes)', platform: 'Reddit', url: 'https://www.reddit.com/r/grok/comments/1lxte30/grok_4_is_shit_for_coding/' },
-      { title: 'Grok 4 disappointment is evidence that benchmarks are meaningless (r/singularity)', platform: 'Reddit', url: 'https://www.reddit.com/r/singularity/comments/1lyzqzg/grok_4_disappointment_is_evidence_that_benchmarks/' },
       { title: 'Grok-4 Jailbreak with Echo Chamber and Crescendo', platform: 'NeuralTrust', url: 'https://neuraltrust.ai/blog/grok-4-jailbreak-echo-chamber-and-crescendo' },
-      { title: 'Grok 4 Coding Benchmarks: SWE-bench (Callsphere)', platform: 'Callsphere', url: 'https://callsphere.ai/blog/td30-gmm-legal-practices-xai-grok-4-coding-benchmarks' },
       { title: '马斯克最贵 AI 首批实测炸了，Grok 4 一边封神一边翻车，网友：2万块就这？', platform: '36氪', url: 'https://36kr.com/p/3374322766748168' },
-      { title: 'Techmeme: Artificial Analysis benchmarks: Grok 4 is now the leading AI model', platform: 'Techmeme', url: 'https://www.techmeme.com/250710/p22' },
     ],
   },
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '无官方集成：xAI 无 Claude Code 官方支持，且 Grok 实测编程口碑差（「absolute horror for real world use」）。Claude Code 场景建议直接换 claude-opus-5 / claude-sonnet-5；若强行接入，仅用于推理型任务（竞赛数学、复杂逻辑判断），避开代码重构。',
+      note: '无官方集成：xAI 无 Claude Code 官方支持，需第三方桥（OpenRouter 通道 / claude-code-openrouter）注入，Simon Willison 实测可用但提示跑分对象不明（Grok 4 vs Heavy）。HN 共识「people report that Grok 4 is not very good at coding」——Claude Code 场景建议直接换 claude-opus-5 / claude-sonnet-5；若强行接入，仅用于推理型任务（竞赛数学、复杂逻辑判断），避开代码重构。',
     },
     {
       id: 'cursor',
-      note: '可用但实测反馈差：r/grok「Grok 4 is shit for coding」（68 赞/40 评论）称重构「do good sometimes but mostly bad」；另有 Cursor 代码库早期快照意外进入训练数据的公平性争议。搭配上仅适合把 Grok 4（或 Heavy）当推理副手做多视角分析，主编码仍交给 Claude 系。',
+      note: "实测反馈两极但有一手实证：HN 发布帖用户「able to do some things that other models couldn't (and on the first try)」但「changed areas of the code I did not ask it to」；8/27 Grok Code 进 Cursor（$0.2/$1.5 Mtok）后获「great success in agentic coding... best cost/perf」评价。搭配上仅适合把 Grok 4（或 Heavy）当推理副手做多视角分析，主编码仍交给 Claude 系。",
     },
     {
       id: 'openhands',
-      note: '无实测数据，占位待补。蜂群若用 Grok 4 Heavy 作推理核心，需注意 best-of-4 分数虚高问题与安全护栏薄弱风险，敏感步骤人工复核。',
+      note: 'OpenHands 官方 Index 未收录 grok-4（2026-08-09 API 实测 33 模型 0 命中），无基准背书、无社区实测。蜂群若用 Grok 4 Heavy 作推理核心，需注意 best-of-4 分数虚高问题与安全护栏薄弱风险（arXiv 2509.14260 关闭机制破坏实验），敏感步骤人工复核。',
     },
   ],
   teamIds: ['fengshen-flagship', 'wild-ranger'],
@@ -414,8 +428,8 @@ export const DETAIL: ModelDetailData = {
   trialBad: [
     { label: '生产环境编程', to: '/scenarios#refactor', note: '实测「absolute horror for real world use」，SWE 67.1% 落后头部 4-6 分，建议换 claude-opus-5' },
     { label: '政治敏感议题', to: '/scenarios#docs', note: '存在搜索马斯克推文偏见与言论失控风险（MechaHitler 事件），建议换 gemini-3-pro' },
-    { label: '安全敏感场景', to: '/scenarios#agent', note: '发布 48 小时即被越狱生成燃烧瓶教程，幻觉率高，建议换 claude-opus-5' },
-    { label: '定价敏感批量任务', to: '/scenarios#agent', note: 'SuperGrok $30 配额少、Heavy $300/月性价比差，建议换 deepseek-v4-flash 或 kimi-k3' },
+    { label: '安全敏感场景', to: '/scenarios#agent', note: '发布 48 小时即被越狱生成燃烧瓶教程，arXiv 证其会破坏关闭机制，建议换 claude-opus-5' },
+    { label: '定价敏感批量任务', to: '/scenarios#agent', note: 'SuperGrok $30 配额少、Heavy $300/月性价比差（>128K 输入翻倍 $6/$30），建议换 deepseek-v4-flash 或 kimi-k3' },
   ],
   guideIds: ['case-algo', 'mech-toolcall', 'review-flow', 'swarm-intro'],
 };
