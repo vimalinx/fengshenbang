@@ -4,6 +4,40 @@
  * 基础档案、天赋、命座（版本迭代）、社区反馈（来自社区调研数据提炼）。
  */
 
+import { DETAIL as D_CLAUDE_FABLE_5 } from './details/claude-fable-5';
+import { DETAIL as D_CLAUDE_MYTHOS_5 } from './details/claude-mythos-5';
+import { DETAIL as D_CLAUDE_OPUS_4_8 } from './details/claude-opus-4-8';
+import { DETAIL as D_CLAUDE_SONNET_5 } from './details/claude-sonnet-5';
+import { DETAIL as D_DEEPSEEK_R1 } from './details/deepseek-r1';
+import { DETAIL as D_DEEPSEEK_V3_2 } from './details/deepseek-v3-2';
+import { DETAIL as D_DEEPSEEK_V4_FLASH } from './details/deepseek-v4-flash';
+import { DETAIL as D_DEEPSEEK_V4 } from './details/deepseek-v4';
+import { DETAIL as D_DOUBAO_2_0_LITE } from './details/doubao-2-0-lite';
+import { DETAIL as D_DOUBAO_2_0 } from './details/doubao-2-0';
+import { DETAIL as D_GEMINI_3_1_PRO } from './details/gemini-3-1-pro';
+import { DETAIL as D_GEMINI_3_5_PRO } from './details/gemini-3-5-pro';
+import { DETAIL as D_GEMINI_3_6_FLASH } from './details/gemini-3-6-flash';
+import { DETAIL as D_GEMINI_3_PRO } from './details/gemini-3-pro';
+import { DETAIL as D_GLM_4_6 } from './details/glm-4-6';
+import { DETAIL as D_GLM_5_2 } from './details/glm-5-2';
+import { DETAIL as D_GLM_5 } from './details/glm-5';
+import { DETAIL as D_GPT_5_2 } from './details/gpt-5-2';
+import { DETAIL as D_GPT_5_5 } from './details/gpt-5-5';
+import { DETAIL as D_GPT_5_6_SOL } from './details/gpt-5-6-sol';
+import { DETAIL as D_GPT_5_MINI_NANO } from './details/gpt-5-mini-nano';
+import { DETAIL as D_GPT_5 } from './details/gpt-5';
+import { DETAIL as D_GROK_4_5 } from './details/grok-4-5';
+import { DETAIL as D_GROK_4 } from './details/grok-4';
+import { DETAIL as D_KIMI_K2_6 } from './details/kimi-k2-6';
+import { DETAIL as D_KIMI_K2 } from './details/kimi-k2';
+import { DETAIL as D_KIMI_K3 } from './details/kimi-k3';
+import { DETAIL as D_LLAMA_4 } from './details/llama-4';
+import { DETAIL as D_MINIMAX_M3 } from './details/minimax-m3';
+import { DETAIL as D_MISTRAL_LARGE_3 } from './details/mistral-large-3';
+import { DETAIL as D_QWEN3_7_MAX } from './details/qwen3-7-max';
+import { DETAIL as D_QWEN3_MAX } from './details/qwen3-max';
+import { DETAIL as D_QWEN3 } from './details/qwen3';
+
 export interface ModelProfile {
   apiId: string; // API 模型标识
   vendor: string; // 发布方
@@ -577,4 +611,37 @@ const OPUS_5: ModelDetailData = {
 export const modelDetails: Record<string, ModelDetailData> = {
   'claude-opus-4-7': OPUS_4_7,
   'claude-opus-5': OPUS_5,
+  'claude-fable-5': D_CLAUDE_FABLE_5,
+  'claude-mythos-5': D_CLAUDE_MYTHOS_5,
+  'claude-opus-4-8': D_CLAUDE_OPUS_4_8,
+  'claude-sonnet-5': D_CLAUDE_SONNET_5,
+  'deepseek-r1': D_DEEPSEEK_R1,
+  'deepseek-v3-2': D_DEEPSEEK_V3_2,
+  'deepseek-v4-flash': D_DEEPSEEK_V4_FLASH,
+  'deepseek-v4': D_DEEPSEEK_V4,
+  'doubao-2-0-lite': D_DOUBAO_2_0_LITE,
+  'doubao-2-0': D_DOUBAO_2_0,
+  'gemini-3-1-pro': D_GEMINI_3_1_PRO,
+  'gemini-3-5-pro': D_GEMINI_3_5_PRO,
+  'gemini-3-6-flash': D_GEMINI_3_6_FLASH,
+  'gemini-3-pro': D_GEMINI_3_PRO,
+  'glm-4-6': D_GLM_4_6,
+  'glm-5-2': D_GLM_5_2,
+  'glm-5': D_GLM_5,
+  'gpt-5-2': D_GPT_5_2,
+  'gpt-5-5': D_GPT_5_5,
+  'gpt-5-6-sol': D_GPT_5_6_SOL,
+  'gpt-5-mini-nano': D_GPT_5_MINI_NANO,
+  'gpt-5': D_GPT_5,
+  'grok-4-5': D_GROK_4_5,
+  'grok-4': D_GROK_4,
+  'kimi-k2-6': D_KIMI_K2_6,
+  'kimi-k2': D_KIMI_K2,
+  'kimi-k3': D_KIMI_K3,
+  'llama-4': D_LLAMA_4,
+  'minimax-m3': D_MINIMAX_M3,
+  'mistral-large-3': D_MISTRAL_LARGE_3,
+  'qwen3-7-max': D_QWEN3_7_MAX,
+  'qwen3-max': D_QWEN3_MAX,
+  'qwen3': D_QWEN3,
 };
