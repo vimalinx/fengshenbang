@@ -5,7 +5,6 @@ import { LayoutGrid, List, SlidersHorizontal, ChevronDown } from 'lucide-react';
 import { toast, Toaster } from 'sonner';
 import PageHero from '@/components/PageHero';
 import ModelCard from '@/components/ModelCard';
-import TierSeal from '@/components/TierSeal';
 import StarRating from '@/components/StarRating';
 import { Reveal } from '@/components/Reveal';
 import type { Model, SystemId, Tier } from '@/data/models';
@@ -44,75 +43,6 @@ function sortModels(list: Model[], key: SortKey): Model[] {
     case 'speed':
       return arr.sort((a, b) => b.stats.speed - a.stats.speed);
   }
-}
-
-/* ---------- 封神殿 T0 大角色卡 ---------- */
-function T0Card({ model, index }: { model: Model; index: number }) {
-  const navigate = useNavigate();
-  const sys = systemMap[model.system];
-  const price = model.priceIn == null ? model.priceLabel : `$${model.priceIn}·${model.priceOut}`;
-  const stats: { label: string; value: string }[] = [
-    { label: '综合分', value: model.composite.toFixed(1) },
-    { label: 'SWE', value: `${model.swe.toFixed(1)}%` },
-    { label: '上下文', value: model.contextLabel },
-    { label: '价格', value: price },
-  ];
-  const goDetail = () => {
-    if (model.hasDetail) navigate(`/models/${model.id}`);
-    else toast('该角色传记编撰中', { description: `${model.name} · ${model.title}` });
-  };
-  return (
-    <Reveal delay={0.1 + index * 0.12} className="h-full">
-      <button
-        onClick={goDetail}
-        className="group flex h-full min-h-[220px] w-full flex-col rounded-xl border border-line bg-white p-4 text-left shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold hover:shadow-card-hover"
-      >
-        <div className="flex items-start gap-3.5">
-          {/* 金环流光头像 */}
-          <div className="gold-sheen animate-gold-shine shrink-0 rounded-full p-[2px]">
-            <div className="avatar-sheen h-24 w-24 overflow-hidden rounded-full border border-line bg-paper-alt">
-              <img
-                src={modelAvatar(model)}
-                alt={model.name}
-                className={cn('h-full w-full object-cover', !model.avatar && 'object-contain p-5')}
-              />
-            </div>
-          </div>
-          <div className="min-w-0 flex-1 pt-1">
-            <div className="flex items-center gap-2">
-              <h3 className="truncate font-serif text-xl font-bold leading-tight text-ink">
-                {model.name}
-              </h3>
-              <TierSeal tier={model.tier} size={24} animate={false} />
-            </div>
-            <div className="mt-1 flex flex-wrap items-center gap-2">
-              <StarRating stars={model.stars} size={11} />
-              <span
-                className="rounded-full px-2 py-0.5 text-[11px] font-medium tracking-[0.04em] text-white"
-                style={{ backgroundColor: sys.color }}
-              >
-                {sys.name}
-              </span>
-            </div>
-            <p className="mt-2 truncate font-serif text-[13px] italic text-ink-2">
-              「{model.title}」 {model.verdict}
-            </p>
-          </div>
-        </div>
-        <div className="mt-3 grid flex-1 grid-cols-2 gap-x-4 gap-y-1.5 font-mono text-xs">
-          {stats.map((s) => (
-            <div key={s.label} className="flex items-center justify-between border-b border-line/70 pb-1">
-              <span className="text-ink-3">{s.label}</span>
-              <span className="font-bold text-gold">{s.value}</span>
-            </div>
-          ))}
-        </div>
-        <div className="mt-3 text-right text-[13px] font-medium text-daiqing transition-colors group-hover:text-cinnabar">
-          查看详情 →
-        </div>
-      </button>
-    </Reveal>
-  );
 }
 
 /* ---------- 筛选 chip ---------- */
@@ -202,8 +132,6 @@ export default function Models() {
   const [sort, setSort] = useState<SortKey>('composite');
   const [view, setView] = useState<'card' | 'list'>('card');
   const [filterOpen, setFilterOpen] = useState(false);
-
-  const t0Models = useMemo(() => models.filter((m) => m.tier === 'T0'), []);
 
   const filtered = useMemo(() => {
     const list = models.filter(
@@ -310,39 +238,10 @@ export default function Models() {
         title="角色图鉴"
         en="// CODEX OF MODELS"
         verdict="凡入榜者，皆经试炼淬炼。位阶随时令流转，强者为尊。"
-        badges={['收录 14 位', '体系 10 支', '本季新晋 5 位']}
+        badges={['收录 42 位', '体系 12 支', '未发布 2 位']}
       />
 
-      {/* S2 封神殿 · T0 展示带 */}
-      <section className="relative bg-gold-soft">
-        <div
-          className="h-px w-full"
-          style={{ background: 'linear-gradient(90deg, transparent, #B8860B 30%, #B8860B 70%, transparent)' }}
-          aria-hidden
-        />
-        <div className="mx-auto flex max-w-[1280px] gap-5 px-4 py-8 md:px-6">
-          <div className="hidden shrink-0 items-start justify-center md:flex">
-            <span
-              className="font-brand text-lg leading-none tracking-[0.3em] text-cinnabar"
-              style={{ writingMode: 'vertical-rl' }}
-            >
-              封神殿
-            </span>
-          </div>
-          <div className="grid min-w-0 flex-1 gap-4 md:grid-cols-3">
-            {t0Models.map((m, i) => (
-              <T0Card key={m.id} model={m} index={i} />
-            ))}
-          </div>
-        </div>
-        <div
-          className="h-px w-full"
-          style={{ background: 'linear-gradient(90deg, transparent, #B8860B 30%, #B8860B 70%, transparent)' }}
-          aria-hidden
-        />
-      </section>
-
-      {/* S3 筛选器栏（sticky） */}
+      {/* S2 筛选器栏（sticky，置于页首） */}
       <div className="sticky top-[60px] z-20 border-b border-line bg-paper-alt/90 backdrop-blur-md">
         <div className="mx-auto max-w-[1280px] px-4 py-3 md:px-6">
           {/* 移动端折叠按钮 */}
@@ -363,7 +262,7 @@ export default function Models() {
         </div>
       </div>
 
-      {/* S4 角色卡片矩阵 */}
+      {/* S3 角色卡片矩阵 */}
       <section className="mx-auto max-w-[1280px] px-4 py-8 md:px-6">
         {filtered.length === 0 ? (
           <Reveal className="flex flex-col items-center py-20 text-center">
@@ -421,7 +320,7 @@ export default function Models() {
         )}
       </section>
 
-      {/* S5 底部说明带 */}
+      {/* S4 底部说明带 */}
       <Reveal>
         <section className="border-t border-line bg-paper-alt">
           <div className="mx-auto max-w-[1280px] space-y-1.5 px-4 py-6 text-xs leading-relaxed text-ink-2 md:px-6">
