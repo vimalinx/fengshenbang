@@ -401,7 +401,7 @@ export const DETAIL: ModelDetailData = {
       '代号混乱：Avocado 早期被当作 Llama 5（next.io/Geeky Gadgets），2026-07 BI/AI Weekly 澄清为 Muse Spark 内部代号；Watermelon 为在训模型（社区通称 Llama 5，官方未确认最终命名，也无「Maverick 变体」信息）',
       '「匹配 GPT-5.5」为 Wang 内部自证：未点名 benchmark、未独立复现、Meta 拒评；Llama 4 刷榜前科加重疑虑',
       '雷达与情绪比例为泄漏/社区预期外推的估算（非严格量化，同 OPUS_5 惯例）',
-      '站内 models.ts 基线（2026-03-08 / swe 60.3 / ELO 1262 / 512K / 32K）无外部信源，与调研结果冲突',
+      '站内 models.ts 基线（2026-03-08 / swe 60.3 / ELO 1262 / 512K / 32K）无外部信源，与调研结果冲突；2026-08-09 已按本调研改为「未发布」口径（数值清零、仅保留泄漏标注）',
       'Reddit 精确赞数、X 转推数、知乎浏览量因反爬未能取得精确快照（热度数字以 HN Algolia/预测市场/抓取可得值为准）',
     ],
     sources: [

@@ -496,7 +496,7 @@ export default function ModelDetail() {
             transition={{ duration: 0.4, delay: 0.15 }}
             className="font-mono text-xs text-ink-3"
           >
-            发布 {model.releaseDate} · 收录 {model.collectedDate} · 本词条持续更新
+            {model.unreleased ? '状态 未发布' : `发布 ${model.releaseDate}`} · 收录 {model.collectedDate} · 本词条持续更新
           </motion.span>
         </div>
       </section>
@@ -594,7 +594,9 @@ export default function ModelDetail() {
                   className="bg-gold-soft/60 px-3 py-2.5"
                 >
                   <div className="text-xs text-ink-3">综合战力</div>
-                  <div className="mt-0.5 font-mono text-sm font-bold leading-snug text-cinnabar">{model.composite}</div>
+                  <div className="mt-0.5 font-mono text-sm font-bold leading-snug text-cinnabar">
+                    {model.unreleased ? '未发布' : model.composite}
+                  </div>
                 </motion.div>
               </div>
               <motion.p

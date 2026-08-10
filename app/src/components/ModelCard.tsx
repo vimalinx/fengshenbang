@@ -70,6 +70,11 @@ export default function ModelCard({
           {cornerBadge}
         </span>
       )}
+      {model.unreleased && (
+        <span className="absolute right-3 top-3 rounded-[4px] bg-cinnabar px-1.5 py-0.5 font-mono text-[10px] font-bold tracking-wider text-white">
+          未发布
+        </span>
+      )}
       <div className="flex items-start gap-3">
         <ModelMonogram name={model.name} color={sys.color} icon={sys.sigil} size={56} />
         <div className="min-w-0 pt-0.5">
@@ -93,7 +98,7 @@ export default function ModelCard({
       <div className="mt-3 space-y-1 font-mono text-xs text-ink-2">
         <div className="flex justify-between">
           <span className="text-ink-3">上下文</span>
-          <span>{model.contextLabel} tok</span>
+          <span>{model.unreleased ? '未公布' : `${model.contextLabel} tok`}</span>
         </div>
         <div className="flex justify-between">
           <span className="text-ink-3">价格</span>
@@ -101,7 +106,9 @@ export default function ModelCard({
         </div>
         <div className="flex justify-between">
           <span className="text-ink-3">SWE</span>
-          <span className="font-bold text-accent">{model.swe.toFixed(1)}%</span>
+          <span className="font-bold text-accent">
+            {model.unreleased ? '未发布' : `${model.swe.toFixed(1)}%`}
+          </span>
         </div>
       </div>
       <div className="mt-3 flex flex-wrap gap-1.5">

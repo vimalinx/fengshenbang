@@ -375,7 +375,7 @@ export const DETAIL: ModelDetailData = {
     ],
     uncertainties: [
       'Grok 5 尚未发布：全部规格为传闻（6T MoE / 1.5M 上下文 / 16+ agents），官方仅确认「在 Colossus 2 上训练中」；发布日期最新口径为 2026 年底，仍非承诺',
-      'models.ts 中 grok-5 条目的 releaseDate 2026-07-10、SWE 73.0、ELO 1349、$6/$24 定价与调研结果矛盾，无任何信源支撑，本详情页未采用',
+      'models.ts 图鉴条目原为无信源占位数据（releaseDate 2026-07-10、SWE 73.0、ELO 1349、$6/$24 定价），与调研结果矛盾；2026-08-09 已按本调研改为「未发布」口径（数值清零、仅保留传闻标注）',
       '情绪比例与雷达为「预期战」估算（基于未发布模型的期待与质疑），非发布后实测；Grok 5 发布后 2-4 周必须整体重采',
       'Reddit Grok 5 相关帖精确赞数未取得（JustOneAPI 返回 null、TikHub 搜索限流）；HN 无 Grok 5 帖（Algolia 核验 0 条）；知乎浏览量精确值亦未取得（未登录态不暴露），量子位剧透文 23 赞同为可见值',
       'Linux.do / V2EX / 掘金 无 Grok 5 专项讨论（0 命中），平台情绪以「无数据 + 上代基线」如实呈现',

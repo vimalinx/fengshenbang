@@ -31,7 +31,12 @@ function sortModels(list: Model[], key: SortKey): Model[] {
     case 'composite':
       return arr.sort((a, b) => b.composite - a.composite);
     case 'release':
-      return arr.sort((a, b) => b.releaseDate.localeCompare(a.releaseDate));
+      // 未发布模型排在已发布之后，避免占位日期扰乱时间序
+      return arr.sort(
+        (a, b) =>
+          Number(a.unreleased ?? false) - Number(b.unreleased ?? false) ||
+          b.releaseDate.localeCompare(a.releaseDate),
+      );
     case 'price':
       return arr.sort((a, b) => (a.priceIn ?? Infinity) - (b.priceIn ?? Infinity));
     case 'context':
@@ -179,8 +184,12 @@ function ListRow({ model }: { model: Model }) {
       <span className="font-mono text-xs text-ink-2">
         {model.priceIn == null ? model.priceLabel : `${model.priceLabel}`}
       </span>
-      <span className="font-mono text-xs font-bold text-gold">{model.swe.toFixed(1)}%</span>
-      <span className="font-mono text-xs font-bold text-ink">{model.composite.toFixed(1)}</span>
+      <span className="font-mono text-xs font-bold text-gold">
+        {model.unreleased ? '未发布' : `${model.swe.toFixed(1)}%`}
+      </span>
+      <span className="font-mono text-xs font-bold text-ink">
+        {model.unreleased ? '—' : model.composite.toFixed(1)}
+      </span>
     </button>
   );
 }

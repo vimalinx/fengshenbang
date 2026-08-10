@@ -13,7 +13,11 @@ function refInfo(ref: { refId: string; type: 'model' | 'harness' }) {
     const m = modelMap[ref.refId];
     return {
       name: m?.name ?? ref.refId,
-      meta: m ? `${m.contextLabel} 上下文 · $${m.priceIn}/${m.priceOut} · SWE ${m.swe}%` : '',
+      meta: m
+        ? m.unreleased
+          ? '未发布 · 暂无公开数据'
+          : `${m.contextLabel} 上下文 · $${m.priceIn}/${m.priceOut} · SWE ${m.swe}%`
+        : '',
       to: `/models/${ref.refId}`,
       badge: '模型',
       avatar: modelAvatar(m),
