@@ -217,7 +217,7 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '无实测（未发布）。上代 Grok 4.5 经 Anthropic 兼容 API 接入 Claude Code 的「便宜日常主力」玩法已验证（Linux.do 真实 go 项目 <¥50 完成 1/3 重构），Grok 5 发布后可复用同一路径评估。',
+        text: '无实测（未发布）。上代 Grok 4.5 经兼容 API 接入 Claude Code 的「便宜日常主力」玩法已验证（Linux.do 真实 go 项目 <¥50 完成 1/3 重构），Grok 5 发布后可复用同一路径评估。',
         placeholder: true,
       },
       {
@@ -397,15 +397,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '无实测（未发布）。上代路径已验证：Grok 4.5 经 Anthropic 兼容 API 接入 Claude Code 作「便宜日常主力」，Linux.do 真实 go 项目 <¥50 完成 1/3 重构——Grok 5 若维持性价比定位，此为发布后首选接入方式。',
+      note: '未发布。上代 Grok 4.5 接入 Claude Code 已验证：<¥50 完成 1/3 重构，发布后首选接入。',
     },
     {
       id: 'cursor',
-      note: '无实测（未发布）。官方联动最可能路径：Grok 4.5 与 Cursor 联合训练、同日上线、进 first-party model pool（首周双倍用量），Cursorbench 是发布后第一顺位看板；预期 Grok 5 复制此模式。',
+      note: '未发布。上代 Grok 4.5 进 Cursor first-party pool，预期 Grok 5 复制此模式。',
     },
     {
       id: 'openhands',
-      note: '无实测（未发布）。Grok 4.5 时代 OpenHands 驱动即无社区数据（三轮检索 0 命中），Grok 5 发布后待补，当前为占位推荐。',
+      note: '未发布。Grok 4.5 时代 OpenHands 即无社区数据（三轮检索 0 命中），发布后待补，占位推荐。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

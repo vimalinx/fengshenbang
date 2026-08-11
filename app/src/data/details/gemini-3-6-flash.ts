@@ -227,15 +227,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '网关直连可行但有坑：workweave PR #811 实测多轮对话 400 INVALID_ARGUMENT（thought_signature base64 bug，07-21 当日修复）；社区通行「Claude 规划 + 3.6 Flash 执行」流（HN ernestrc「Fable/Sol for planning, 3.6 Flash for executing」、Óscar Gallego 单功能 6.5h→45min）；LiteLLM/Bifrost/Requesty 均可经 ANTHROPIC_BASE_URL 接入，官方主力路径仍是自家 Antigravity CLI。',
+        text: '社区实测单功能耗时 6.5h→45min；多轮 400 报错已修复；LiteLLM/Bifrost/Requesty 经 ANTHROPIC_BASE_URL 接入。按「规划/执行」分工，官方主力路径仍是 Antigravity CLI。',
       },
       {
         id: 'cursor',
-        text: '官方 CursorBench 3.2：High 53.5% / Medium 51.2% / Low 47.4%（$1.56/任务，Fable 5 70.5% 最佳）；Learn Cursor 定位「3 Flash 与 3.1 Pro 之间的 speed-tier」，缓存读 $0.15/1M 让长会话成本降到 1/10；Pxpipe PR #134 视觉读数 token 比 Fable 5 省 26%——前端快打 + 旗舰优化的双模型流可行。',
+        text: '官方定位「speed-tier：多步推理比 3 Flash 强、价格比 Pro 低」，Medium 51.2% / Low 47.4%；视觉读数 token 比 Fable 5 省 26%。建议前端视觉任务给显式设计指引。',
       },
       {
         id: 'openhands',
-        text: 'OpenHands Agent Canvas/SDK 经 ACP 原生支持 Gemini CLI（订阅鉴权免 API 账单）；3.6 Flash 是 Google Managed Agents（antigravity-preview-05-2026）默认底座；OpenHands Index 家族数据：Gemini Flash SWE-bench 差距小但前端类别挣扎、整体不及 Anthropic/OpenAI——3.6 专属量化跑分暂无。',
+        text: 'OpenHands Index 显示 Gemini 家族 SWE-bench 差距小、前端类别挣扎，3.6 专属量化跑分暂无。建议用于低成本批量 issue 修复与信息收集。',
       },
     ],
     expertQuotes: [
@@ -424,15 +424,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '官方主力路径是自家 Antigravity CLI（Gemini CLI 停用迁移），3.6 Flash 是 Managed Agents 默认底座。把 3.6 Flash 挂进 Claude Code 走 ANTHROPIC_BASE_URL 网关（LiteLLM/Bifrost/Requesty），有已知坑：workweave PR #811 的 thought_signature 多轮 400 bug（需二次 base64 修复）。社区通行「Claude 规划 + 3.6 Flash 执行」双模型流（ernestrc / Óscar Gallego：单功能 6.5h→45min、90% 测试 AI 生成），前端快打与高频迭代可用，深度任务慎用。',
+      note: '非官方主流路径，需兼容网关接入；口碑「Claude 规划 + 3.6 Flash 执行」，前端快打可用，深度任务慎用。',
     },
     {
       id: 'cursor',
-      note: '官方 CursorBench 3.2：High 53.5%（$1.56/任务，Fable 5 70.5% 最佳）；官方定位「speed-tier：多步推理比 3 Flash 强、价格比 Pro 低」，缓存读 $0.15/1M 让长会话大仓库成本降到 1/10；Pxpipe PR #134 视觉读数 token 比 Fable 5 省 26%。「3.6 Flash 快速原型 + 旗舰优化加固」双模型流可行，注意 UI styling 评审偏好旧模型——前端视觉任务给显式设计指引。',
+      note: '官方 CursorBench 3.2 High 53.5%；「3.6 Flash 快速原型 + 旗舰优化加固」可行。',
     },
     {
       id: 'openhands',
-      note: 'OpenHands Agent Canvas/SDK 经 ACP 原生驱动 Gemini CLI（Gemini Advanced 订阅鉴权免 API 账单）；3.6 Flash 是 Google Managed Agents 默认底座。OpenHands Index 显示 Gemini 家族 SWE-bench 差距小、前端类别挣扎、整体不及 Anthropic/OpenAI——适合低成本批量 issue 修复与信息收集，3.6 专属量化条目暂无。',
+      note: 'Google Managed Agents 默认底座；不及 Anthropic/OpenAI，仅适合低成本批量任务。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

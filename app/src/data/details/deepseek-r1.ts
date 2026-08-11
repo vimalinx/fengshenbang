@@ -220,15 +220,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '官方不支持，走两条社区路线：①DeepClaude 组合流（ErlichLiu/DeepClaude 2937★）——R1 深度推理 + Claude Code agentic 循环执行，官方推荐「R1 + Claude Sonnet」编程组合，2025-03 起支持 max_tokens=5 压推理 token 成本；②claude-code-router（36.5K★）think 路由 → deepseek-reasoner、default 走便宜 V3，背景任务路由通常砍掉一半以上 token 账单。硬伤：deepseek-reasoner 不支持 tool_choice（issue #836），Claude Code WebSearch 必炸，需本地微代理剥字段。',
+        text: 'DeepClaude（2937★，R1 推理 + Claude 执行）、claude-code-router（36.5K★）砍一半 token 账单。建议按此接入；硬伤是不支持 tool_choice，WebSearch 需微代理剥字段。',
       },
       {
         id: 'cursor',
-        text: '官方 2025-01-30 接入（Fireworks 托管，Chat 免 Pro、Composer 需 Pro）。论坛实测：单文件 bug/算法一次过（「worked on the first try! I\'m completely floored」），长文件 Composer 因思考吃满上下文必炸（官方回应「正在提高超时阈值」）；Dre Dyson 6 个月实测月成本降 ~30%、「极少幻觉包」；Jim Clyde Monge 结论「单文件强、多文件弱、提示敏感需零样本」。Aider 官方验证「R1 作 Architect + Sonnet 作 editor 超越 o1」是双模型槽位最值得抄的作业。',
+        text: '官方 2025-01-30 接入（Fireworks 托管，Chat 免 Pro、Composer 需 Pro）；Aider 官方验证「R1 Architect + Sonnet editor 超越 o1」。建议双模型槽位抄这套组合。',
       },
       {
         id: 'openhands',
-        text: '官方实测 SWE-bench Verified 34%（issue #6466，2025-01-26）；REXBENCH 12 个科研扩展任务执行成功率 0%（R1 无原生 function calling，METR 也需 code-fenced 块绕行）；但 WebGen-Bench 显示框架适配关键——OpenHands+R1 仅 10.2%，换 Bolt.diy 后 R1 27.8% 反超全部闭源。定位：蜂群流里当「单轮高难推理单元」，别当多步代理主力。',
+        text: 'REXBENCH 12 个任务执行成功率 0%；WebGen-Bench 框架适配关键：OpenHands 下仅 10.2%，换 Bolt.diy 后 27.8% 反超全部闭源。建议优先试框架组合，框架适配比模型更决定成败。',
       },
     ],
     expertQuotes: [
@@ -404,15 +404,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '无官方支持（Anthropic 仅自家模型），但社区两条成熟路线：①DeepClaude 组合流（ErlichLiu/DeepClaude 2937★）——R1 负责深度推理、Claude Code 的 agentic 循环负责执行，官方推荐「R1 + Claude Sonnet」编程组合，2025-03 起支持 max_tokens=5 压推理 token 成本；②claude-code-router（36.5K★）把 think 路由指到 deepseek-reasoner、default 走便宜 V3，背景任务路由通常砍掉一半以上 token 账单。硬伤：deepseek-reasoner 不支持 tool_choice（issue #836），Claude Code WebSearch 会 400，需本地微代理剥字段。',
+      note: '无官方支持，但两条社区成熟路线口碑好、性价比高。',
     },
     {
       id: 'cursor',
-      note: '官方 2025-01-30 接入（Fireworks 托管，Chat 免 Pro、Composer 需 Pro）。实测画像：单文件 bug 修复/算法一次过（论坛「R1 model is amazing」帖），长文件 Composer 因思考吃满上下文必炸（官方回应「正在提高超时阈值」）；Dre Dyson 6 个月实测月成本降 ~30%、「极少幻觉包」；Jim Clyde Monge 结论「单文件强、多文件弱、提示敏感需零样本」。Aider 官方验证「R1 作 Architect + Sonnet 作 editor 超越 o1」——这是 Cursor 双模型槽最值得抄的作业。',
+      note: '实测口碑「单文件强、多文件弱」，月成本降 ~30%，性价比高。',
     },
     {
       id: 'openhands',
-      note: 'OpenHands 官方实测 SWE-bench Verified 34%（issue #6466，2025-01-26），R1 无原生 function calling 在 agent 链路吃亏（METR 需 code-fenced 块绕行）；REXBENCH 12 个任务执行成功率 0%（对比 Claude 4 Sonnet 68%）；但 WebGen-Bench 显示框架适配关键——换 Bolt.diy 后 R1 27.8% 反超全部闭源。定位：蜂群流里当「单轮高难推理单元」（数学/竞赛），别当多步代理主力；缓存命中价 $0.14 + 思考 23K 是成本账的核心变量。',
+      note: '官方实测 SWE-bench 仅 34%，定位是「单轮高难推理单元」而非多步代理主力。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

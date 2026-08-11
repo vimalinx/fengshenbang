@@ -221,15 +221,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '官方第一适配对象（发布页点名），实测充分：DeepClaude 项目（环境变量 ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic 一行接入）HN 678 分；企业评论「我们 CTO 拍板从 Claude Code 转向 DeepClaude，成本节省大到无法忽视」；用户实测 V4 Flash「每天用 3 小时，还没超过 $1」；中文开发者「又快又好，白菜价」。负面实测：V4 在 Claude Code 里会疯狂读文件/日志，需要调教上下文习惯。',
+        text: 'DeepClaude 一行环境变量即可接入，HN 678 分；企业「成本节省大到无法忽视」转向 DeepClaude；用户实测「每天用 3 小时，还没超过 $1」。负面：V4 在 Claude Code 里疯狂读文件/日志。',
       },
       {
         id: 'cursor',
-        text: '有用户实测无官方背书：HN 用户「DeepSeek v4 API 跑了我大部分 Cursor 任务——每美元 bang 更多，但每小时 bang 少一点」；价格对比评论「v4 pro 比 Claude Sonnet 4.6 便宜 2-5 倍」；V4-Flash 原生支持 Responses API 并专门适配 Codex，可经 OpenAI 兼容端点接入 Cursor。无 CursorBench 官方数字，建议先用 Flash 档验证工具调用与响应速度。',
+        text: 'HN 用户实测「每美元 bang 更多，但每小时 bang 少一点」；V4-Flash 可经 OpenAI 兼容端点接入 Cursor。无 CursorBench 官方数字，建议先用 Flash 档验证工具调用与响应速度。',
       },
       {
         id: 'openhands',
-        text: '（无数据，占位）本次调研 HN/Reddit 均未搜到 V4 × OpenHands 专门实测；开源 harness 侧最接近的实证是 OpenCode——HN 评论「OpenCode 原生支持 DSv4 且功能比 Claude Code 多」「我用 open code 跑了 V4」。权重开源可本地部署，正式版 Flash（DeepSWE 54.4 / Terminal Bench 82.7）值得在 OpenHands 里跑一轮，跑分待补。',
+        text: '（占位）HN/Reddit 未搜到 V4 × OpenHands 专门实测；最接近的实证是 OpenCode，HN 评论称其原生支持 DSv4。权重开源可本地部署，正式版 Flash 值得在 OpenHands 跑一轮，跑分待补。',
         placeholder: true,
       },
     ],
@@ -406,15 +406,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '本命装备，同宗同源。官方发布页明确无缝集成 Claude Code/OpenClaw/OpenCode，一行环境变量（ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic）即可接入；社区 DeepClaude 项目 HN 678 分走红，企业评论「CTO 拍板从 Claude Code 转向 DeepClaude，成本节省大到无法忽视」；用户实测 V4 Flash「每天 3 小时不到 $1」。1M 上下文 + 缓存命中 $0.003625/M，长上下文 agent 任务成本是旗舰的零头；注意 V4 在 CC 里读文件/日志较激进，建议配合上下文节制习惯。',
+      note: '本命装备：官方点名第一适配对象，社区 DeepClaude 走红，长上下文成本是旗舰零头。',
     },
     {
       id: 'cursor',
-      note: '有实测无官方背书：HN 用户「DeepSeek v4 API 跑了我大部分 Cursor 任务——每美元 bang 更多，但每小时 bang 少一点」（precision 帖 397 分）；价格对比「v4 pro 比 Claude Sonnet 4.6 便宜 2-5 倍」；V4-Flash 原生支持 Responses API 并专门适配 Codex，可经 OpenAI 兼容端点接入 Cursor。无 CursorBench 官方数字，建议先用 Flash 档验证工具调用与响应速度，深链调试再切 Pro。',
+      note: '有实测无官方背书：口碑「每美元 bang 更多」，价格比 Claude Sonnet 4.6 便宜 2-5 倍。',
     },
     {
       id: 'openhands',
-      note: '蜂群流备选底座（占位）：权重开源可本地部署，DeepSWE 54.4 / Terminal Bench 2.1 82.7 的正式版 Flash 值得在 OpenHands 里跑一轮；调研期未搜到 V4 × OpenHands 专门实测，开源 harness 侧最接近的实证是 OpenCode（HN 评论「原生支持 DSv4 且功能比 Claude Code 多」），跑分待补。',
+      note: '蜂群流备选底座（占位）：权重开源可本地部署，暂无专门实测、跑分待补。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

@@ -217,15 +217,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '官方工程博客展示 Fable 5 将 Claude Code 系统提示词精简 80%，长任务连贯性显著优于 Opus 4.8（Simon Willison 首发日让 Fable 5 写完 LLM 0.32a3 共 4 个 issue）；但 6 个 GitHub issue（#66728/#66696/#67246/#76137/#78888 等）实证安全分类器误报会静默降级到 Opus 4.8 且会话级不可逆——一次 PR 评审中 840 条消息约 23 小时由 Opus 服务而 UI 仍显示 Fable，/model 切不回去，唯一可靠解法是 settings.json 设 switchModelsOnFlag: false。7/16 后旗标率跳升，BleepingComputer 报道恢复版「nerfed」；团队内推荐用法（Thariq）：让 Fable 5 参与早期需求澄清与目标定义，验证方法写清楚再交付。',
+        text: '官方工程博客实测：提示词精简 80%，长任务连贯性优于 Opus 4.8；但安全误报会静默降级且会话级不可逆（840 条消息约 23 小时由 Opus 服务）。建议设 switchModelsOnFlag: false。',
       },
       {
         id: 'cursor',
-        text: 'Cursor 官方 CursorBench：Fable 5 以 72.9%（Max effort）刷新纪录、比前最佳高 8 分，Nate Schmidt 称「最硬 1% 问题的首选」「第一想用的模型」；但它是 Cursor 上单任务最贵的模型——掘金同场实测 $38.66（Opus 4.8 的 3 倍、GPT-5.5 的 8 倍），且 flagged 请求会静默落到 Opus 4.8 继续「工作」。Endor Labs 双 harness 对比同模型：Cursor+Fable 5 安全分 29% vs Claude Code+Fable 5 仅 19%（差 10 个点）——选对 harness 比换模型更影响安全产出。',
+        text: 'Endor Labs 实测同模型 Cursor 安全分 29% 比 Claude Code 高 10 点；flagged 请求会静默落 Opus 4.8。建议「Fable 规划 + Opus/Sonnet 执行」双槽位复核。',
       },
       {
         id: 'openhands',
-        text: 'OpenHands Index 官方实测（v1.28.0）五项均分 81.0 居首：swe-bench 95.8、swt-bench 91.9、gaia 84.2、swe-bench-multimodal 70.6、commit0 62.5；Fable 5 已入官方推荐列表（PR #1228），但评审人 neubig 提醒「Fable 太贵，Opus 可能仍是性价比推荐」。蜂群编排适合当推理核心/规划器，子任务拆给便宜模型并行，配 /goal 明确终止条件（HN 实测 /goal 对 NP-Hard 任务有效）。',
+        text: '官方五项均分居首：swe-bench 95.8、swt-bench 91.9、gaia 84.2，commit0 62.5 相对弱。建议只跑长程推理编排，子任务拆给便宜模型并行，并用 /goal 明确终止条件。',
       },
     ],
     expertQuotes: [
@@ -410,15 +410,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '本命装备，同宗同源。官方工程博客展示 Fable 5 将 Claude Code 系统提示词精简 80%，长任务连贯性在 Opus 4.8 易逻辑漂移的场景明显更稳（Simon Willison 首发日让 Fable 5 写完 LLM 0.32a3 共 4 个 issue）。但 6 个 GitHub issue 实证安全误报会静默降级到 Opus 4.8 且会话级不可逆：务必在 ~/.claude/settings.json 设 switchModelsOnFlag: false、用 /model 或 claude --resume 恢复，并自查会话日志确认实际服务模型。7/16 后旗标率跳升，底层系统/网络安全词汇任务要提前规划降级预案。日常建议（Thariq 用法）：Fable 5 做需求澄清与硬核规划，简单任务交给 Opus 4.8/Sonnet。',
+      note: '本命装备，同宗同源：官方深度整合、长任务连贯性最稳，口碑最佳；但误报会静默降级，需防。',
     },
     {
       id: 'cursor',
-      note: 'CursorBench 72.9%（Max）官方背书 + Endor Labs 实测同模型在 Cursor 安全分比 Claude Code 高 10 个点——前端流（HTML/React 双冠）与模糊目标任务（"you have no idea where B is"）是 Fable 5 主场。但它是 Cursor 上单任务最贵模型（掘金实测 $38.66 ≈ Opus 3 倍、GPT-5.5 8 倍），flagged 请求还会静默落 Opus 4.8。建议与轻量模型组「Fable 规划 + Opus/Sonnet 执行」双槽位复核流，关键任务记录实际回答模型与计费来源。',
+      note: '前端主场：CursorBench 72.9% 纪录 + 口碑最佳；但单任务最贵（$38.66 ≈ Opus 3 倍）。',
     },
     {
       id: 'openhands',
-      note: 'OpenHands Index 官方实测均分 81.0 居首（swe-bench 95.8/swt-bench 91.9/gaia 84.2），已入官方推荐列表（PR #1228）——蜂群编排里当推理核心/规划器是合理选择。但 commit0 62.5 相对弱、单实例成本高（commit0 $12.49、gaia $7.91），评审人 neubig 也提醒「Fable 太贵，Opus 可能仍是性价比推荐」。建议 Fable 5 只跑长程推理编排，子任务拆给便宜模型并行，并用 /goal 明确终止条件（HN 实测 /goal 对 NP-Hard 任务有效）。',
+      note: 'OpenHands Index 均分 81.0 居首，蜂群推理核心/规划器首选；但单实例成本高，性价比不如 Opus。',
     },
   ],
   teamIds: ['fengshen-flagship', 'galaxy-warship'],

@@ -222,15 +222,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '官方主战场：Boris Cherny（Claude Code 之父）发布日称「our strongest coding model yet，catches its own bugs instead of declaring victory early」；dynamic workflows 单会话数百并行子 agent 处理代码库级迁移（Ado 称 unsung hero、Haseeb 实测 5-10 子 agent 批判式迭代），ultracode 模式可缓解偷懒（Theo）。但社区体验两极：HN「连文件都读不了」与「plan mode 下未经许可跑命令」（Tomer Baruch）并存；7/1 起 Fable 5 官方把编码任务默认路由到 4.8，反向印证其编码地位。',
+        text: '官方主战场：Boris Cherny 称「our strongest coding model yet」。但社区两极：HN「连文件都读不了」与「plan mode 未经许可跑命令」并存。',
       },
       {
         id: 'cursor',
-        text: '官方引证 + 两篇一手实测：Cursor CEO Michael Truell 官方引证 CursorBench 上每个 effort 级别都超过前代 Opus；Dre Dyson 6 个月 40 任务实测：完成率 72%→89%、多文件（50+）成功率 41%→74%、首次正确率 54%→78%、token/任务降 18%；uygarduzgun 生产实测 4.8 修掉 Codex 修不好的 bug，且坚持自验证后才说 fixed。注意 Dre Dyson 为个人数据非官方基准。',
+        text: 'Dre Dyson 40 任务实测：完成率 72%→89%、多文件成功率 41%→74%、token/任务降 18%；uygarduzgun 修掉 Codex 修不好的 bug。注意 Dre Dyson 为个人数据非官方基准。',
       },
       {
         id: 'openhands',
-        text: 'OpenHands Index（官方，v1.18.1）实测：平均分 71.88 全场 #2（仅次于 Fable 5 的 81.00，超 4.7 的 69.66 与 GPT-5.5 的 65.94），5 类任务全跑——Issue Resolution 83.8、Testing 84.3、GAIA 78.8、commit0 62.5、Frontend 50.0；平均成本 $2.458/任务。前端（SWE-bench Multimodal 50.0）与绿地开发（commit0 62.5）为短板。',
+        text: 'OpenHands Index（官方）平均 71.88，超 4.7 与 GPT-5.5；Issue Resolution 83.8、Testing 84.3、GAIA 78.8 领先；短板：前端 50.0、绿地 62.5，建议换模型。',
       },
     ],
     expertQuotes: [
@@ -415,15 +415,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '本命装备，同宗同源：Boris Cherny（Claude Code 之父）发布日背书「strongest coding model yet」；dynamic workflows 支持单会话数百并行子 agent 处理代码库级迁移，ultracode 模式缓解偷懒；官方建议编码显式设 xhigh、用 goal-first framing 避开 Max 档 token 爆炸与长任务失忆（Andon Labs：Max 推理 token 约 5 倍）。7/1 起 Fable 5 官方把编码任务默认路由到 4.8，反向印证其编码地位。',
+      note: '本命装备，同宗同源：Fable 5 官方把编码任务默认路由到 4.8，反向印证其编码地位。',
     },
     {
       id: 'cursor',
-      note: '官方引证背书：CursorBench 上每个 effort 级别均超前代 Opus；两篇一手实测佐证——Dre Dyson 6 个月 40 任务：完成率 72%→89%、多文件成功率 41%→74%、token/任务降 18%（个人数据，非官方基准）；uygarduzgun 生产实测 4.8 修掉 Codex 修不好的 bug 并坚持自验证。适合与 GPT-5.5 组「4.8 主推理 + 竞品复核」的双模型审查流。',
+      note: '官方引证：CursorBench 上每个 effort 级别均超前代 Opus；可与 GPT-5.5 组双模型审查流。',
     },
     {
       id: 'openhands',
-      note: '实测有据：OpenHands Index v1.18.1 官方收录，平均分 71.88 全场 #2（仅次于 Fable 5 的 81.00，超 4.7 的 69.66 与 GPT-5.5 的 65.94），5 类任务全跑；Issue Resolution 83.8 / Testing 84.3 / GAIA 78.8 领先。蜂群流推理核心首选，但前端（50.0）与绿地开发（62.5）场景建议换模型。',
+      note: '蜂群流推理核心首选：官方 Index 收录，5 类任务全跑，平均分 #2 仅次于 Fable 5。',
     },
   ],
   teamIds: ['fengshen-flagship', 'puppet-workshop'],

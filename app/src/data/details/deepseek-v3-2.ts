@@ -228,15 +228,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '官方 Anthropic 兼容端点（api.deepseek.com/anthropic）直连可用，并提供官方 Claude Code 集成指南（模型名自动映射、原生支持 Web Search 工具）。Krzysztof Karczewski 2026-01 一手实测（deepseek-chat + deepseek-reasoner 双模型路由）：代码理解、工具执行、任务完成质量「接近西方旗舰模型的零头成本」。社区 proxy（Randozart/deepseek-claude-proxy）实现同体验约 50x 成本差（~$0.30 vs ~$15/M，子代理并行派发）。已知坑：/compact 命令不受支持（GitHub issue #50）导致长会话自动压缩失效；Speciale 端点为 OpenAI 格式、不可直连 Claude Code（404）。',
+        text: 'Karczewski 2026-01 一手实测：代码理解、工具执行、任务完成「接近西方旗舰模型的零头成本」；社区 proxy 成本差约 50x（~$0.30 vs ~$15/M）；/compact 不支持，长会话压缩失效，建议勤开新会话。',
       },
       {
         id: 'cursor',
-        text: 'Cursor 未原生上架 V3.2（官方论坛确认仅 v3.1 与 r1-0528，「Pls Add DeepSeek V3.2」Feature Request 长期未决），需 BYOK 自定义模型（OpenRouter base URL）。第三方实测：myaiverdict 3 个全栈项目 7 天，API 支出降 50-70%、标准 React/Node 任务质量约 90-95% 接近 Claude；TokenMix 20 条 vibe coding prompt 成功 14/20（70%），多文件上下文与创意 UI 偏弱；sonusahani 长 PRD 全栈构建约 40 分钟、中途卡住需手动续跑，建议拆模块构建；ngeneai 实测 SQL 调试类逻辑问题胜过 Sonnet 4.5。',
+        text: '第三方实测：3 个全栈项目，API 支出降 50-70%，React/Node 质量约 90-95% 接近 Claude；vibe coding 14/20，多文件与创意 UI 偏弱。建议双模型「DeepSeek 生成+闭源旗舰打磨」。',
       },
       {
         id: 'openhands',
-        text: 'OpenHands Index 官方公开记录：v1.8.3 deepseek-v3.2-reasoner 在 SWE-bench 实测 resolve rate 45.1%（benchlm.ai 标 45.7%），为真实公开 harness 数据——与官方自带 harness 的 73.1% 差距明显，做蜂群并行请以此为准。swebench.com 亦收录「DeepSeek V3.2 Reasoner (2025-12-01)」条目。配合 MIT 开源权重自部署，可组近乎零边际成本的并行 swarm；文本/数学类任务性价比极高。',
+        text: '公开 harness 实测 SWE-bench 45.1%（v1.8.3，benchlm.ai 标 45.7%），与官方 73.1% 差距明显；做蜂群并行请以实测为准。文本/数学类任务性价比极高。',
       },
     ],
     expertQuotes: [
@@ -412,15 +412,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '最顺的接入路径：官方 Anthropic 兼容端点（api.deepseek.com/anthropic）直连 + 官方集成指南，deepseek-chat/reasoner 双模型路由即可开箱即用，质量「接近西方旗舰模型的零头成本」（Karczewski 2026-01 实测）；社区 proxy 可把成本压到约 50x 差距。以 $0.28/$0.42 定价跑长任务，成本约为闭源旗舰 1/10，缓存命中再降 1/10。注意 128K 上下文易触顶与 /compact 不受支持，建议拆小任务、勤开新会话。',
+      note: '接入最顺：官方 Anthropic 兼容端点直连即可；性价比口碑最佳，定价约闭源旗舰 1/10，缓存命中再降 1/10。',
     },
     {
       id: 'cursor',
-      note: '需 BYOK 自定义模型接入（Cursor 未原生上架 V3.2）。第三方实测 React/Node 全栈任务质量约 90-95% 与 Claude 相当、API 支出降 50-70%（myaiverdict 3 项目 7 天）；SQL 调试类逻辑问题实测胜过 Sonnet 4.5（ngeneai 2026-01）。建议双模型槽位组「DeepSeek 低成本探索/生成 + 闭源旗舰打磨加固」流；vibe coding 成功率约 70%（TokenMix 20 题实测），多文件与创意 UI 场景谨慎使用。',
+      note: '需 BYOK 接入（Cursor 未原生上架）；第三方实测质量接近 Claude、API 支出大幅下降，可作低成本平替。',
     },
     {
       id: 'openhands',
-      note: 'OpenHands 支持 DeepSeek 系列模型配置，公开 harness 实测 SWE-bench 45.1%（v1.8.3，benchlm.ai 标 45.7%）——做蜂群并行请以实测为准而非官方 73.1%。MIT 开源权重自部署后边际成本趋近于零，可组大规模并行 swarm；文本/数学类任务性价比极高。榜单数字亮眼但 harness 落差真实存在，适合「量大管饱」场景而非高可靠交付。',
+      note: 'MIT 开源权重可自部署，边际成本趋零，适合组并行 swarm「量大管饱」；但 harness 实测与官方榜有落差。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

@@ -194,16 +194,16 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '有本体实测：腾讯新闻 2026-01-27 将 Qwen3-Max-Thinking 接入 Claude Code（百炼 key + Anthropic 兼容协议），自有 Skills 全链路跑通，「完成效果还不错」，前端审美一般；官方 DashScope 提供 Anthropic 兼容端点（dashscope-intl.aliyuncs.com/api/v2/apps/claude-code-proxy），r/ClaudeAI「Qwen 3 + Claude-code-proxy = decent results」佐证；SWE 69.6 + 64K 输出适合仓库级代码审查。',
+        text: '腾讯新闻 2026-01-27 将 Thinking 版经百炼接入 Claude Code，Skills 跑通、效果不错，前端审美一般；SWE-Bench 69.6 + 64K 输出适合仓库级代码审查，建议配 Coder 系列快速迭代。',
       },
       {
         id: 'cursor',
-        text: '无 Max 专属实测：OpenRouter 与阿里云百炼均已收录 Qwen3-Max，可经自定义 API 接入；同系列 3.7-Max 社区确认 Cursor 自定义模型支持有限但可行（「community configs exist on the Cursor forum」），function calling 是其强项；Qwen3（非 Max）实测 92% accuracy/28s 作参照，建议先小流量验证再深度使用。',
+        text: '同系列 3.7-Max 社区确认 Cursor 自定义模型支持有限但可行，function calling 是强项；Qwen3（非 Max）实测 92% accuracy/28s 作参照，建议先小流量验证工具调用稳定性再深度使用。',
         placeholder: true,
       },
       {
         id: 'openhands',
-        text: '无 OpenHands 直接实测：社区讨论集中于开源 Qwen3-Coder/3.6-35B 等本地可跑版本；开源 harness 最近实测路径是 OpenCode（QwenCloud 官方支持 qwen3-max，262K ctx/32K out）与 Qwen Code（agent({model:\'qwen3-max\'}) 真实 LLM E2E 13/13 通过）；Max 闭源仅 API，Tau2 74.8 的 agent 能力理论适配多 Agent 编排，跑分待补。',
+        text: '社区讨论集中于开源 Qwen3-Coder 等本地版本；可经 OpenCode（262K ctx）与 Qwen Code 接入；Tau2-Bench 74.8 理论适配多 Agent 编排，跑分待补，建议自行实测后再深度使用。',
         placeholder: true,
       },
     ],
@@ -380,15 +380,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '实测可用（非官方适配）：Qwen3-Max-Thinking 经百炼 Anthropic 兼容端点接入 Claude Code，腾讯新闻 2026-01-27 实测自有 Skills 全链路跑通、完成效果不错；SWE-Bench 69.6 + 64K 输出支撑仓库级代码审查，Tau2-Bench 74.8 的 agent 工具调用在长步骤任务里有潜力；代价是前端审美一般、复杂工程重构与 Claude Opus 仍有差距，建议配同门 Coder 系列或低输出档做快速迭代。',
+      note: '实测可用（非官方适配）：腾讯新闻实测完成效果不错，口碑正面。',
     },
     {
       id: 'cursor',
-      note: '无 Max 专属实测，接入路径成熟：OpenRouter 与阿里云百炼均已收录 Qwen3-Max，可经自定义 API 接入 Cursor；同系列 3.7-Max 社区确认 Cursor 自定义模型「setup is a bit more, but community configs exist」，function calling 是强项；编程实测与榜单基本一致、体感速度 85/100，适合日常编码与 Debug，建议先以低输出档验证工具调用稳定性再深度使用。',
+      note: '接入路径成熟：OpenRouter 与阿里云百炼已收录，可自定义 API 接入 Cursor；无 Max 专属实测。',
     },
     {
       id: 'openhands',
-      note: '无直接实测记录：社区讨论集中于开源 Qwen3-Coder/3.6-35B 等本地可跑版本；Max 闭源仅 API 可用，开源 harness 最近路径是 OpenCode（QwenCloud 官方支持 qwen3-max，262K ctx）与 Qwen Code（13/13 E2E 通过）；理论上 Tau2-Bench 74.8 的 agent 工具调用适合多 Agent 编排，跑分待补。',
+      note: '无直接实测记录：Max 闭源仅 API，可经 OpenCode / Qwen Code 接入。',
     },
   ],
   teamIds: ['fengshen-flagship', 'common-warlord'],

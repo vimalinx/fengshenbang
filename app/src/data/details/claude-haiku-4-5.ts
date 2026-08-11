@@ -195,11 +195,11 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '本命装备：官方内置支持，`claude --model haiku` 一键切换（V2EX 实测「缓解配额焦虑」）；官方主推编排——Sonnet 拆计划、一群 Haiku 并行干子任务；r/ClaudeCode「surprisingly good at writing code (if there is a plan)」+「insane in Claude Code」，但「输出快到让我以为它在烧钱」也说明速度与额度要平衡。',
+        text: 'r/ClaudeCode 实测「surprisingly good at writing code (if there is a plan)」，但「输出快到让我以为它在烧钱」——建议给足 plan 再放手，额度消耗需平衡。',
       },
       {
         id: 'cursor',
-        text: '官方未提供 Cursor 专项评测；社区经 OpenRouter 接入作为子模型/快速原型主力，第三方对比「GPT-5.4 Mini vs Haiku 4.5」定位子代理场景；无 CursorBench 官方背书，作为备选接入。',
+        text: '官方未提供 Cursor 专项评测；第三方对比「GPT-5.4 Mini vs Haiku 4.5」定位子代理场景，无 CursorBench 官方背书，建议作为备选接入。',
       },
       {
         id: 'openhands',
@@ -379,15 +379,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '本命装备，官方同源内置：`claude --model haiku` 一键切换（V2EX 实测「缓解配额焦虑」）；官方主推的编排范式就是「Sonnet 拆计划 + Haiku 群并行」——子代理场景响应「markedly more responsive」，多 agent 项目吞吐 4-5× 于 Sonnet 4.5。注意保持 thinking 开启（无思档 SWE 掉到 63.4%），并给足明确 plan 再放手。',
+      note: '本命装备，官方内置：`claude --model haiku` 一键切换，1/3 成本追平 Sonnet 4。',
     },
     {
       id: 'cursor',
-      note: '官方无专项背书，社区经 OpenRouter 接入作为子模型/快速原型主力：第三方对比「GPT-5.4 Mini vs Claude Haiku 4.5」定位子代理场景；与 claude-code 相比少了官方编排加成，适合已有 Cursor 工作流、把 Haiku 当低成本补全/子任务跑的用户。',
+      note: '社区经 OpenRouter 接入，当低成本子代理/快速原型主力；适合已有 Cursor 工作流的用户。',
     },
     {
       id: 'openhands',
-      note: 'OpenHands Index 未收录 Haiku 4.5 专项成绩，蜂群/多 agent 实测数据缺位；同为子代理定位可尝试，但当前为占位推荐，跑分待补。',
+      note: '同为子代理定位可尝试，但专项成绩缺位，当前仅占位推荐，跑分待补。',
     },
   ],
   teamIds: ['puppet-workshop', 'budget-vanguard'],

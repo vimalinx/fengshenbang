@@ -233,12 +233,12 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '无 Llama 5 实测（未发布）。若开源发布，可经 Ollama Anthropic 兼容 API（ANTHROPIC_BASE_URL=http://localhost:11434 + ANTHROPIC_AUTH_TOKEN=ollama）接入，路径与 Llama 4 时代一致；当前占位待补。',
+        text: '无实测（未发布）。若开源发布，可经 Ollama Anthropic 兼容 API 接入，路径与 Llama 4 时代一致；当前占位待补。',
         placeholder: true,
       },
       {
         id: 'cursor',
-        text: '无实测。Meta 现役编程旗舰为闭源 Muse Code（08-05 发布，HN 332 pts/263 评），Llama 5 落地前编程槽位建议留 Muse Code 或闭源顶配；开源党可经 OpenAI 兼容 API 指向自部署端点先占位。',
+        text: '无实测。Meta 现役编程旗舰为闭源 Muse Code，Llama 5 落地前编程槽位建议留 Muse Code 或闭源顶配；开源党可经 OpenAI 兼容 API 指向自部署端点先占位。',
         placeholder: true,
       },
       {
@@ -419,15 +419,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '适配路径：Llama 5 若开源发布，可经 Ollama Anthropic 兼容 API（ANTHROPIC_BASE_URL=http://localhost:11434 + ANTHROPIC_AUTH_TOKEN=ollama）接入，与 Llama 4 时代同款路径，成本为零；当前无实测背书（未发布），编程能力仅为 Wang「Opus 级」预告的泄漏，发布后须第三方复测（前代 Aider 15.6% 的及格线）再定主力位。',
+      note: '未发布无实测；若开源经 Ollama Anthropic 兼容 API 接入，成本零；发布后复测再定主力位。',
     },
     {
       id: 'cursor',
-      note: '适配路径：Llama API / 自部署端点 OpenAI SDK 兼容，Cursor 可经自定义模型接入（Llama 4 已验证）；实测背书缺失——Meta 现役编程旗舰是闭源 Muse Code（08-05 发布、HN 332 pts/263 评），Llama 5 落地前编程槽位建议留 Muse Code 或闭源顶配；开源党可先占位，发布后以 CursorBench 类评测补数据。',
+      note: '未发布无实测；Cursor 可经 OpenAI SDK 兼容 API 接入；编程槽位留 Muse Code，发布后复测。',
     },
     {
       id: 'openhands',
-      note: '适配路径：OpenHands 支持 Ollama 本地端点（Llama 4 同款配置）；无 Llama 5 实测（未发布），OpenHands Index 无条目；发布后按 Index 评测体系补数据，当前不建议作蜂群执行单元——开源执行单元先上 DeepSeek V4 / Qwen 3.6 系。',
+      note: '未发布无实测，Index 无条目；暂不作蜂群执行单元，先上 DeepSeek V4 / Qwen 3.6。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

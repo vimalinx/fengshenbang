@@ -199,9 +199,9 @@ export const DETAIL: ModelDetailData = {
       { label: 'HF 下载量', value: '20.8 万' },
     ],
     harnessReviews: [
-      { id: 'claude-code', text: '实测最充分的一条装备线。Joe Njenga（Medium 4/22）：Ollama Cloud 一条命令 `ollama launch claude --model kimi-k2.6:cloud` 接入，React+Tailwind 项目「CRUD 一次跑通、组件结构干净」。LinkedIn Ayaz Sharif（5/5）3 周 A/B：50,000 行 Go 微服务，30 个文件内印象深刻，跨服务 gRPC 依赖追踪会跟丢，「约 80% 正确，20% 差距 = merge/deploy 与周二上午调试的区别」。HN DeathArrow「coding 20x cheaper，正用 Claude Code 接」；HN justech「opencode go + openrouter 主用一周，等于去年底的 Sonnet 3.5/4 体验」。V2EX laoyutang「CC 接 Kimi，编码能力可以，基本一次能写对」；Reddit r/ClaudeCode「NOT an Opus replacement」6 赞/48 评论提示定位在 Opus 之下。长程任务（12h+）成本优势明显。' },
-      { id: 'cursor', text: '无 K2.6 在 Cursor 内的第一手实测；硬事实是 Cursor Composer 2 底层即 Kimi K2.5（HN 276 分/168 评论《Cursor Composer 2 is just Kimi K2.5 with RL》，mzl 称 Cursor 花了约 3 倍算力做 RL 微调）。DeathArrow（Composer 2.5 帖）：「Why pay for Cursor when I can use GLM 5.1, Kimi K2.6... with whatever harness I want, including Claude Code」——为 K2 系付 Cursor 溢价不划算，建议 CC 直连；antirez 对 RL 包装成效持观望「how much the RL really improves K2.5 is to be seen」。K2.6 可经 QuickSilver Pro/CCProxy 等 OpenAI 兼容层接入 Cursor，前端审美强（Shader/菲涅尔）适合 UI 生成。' },
-      { id: 'openhands', text: '有官方评测无社区口碑：OpenHands Index（All Hands AI 官方，v1.11.5）Kimi-K2.6 SWE-bench 57.14、SWE-bench-Multimodal 41.2、commit0 25.0——对照 claude-opus-4-7 69.66、GPT-5.4 64.28、GLM-5.1 58.24，在 OpenHands 框架下落后第一梯队约 7-12 分；Pickuma 评测确认 OpenHands 模型无关（LiteLLM 一行配置换模型），K2.6 接入无机制障碍。300 子 Agent 能力宣传强但 OpenHands 框架下未复现 Agent 优势，跑分待补。' },
+      { id: 'claude-code', text: 'Joe Njenga 实测一条命令接入、CRUD 一次跑通；Ayaz 三周 A/B：30 个文件内印象深刻，跨服务依赖会跟丢；HN 称「coding 20x cheaper」。定位 Opus 之下的长程批量主力，复杂推理切旗舰。' },
+      { id: 'cursor', text: '硬事实：Composer 2 底座即 K2.5，DeathArrow 直言为 K2 系付 Cursor 溢价不划算、建议 CC 直连；antirez 对 RL 包装成效持观望。可经 OpenAI 兼容层接入，UI 生成场景可试。' },
+      { id: 'openhands', text: '官方 Index：SWE-bench 57.14、多模态 41.2，落后第一梯队约 7-12 分；LiteLLM 一行接入无机制障碍，但 300 子 Agent 宣传未在框架下复现，跑分待补。' },
     ],
     expertQuotes: [
       {
@@ -376,15 +376,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '最充分的实测装备线：Ollama Cloud Pro $20/月一条命令接入（Joe Njenga 实测 CRUD 一次跑通），HN DeathArrow「coding 20x cheaper，正用 Claude Code 接」；长程任务（12-13h 不崩）成本优势明显，API 仅 Opus 4.7 的 1/8；但 Ayaz 3 周 A/B 提示 30 个文件后上下文管理吃紧、复杂依赖追踪会跟丢——建议做长程重构与批量编程主力，复杂推理交叉验证再切旗舰，跨服务依赖多的 monorepo 慎用。',
+      note: '实测最充分的装备线：一条命令接入、成本仅 Opus 4.7 的 1/8，长程批量编程主力。',
     },
     {
       id: 'cursor',
-      note: '无 K2.6 直接实测：Cursor Composer 2 底座即 Kimi K2.5（HN 276 分帖），DeathArrow 建议「为 K2 系付 Cursor 溢价不划算，用 CC 直连」；K2.6 可经 OpenAI 兼容层（QuickSilver Pro/CCProxy）进 Cursor，前端审美强（Shader/菲涅尔/焦散光）适合 UI 生成场景；建议先 API 试跑再决定档位，规避 antirez 指出的 RL 包装成效未证问题。',
+      note: '无直接实测，但 Composer 2 底座即 K2.5；为 K2 系付溢价不划算，前端审美强适合 UI 生成。',
     },
     {
       id: 'openhands',
-      note: 'OpenHands Index 官方评测 K2.6 SWE-bench 57.14，落后 claude-opus-4-7（69.66）约 12 分、GLM-5.1（58.24）约 1 分；框架模型无关（LiteLLM 一行换模型），K2.6 接入无机制障碍；300 子 Agent 能力在 OpenHands 框架下未复现优势——做无人值守批量任务可尝试，Agent 集群宣传能力需自行验证。',
+      note: '官方 Index 实测 SWE-bench 57.14，落后第一梯队；批量任务可试，Agent 集群能力待验证。',
     },
   ],
   teamIds: ['budget-vanguard', 'puppet-workshop'],

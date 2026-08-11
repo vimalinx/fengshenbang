@@ -228,15 +228,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '无官方集成（OpenAI 官方对应物为 Codex CLI），但已有真实路由实测：Joe Njenga（2025-08-10）自建 Python Flask 代理把 GPT-5 接进 Claude Code，踩中 OpenAI API 参数变更（GPT-5 系列改用 max_completion_tokens），修复后成功让其在 Claude Code 内构建一个 API——「I now treat these models as if they are a different custom API」；Luke Skyward（2025-08-09）同接口路由 GPT-5/GPT-OSS/Qwen3-Coder 实测发现「non-Anthropic models produced terse, unhelpful responses」——Claude Code 的提示词工程是 Claude 专属护城河，GPT-5 风格会被稀释，只宜省 12 倍成本跑非关键/文档类任务；HN NitpickLawyer 则称 Roo Code + gpt5-mini「so cheap, pretty fast」做 diff 式编辑效果良好。适配逻辑：坚持在 Claude Code 用 mini 需自建代理并接受提示词水土不服，更顺的路径是直接用 Codex CLI。',
+        text: '有人自建代理实测跑通并在 Claude Code 内构建出 API；但非 Anthropic 模型回复 terse、unhelpful，提示词工程是 Claude 专属护城河。建议复杂交付直接用官方 Codex CLI。',
       },
       {
         id: 'cursor',
-        text: 'Cursor 官方论坛 2025-08-19/22 两帖真实用户反馈：GPT-5-Mini「nailing bugs again and again」「super cheap compared to how effective it is」「uses barely any tokens」「tool calls work almost perfectly, no editing errors, obedient with instructions」——是 Auto 模式的平价平替；Dre Dyson 独立测试 200+ 案例：GPT-5-Mini 用 73% 更少 token、94% 指令遵循（Gemini 2.0 Flash 仅 82%）、89% 样板代码一次到位、速度 87 tok/s（Sonnet 4 为 63）、可扛 86% 日常任务，建议「gpt-5-mini 干日常 + Sonnet 4 攻坚」的 .cursor/chain_config.yml 三阶链式路由；中文实测（苍何/腾讯新闻 2025-08-09）：「GPT 5 很少瞎改代码了……前端审美和代码指令遵循上进步很大」；同源 GitHub Copilot CLI + BYOK（El Bruno 2026-05-11）：4.16K 请求/104.27M tokens/总成本仅 $6.81 构建出可用 Windows 托盘应用，金句「代码便宜，质量门禁贵」。',
+        text: 'Dre Dyson 独立测试 200+ 案例：73% 更少 token、94% 指令遵循、89% 样板一次到位，可扛 86% 日常任务。建议高频补全与轻量重构跑 mini，交付细节要求高的活切回旗舰，并预留质量门禁预算。',
       },
       {
         id: 'openhands',
-        text: 'OpenHands Index（2026-01-29 上线）未把初代 GPT-5 mini 收录为独立条目（平均分低于 claude-sonnet-4-5 的 53.00 门槛），5.2-Codex 才是 OpenAI 侧代表；OpenHands/benchmarks#239 官方曾用 gpt-5-mini-2025-08-07 跑 500 例 SWE-bench 评测，两次因评测基建故障（runtime 503/404「Remote conversation not found」、warm pool 为空、HPA 卡在 min=3 不扩容）取消——「Deployment/build are fine; the issue is runtime availability」，初代 mini 的官方跑分实际缺失。可参考同生态 opencode.ai harness 对 nano 的安全评测（Lateos 2026-06-15）：210 例提示注入测试总易感率 38.3%、递归指令框架 100%、MCP 工具投毒 80%，表层攻击全免疫。适配逻辑：把 mini/nano 当蜂群执行单元时，要注意质量门禁与 MCP 工具描述投毒边界。',
+        text: 'OpenHands Index 未收录初代 mini（官方 500 例 SWE-bench 评测两次因基建故障取消）；nano 安全评测总易感率 38.3%、MCP 工具描述投毒 80%。建议 MCP 工具描述要防投毒、结果要过质量门禁。',
       },
     ],
     expertQuotes: [
@@ -412,15 +412,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '无官方接入（OpenAI 官方对应物为 Codex CLI），可经 OpenAI 兼容端点手动配置 gpt-5-mini 作轻量执行单元。实测提示：Joe Njenga 自建 Python 代理跑通（注意 GPT-5 系列用 max_completion_tokens 而非 max_tokens，旧版 claude-code-router 会 500）；Luke Skyward 实测提醒「Claude Code 的提示词工程是 Claude 专属护城河，非 Anthropic 模型产出 terse、unhelpful 回复」——在 Claude Code 里跑 mini 适合非关键/文档类省成本，复杂交付会水土不服；NitpickLawyer 实测 Roo Code + gpt5-mini「so cheap, pretty fast」做 diff 编辑则顺滑得多。复杂规划仍交旗舰，mini 只作低成本子代理（Codex 口径仅耗 30% 额度）。',
+      note: '无官方接入，可经兼容端点手动配置；社区实测「so cheap, pretty fast」口碑，只宜作非关键省成本子代理。',
     },
     {
       id: 'cursor',
-      note: 'Cursor 官方论坛实测背书最多：2025-08-19/22 两帖称「nailing bugs again and again」「tool calls work almost perfectly」「无比听话」，是 Auto 模式平价平替；Dre Dyson 独立测试给出 73% 更少 token、94% 指令遵循、89% 样板一次到位、扛 86% 日常任务，并推荐 .cursor/chain_config.yml 三阶链式路由（gpt-5-mini 生成样板 → Sonnet 4 加类型安全 → gpt-5-mini 写文档）省 5 倍成本；中文实测（苍何）「很少瞎改代码、前端审美进步大」。适配逻辑：高频补全与轻量重构跑 mini，交付细节要求高的活切回旗舰/Claude；同源 Copilot CLI 经验（El Bruno）提醒把质量门禁预算算进去。',
+      note: '官方论坛实测背书最多，口碑「无比听话」，是 Auto 模式平价平替。',
     },
     {
       id: 'openhands',
-      note: 'OpenHands Index 未收录初代 mini（5.2-Codex 才是 OpenAI 侧代表），官方 500 例 SWE-bench 评测两次因基建故障（runtime 404/503、warm pool 空、HPA 不扩容）取消——不是模型问题但跑分确实缺失。可参考同生态 opencode.ai 对 nano 的安全评测（Lateos 2026-06-15）：总易感率 38.3%、递归指令框架 100%、MCP 工具描述投毒 80%，表层攻击全免疫。适配逻辑：作为蜂群执行单元跑分类/提取/格式化子任务省额度，但 MCP 工具描述要防投毒、结果要过质量门禁；追求官方跑分背书建议直接用后继 5.4 mini 或 Luna。',
+      note: '适合作蜂群执行单元跑分类/提取/格式化子任务省额度，追求官方跑分建议直接换后继 5.4 mini 或 Luna。',
     },
   ],
   teamIds: ['budget-vanguard', 'puppet-workshop'],

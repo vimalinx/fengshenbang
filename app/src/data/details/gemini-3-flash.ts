@@ -230,15 +230,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '官方不支持非 Anthropic 模型，社区通行「Opus 规划/审查 + Gemini Flash 执行」双模型流（Linux.do「用 opus 做 plan 然后让 Gemini flash 去执行，挺爽的」、r/google_antigravity 同款）；OpenAI 自家 ChatGPT 源码流出被扒出 FAST_MODEL="google/gemini-3-flash"（HN pranshuchittora 实证），证明 3 Flash 是巨头级 agent 的默认快路径。',
+        text: '官方不支持非 Anthropic 模型，需走兼容网关接入；ChatGPT 源码流出 FAST_MODEL 选用 3 Flash，是巨头级 agent 默认快路径。建议 low/medium 档跑高频快任务、旗舰做规划。',
       },
       {
         id: 'cursor',
-        text: '官方博客企业客户引用 Cursor 证言：3 Flash 让「编码 Agent 从异步等待变成近乎实时的同步协作」（GeekPark 转述）；CursorBench 3 Flash 期无独立分档条目（3.6 期才有 High 53.5%），社区多经 OpenRouter 自定义接入，编码可作主力，复杂任务切旗舰。',
+        text: '官方博客企业客户引 Cursor 证言：3 Flash 让「编码 Agent 从异步等待变成近乎实时的同步协作」；CursorBench 3 Flash 期无独立分档条目，编码可作主力，复杂任务切旗舰。',
       },
       {
         id: 'openhands',
-        text: 'OpenHands Index 家族数据：3 Flash 在 SWE-bench issue resolution 上与 Opus 差距小、平均准确率反超 3 Pro，但前端开发类别挣扎——与 Cursor 社区「前端强」口碑相悖；3 Flash 专属量化条目暂无，低成本批量 issue 修复可用。',
+        text: 'OpenHands Index 家族数据：3 Flash 的 SWE-bench issue resolution 与 Opus 差距小、平均准确率反超 3 Pro，但前端类别挣扎；专属量化条目暂无，低成本批量 issue 修复可用。',
       },
     ],
     expertQuotes: [
@@ -410,15 +410,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '社区通行「Claude 规划 + Gemini Flash 执行」双模型流：Linux.do「用 opus 做 plan 然后让 Gemini flash 去执行，挺爽的」、r/google_antigravity 同款共识；OpenAI 自家 ChatGPT 源码流出被扒出 FAST_MODEL="google/gemini-3-flash"（HN 实证），证明 3 Flash 是巨头级 agent 的默认快路径。经 ANTHROPIC_BASE_URL 网关（LiteLLM/Requesty）挂进 Claude Code 后，thinking low/medium 档跑高频快任务、旗舰跑规划，是成本与速度的最优组合。',
+      note: '社区通行「Claude 规划 + Gemini Flash 执行」双模型流，是成本与速度的最优组合。',
     },
     {
       id: 'cursor',
-      note: '官方企业证言背书：Cursor 引用「让编码 Agent 从异步等待变成近乎实时的同步协作」；3 Flash 期经 OpenRouter 自定义接入（$0.50/$3 白菜价），双模型槽位可组「Flash 快速原型 + 旗舰优化加固」复核流；CursorBench 3 Flash 期无分档条目（3.6 期 High 53.5%），前端快打可用、复杂任务切旗舰。',
+      note: 'Cursor 官方证言「编码近乎实时的同步协作」，$0.50/$3 白菜价。',
     },
     {
       id: 'openhands',
-      note: 'OpenHands Index 家族数据显示 3 Flash SWE-bench issue resolution 与 Opus 差距小、平均准确率反超 3 Pro，但前端开发类别挣扎；低成本批量 issue 修复与信息收集可用，前端视觉任务需显式设计指引；3 Flash 专属量化条目暂无，占位强度低于 claude-code/cursor。',
+      note: 'OpenHands 家族数据：3 Flash 平均准确率反超自家 3 Pro，低成本批量修复可用。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

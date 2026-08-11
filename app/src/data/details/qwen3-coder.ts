@@ -230,15 +230,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '官方 proxy 直通（ANTHROPIC_BASE_URL=dashscope-intl.aliyuncs.com/api/v2/apps/claude-code-proxy）+ claude-code-config（ccr 路由器插件）双方案；storus 实测「取代 Opus 4.6 全栈用途、错误率仅略高」是最大背书；务必用修复后的最新权重（初版工具 bug），并给 max_tokens 留足预算防循环。',
+        text: '官方 proxy 直通 + claude-code-config 双方案，接入成本趋近零；务必用修复后的最新权重（初版工具 bug），并给 max_tokens 留足预算防循环。',
       },
       {
         id: 'cursor',
-        text: '非原生收录，走百炼 OpenAI 兼容端点（compatible-mode/v1，模型 qwen3-coder-plus）自定义接入；jayvanzyl 在 Cursor Agent Mode 用 480B 单 prompt 生成完整 2D 游戏、「surprisingly close to GPT-4\'s agent mode」、成本约 $2/1M tokens；复杂任务建议低输出档防工具循环。',
+        text: 'Cursor Agent Mode 实测用 480B 单 prompt 生成完整 2D 游戏；复杂任务建议低输出档防工具循环。',
       },
       {
         id: 'openhands',
-        text: '有硬核数据：nebius 用 OpenHands v0.54.0 复测 SWE-bench Verified 100-turn Pass@1 = 66.5%（开源第一梯队），67,074 条轨迹集开源可复现；OpenHands 社区 vibe check 排第 3（GPT-5 > Sonnet 4 > Qwen-3 Coder > Kimi-K2）；本地跑 480B 需 Q6 408GB 级硬件，蜂群编排可作主力编码单元。',
+        text: 'nebius 用 OpenHands 复测 SWE-bench 100-turn Pass@1，67,074 条轨迹集开源可复现；本地 480B 需 Q6 408GB 级硬件，蜂群编排可作主力编码单元。',
       },
     ],
     expertQuotes: [
@@ -400,15 +400,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '官方 proxy 直通（ANTHROPIC_BASE_URL=dashscope-intl.aliyuncs.com/api/v2/apps/claude-code-proxy）+ claude-code-config 路由器插件，接入成本趋近零；实测背书最厚：storus 用 480B 驱动 Claude Code「取代 Opus 4.6 全栈用途、错误率仅略高」；注意两点——务必用修复后的最新权重（初版工具调用 bug 需重下载），max_tokens 留足预算防工具循环失控；Qwen Code CLI（同门、fork 自 Gemini Code）可与其组双 CLI 复核流。',
+      note: '实测背书最厚：可取代 Opus 4.6 全栈用途、错误率仅略高。',
     },
     {
       id: 'cursor',
-      note: '非原生收录，走百炼 OpenAI 兼容端点（compatible-mode/v1，模型 qwen3-coder-plus）自定义接入；jayvanzyl 在 Cursor Agent Mode 用 480B 单 prompt 生成完整 2D 游戏（pygame 结构+碰撞逻辑全出）、「surprisingly close to GPT-4\'s agent mode」、成本约 $2/1M tokens；双模型槽位可组「Qwen3-Coder 开源低成本迭代 + 闭源旗舰加固」复核流，复杂任务建议低输出档防循环。',
+      note: '非原生收录，走百炼兼容端点接入；成本约 $2/1M tokens，体验接近 GPT-4 agent mode。',
     },
     {
       id: 'openhands',
-      note: '有硬核 benchmark 背书：nebius 用 OpenHands v0.54.0 复测 SWE-bench Verified 100-turn Pass@1 = 66.5%（开源第一梯队），67,074 条轨迹集开源可复现；OpenHands 社区 vibe check 排第 3（GPT-5 > Sonnet 4 > Qwen-3 Coder > Kimi-K2）；Apache 2.0 权重可自部署，适合蜂群流里当开源编码主力单元，配合通用 30B-A3B 兜底简单任务；480B 本地需 Q6 约 408GB 级硬件。',
+      note: '硬核背书：SWE-bench Verified 66.5%，开源第一梯队。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

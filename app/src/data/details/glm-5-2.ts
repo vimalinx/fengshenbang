@@ -232,15 +232,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '官方主打接入 + 一手实测最多的 harness：模型名填 GLM-5.2[1m] 即启用 1M 上下文（.claude/settings.json 设环境变量即可切换，HN littlecranky67 教程），Anthropic 兼容端点三行配置切流量；Terminal-Bench 2.1 Best Reported Harness 82.7 即用 Claude Code 跑出，对 CLAUDE.md/Agent.md 遵循更可靠。实测：r/ClaudeAI「GLM 5.2 via Claude Code is the first non-Claude model that feels close to Opus」；HN alexjplant「I vastly prefer my GLM and OpenCode setup to the Claude Code and Opus one at work」；KronisLV 订阅 $100→$200「approximately as capable as Opus but less annoying」；但 HN ukuina 警告「harness will error out if using subagents，基础版单并发，配额一天烧完」，neya 实测「Claude Code burned $10 per task」，Nathan Lambert 实测 harness 试图发图会 brick Fireworks API 会话。',
+        text: 'r/ClaudeAI 热帖「first non-Claude model that feels close to Opus」；建议：子代理会报错、单并发、配额一天烧完，需控 scope 与 effort 档位。',
       },
       {
         id: 'cursor',
-        text: 'Cursor 官方文档已收录 GLM 5.2，Z.ai devpack 提供 OpenAI 协议接入教程，社区多走 OpenRouter z-ai/glm-5.2 自定义模型；CursorBench 官方数据 GLM 5.2 Max 55.0%/High 51.5%——HN maxdo「on par with gpt 5.5 medium and sonnet」，tomerbd 速评「GLM 5.2 - Super Clear, GPT-5.5 - Super Smart, Auto/Composer - Super Fast」；HN AgentMasterRace 反面「look how bad glm 5.2 is on cursors evals」；适合 IDE 高频补全与中等规模重构，长程多步交给 GLM-5.2 主打、前端/视觉类任务让位旗舰。',
+        text: '官方文档收录，Z.ai devpack 提供 OpenAI 协议接入教程；CursorBench Max 55.0%/High 51.5%，与 GPT-5.5 medium 相当。建议：适合 IDE 高频补全与中等重构，视觉/前端让位旗舰。',
       },
       {
         id: 'openhands',
-        text: '官方 SWE-bench Pro 62.1 即用 OpenHands harness + 定制指令评测得出（z.ai/blog/glm-5.2 脚注），证明可直接驱动；HN mlmonkey 从官方博客提取完整 bar chart（SWE-bench Pro 62.1 vs Opus 4.8 69.2、Terminal-Bench 2.1 同源）。未检索到独立深度实测：OpenHands GitHub issues 最近 50 条无 GLM-5.2 相关、OpenHands Index 官方成绩页无记录，占位待补。',
+        text: 'HN mlmonkey 从官方博客提取 bar chart（SWE-bench Pro 62.1 vs Opus 4.8 69.2）；独立深度实测待补，建议先复跑官方 harness 再进生产。',
         placeholder: true,
       },
     ],
@@ -411,15 +411,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '本命装备，同宗同源：Anthropic 兼容端点三行配置即可切流，模型名 GLM-5.2[1m] 直接启用 1M 上下文（.claude/settings.json 环境变量切换，HN 教程）；Terminal-Bench 2.1 Best Reported Harness 82.7 即用 Claude Code 跑出。配 CLAUDE.md 工程规范食用更佳——HN alexjplant 实测优于同环境的 Opus 工作流，r/ClaudeAI 帖称「first non-Claude model that feels close to Opus」；但注意子代理会报错（ukuina）、基础版单并发、配额一天烧完，Nathan Lambert 实测 harness 发图会 brick Fireworks 会话，需控制 scope 与 effort 档位。',
+      note: '口碑最佳 harness：Terminal-Bench 2.1 最佳成绩 82.7 即由 Claude Code 跑出。',
     },
     {
       id: 'cursor',
-      note: '官方文档收录 + Z.ai devpack 教程，经 OpenAI 兼容端点接入。适合 IDE 高频补全与中等规模重构——SWE-bench Pro 62.1 反超 GPT-5.5，价格为其 1/6；但 CursorBench 官方仅 55.0%（Max），落后 Opus 4.8 Max(62.3%) 约 7 分，与 GPT-5.5 medium 相当（HN maxdo），前端/视觉类任务让位给旗舰，长程多步交给 GLM-5.2 主打；HN tomerbd 速评：「GLM 5.2 - Super Clear, GPT-5.5 - Super Smart, Auto/Composer - Super Fast」。',
+      note: '价格卖点突出：SWE-bench Pro 62.1 反超 GPT-5.5，价格仅为其 1/6。',
     },
     {
       id: 'openhands',
-      note: '官方 SWE-bench Pro 62.1 即用 OpenHands harness + 定制指令评测得出，是官方认可的执行底座（z.ai/blog/glm-5.2 脚注），HN mlmonkey 提取的官方 bar chart 可作对照。蜂群流中充当长程编程执行单元：1M 上下文可整个仓库喂给单 agent；独立深度实测待补（GitHub issues 最近 50 条无 GLM-5.2 相关），建议先在官方 harness 复跑 SWE-bench Pro 再进生产。',
+      note: '官方认可的执行底座：SWE-bench Pro 62.1 即由 OpenHands 官方 harness 评测得出。',
     },
   ],
   teamIds: ['budget-vanguard', 'galaxy-warship'],

@@ -229,16 +229,16 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '官方主战场之一：宣称 scaffold-agnostic，35 小时演示跨 Claude Code/OpenCode/Qwen Code 稳定运行；302.AI 称「Claude Code 两行配置就能切过来、无缝平替、即插即用」；HN 用户 briga 反馈 Qwen + OpenCode 是 Claude Code 周配额告急时的免费替代；HN 用户 ecshafer 实测「Qwen3.6 with claude code works great…Claude Code is a great harness，好的工具集成影响巨大」。',
+        text: '302.AI 实测「两行配置就能切过来、即插即用」；适合长程 Agent 任务（SWE-Pro 60.6% 同 scaffold 第一），复杂规划与前端生成仍交旗舰复核。',
       },
       {
         id: 'cursor',
-        text: '（无 Cursor 本体实测，占位）本批次未检索到 Qwen3.7-Max × Cursor 的专门实测。最近似证据：TRAE（Cursor 系 IDE）官方社区 5/22 实测编程综合「优秀」、vs GLM-5.1 略胜一筹、同提示词复现优秀（帖 860 浏览/17 赞）；背景：Cursor Composer 1 曾基于 Qwen，亦有用户反映 Cursor 接入 Qwen/GLM 模型配置不畅（HN infocollector）。',
+        text: 'TRAE 官方社区 5/22 实测编程综合「优秀」、同提示词复现优秀；建议经 OpenAI 兼容 API 自配，用其便宜定价承接高频轻量编码，token 消耗偏大、页面类任务切回 Opus 系。',
         placeholder: true,
       },
       {
         id: 'openhands',
-        text: '（无 3.7-Max 专门实测，占位）本批次未检索到 Qwen3.7-Max × OpenHands 的实测或官方适配说明；仅本地代用例（HN zepearl 用 Qwen3.6 27B + OpenHands 编程、incomingpain 曾遇 Qwen Code 配 OpenHands 工具调用崩溃）；官方 scaffold-agnostic 声明未附 OpenHands 数字背书。',
+        text: '无 OpenHands 专门实测或官方适配说明；scaffold-agnostic 声明未附 OpenHands 数字背书；企业数据合规场景需换 DeepSeek V4 或 GLM-5.2。',
         placeholder: true,
       },
     ],
@@ -424,15 +424,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '官方主战场，scaffold-agnostic 声明下与 Qwen Code/OpenCode 并列稳定运行——35 小时演示即跨框架完成。302.AI 实测「两行配置就能切过来、无缝平替、即插即用」；HN 用户 briga 反馈是 Claude Code 周配额告急时的免费替代；HN 用户 ecshafer 更称「Qwen + Claude Code 组合效果优于 opencode，Claude Code is a great harness」。接入后用其做长程 Agent 任务（SWE-Pro 60.6% 同 scaffold 第一、HLE 41.4），复杂规划与前端生成仍交旗舰复核——注意 token 消耗偏大、QwenWebDev 1568 前端偏弱。',
+      note: '官方主战场：scaffold-agnostic 跨框架稳定，社区实测口碑佳、可无缝平替；token 消耗偏大、前端偏弱。',
     },
     {
       id: 'cursor',
-      note: '占位推荐：本批次未检索到 Qwen3.7-Max × Cursor 的专门实测。最近似证据：TRAE（Cursor 系 IDE）官方社区 5/22 实测编程综合「优秀」、同提示词复现优秀、vs GLM-5.1 略胜一筹（帖 860 浏览/17 赞，单次测试自注偏差）；背景事实 Cursor Composer 1 曾基于 Qwen，亦有用户反映 Cursor 接入 Qwen/GLM 模型配置不畅（HN infocollector）。适配逻辑：经 OpenAI 兼容 API 自行配置，用其便宜定价（OpenRouter $1.475/$4.425）承接高频轻量编码，注意 token 消耗偏大、页面类任务切回 Opus 系。实测数据待补。',
+      note: '占位推荐：无 Cursor 实测；最近似证据 TRAE 官方社区「优秀」、vs GLM-5.1 略胜；实测数据待补。',
     },
     {
       id: 'openhands',
-      note: '占位推荐：本批次未检索到 Qwen3.7-Max × OpenHands 的专门实测，官方 scaffold-agnostic 声明未附 OpenHands 数字背书；本地代有 zepearl（Qwen3.6 27B + OpenHands 编程）可用参照。适配逻辑：作为多 Agent 编排的推理核心——MCP-Mark 60.8 / MCP-Atlas 76.4 / Skillsbench 59.2 通用 Agent 基准领先，35 小时长程执行适合无人值守流水线；但完全闭源无法自部署，企业数据合规场景需换 DeepSeek V4 或 GLM-5.2。实测数据待补。',
+      note: '占位推荐：通用 Agent 基准领先，35 小时长程执行适合无人值守流水线；完全闭源、无法自部署。',
     },
   ],
   teamIds: ['fengshen-flagship', 'common-warlord'],

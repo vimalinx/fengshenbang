@@ -219,9 +219,9 @@ export const DETAIL: ModelDetailData = {
       { label: '方舟 Coding Plan 首月', value: '8.91 元（腾讯新闻）' },
     ],
     harnessReviews: [
-      { id: 'claude-code', text: '有真实实测：V2EX「火山云 Coding Plan 值得买吗」（t/1206049）中 jixule 实测「CC+Doubao-Seed-2.0-pro 改一些小问题还是挺快的」——Claude Code 经方舟 OpenAI 兼容端点（ark.cn-beijing.volces.com/api/v3）可接入；官方腾讯新闻整理明确 Code 变体「适配 Claude Code 等 IDE 工具链」，火山 OpenViking 官方基准还用豆包做 Claude Code judge（judge.py 默认 doubao-seed-2-0-pro-260215）。但同帖其余回复一边倒：隐藏倍率、额度低、响应慢，「大任务不推荐，小改动可用」。' },
-      { id: 'cursor', text: '无直接实测（接线证据充分）：方舟 API 为 OpenAI 兼容端点（ark.cn-beijing.volces.com/api/v3），模型 ID doubao-seed-2-0-pro-260215 等已被 CherryHQ/cherry-studio、lobehub（volcengineCodingPlan）、farion1231/cc-switch 等工具链收录，Cursor 自定义端点理论上可直接接线。社区编程讨论集中在 TRAE / 火山引擎 Coding Plan（V2EX t/1206049），低预算中文快速开发可试，长程 agentic 仍建议 Claude/GPT 系。' },
-      { id: 'openhands', text: '未检索到 OpenHands 接入实测：开源 Agent 生态主要接开源模型，闭源 Seed 2.0 集成度低；且 Anthropic 2025-09 起限制中国实体、Trae 新加坡版 2025-11-05 下架 Claude，字节系 harness 与开源生态天然割裂。API 按量计费（Pro $0.47/$2.37 · Mtok）适合批量调用做数据流水线，Agent 编排建议优先开源系。' },
+      { id: 'claude-code', text: '有实测：V2EX jixule 实测 Claude Code 经方舟 OpenAI 兼容端点接入豆包改小问题挺快；官方称 Code 变体适配 Claude Code。但同帖其余回复一边倒：隐藏倍率、响应慢，小改动可用。' },
+      { id: 'cursor', text: '无直接实测但接线证据充分：方舟 API 为 OpenAI 兼容端点，doubao 系已被 cherry-studio、lobehub 等工具链收录，Cursor 可自定义端点接入。低预算中文开发可试。' },
+      { id: 'openhands', text: '未检索到 OpenHands 接入实测：开源生态主要接开源模型，闭源 Seed 2.0 集成度低，字节系 harness 与开源生态割裂。可经兼容端点跑批量数据流水线，Agent 编排建议优先开源系。' },
     ],
     expertQuotes: [
       {
@@ -405,15 +405,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '可接线且有实测：官方明确 Code 变体「适配 Claude Code 等 IDE 工具链」（腾讯新闻整理，79 页 Model Card 佐证），方舟 API 为 OpenAI 兼容端点（ark.cn-beijing.volces.com/api/v3），模型 ID doubao-seed-2-0-pro-260215；V2EX 实测「CC+Doubao-Seed-2.0-pro 改一些小问题还是挺快的」，火山 OpenViking 官方基准亦用豆包做 Claude Code judge。但 V2EX 同帖 10/11 回复为负面——隐藏倍率、额度低、响应慢（「豆包 pro 可能是我用过的比较垃圾那一类」「响应速度极慢，体验极差」），只适合低预算改小问题的场景，长程 agentic 任务仍建议 Claude 本家；且 Anthropic 限制中国实体后接入合规风险需自行评估。',
+      note: '可接线且有实测：Claude Code 经方舟 OpenAI 兼容端点可接入，但响应慢、倍率坑，只适合小改动。',
     },
     {
       id: 'cursor',
-      note: '无直接实测但有接线证据：Cursor 自定义端点可指向方舟 OpenAI 兼容接口（ark.cn-beijing.volces.com/api/v3），doubao-seed-2-0 全系已被 cherry-studio、lobehub（volcengineCodingPlan）、cc-switch 等工具链收录。社区编程讨论集中在 TRAE / 火山引擎 Coding Plan（V2EX t/1206049），方舟套餐首月 8.91 元的低价被「隐藏倍率、token 双重计费」抵消。定位：低预算中文快速开发/多模态输入的补充槽位，与主力模型组成性价比组合；复杂长程 agentic 仍建议 Claude/GPT 系。',
+      note: '无实测但可接线：Cursor 可接方舟 OpenAI 兼容接口，工具链已收录，适合低预算中文开发补充位。',
     },
     {
       id: 'openhands',
-      note: '未检索到 OpenHands 接入实测：开源 Agent 生态主要接开源模型，闭源 Seed 2.0 集成度低；字节系 harness 与开源生态天然割裂（Anthropic 限制 → Trae 下架 Claude 即是信号）。可经 OpenAI 兼容端点接线跑数据流水线类批量任务（Pro $0.47/$2.37 · Mtok 按量计费，10 亿输出 token 月费仅 $2,370），但 Agent 编排与长程自治建议优先开源系（DeepSeek/Qwen）。',
+      note: '无 OpenHands 实测：开源生态主接开源模型，闭源 Seed 集成度低；可经兼容端点跑批量任务，编排建议开源系。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

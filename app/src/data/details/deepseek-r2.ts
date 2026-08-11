@@ -231,15 +231,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '官方提供 Claude Code 集成指南（api-docs.deepseek.com/quick_start/agent_integrations/claude_code/）；r/ClaudeCode 实测「日常任务可用（works fine for a lot of the day to day stuff），多文件重构/安全相关 Opus 仍有优势」；R2 长思考链在 CC 里建议配预算提示（system prompt 砍 40-60% 思考量）与精简配置，否则简单任务也会被拉成数分钟长链。',
+        text: 'r/ClaudeCode「works fine for a lot of the day to day stuff」；建议配预算提示（system prompt 砍 40-60% 思考量）与精简配置，否则简单任务也会被拉成数分钟长链。',
       },
       {
         id: 'aider',
-        text: '站点 harnesses.ts 将 deepseek-r2 列为 Aider topFit 最高适配（88%，高于 gpt-5-2 的 86%）；Aider 的 git-first 单任务工作流与 R2「单题深推理」定位契合——Aider 作者验证过的「架构师+editor」组合里，R2 当单题推理单元比当多步主力更稳；无 R2 专项横评，以适配数据 + 机制契合为准。',
+        text: 'git-first 单任务工作流与 R2「单题深推理」定位天然契合；预算敏感玩家可用 FP8 自托管 + Aider 组「本地深推理套餐」，把 $1.5/$6 的 API 成本换成自托管算力。',
       },
       {
         id: 'openhands',
-        text: '无 R2 专项实测（占位）。参照 R1 在 OpenHands 的 SWE 34%（issue #6466）历史，推理模型在 agent 多步链路吃亏；20-40K 思考链易吃满上下文。建议蜂群流里当「单轮高难推理单元」，简单任务分流 V4-Flash。',
+        text: '参照 R1 在 OpenHands 的 SWE 34% 历史，推理模型在 agent 多步链路吃亏，20-40K 思考链易吃满上下文；建议蜂群流当「单轮高难推理单元」，简单任务分流 V4-Flash。',
         placeholder: true,
       },
     ],
@@ -410,15 +410,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '官方集成指南背书（api-docs.deepseek.com 提供 Claude Code 接入），r/ClaudeCode 实测「日常任务可用、多文件重构/安全相关 Opus 仍有优势」。搭配建议：R2 当「难题引擎」——简单任务路由 V4-Flash，高难推理才交给 R2；system prompt 加预算提示砍 40-60% 思考量，配 /doctor 式精简，避免简单任务被拉成数分钟长链。',
+      note: '官方集成指南背书，社区实测「日常任务可用」；多文件重构/安全相关 Opus 仍占优。',
     },
     {
       id: 'aider',
-      note: '站点 harnesses.ts 显示 R2 是 Aider 全站最高适配（88%，高于 gpt-5-2 的 86%）；Aider 的 git-first 单任务工作流与 R2「单题深推理」定位天然契合，改动即 commit 的节奏也适合长思考链。预算敏感玩家可用 FP8 自托管 + Aider 组「本地深推理套餐」，把 $1.5/$6 的 API 成本换成自托管算力。',
+      note: '站点 harnesses.ts 认证 Aider 全站最高适配（88%，高于 gpt-5-2 的 86%）。',
     },
     {
       id: 'openhands',
-      note: '无 R2 专项实测（占位）。参照 R1 在 OpenHands 的 SWE 34%（issue #6466）历史，推理模型在 agent 多步链路普遍吃亏；R2 的 20-40K 思考链也易吃满上下文。如需蜂群流，把 R2 当「单轮高难推理单元」（数学/算法题）而非多步代理主力，其余任务交给 V4-Flash。',
+      note: '无 R2 专项实测（占位）；定位「单轮高难推理单元」，不宜作多步代理主力。',
     },
   ],
   teamIds: ['galaxy-warship', 'budget-vanguard'],

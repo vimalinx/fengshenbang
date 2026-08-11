@@ -226,15 +226,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '实测最充分：官方首推（ANTHROPIC_BASE_URL 别名直连），阮一峰复测 Simon Willison 测试 278 用例 18.31s 全过、鹈鹕 SVG 与 Sonnet 4.5「相当接近」；Joe Njenga 配置路由映射（HAIKU→glm-4.5-air、SONNET/OPUS→glm-4.6）后同任务成本 $0.10–0.25 vs Claude 的 $0.50–1.20（降本 5–6 倍），「85–95% 的编程工作交付扎实」；mrlaude 称日常 refactor/风格审查「barely notice a difference」、约 90% Sonnet 4.5 水平；r/ClaudeCode 3 天实测帖存在但评价分化——注意越界修复风险（曾有模型擅自改 CSS/Canvas 被 git reset），建议限定范围 + git 防护。',
+        text: 'mrlaude 日常 refactor/风格审查「barely notice a difference」约 90% Sonnet 4.5 水平；Joe Njenga「85–95% 交付扎实」；越界修复风险，建议限定范围 + git 防护。',
       },
       {
         id: 'cursor',
-        text: '社区实测可接入：r/cursor 用户经 Cline/z.ai Coding Plan 实测「it just gets everything right…no complaints」，但共识「vibe coding 不行，给 spec 就很能打」；Dre Dyson 6 个月 200+ 测试给出量化表——代码翻译 92% vs Claude 88%、复杂调试 65% vs 79%、API 生成 84% vs 91%（「straightforward tasks 强、complex problem-solving 翻车」）；LinkedIn 代码评审实测「更像对话式协作而非清单式」；集成需注意 API 冲突隔离（低 temperature 0.3）与两会等敏感期断供风险。',
+        text: 'Dre Dyson 6 个月 200+ 测试量化：代码翻译 92% vs Claude 88%、复杂调试 65% vs 79%；集成注意 API 冲突隔离（temperature 0.3），两会等敏感期有断供风险。',
       },
       {
         id: 'openhands',
-        text: '可跑但有已知坑：OpenHands 创始人 neubig 亲自提 Issue #11234——GLM-4.6 对话中途无故终止、无结束消息（2025-10-04，11-15 关闭），opencode/codex 同病复现；社区评价「good on JS 类任务，非 JS 任务一般（aider 基准）」；ThunderAgent 项目提供 reproduce_glm4.6.sh（GLM-4.6-FP8 + vLLM + CodeActAgent 跑 SWE-bench_Lite，8×H100）证明可接入跑基准，但官方未列 OpenHands 为首选接入端，需自行配置 LLM 端点。',
+        text: 'OpenHands 创始人 neubig 记录 GLM-4.6 对话中途无故终止的 bug，opencode/codex 同病；ThunderAgent 有 SWE-bench_Lite 复现脚本可参考；跑长任务注意断点续跑。',
       },
     ],
     expertQuotes: [
@@ -419,15 +419,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '官方首推接入端（ANTHROPIC_BASE_URL 别名直连即可复用 GLM Coding Plan），实测证据最厚：阮一峰复测 278 用例 18.31s 全过、Joe Njenga 配置路由映射后同任务成本降 5–6 倍（$0.10–0.25 vs $0.50–1.20）、mrlaude 日常 grunt work「barely notice a difference」。注意两个坑：一是复杂任务偶发越界修改无关代码（r/ClaudeCode 翻车帖建议 git 防护 + 限定范围）；二是对话偶发中途终止（OpenHands #11234 同源）。最佳姿势：refactor/风格审查/实现既定方案这类结构化任务直接交 GLM-4.6，复杂探索交给 Sonnet 4.5/Codex。',
+      note: '官方首推接入端，实测证据最厚：阮一峰复测 278 用例 18.31s 全过、同任务成本降 5–6 倍。',
     },
     {
       id: 'cursor',
-      note: '经自定义 API/OpenRouter/z.ai Coding Plan 均可接入；r/cursor 实测「给 spec 就很能打、vibe coding 不行」，Dre Dyson 200+ 测试量化「简单任务 92% 命中、复杂调试跌到 65%」。配置要点：隔离 API 上下文防冲突、temperature 压到 0.3、按任务类型分流（GLM 管代码翻译/中文文档，Claude 管复杂调试）。风险：中国 API 在两会等敏感期可能断供，建议保留备用路由。',
+      note: 'r/cursor 实测「给 spec 就很能打、vibe coding 不行」：复杂调试建议留给 Claude。',
     },
     {
       id: 'openhands',
-      note: '可经 LiteLLM/OpenRouter 接入（OpenRouter 模型名 z-ai/glm-4.6），但官方未列 OpenHands 为首选接入端；OpenHands 创始人 neubig 亲自记录过对话中途终止 bug（Issue #11234，2025-10 报告、11 月关闭），跑长任务时注意断点续跑；ThunderAgent 项目提供 GLM-4.6-FP8 + CodeActAgent 的 SWE-bench_Lite 复现脚本可作为接入参考。适合预算敏感、任务边界清晰的自动化批次，复杂开放任务不推荐。',
+      note: '官方未列为首选接入端：适合预算敏感、任务边界清晰的自动化批次，复杂开放任务不推荐。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

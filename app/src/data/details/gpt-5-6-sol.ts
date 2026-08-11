@@ -227,15 +227,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '无官方支持（Anthropic 明确不支持经网关路由非 Claude 模型），但社区实测是本轮最大话题：Theo (t3.gg) 07-11「gpt-5.6-sol 在 Claude Code 里比 Codex 好」，Paul Bettner、Sam Paddock（两周静默实测）独立复现；机制=Claude Code Workflows 终止式编排（同任务 token 约 1/4）vs Codex 开放式 Ultra 子代理 + 前端设计「宪法」系统提示词；nathanonn 同 prompt 三组对照 Claude Code 版深度约为 Codex 版两倍；openai/codex#31814（111 reactions 未解决）子代理字段隐藏无法路由 Terra/Luna。接入走 CLIProxyAPI 等兼容网关（OAuth 灰色地带、账号有封禁风险）或官方 codex-plugin-cc（/codex:review 委派）。要 Sol 作主模型必须网关，建议 xhigh/max 档 + Full-Access 开沙箱防误删。',
+        text: 'Theo、Paul Bettner 等实测复现「Claude Code 里比 Codex 好」，同任务 token 约 1/4；接入走 CLIProxyAPI 等网关（有封号风险），作主模型建议 xhigh/max 档并开沙箱防误删。',
       },
       {
         id: 'cursor',
-        text: '官方 07-09 同日接入，可选手 max 档（ultra 仅 Codex/API）；CursorBench 67.2%（Max）仅次 Fable 5 70.5%/Opus 5 70.0%，官方称其测过最强之一；DataCamp 实测长程不跑偏、跨文件一致性好、遇环境问题自主绕行；论坛真实反馈「比 Opus 4.8 便宜」「Incredible 24 hours…nipping at Fable 5\'s heels」「8% Ultra 额度两小时烧完」。坑：子代理提示词过泛、>272k 输入价翻倍至 $10/$45、Cursor Router 固定 Sol $6.76/commit 满意度低于 Auto Balance $4.63。建议前端快出 medium 控 token、复杂重构 xhigh/max、规避 Ultra 额度风暴。',
+        text: '前端快出用 medium 档控 token，复杂重构切 xhigh/max；两个坑：>272k 输入价翻倍至 $10/$45，Ultra 额度极快烧完（实测 8% 两小时），额度敏感避开 Ultra。',
       },
       {
         id: 'openhands',
-        text: '官方支持 OpenAI 兼容 /v1 接入（LLM_BASE_URL，不持久化）；typescript-client PR #272 已将 Sol/Terra/Luna 暴露进 agent canvas（伴生 SDK PR #4056）；openai-agents SDK 把 gpt-5.6-sol 列为推荐默认。社区经 codex-pooler/anymodel 等网关挂进 OpenHands CLI 跑蜂群，可用 xhigh 档作推理核心（Terminal-Bench 规划-迭代链路 SOTA 背书）；无第一方量化跑分，额度消耗快，关键步骤人工复核。',
+        text: '经 codex-pooler 等网关挂进 OpenHands CLI 跑蜂群，可用 xhigh 档作推理核心；无第一方量化跑分，额度消耗快，关键步骤建议人工复核。',
       },
     ],
     expertQuotes: [
@@ -405,15 +405,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '无官方支持但社区实测口碑炸裂：Theo (t3.gg)、Paul Bettner、Sam Paddock 独立复现「Sol 在 Claude Code 里比 Codex 好」，Workflows 终止式编排同任务 token 约 1/4；接入需 CLIProxyAPI 等兼容网关（OAuth 灰色地带、账号有封禁风险）或官方 codex-plugin-cc 委派。要 Sol 作主模型建议网关 + xhigh/max 档，Full-Access 务必开沙箱保护防误删（openai/codex#31814 使子代理无法路由 Terra/Luna，预算要预留）。',
+      note: '无官方支持，但社区实测口碑炸裂：多人复现「Claude Code 里比 Codex 好」，需网关接入。',
     },
     {
       id: 'cursor',
-      note: '官方 07-09 同日接入、可选手 max 档：CursorBench 67.2%（仅次 Fable 5 70.5%/Opus 5 70.0%），论坛反馈「比 Opus 4.8 便宜」；前端快出用 medium 控 token、复杂重构切 xhigh/max（Code Arena Frontend 1631 Elo 前端背书）；注意 >272k 输入价翻倍至 $10/$45，并规避 Ultra 额度风暴（Cursor 论坛实测 8% Ultra 额度两小时烧完）。',
+      note: '官方同日接入，CursorBench 仅次 Fable 5/Opus 5，论坛反馈「比 Opus 4.8 便宜」。',
     },
     {
       id: 'openhands',
-      note: '官方支持 OpenAI 兼容 /v1（LLM_BASE_URL），agent canvas 已暴露 Sol/Terra/Luna（typescript-client PR #272）；社区经 codex-pooler/anymodel 网关挂进 OpenHands CLI 跑蜂群，xhigh 档作推理核心有 Terminal-Bench 规划-迭代 SOTA 背书；无第一方量化跑分、额度消耗快，建议按任务预分配预算并对关键步骤人工复核。',
+      note: '官方支持 OpenAI 兼容接入，社区常经网关挂进 CLI 跑多 Agent 蜂群。',
     },
   ],
   teamIds: ['fengshen-flagship', 'galaxy-warship'],

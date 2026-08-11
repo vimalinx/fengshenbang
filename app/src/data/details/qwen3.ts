@@ -228,15 +228,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '官方通路：DashScope 提供 Claude Code proxy（ANTHROPIC_BASE_URL 指向 dashscope claude-code-proxy 即可用 Qwen3-Coder 驱动 Claude Code）；HN 用户 storus 实测「Qwen3 coder for Claude Code 已取代我的 Opus 4.6 全栈用途，错误率仅略高」；incomingpain 用 Ollama 本地 Qwen3 接 Claude Code 只为绕开 Anthropic 5 小时限额（45127509）。注意：thinking 模式会烧光 max_tokens 造成空响应，务必 /no_think 或加大预算。',
+        text: '有用户用 Ollama 本地接 Claude Code 绕开 Anthropic 5 小时限额。注意：thinking 模式会烧光 max_tokens 造成空响应，务必 /no_think 或加大预算。',
       },
       {
         id: 'cursor',
-        text: "Cursor 未原生收录，走 Settings → Models → Override OpenAI Base URL 指向 OpenAI 兼容端点即可（Novita 教程：qwen3-coder-480b 约 $0.29/$1.2 · Mtok）；jayvanzyl 实测在 Cursor Agent Mode 用 Qwen3-Coder-480B 单 prompt 生成完整 2D 游戏，体验「surprisingly close to GPT-4's agent mode」，成本约 $2/1M tokens。本地方案：Ollama qwen3-coder:30b + 自定义 base URL，零云端数据不出网。",
+        text: 'Settings → Models → Override OpenAI Base URL 指向 OpenAI 兼容端点。本地方案：Ollama qwen3-coder:30b + 自定义 base URL，零云端数据不出网。',
       },
       {
         id: 'openhands',
-        text: '有硬核数据：nebius 用 OpenHands v0.54.0 测 235B-Instruct-2507，SWE-bench Verified 100-turn Pass@1 = 45.2%，RFT 微调后 59.9%（+14.7）、500-turn 61.7%；并开源 67,074 条 OpenHands 轨迹集供社区复现（nebius/SWE-rebench-openhands-Qwen3-235B-A22B）。用户 incomingpain 实测「Openhands is working really well but occasional 工具调用参数错误」——Agent 编排可用但不如闭源旗舰顺手。',
+        text: 'nebius 开源 67,074 条 OpenHands 轨迹集供社区复现；「Openhands is working really well but occasional 工具调用参数错误」——Agent 编排可用但不如闭源旗舰顺手。',
       },
     ],
     expertQuotes: [
@@ -408,15 +408,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '官方通路已打通：DashScope Claude Code proxy（ANTHROPIC_BASE_URL=dashscope-intl.aliyuncs.com/api/v2/apps/claude-code-proxy）可直接用 Qwen3-Coder 驱动；HN 用户 storus 实测已用其取代 Opus 4.6 全栈开发。硬性配置：/no_think 或挂 Instruct-2507 控 token（Aider 官方 65.3% 就是 /no_think 跑出来的），max_tokens 预算给 4-6× 防思考块吃光——编程背书 Aider 65.3% + Wolfram 69.9%。',
+      note: 'DashScope proxy 官方通路已打通，HN 实测取代 Opus 4.6 全栈开发。',
     },
     {
       id: 'cursor',
-      note: '未原生收录，需 Settings → Models → Override OpenAI Base URL 指向 OpenAI 兼容端点（Novita/DashScope/Ollama 均可）。实测背书：jayvanzyl 在 Cursor Agent Mode 用 480B 单 prompt 生成完整 2D 游戏、成本约 $2/1M tokens、体验「接近 GPT-4 agent mode」；Aider polyglot 65.3%-69.9% + LiveCodeBench v6 74.1 为编程基线。双模型槽位可组「Qwen3 开源低成本迭代 + 闭源旗舰加固」复核流，日常用 Instruct-2507 控延迟。',
+      note: '未原生收录；实测单 prompt 生成完整 2D 游戏，体验接近 GPT-4 agent mode。',
     },
     {
       id: 'openhands',
-      note: '有 OpenHands 实测数据背书：235B-Instruct-2507 在 v0.54.0 上 SWE-bench 100-turn Pass@1 45.2%，nebius RFT 微调后 59.9%→500-turn 61.7%；官方轨迹集（67,074 条）可复现。Apache 2.0 + 4×H20 自部署可组近零边际成本蜂群流；注意 Agent 体感不及闭源旗舰，定位为子任务执行单元，配合 thinking 预算控制。',
+      note: 'OpenHands 实测 SWE-bench Pass@1 45.2%，RFT 微调后 61.7%。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

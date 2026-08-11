@@ -217,15 +217,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '真机实测最全的一条：andlukyane 把 M3 接进 Claude Code，100 文件/26k 行仓库审计约 30 分钟出分级报告（12 critical/20 high/30 medium/20 low），修复 2h40m 三阶段、测试 188→237，但 Opus 4.8 复核发现 2 个被绿测试掩盖的 critical 回归——教训是别让 M3 同时写测试和修代码，拆两个会话。接入成本低：Ollama 提供「claude launch claude --model minimax-m3:cloud」，r/clawdbot 实测作 fallback 免限流，经 shim 后 /compact、/clear、/agents 行为一致；HN ignoramous「equally good if not better than DS4 at coding」。建议长会话按量计费、避开 cache_read 膨胀配额路径。',
+        text: '100 文件/26k 行仓库：审计约 30 分钟出分级报告，修复 2h40m 测试 188→237；但 Opus 复核仍挖出 2 个被绿测试掩盖的回归。别让 M3 同时写测试和修代码，拆两个会话，Ollama 可一键接入。',
       },
       {
         id: 'cursor',
-        text: '官方文档「M3 for AI Coding Tools」有专门 Cursor 章节（platform.minimax.io/docs/guides/text-ai-coding-tools）；社区有 Agentic-first 的 Cursor Rules 项目（madebyaris/advance-minimax-m3-cursor-rules，标称 Cursor 3.7 实测 + 1M MSA）；r/cursor 用户实测「I find Minimax M3 useful for most coding」。「Any plans to add MiniMax M3 to Cursor?」帖（8↑/5c）揭示通道：Fireworks 已上架 M3，Cursor 引开源模型走 Fireworks（GLM 5.2 即先例、数据不出境）。尚无端到端跑分，编程稳定性仍需调 prompt 或叠加闭源复核的混合流。',
+        text: 'r/cursor 用户实测「I find Minimax M3 useful for most coding」；尚无端到端跑分，编程稳定性仍需调 prompt 或叠加闭源复核的混合流。',
       },
       {
         id: 'openhands',
-        text: '官方接入已实锤：OpenHands 文档把 M3 列入推荐开源模型表，模型串 openrouter/minimax/minimax-m3，OpenHands Index 57.2（开源第二，仅次 GLM-5.1）；PR #16223（07-31）「feat: add MiniMax M3 model selection」为原生模型选择铺路。社区实战帖仍空白（r/OpenHands 无 M3 讨论），跑分数据待补——先用官方 Index 57.2 作能力锚点。',
+        text: '社区实战帖仍空白、跑分数据待补，建议先用官方 Index 作能力锚点接入，待社区数据出来再补。',
       },
     ],
     expertQuotes: [
@@ -395,15 +395,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '真机验证最充分的装备：andlukyane 实测审计 100 文件/26k 行仓库约 30 分钟、出 12 critical/20 high/30 medium/20 low 分级报告，修复 2h40m 把测试从 188 推到 237——但 Opus 4.8 复核仍挖出 2 个被绿测试掩盖的 critical 回归，实测者原话「不该让 M3 同时写测试和修代码」，建议拆两个会话、加一道闭源复核。接入成本低：Ollama 提供「claude launch claude --model minimax-m3:cloud」一键命令，r/clawdbot 实测作 fallback 免限流。重度长会话建议直接按量计费，避开 Token Plan 配额在 cache_read 膨胀 bug（Issue #25）下的加速耗尽。',
+      note: '真机验证最充分的装备：社区实测覆盖最全、口碑佳，接入成本低。',
     },
     {
       id: 'cursor',
-      note: '官方文档有专门 Cursor 章节（platform.minimax.io/docs/guides/text-ai-coding-tools），社区 Rules 项目 madebyaris/advance-minimax-m3-cursor-rules（Agentic-first、Cursor 3.7 实测）可直接套用；进入 Cursor 的通道大概率走 Fireworks（已上架 M3，GLM 5.2 即先例、数据不出境）。r/cursor 用户实测「M3 useful for most coding」。1M 上下文 + 原生多模态适合全仓分析与截图排障；尚无端到端跑分，编程稳定性需反复调 prompt 或叠加 Fable/Opus 修 bug 的混合工作流。',
+      note: '官方文档有专门 Cursor 章节、社区 Rules 项目可直接套用，接入资源齐备、上手门槛低。',
     },
     {
       id: 'openhands',
-      note: '官方接入已落地、不再是占位：OpenHands 文档将 M3 列为推荐开源模型，openrouter/minimax/minimax-m3 对应 OpenHands Index 57.2（开源第二，仅次 GLM-5.1 的 58.2、高于 Kimi-K2.6 的 57.1）；PR #16223（07-31）为 M3 加原生模型选择。社区实战帖与跑分仍空白，可先按官方 Index 作能力锚点接入，后续社区数据出来再补。',
+      note: '官方接入已落地：OpenHands 文档列为推荐开源模型、Index 57.2 开源第二（仅次 GLM-5.1）。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

@@ -234,15 +234,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '有实测（Endor Labs · Agent Security League）：Claude Code + Fable 5 在 200 个真实漏洞修复任务上 FuncPass 59.8%、SecPass 19.0%（榜单中游，创 38/200 最高作弊量与 15 次超 40 分钟超时纪录）；Avinash Sangle 实测根因排查：Fable 5 自写复现测试、少约 40% 轮次、总成本近持平；但分类器回退是会话级粘性的——CLAUDE.md 含 CVE 字样时开场上下文加载即触发，建议 settings.json 关闭自动切换并自查日志。',
+        text: 'Endor Labs 实测：FuncPass 59.8%、SecPass 19.0%，榜单中游；另实测根因排查少约 40% 轮次、总成本近持平。注意 CLAUDE.md 含 CVE 字样即触发分类器回退，建议关闭自动切换并自查日志。',
       },
       {
         id: 'cursor',
-        text: '有实测（Endor Labs · take two）：同一 Fable 5 换 Cursor harness 后 FuncPass 59.8%→72.6%、SecPass 19.0%→29%（+12.8pp/+10pp），登顶公平榜并解锁 5 个史上首个安全解——「the harness, not the model, drives the gap」；Test-Lab.ai 两周生产对比：Fable 5 硬任务单遍完成 Opus 4.8 需两三轮的活；r/ClaudeAI 用户直连 Fable 5「feels a big magical」，15K 行单文件基准流畅。',
+        text: 'Endor Labs「take two」实测：同一 Fable 5 换 Cursor 后 FuncPass 59.8%→72.6%、SecPass 19.0%→29%；harness 主导差距，建议优先用 Cursor harness。',
       },
       {
         id: 'openhands',
-        text: '同权重 proxy：OpenHands 未直接测 Mythos 5 裸模型（不公开），但同权重 Fable 5 在 OpenHands Index 官方成绩均分 81.0 居首（swe-bench 95.8%），是最接近 Mythos-class 能力的独立跑分；Mythos 5 裸模型蜂群流实测仍缺，跑分待补。',
+        text: 'OpenHands 未直接测 Mythos 5 裸模型（不公开），以同权重 Fable 5 的 OpenHands Index 成绩为 proxy；裸模型蜂群流实测仍缺，选型建议先参考该 proxy 跑分。',
       },
     ],
     expertQuotes: [
@@ -421,15 +421,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '官方首选入口：Fable 5 恢复后即重新支持 Claude Code/Claude Cowork，日常走 Fable 5 版即可体验 Mythos-class 长程编码（SWE-bench Verified 95.5%）；Endor Labs 实测 Claude Code + Fable 5 FuncPass 59.8%（200 个真实漏洞修复任务，创 38/200 最高作弊量与 15 次超时纪录）；注意分类器回退是会话级粘性的——CLAUDE.md 含 CVE 字样即触发（Code With Seb 实测回退率约 8% vs 官方 <5%），建议关闭自动切换并自查日志；追求满血 Mythos 5 需 Glasswing 获批。',
+      note: '官方首选：日常用 Fable 5 即可体验 Mythos-class 长程编码；满血需 Glasswing 获批。',
     },
     {
       id: 'cursor',
-      note: '实测背书最强：同一 Fable 5 换 Cursor harness 后 FuncPass 59.8%→72.6%、SecPass 19.0%→29%（+10pp），登顶 Endor Labs 公平榜并解锁 5 个史上首个安全解，「harness 而非模型主导差距」；r/ClaudeAI 用户直连「feels a big magical」、15K 行单文件 endless racer 基准流畅；SWE-bench Pro 80.3% 支撑长程重构，建议长任务用完整会话、避免触发安全回退。',
+      note: '实测背书最强：换 Cursor harness 登顶 Endor Labs 公平榜，解锁 5 个史上首个安全解。',
     },
     {
       id: 'openhands',
-      note: '同权重 proxy 推荐：OpenHands 未直接测 Mythos 5 裸模型（不公开），但同权重 Fable 5 在 OpenHands Index 官方成绩均分 81.0 居首（swe-bench 95.8%），是 Mythos-class 能力最接近的独立跑分；Mythos-class 的 1M 上下文与多小时代理会话一致性理论上契合蜂群流，裸模型跑分待补。',
+      note: '同权重 Fable 5 登顶 OpenHands Index 81.0，Mythos-class 最接近独立跑分。',
     },
   ],
   teamIds: ['fengshen-flagship', 'puppet-workshop'],

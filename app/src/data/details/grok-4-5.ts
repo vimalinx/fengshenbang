@@ -224,11 +224,11 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '无官方集成，但社区实测密集且两面：small_model 把 Grok Build 当 Claude Code 的便宜日常主力（「VERY fast and cheap，Claude Code Fable 留给 10% 难题」）；Cider9986 称「$10 月费 Grok 比 $20 Claude Pro 用量更大、Opus 级，Claude Pro 像 demo」，同时吐槽「Claude Code feels like a complete mess」。风险面：r/codex 273 赞警告帖称「entire codebase has been sent」，Grok Build CLI 曾越界扫描 ~/.claude/ 窃取 Claude API 密钥——隐私整改落地前仍不建议直接接入。',
+        text: '社区实测两面：Cider9986「$10 月费 Grok 比 $20 Claude Pro 用量更大、Opus 级」；r/codex 273 赞帖「entire codebase has been sent」。隐私整改落地前不建议直接接入。',
       },
       {
         id: 'cursor',
-        text: '官方联合训练、同日上线、进 first-party model pool（首周双倍用量）的本命装备：sergiotapia「grok 4.5 fast model + cursor ergonomics is insanely good」、kamikazechaser「模型比 Opus 4.8 好、harness 顺滑」、maxdo 企业实测「first model that offers exactly as I want」；亦有 r/cursor「quality worse than gpt 5.4」（79 分帖）与 canadiantim「只敢用于 explore/commit 子任务」。Cursorbench 官方背书「better than GPT-5.5, at ~half the cost」。',
+        text: '正：sergiotapia「insanely good」；反：canadiantim「只敢用于 explore/commit 子任务」。适合批量生成与多仓库并行，双模型复核流里当便宜主力。',
       },
       {
         id: 'openhands',
@@ -409,15 +409,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '无官方集成，谨慎接入：Grok 作 subagent 有数据外泄风险（r/codex 273 赞帖「entire codebase has been sent」），Grok Build CLI 还曾越界扫描 ~/.claude/ 窃取 Claude API 密钥。但社区实测显示它是 Claude Code 工作流的「便宜日常主力」候选——Cider9986「$10 月费 Grok 比 $20 Claude Pro 用量更大、Opus 级，Claude Pro 像 demo」，small_model「Claude Code Fable 只留给 10% 难题」——等官方隐私整改与独立审计落地后再评估。',
+      note: '无官方集成，口碑两极：便宜日常主力候选，亦有数据外泄风险。',
     },
     {
       id: 'cursor',
-      note: '官方联合训练、同日上线、进 first-party model pool（首周双倍用量）的本命装备：Cursorbench 官方背书「better than GPT-5.5 at ~half the cost」，sergiotapia「grok 4.5 fast model + cursor ergonomics is insanely good」，kamikazechaser「模型比 Opus 4.8 好、harness 顺滑」，maxdo 企业实测「first model that offers exactly as I want」；token 消耗极度节制（SWE-bench Pro 任务均 15,954 输出 token，Opus 4.8 需 67,020）。适合批量代码生成与多仓库并行，双模型复核流里当便宜主力。',
+      note: '官方联合训练，Cursorbench「better than GPT-5.5 at ~half the cost」。',
     },
     {
       id: 'openhands',
-      note: '未检索到社区使用 Grok 4.5 驱动 OpenHands 的可靠实测（HN/Reddit/pullpush 三轮检索均无命中），当前为占位推荐，跑分待补。',
+      note: '未检索到社区使用 Grok 4.5 驱动 OpenHands 的可靠实测（三轮检索均无命中），占位推荐，跑分待补。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

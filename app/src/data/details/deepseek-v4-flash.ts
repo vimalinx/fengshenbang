@@ -236,16 +236,16 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '实测充分：环境变量一行接入（ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic），BiraIgnacio 实测「每天 3 小时、一周不到 $1」、dw_arthur「替代 Claude Code（受够 5 小时限额），全天约 $1，只缺多模态」、arjie「用 Claude Code/Codex 为主，切 V4 Flash 也不觉得差，frontier 工具调用更好」；mark_l_watson 采取「V4 Pro + Claude Code harness + V4 Flash + OpenCode harness」混用策略；短板是无订阅套餐、纯 API 计费。',
+        text: 'BiraIgnacio 实测「每天 3 小时、一周不到 $1」、dw_arthur 全天约 $1 且只缺多模态，SWE-bench 79.0 距 V4-Pro 仅 1.6 分；建议简单任务开非推理档控 token、复杂规划交旗舰复核。',
       },
       {
         id: 'cursor',
-        text: '无官方/社区专项评测，仅 OpenRouter 通用配置路径（m_ke：GLM 5.2 / deepseek 4 Flash 是 Opus 4.8 级模型，cursor 等 2 行配置即可接入；muzani：Cursor 内置 deepseek 选项）；可经 OpenAI 兼容 API 自行配置，高频补全与轻量重构跑 Flash（$0.14/$0.28 约 Pro 的 1/3，缓存命中 98% 折扣），交付细节要求高的活切回旗舰；实测数据待补（占位）。',
+        text: '可经 OpenAI 兼容 API 自行配置，建议高频补全与轻量重构跑 Flash（$0.14/$0.28、缓存命中 98% 折扣），交付细节要求高的活切回旗舰；无官方评测、实测数据待补。',
         placeholder: true,
       },
       {
         id: 'openhands',
-        text: '未检索到社区使用 V4 Flash 驱动 OpenHands 的可靠评测；OpenCode 与 Codex 才是实际主流使用入口——christophilus 实测「与 Codex/Claude Code 几乎无差别」、ragebol「3 周不到 $25」、speu「零问题、被吹爆」、taffydavid 反向「thinking 满屏 actually no/hang on 不自信」；OpenCode Go $10/月含 $60 额度、促销期翻倍约 1/12 官方价（占位待补 OpenHands 专项）。',
+        text: 'OpenCode/Codex 才是主流入口，christophilus 实测「与 Codex/Claude Code 几乎无差别」，$60 额度内约 15.8 万请求/月；建议作蜂群性价比执行单元，复杂长链交旗舰。',
         placeholder: true,
       },
     ],
@@ -424,15 +424,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '实测验证的性价比主力：BiraIgnacio 用 Claude Code harness 每天 3 小时、一周不到 $1；dw_arthur 受够 5 小时限额后全周改跑 V4 Flash、全天约 $1（只缺多模态）；mark_l_watson 采取「V4 Pro + CC harness + V4 Flash + OpenCode harness」混用。适配逻辑：经 ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic 一行接入，SWE-bench 79.0 距 V4-Pro 仅 1.6 分、输出价约 1/3；注意 final 版比 preview 慢 2.5 倍且无订阅套餐，简单任务开非推理档控 token，复杂规划仍交旗舰复核。',
+      note: '实测验证的性价比主力：Claude Code 生态口碑极佳，编码接近 V4-Pro、输出价仅约 1/3。',
     },
     {
       id: 'cursor',
-      note: '占位推荐：无官方/社区评测记录，可经 OpenAI 兼容 API 自行配置（m_ke 称 deepseek 4 Flash 为 Opus 4.8 级模型，cursor 2 行配置即可接入）。适配逻辑：高频补全与轻量重构跑 Flash（$0.14/$0.28 约 Pro 的 1/3，缓存命中 98% 折扣），交付细节要求高的活切回旗舰；注意 0731 偏啰嗦，简单任务可开非推理档控 token；实测数据待补。',
+      note: '占位推荐：社区称达 Opus 4.8 级、价格约 Pro 的 1/3。',
     },
     {
       id: 'openhands',
-      note: '占位推荐：无 OpenHands 专项评测；OpenCode 与 Codex 才是实际主流入口——christophilus 实测「与 Codex/Claude Code 几乎无差别」、ragebol「3 周不到 $25」、speu「零问题」，OpenCode Go $10/月含 $60 额度促销翻倍约 1/12 官方价。适配逻辑：作为蜂群/agent 工作流的性价比执行单元——GDPval-AA v2 1559、AA Agentic 45.7 与 Grok 4.5 持平，$60 内实测约 15.8 万请求/月；复杂长链累计误差大，规划类子任务仍交旗舰。',
+      note: '占位推荐：无 OpenHands 专项评测，性价比口碑第一（OpenCode Go 约 1/12 官方价）。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

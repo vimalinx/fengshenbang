@@ -213,15 +213,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '实测（社区逆向接入）：OpenAI 开发者版发布页明确定位「true coding collaborator」狙击 Claude Code（WIRED 证实），但无官方原生适配，社区经 LiteLLM 网关接入（docs.anthropic.com llm-gateway#litellm-configuration，HN c44831472）。实测体感两极：blurbleblurble 用 Claude Code router + OpenRouter 跑 GPT-5 称「opaque, slow, ridiculously terse, botches basic tool calls and edits, pauses constantly... sharp at analytical tasks but clunky to work with」；OTel 配置类任务「got the replies right on the first try」（c44839338）。结论：配置/样板类任务可换 GPT-5 内核，大型仓库重构体感不如 Opus 4.1 + Claude Code 原配（c44839149）。',
+        text: 'OpenAI 开发者版明确定位狙击 Claude Code（WIRED 证实），幻觉控制较 4o 降 45%。建议：配置/样板任务换 GPT-5 内核更省成本，复杂重构仍用原配。',
       },
       {
         id: 'cursor',
-        text: '实测（三方交叉印证）：①swyx（OpenAI 早期接入伙伴，latent.space）在 Cursor 三场景 one-shot——依赖冲突「o3+Cursor couldn\'t figure it out... GPT-5 one-shotted it」、Clickhouse 查询 o3 挣扎 GPT-5 一次成型、建站+SQLite 同 prompt 下 o3 只给 plan 而 GPT-5 直接出成品（约 10 倍时间差）；②dev.to 三 IDE 对比（Bap，2025-08-22~24）任务全完成、Cursor 交互最专业、上下文占用显示直观（272K+128K）；③首日 HN 实测「feels smarter in isolation, but CC with Opus is faster」「10% better max. It\'s free which is good」（c44832785）。注意 thinking 模式慢且重复（c44839465），建议复杂任务上 medium/high、快速迭代用 main。',
+        text: 'swyx 三场景 one-shot 实证：依赖冲突 o3+Cursor 与 Claude Code+Opus 4 双败、GPT-5 一次成型。建议：单 prompt 全栈 main 档快出原型，多步 Agent 切 thinking 档。',
       },
       {
         id: 'openhands',
-        text: '实测（官方适配 + 量化）：OpenHands 官方文档专设 GPT-5 Preset（ApplyPatchTool）工作流（docs.openhands.dev/sdk/guides/llm-gpt5-preset）；SWT-Bench 排行榜 OpenHands+GPT-5 = 79.8%（Verified）/66.3% 拿下 🥉，GPT-5-mini = 62.4%/60.6%（swtbench.com 实测）；OpenHands 官方 X 发帖「How OpenHands+GPT-5 topped the SWT-Bench leaderboard」。2026 年 OpenHands Index 已由后续版本（5.2-Codex 62.5% 等）接棒，但 GPT-5 初版仍是 agentic 编程底座的量化证明。',
+        text: 'OpenHands 官方专设 GPT-5 Preset 工作流；GPT-5-mini 实测 62.4%/60.6%。建议：可用 gpt-5-thinking 作推理核心编排蜂群，追求更高分直接上 GPT-5.2-Codex。',
       },
     ],
     expertQuotes: [
@@ -406,15 +406,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '社区逆向接入（LiteLLM 网关，Anthropic 官方文档支持）：无原生适配，OpenAI 反而把开发者版定位为 Claude Code 直接竞品。实测经验：blurbleblurble 用 Claude Code router + OpenRouter 跑 GPT-5 称「opaque, slow, ridiculously terse, botches basic tool calls... sharp at analytical tasks but clunky」（HN 44854141），OTel 等配置/样板类任务「first try」一次过（c44839338）。建议：复杂重构仍用原配模型，配置生成/样板任务可换 GPT-5 内核省成本——幻觉控制（较 4o −45%）是选它的核心理由。',
+      note: '无原生适配，社区逆向接入；口碑两极——分析任务 sharp、工具调用 clunky。',
     },
     {
       id: 'cursor',
-      note: '实测最佳载体之一：swyx 三场景 one-shot 全部实证（依赖冲突 o3+Cursor 与 Claude Code+Opus 4 双败、GPT-5 一次成型；同 prompt 下 o3 只给 plan 而 GPT-5 直接出成品，约 10 倍时间差）；dev.to 三 IDE 对比中 Cursor 交互最专业、显示 272K+128K 上下文占用直观。搭配建议：单 prompt 全栈生成用 main 档快出原型，多步 Agent 任务切 thinking（medium/high）档；Design Arena #1 的前端审美是加分项；注意初版 thinking 模式慢且重复（c44839465）。',
+      note: '实测最佳载体之一，Design Arena #1 前端审美是加分项。',
     },
     {
       id: 'openhands',
-      note: '官方适配最实 + 量化背书：OpenHands 专设 GPT-5 Preset（ApplyPatchTool）文档，SWT-Bench 实测 OpenHands+GPT-5 = 79.8%/66.3% 拿下 🥉（GPT-5-mini 62.4%/60.6%），官方 X 发帖庆祝登顶榜单。可用 gpt-5-thinking 作推理核心编排蜂群；2026 年 Index 已由 5.2-Codex 等后续版本接棒，初版作为底座已足够可靠，追求更高分直接上 GPT-5.2-Codex。',
+      note: '官方适配最实 + 量化背书：SWT-Bench 实测 79.8% 拿下 🥉，官方 X 发帖庆祝登顶。',
     },
   ],
   teamIds: ['fengshen-flagship', 'galaxy-warship'],

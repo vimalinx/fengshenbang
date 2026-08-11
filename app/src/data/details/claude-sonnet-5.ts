@@ -224,15 +224,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '本命装备，官方发布即支持（available in Claude Code）。Endor Labs（07-02）实测 Claude Code + Sonnet 5 = 83.2% FuncPass/19.6% SecPass，200/200 提交仅 8 次作弊（「unusually honest」），是首个同模型对照反超 Cursor 的模型；aireiter（07-01）用 `claude -p` CLI 实测同一编码任务 medium 档 $0.344/31.6s，比 Sonnet 4.6 的 $0.253/35.3s 更贵但更快。成本警示：Bloomberg 证实 Uber 5000 工程师 Claude Code 人均月账单 500–2000 美元、全年 AI 预算四个月烧光，微软 6 月底全员停用迁回 Copilot。建议日常 low/medium effort 控成本。',
+        text: 'Endor Labs 实测 FuncPass 83.2%，首个同模型对照反超 Cursor；aireiter 实测 medium 档 $0.344 比 4.6 更贵但更快。建议日常用 low/medium effort 控成本。',
       },
       {
         id: 'cursor',
-        text: '官方实测背书：Cursor 论坛公告「Sonnet 5 scores 57% versus 49% for Sonnet 4.6」；CursorBench v3.2 分档 Max 61.5%/$6.45、High 56.9%/$3.19、Medium 52.4%/$2.16、Low 47.7%/$1.30。但 Endor Labs（07-09）发现 Cursor harness 拖累表现：Cursor + Sonnet 5 仅 63.1% FuncPass vs Claude Code 的 83.2%，首轮超时 65/200（32.5%）vs 10%——「是吞吐问题不是推理问题」，这也是首个 Claude Code 反超 Cursor 的同模型对照；302.AI 实测前端 UI 生成追平 Opus 4.8。',
+        text: '官方实测背书：CursorBench 57%（4.6 49%）；但 Endor Labs 实测 harness 拖累 FuncPass 至 63.1%，属吞吐问题非推理问题。重 Agent 任务建议优先用 Claude Code。',
       },
       {
         id: 'openhands',
-        text: 'Vibe Code Bench v1.1（vals.ai，基于 OpenHands 派生 harness）实测 Sonnet 5 = 81.33% 综合准确率总榜 #5（仅次 Fable 5 90.35%、Opus 5 88.40%、Kimi K3 84.96%、Opus 4.8 82.72%），是 OpenHands 系 harness 可查证的真实成绩；OpenHands Index 官方榜尚无 claude-sonnet-5 条目（SDK 已支持，software-agent-sdk PR #4041），1M 上下文 + 快响应 + Agent Arena #6 理论适配蜂群编排，实测跑分待官方跑榜补充。',
+        text: 'Vibe Code Bench v1.1（OpenHands 派生 harness）实测 81.33% 综合准确率总榜 #5，是 OpenHands 系可查证的真实成绩；OpenHands Index 官方榜尚无条目，跑分待官方榜补充。',
       },
     ],
     expertQuotes: [
@@ -411,15 +411,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '本命装备，同宗同源，官方发布即支持（available in Claude Code），是其 Agent 能力的主战场。Endor Labs 实测 Claude Code + Sonnet 5 = 83.2% FuncPass/19.6% SecPass（200/200 仅 8 次作弊），是首个同模型对照反超 Cursor 的成绩；aireiter 实测 medium 档 $0.344/31.6s 比 4.6 快但更贵。成本纪律：Bloomberg 证实 Uber 5000 工程师 Claude Code 人均月账单 500–2000 美元、全年 AI 预算四个月烧光（采用率 2 月 32%→4 月 95%），微软 6 月底全员停用迁回 Copilot——建议日常用 low/medium effort，复杂任务先核算 token 成本。',
+      note: '本命装备：官方同源发布即支持，Agent 能力主战场，实测口碑反超 Cursor 居首；唯账单偏贵，注意成本。',
     },
     {
       id: 'cursor',
-      note: '官方实测背书：Cursor 论坛公告 CursorBench 57%（Sonnet 4.6 为 49%），v3.2 分档 Max 61.5%/$6.45、Medium 52.4%/$2.16、Low 47.7%/$1.30；302.AI 实测前端 UI/可视化生成追平甚至部分压过 Opus 4.8。但注意 Endor Labs 警告：Cursor harness 会把 Sonnet 5 拖到 63.1% FuncPass（首轮超时 32.5% vs Claude Code 10%）——前端流建议 medium effort 起步，重 Agent 任务优先用 Claude Code。',
+      note: '官方背书：CursorBench 57%（4.6 49%）；harness 拖累 FuncPass 63.1%。',
     },
     {
       id: 'openhands',
-      note: 'Vibe Code Bench v1.1（基于 OpenHands 派生 harness，Docker-in-Docker 全权环境）实测 Sonnet 5 = 81.33% 总榜 #5，是 OpenHands 系可查证的真实成绩；OpenHands Index 官方榜尚无 claude-sonnet-5 条目（SDK 已支持，software-agent-sdk PR #4041），1M 上下文、快响应（404s 平均耗时）与 Agent Arena #6 的自主能力理论上适配蜂群编排的中端推理核心，官方跑榜成绩待补。',
+      note: 'OpenHands 系可查证：Vibe Code Bench 81.33% 总榜 #5，适配蜂群编排的中端推理核心。',
     },
   ],
   teamIds: ['common-warlord', 'budget-vanguard'],

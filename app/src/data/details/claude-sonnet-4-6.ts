@@ -223,15 +223,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '本命装备，同宗同源：官方早期测试 70% 偏好 4.6（vs 4.5）、59% 压过 Opus 4.5；auto mode 于 05-22 纳入 4.6（@ClaudeDevs 282 RT）。实测背书：中文社区「先读完上下文再改代码」好评；但 r/opencodeCLI 实测 refactoring 任务「OpenCode with Sonnet 4.6 performed significantly better than Claude Code with same model and a bit cheaper」；3-4 月质量回退期 Claude Code 用户受害最深（GitHub #46935 即 claude-code issue）。建议日常 medium effort + 关注 status page。',
+        text: '官方早期测试 70% 偏好 4.6（vs 4.5）、59% 压过 Opus 4.5；中文社区「先读完上下文再改代码」好评。建议日常 medium effort，关注 status page。',
       },
       {
         id: 'cursor',
-        text: '发布即支持（2026-02-17），官方实测背书：@cursor_ai「notable improvement over Sonnet 4.5 on longer tasks, but below Opus 4.6 for intelligence」（82 RT/66 回复）；CursorBench 49%（后续 Sonnet 5 达 57% 的对照基线）。可组「4.6 主力 + Opus 4.6 攻坚」双模型复核流，前端/日常走 4.6、深度重构切 Opus。',
+        text: 'CursorBench 49%（后续 Sonnet 5 达 57% 的对照基线）。建议 4.6 走前端/日常、深度重构切 Opus，medium effort 起步控 token。',
       },
       {
         id: 'openhands',
-        text: 'Vibe Code Bench（vals.ai，基于 OpenHands 派生 harness）实测 Sonnet 4.6 = 24.61%——OpenHands 系可查证的真实成绩，但为早期非优化配置（同 harness 的 Sonnet 5 达 81.33%，配置/版本差异大，不可直接对比）。OpenHands 生态对 4.6 的专项评测少，蜂群流可作中端推理核心但期望别拉满；配合 medium effort 使用。',
+        text: 'Vibe Code Bench 实测 24.61%，早期非优化配置，与同 harness 的 Sonnet 5（81.33%）不可直接对比。建议蜂群流作中端推理核心但期望别拉满，配合 medium effort 使用。',
       },
     ],
     expertQuotes: [
@@ -416,15 +416,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '本命装备，同宗同源：官方早期测试 70% 偏好 4.6、59% 压过 Opus 4.5，auto mode 于 05-22 纳入。实测背书：中文社区「先读完上下文再改代码」好评、「免费用户也能用」成主流玩法；但 r/opencodeCLI 实测 refactoring 任务 OpenCode + 4.6 表现更好更便宜，3-4 月回退期受害最深（#46935 即 claude-code issue）。搭配建议：日常 medium effort + laconic 风格约束，复杂任务切 Opus 4.6；关注 status page 规避服务波动。',
+      note: '同宗同源的本命装备：官方与中文社区口碑双佳，日常均衡首选。',
     },
     {
       id: 'cursor',
-      note: '发布即支持，官方实测背书：@cursor_ai「notable improvement over Sonnet 4.5 on longer tasks, but below Opus 4.6 for intelligence」（82 RT）；CursorBench 49%（Sonnet 5 57% 的对照基线）。双模型槽位可组「4.6 快速主力 + Opus 4.6/5 攻坚复核」流——前端/日常/agentic 走 4.6，深度重构切旗舰；medium effort 起步控制 token。',
+      note: '官方发布即接入，背书「长任务明显强于 4.5、智能略逊 Opus 4.6」，定位双模型流快速主力。',
     },
     {
       id: 'openhands',
-      note: 'Vibe Code Bench（vals.ai OpenHands 派生 harness）实测 24.61% 为 OpenHands 系可查证真实成绩（早期非优化配置，与 Sonnet 5 的 81.33% 不可直接比）；OpenHands 生态专项评测少，蜂群流可作中端推理核心但期望别拉满。1M 上下文 + GDPval-AA #1 的 agentic 底子理论适配多 Agent 编排，配合 medium effort 使用。',
+      note: 'OpenHands 系可查证真实成绩，但专项评测少，定位中端推理核心。',
     },
   ],
   teamIds: ['common-warlord', 'budget-vanguard'],

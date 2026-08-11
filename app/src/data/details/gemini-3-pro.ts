@@ -235,15 +235,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '无官方适配，但有实测依据：Composio 用 Gemini CLI（非 Claude Code）同仓跑通——Test1 生产 feature 构建 7min14s/$0.45 三家中最佳（缓存 6-7ms 命中），Test2 长程 agent 13-14 分钟后陷入 loop 烧掉 $6.3 无产出（composio.dev 2025-12-28）。Ask HN: Gemini CLI vs. Claude Code（47582539）中 jackkinsella「Gemini 编程太慢、不给思考过程，Claude Code 明显更好」，社区工作流共识是「claude make the plan, and let gemini implement」（jaikechen）；Daniel Duma 实测后强烈劝退 Gemini CLI：「You only have one life, don\'t spend it watching Gemini fail at calling the most basic tools」。结论：Claude Code 侧把 3 Pro 当执行引擎用（规划留在 Claude），不做主力。',
+        text: 'Composio 实测：Test1 生产 feature 构建 $0.45/7min14s 三家中最佳，Test2 长程 agent 烧 $6.3 无产出；Daniel Duma 劝退 Gemini CLI。长程任务避开，短任务可用。',
       },
       {
         id: 'cursor',
-        text: '有实测：Daniel Duma（PhD，Singularity Now 2026-01-23）以 3 Pro/Flash 作为 Cursor 模型——「Coding: both are on par with Claude and getting much closer on debugging」「Pro is overall the model with the best taste at designing interfaces, possibly competing with Opus 4.5」「Flash gives you THE best speed/quality ratio」；坏处是「endpoints keep timing out, you have to click retry all the time」「Bias for action: even when I use it to plan, it will still go ahead and jump into coding without my permission」。Acon（X 经 Zvi 转引）：「Best Cursor coding model for web apps. Much faster than GPT5(high) but not that much better than it」。发布当日 Cursor 曾短暂上架 3 Pro Preview（r/singularity 1p0cjrv），r/cursor 亦有「disappointment for Agentic Coding」帖。结论：Cursor 内做前端/单步任务很强，长程 agent 需严格监督。',
+        text: 'Daniel Duma 实测：编码与 Claude 相当、界面品味可与 Opus 4.5 一较高下，Flash 速度/质量比最佳。注意它「Bias for action」——即使只让规划也会擅自开工，建议明确约束其行动边界。',
       },
       {
         id: 'openhands',
-        text: '有官方实测：OpenHands Index（2026-01-29，v1.8.3）——SWE-bench 70.6%（$0.95/实例，343s）、Commit0 绿地开发 25.0%（$3.18/实例，2239s）、GAIA 信息收集 44.2%、SWT-bench 测试生成 68.6%、SWE-bench-Multimodal 前端 36.8%；对照组 GPT-5.2 SWE 74.6%/commit0 50.0%，官方结论「Gemini 3 Flash 平均准确率反超 3 Pro」「Google 模型是强竞争者但没到 Anthropic/OpenAI 水平」。注意：3.0 preview 已随 2026-03 停服，OpenHands 将结果标记为 unlisted（Issue #963）。',
+        text: 'OpenHands Index 实测：SWE-bench 70.6%（$0.95/实例）、Commit0 25.0%，3 Flash 平均反超 3 Pro，preview 已停服。建议新项目用 3.1 Pro 重测。',
       },
     ],
     expertQuotes: [
@@ -419,15 +419,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '无官方适配，但存在被验证的工作流：社区共识「claude make the plan, and let gemini implement」（Ask HN 47582539，jaikechen）——Claude Code 负责规划与调试、Gemini 3 Pro 充当执行引擎；Daniel Duma 实测强烈劝退 Gemini CLI（「watching Gemini fail at calling the most basic tools」），Composio 同仓实测 Test1 3 Pro 以 $0.45/7min14s 三家中最佳、Test2 长程 agent 则烧 $6.3 无产出（composio.dev 2025-12-28）。本流水线未直接接入 Gemini 至 Claude Code，以上为社区与第三方实测依据。',
+      note: '无官方适配，但「Claude 规划、Gemini 执行」的社区共识被验证可行，当执行引擎而非主力。',
     },
     {
       id: 'cursor',
-      note: '当前最适配装备：Daniel Duma 实测 3 Pro 在 Cursor 中编码与 Claude 相当、调试更接近，界面品味「possibly competing with Opus 4.5」，Flash 版速度/质量比全场最佳（singularitynow.substack.com 2026-01-23）；Acon 称「Best Cursor coding model for web apps, much faster than GPT5(high)」（经 Zvi 转引）。发布当日 Cursor 曾短暂上架 3 Pro Preview（r/singularity 1p0cjrv）。短板明确：endpoints 频繁超时、Bias for action 会未经允许直接开工、长程 agent 编码令人失望（r/cursor 1p0pmxq）——适合前端/单步任务与 vibe coding，长程任务需严格监督或换 Opus 5/GPT 系。',
+      note: '当前最适配装备：前端/单步任务与 vibe coding 表现最强，长程任务需严格监督。',
     },
     {
       id: 'openhands',
-      note: '有官方指数背书：OpenHands Index（v1.8.3）SWE-bench 70.6%（$0.95/实例）、Commit0 25.0%、GAIA 44.2%、SWT-bench 68.6%、前端 MMM 36.8%，官方判定「强竞争者但没到 Anthropic/OpenAI 水平」且 Gemini 3 Flash 平均反超 3 Pro（openhands.dev 2026-01-29）。3.0 preview 已于 2026-03 停服，OpenHands 将结果 unlisted（Issue #963）——新项目建议直接用 3.1 Pro 重测。',
+      note: '有官方指数背书，成绩全面但未达 Anthropic/OpenAI 水平，属可用而非首选。',
     },
   ],
   teamIds: ['fengshen-flagship', 'galaxy-warship'],

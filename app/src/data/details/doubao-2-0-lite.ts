@@ -229,15 +229,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '官方兼容实锤：火山方舟提供 Anthropic 兼容端点（ark.cn-beijing.volces.com/api/compatible），Coding Plan 明确支持 Claude Code（首月最低 8 元，2025-11-27 官方文）；第三方终端 agent Doubao-TUI 深度支持 doubao-seed-2-0-lite-260428（LSP 诊断回填、MCP、Plan/Agent/YOLO 三模式）；OpenClaw 一周实测首字节快于 GPT-5.4-mini、全程流畅（techlocal，Code 变体）。适配建议：全模态前置理解（录屏转码、19 语种转写）强，复杂后端逻辑仍交旗舰。',
+        text: '火山方舟提供 Anthropic 兼容端点可直接接入；OpenClaw 一周实测首字节快于 GPT-5.4-mini、全程流畅。建议：录屏转码、19 语种转写等强项场景放心用，复杂后端逻辑仍交旗舰。',
       },
       {
         id: 'cursor',
-        text: '官方 Coding Plan 支持 Cursor 工具环境；字节自家 IDE TRAE×Doubao-Seed-Code 登顶 SWE-bench Verified 70.6%（并行测试时计算 78.8%，ByteDance SE Lab 官方），与 Claude 4.5 Sonnet 官方分（77.2-82%）相当——Reddit「超越 Sonnet」说法存口径差异；TRAE 在 HN 有真实热度（遥测帖 954 pts/366 cmt）。前端/动效方向录屏→代码工作流实测出色，复杂后端仍需旗舰复核。',
+        text: 'TRAE×Doubao-Seed-Code 并行测试时 78.8%，与 Claude 4.5 Sonnet 官方分（77.2-82%）相当。建议：前端/动效方向录屏→代码工作流实测出色，复杂后端逻辑仍需旗舰复核。',
       },
       {
         id: 'openhands',
-        text: 'SWE-bench/experiments 官方仓库实证：以 OpenHands system prompt 配 Doubao-Seed-Code 取得 70.6%/78.8%（TRAE Agent 方案）；Lite 本体官方适配 OpenClaw、Hermes Agent（2026-05-07 火山引擎文）；Doubao-TUI 走 MCP 生态可复用。作为蜂群流中的多模态执行单元——25 小时长程任务自拆解校验、GUI 理解+操作闭环，规划与代码交付仍交旗舰。',
+        text: 'SWE-bench/experiments 官方仓库 Doubao-Seed-Code 达70.6%/78.8%；Lite 官方适配 OpenClaw、Hermes Agent。建议：批量视频/音频理解子任务放心用，规划与代码交付仍交旗舰。',
       },
     ],
     expertQuotes: [
@@ -413,15 +413,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '官方兼容路径实锤：火山方舟 Anthropic 兼容端点（ark.cn-beijing.volces.com/api/compatible）+ Coding Plan 首月最低 8 元支持 Claude Code；第三方 Doubao-TUI 终端 agent 深度支持 lite-260428（LSP 诊断回填、MCP、Plan/Agent/YOLO 三模式）。适配逻辑：适合做全模态理解与录屏转码的前置处理单元——视频/音频输入理解强（19 语种转写、视听一致性判断），文本后续编排仍交旗舰；注意验证 endpoint 的 streaming/tool calls/thinking 参数（LaoZhang 警告 adapter 丢功能会让模型显弱）。',
+      note: '官方兼容路径：Coding Plan 首月最低 8 元即可支持 Claude Code，适合做全模态理解的前置处理单元。',
     },
     {
       id: 'cursor',
-      note: '官方 Coding Plan 支持 Cursor 工具环境；字节自家 IDE TRAE 才是深度集成入口——TRAE×Doubao-Seed-Code 登顶 SWE-bench Verified 70.6%（并行 78.8%，官方），与 Claude 4.5 Sonnet 官方分相当（口径差异）。适配逻辑：前端/动效方向可走 TRAE 生态，录屏→代码工作流实测「比原版还炫酷」，复杂后端逻辑仍需旗舰复核；Cursor 本体无豆包接入实测数据。',
+      note: '集成入口在字节自家 TRAE：Doubao-Seed-Code 登顶 SWE-bench Verified 70.6%。',
     },
     {
       id: 'openhands',
-      note: 'SWE-bench/experiments 官方仓库以 OpenHands system prompt 配 Doubao-Seed-Code 取得 70.6%/78.8%——兼容路径有官方组合实证；Lite 本体官方适配 OpenClaw、Hermes Agent。适配逻辑：作为蜂群流中的多模态执行单元——25 小时长程任务自拆解校验、GUI 理解+操作闭环，适合批量视频/音频理解子任务，规划与代码交付仍交旗舰。',
+      note: '定位蜂群流多模态执行单元：25 小时长程任务自拆解校验、GUI 理解+操作闭环，官方组合实证可用。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

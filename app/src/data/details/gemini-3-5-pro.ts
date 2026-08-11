@@ -216,7 +216,7 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '无直连 3.5 Pro 实测（未 GA、无 API 条目）；唯一可引用的同任务对比来自 HN aviinuo（5-19）：3.5 Pro High 在 Antigravity CLI 5 分钟内完成「混乱科研代码库 → 规范工程骨架」迁移且质量良好，同任务 Fable 5 High 在 Claude Code 30 分钟未完成——「5 分钟 vs 30 分钟」成为社区流传对比。需注意对比双方 harness 不同，且属单一用户实测，样本量 1。Claude Code 侧接入 Gemini 需 OpenRouter 代理并处理 reasoning_details 签名（Gemini 3 Pro 先例，3.5 Pro 未 GA 无法直连）。',
+        text: 'HN aviinuo 实测：3.5 Pro High 在 Antigravity CLI 5 分钟完成代码迁移，同任务 Fable 5 High 在 Claude Code 30 分钟未完成。对比双方 harness 不同、样本量 1。',
       },
       {
         id: 'cursor',
@@ -411,15 +411,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '官方自研方向实为 Google Antigravity（Gemini CLI 6-18 停服，The New Stack 实测 Antigravity 可 headless 写文件/跑 pytest/mypy，Gemini CLI 不能）；3.5 Pro 曾以「Gemini 3.1 Pro」标签在其中暗测（NPowerUser）。目前唯一带数字的 3.5 Pro harness 实测恰来自 Antigravity CLI（HN aviinuo：5 分钟完成迁移 vs Fable 5 的 30 分钟未完成）。Claude Code 侧暂无直连实测，若要尝试需 OpenRouter 代理 + 处理 reasoning_details 签名（Gemini 3 Pro 先例）；GA 后可验证前端生成与 2M 长窗在 Agent 场景的收益，当前仅作占位推荐。',
+      note: 'Claude Code 侧无直连实测，官方自研方向实为 Google Antigravity，当前仅作占位推荐。',
     },
     {
       id: 'cursor',
-      note: '同期 Cursor 默认主力为 Claude Fable 5 / GPT-5.5，无 3.5 Pro 接入实测；若其「best UI/design taste yet」口碑（219 票帖：一次生成 20+ 文件）在 GA 后兑现，理论上契合 Cursor 的 UI 迭代场景——可组「3.5 Pro 出 UI + Fable 5 出逻辑」复核流。但 3.5 系存在「便宜但烧 token」问题（Flash 单任务 49 turns vs 3.1 Pro 23），Cursor 订阅制下 Pro 若继承该特性，成本体感需实测验证，当前为占位推荐。',
+      note: '「best UI/design taste yet」若 GA 后兑现，契合 Cursor 的 UI 迭代，占位推荐。',
     },
     {
       id: 'openhands',
-      note: '未检索到 OpenHands 对 3.5 Pro 的适配或评测；OpenHands 为模型无关 harness 但官方无 Gemini 3.5 系跑分记录。Deep Think + 2M 窗口理论上适合蜂群长程编排，但 6-23「thinking loop」问题（HN 11 分）恰集中在 Antigravity 2.0 多 agent 场景——长程编排反而是 3.5 系的已知薄弱区，一切待 GA 与适配验证，当前为占位推荐。',
+      note: '长程编排是 3.5 系已知薄弱区，Deep Think + 2M 窗口的理论优势待 GA 验证，当前为占位推荐。',
     },
   ],
   teamIds: ['fengshen-flagship', 'galaxy-warship'],

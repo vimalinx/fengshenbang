@@ -229,17 +229,17 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '无第一方原生评测，但路由生态成熟可实测：claudish（MadAppGang 开源代理，~600 stars）经 OpenRouter 把 Claude Code 路由到 gemini-3.1-pro-preview，skills/hooks 配置全保留；LiteLLM 发布当日（DAY 0）即支持 3.1 Pro，自动映射 reasoning_effort→thinkingLevel 且 /v1/messages 端点全兼容。间接实测（prodfeat，2026-03）：把 Claude Code 技能原样拷给 Gemini 3.1 Pro 处理 300 条帖子，1/7 真处理、其余用 regex 冒充，最终评分 4.6/10，根因「Gemini CLI has no sub-agents」——架构性差距。接入建议：需代理层处理 thought signature 回传（400 错误坑），避开长程 agentic。',
+        text: '路由生态成熟：claudish 经 OpenRouter 路由、LiteLLM 当日支持；但间接实测同技能仅 1/7 真处理，根因「no sub-agents」。接入需处理 thought signature 回传（400 错误坑）。',
         placeholder: false,
       },
       {
         id: 'cursor',
-        text: 'Cursor 官方论坛实测（2026-02-20 发布次日上架）：重构任务约 2 分钟完成（老版 Gemini 一半），输出干净遵循 .mdc 规则，但整体仍比 Sonnet/Codex 慢；timeouts/MCP 调用失败频发，「Gemini seems smart but its not reliable when calling tools (at least in the Cursor harness)」；默认不主动搜索代码库（「does not search codebase at all... It is VERY lazy」），需「Fixed Gemini 3.1 pro in Cursor」帖的强制工具调用提示词（"Thinking is not doing. You have tools. USE THEM."）才能不卡循环；Converge 独立评测称其「break out of the harness... randomly inject Asian/Chinese characters」，谷歌系模型在 harness 中需最多适配层。优点：WebDev/SVG 双榜第一，1M 上下文，UI/UX 设计稿转代码强，价格接近 GPT-5.3 Codex。',
+        text: '官方论坛实测：重构任务约 2 分钟完成（老版 Gemini 一半）、输出遵循 .mdc 规则；但默认不主动搜代码库（「VERY lazy」）、MCP 调用失败频发，需强制工具调用提示词才不卡循环。',
         placeholder: false,
       },
       {
         id: 'openhands',
-        text: 'OpenHands Index 官方实测（acp-gemini agent 型 / Gemini CLI v0.36.0）：五项均分 60.56（5 类全完成），swe-bench 79.8%（399/500，$701.56）、swt-bench 71.8%（311/433）、gaia 88.1%（146/165，$100.73）、commit0 37.5%、swe-bench-multimodal 41.2%；OpenHands 官方博客（2026-05-11）点评「Gemini 3.1 Pro does well at even cheaper」——成本优势明显但分数中游（同榜 Opus 4.7 69.66、GPT-5.5 65.94、Opus 4.8 71.88）。配合 Gemini CLI 6/18 退役（HN 406 分帖），OpenHands 官方适配走 acp-gemini 代理而非 Gemini CLI 直连。',
+        text: '官方实测：五项均分 60.56，swe-bench 79.8%、swt-bench 71.8%、gaia 88.1%。Gemini CLI 6/18 退役后走 acp-gemini 代理路径，编排前先验证工具调用一致性。',
         placeholder: false,
       },
     ],
@@ -425,15 +425,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '无第一方原生支持，需路由代理接入：claudish（MIT 开源，~600 stars）经 OpenRouter 一条命令路由到 3.1 Pro，skills/hooks 配置全保留；LiteLLM 发布当天（DAY 0）支持且自动映射 reasoning_effort。实测忠告：必须处理 thought signature 回传（否则 400 错误），且「no sub-agents」是架构短板（prodfeat 实测同技能 Claude Code 7/7 块处理 vs Gemini 1/7 + regex 冒充）。适合推理/单发任务，长程 agentic 会踩「thinking tokens 全烧、做完不告诉你」的坑——建议仍以 Claude Opus 为主力，Gemini 做第二意见。',
+      note: '无第一方支持，需路由代理接入；适合推理单发，长程 agentic 有短板，建议 Claude Opus 为主力。',
     },
     {
       id: 'cursor',
-      note: 'Cursor 官方论坛实测数据最全：重构任务 2 分钟完成（老版 Gemini 一半）、输出遵循 .mdc 规则，但默认不搜代码库「VERY lazy」、MCP 调用失败、需强制工具调用提示词（"Thinking is not doing. You have tools. USE THEM."）才不卡循环。WebDev Arena 1487 / SVG Arena 1421 双领先、1M 上下文 + 图片理解，UI/UX 设计稿转代码是甜点位；价格接近 GPT-5.3 Codex（$2/$12）。结论：前端/vibe coding 流可用，生产级工具链任务仍推荐 Anthropic 系（论坛原话 "Anthropic models are rock solid"）。',
+      note: 'WebDev/SVG 双榜第一、价格≈GPT-5.3 Codex（$2/$12）；前端/vibe coding 可用。',
     },
     {
       id: 'openhands',
-      note: 'OpenHands Index 官方有完整实测（acp-gemini 代理）：五项均分 60.56，swe-bench 79.8%、swt-bench 71.8%、gaia 88.1%、commit0 37.5%、multimodal 41.2%，成本是五档里最低之一（官方博客「does well at even cheaper」）。定位明确：成本敏感 + 批量 bug 修复可行；但同榜 Opus 4.7 69.66、Fable 5 81.00 领先明显，复杂长程任务差距会放大。Gemini CLI 6/18 退役后走 acp-gemini 代理路径，编排前先验证工具调用一致性。',
+      note: 'OpenHands Index 排名中游，成本五档最低之一；适合成本敏感的批量修复。',
     },
   ],
   teamIds: ['fengshen-flagship', 'galaxy-warship'],

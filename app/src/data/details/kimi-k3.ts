@@ -221,15 +221,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '有实测，结论分化：开发者 Stephen Bochinski 双跑「与 Claude 同任务同质量、token 近等，can\'t tell them apart」，且 K3 订阅比 Claude 20 刀档更慷慨（$19 起、$39 coding 档）；社区用户推荐 Claude Code 式 harness（「excellent for backgrounding processes/agents, or fanning out」）；另有实测在既有代码库根因定位上反超 Sol（「K3 fixed it in a minutes」，Sol 三小时烧 33% 周 token 无果）。但 swelljoe flar 横评给 Kimi Code + K3 评 C+：默认 max thinking、$19 订阅 5 小时窗口烧 94%、周用量 19%，「most expensive model here」——07-22 官方降温后变快，且安全审计表现出色。',
+        text: '双跑实测「同任务同质量、token 近等」；但 flar 横评 C+：$19 订阅 5 小时窗口烧 94%、周用量 19%。建议调低思考档位或 API 直连；官方 07-22 降温后已变快。',
       },
       {
         id: 'cursor',
-        text: '生态可接入：官方提供 OpenAI 兼容 API，社区实测 Cursor CLI「可无缝切换 Anthropic/OpenAI/xAI/Kimi K3/GLM 5.2 各厂模型」，典型用法「实现用 Opus、审查用 K3」做多模型复核；Frontend Code Arena #1 与 1M 上下文适合前端设计，但需注意 $15/M 输出定价与官方档位偏慢（Vivace 实测约 Opus Max 推理的 1/2 速度）。CursorBench 无 K3 独立分数，量化对比待补。',
+        text: 'Cursor CLI 实测可无缝切换各厂模型，典型用法「实现用 Opus、审查用 K3」；但官方档位偏慢，Vivace 约 Opus Max 推理的 1/2 速度，高频迭代建议避开偏慢档位；CursorBench 暂无 K3 独立分数。',
       },
       {
         id: 'openhands',
-        text: '无 OpenHands 第一方量化；社区接入走 OpenAI 兼容 API + 网关：实测组合「oh my pi 用 K3 做 planner + DeepSeek Flash 做 implementer」（OpenRouter 提供）与「Pi 内跑 K3 做安全扫描 found quite a few important things」；本地推理以 llama.cpp/Ollama 生态为主（Unsloth 压缩 1.56TB→594GB，r/LocalLLaMA 730–1876 分帖）。自托管 2.8T 权重门槛高（1.4TB 权重需 8×B300 节点），但 AI Stack 实测解决率 86.4% 值得折腾。',
+        text: '无第一方量化，社区走兼容 API + 网关：实测「K3 planner + DeepSeek Flash implementer」组合；建议先走网关入门，自托管 2.8T 需 1.4TB 权重（8×B300）门槛高。',
       },
     ],
     expertQuotes: [
@@ -405,15 +405,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '官方提供 OpenAI 兼容 API，社区经 OpenRouter 网关 + opencode/pi 等 CLI 接入（K3 已进 OpenCode GO 价目表）；社区实测「K3 + Claude Code 式 harness 适合后台进程/fan-out」，Bochinski 双跑「与 Claude 无法区分」，根因定位反超 Sol（「K3 fixed it in a minutes」）。注意官方 harness（Kimi Code）默认 max thinking 烧钱——swelljoe 实测 $19 订阅 5 小时窗口烧 94%，建议调低思考档位或 API 直连（约 $5/小时）。',
+      note: '社区口碑佳：双跑实测「与 Claude 无法区分」、根因反超 Sol；但官方 harness 默认思考档位烧钱。',
     },
     {
       id: 'cursor',
-      note: 'OpenAI 兼容端点便于接入 Cursor 自定义模型，Cursor CLI 实测可多模型无缝切换（含 K3）；Frontend Code Arena #1 与 1M 上下文适合前端设计与长文档任务，但需注意 $15/M 输出定价——高频迭代场景成本敏感，建议配缓存命中（$0.30）使用，或 256k 内用 K3-256k 半价档。',
+      note: '前端 #1、1M 上下文，适合前端设计与长文档；但 $15/M 定价偏高，建议配缓存命中或 K3-256k 半价档。',
     },
     {
       id: 'openhands',
-      note: '社区本地运行以 llama.cpp/Ollama 生态为主（Unsloth 压缩 1.56TB→594GB，r/LocalLLaMA 730–1876 分帖）；自托管 2.8T 权重门槛高（1.4TB 需 8×B300 节点、硬件成本高约 20%），但 AI Stack 实测 16 并发会话、任务解决率 86.4%（+24pp vs GLM-5.2/Opus 4.8）、慢约 8 倍；Pi/oh-my-pi 组合「K3 planner + DeepSeek implementer」是社区常见低成本方案。',
+      note: '自托管 2.8T 门槛高，但实测解决率 86.4%、16 并发会话，值得折腾。',
     },
   ],
   teamIds: ['fengshen-flagship', 'common-warlord'],

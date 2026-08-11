@@ -219,17 +219,17 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '无 Llama 4 实测：Claude Code 为 Anthropic 闭源工具链，官方不支持接入 Llama 4；2026-01 起 Ollama 原生兼容 Anthropic Messages API（ANTHROPIC_BASE_URL=http://localhost:11434 + ANTHROPIC_AUTH_TOKEN=ollama，ollama.com/blog/claude），社区通用做法是本地起服务后经该代理接入——但所有教程示范模型均为 Qwen/gpt-oss，无 Llama 4 专项数字，且其 SWE-bench 类成绩预期不佳（复现约 24%）。',
+        text: '无 Llama 4 专项实测：Ollama 自 2026-01 原生兼容 Anthropic Messages API，本地起服务经代理即可接入；教程示范均为 Qwen/gpt-oss，SWE 复现约 24%，接入前先按此预期规划。',
         placeholder: true,
       },
       {
         id: 'cursor',
-        text: '无 Llama 4 实测：Cursor 官方模型列表无 Llama 4 直连选项，可经 OpenAI 兼容 API 指向自部署端点（Llama API 本身即 OpenAI SDK 兼容）；OpenAI 兼容路径下 Cursor 可调用 Llama 4，但无系统评测数据，编程能力以 Aider 15.6% 为准绳预期不佳。',
+        text: '无 Llama 4 实测：Cursor 官方无直连，但 Llama API 即 OpenAI SDK 兼容，可指向官方或自部署端点；无系统评测数据，编程 Aider 仅 15.6% 预期不佳，用 Scout 10M 吃超长文档前先验证质量。',
         placeholder: true,
       },
       {
         id: 'openhands',
-        text: '无 Llama 4 实测：OpenHands 支持配置 Ollama 本地模型端点，其 SWE-bench 评测体系成熟（OpenHands Index 已评 9 款模型），但 2026-01 至今公开榜单均不含 Llama 4 条目；按 SWE-bench 复现约 24% 推断长任务成功率预期不佳。',
+        text: '无 Llama 4 实测：OpenHands 支持 Ollama 本地端点，SWE-bench 评测体系成熟（Index 已评 9 款模型），但公开榜单无 Llama 4 条目；按复现约 24% 推断长任务成功率不佳，建议小任务先行验证。',
         placeholder: true,
       },
     ],
@@ -406,15 +406,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '适配路径：Claude Code 为闭源工具链不支持 Llama 4，2026-01 起 Ollama 原生兼容 Anthropic Messages API（ANTHROPIC_BASE_URL=http://localhost:11434 + ANTHROPIC_AUTH_TOKEN=ollama），社区教程可经此接入本地模型，但示范均为 Qwen/gpt-oss、无 Llama 4 专项实测。实测背书：Aider Polyglot 仅 15.6%、SWE 复现约 24%，编程槽位请留给 DeepSeek V3.2 或 Qwen3；Llama 4 只适合廉价长文档摘要/多模态输入的辅助槽位。',
+      note: '无官方支持，可经 Ollama 代理接入；编程口碑垫底，只适合长文档/多模态辅助槽位。',
     },
     {
       id: 'cursor',
-      note: '适配路径：无官方直连，但 Llama API 与 OpenAI SDK 兼容（LlamaCon 发布），Cursor 可经 OpenAI 兼容 API 指向官方或自部署端点，切换成本低。实测背书：SWE-bench 复现约 24%（DeepSeek V4 Pro 80.6%），不建议作编程主力；若做图文理解、长文本翻译等非编程任务可开，优先用 Scout 10M 吃超长文档红利——但需先验证「有长度没质量」（Fiction.liveBench 128K 15.6%）。',
+      note: '无官方直连，但 Llama API 兼容 OpenAI SDK；编程预期不佳，仅适合图文/长文本等非编程任务。',
     },
     {
       id: 'openhands',
-      note: '适配路径：OpenHands 支持 Ollama 端点接入本地 Llama 4。实测背书：OpenHands Index 评测体系成熟（已评 9 款模型），但公开榜单至今无 Llama 4 条目，社区无长任务成功率数据；按 SWE-bench 复现约 24% 推断，蜂群/agent 执行单元建议换 DeepSeek R1 或 Qwen3，Llama 4 仅作研究 MoE 架构的玩具。',
+      note: '支持 Ollama 端点接入；榜单无 Llama 4 条目，仅适合作研究 MoE 架构的玩具。',
     },
   ],
   teamIds: ['common-warlord', 'wild-ranger'],

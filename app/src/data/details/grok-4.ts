@@ -224,15 +224,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '无官方集成：xAI 无 Claude Code 官方支持，需第三方桥（OpenRouter 通道 / claude-code-openrouter）注入。Simon Willison 发布日即用 llm + OpenRouter 实测可用，但指出「not clear if benchmark results are for Grok 4 or Grok 4 Heavy」；HN ccusage 帖共识「people report that Grok 4 is not very good at coding」。结论：桥接可行但编程口碑差，Claude Code 场景建议直接用 claude 系。',
+        text: 'Willison 发布日用 llm + OpenRouter 实测可用，但指「跑分对象不明」；HN ccusage 帖共识「not very good at coding」。若强行接入，仅用于推理型任务，避开代码重构。',
       },
       {
         id: 'cursor',
-        text: "实测反馈两极但可写实据：HN 发布帖用户（apparent）「I have been using Grok 4 via Cursor for a few hours... able to do some things that other models couldn't (and on the first try). That said, it also changed areas of the code I did not ask it to」；dmix 经 Cursor 复现「咨询马斯克」偏见测试（需订阅）；8/27 Grok Code 进 Cursor（$0.2/$1.5 Mtok），NitpickLawyer 称「great success with it in agentic coding... best cost/perf option」。另有 Cursor 代码库早期快照意外进入训练数据的公平性争议。",
+        text: 'HN 发布帖用户实测两极：能首试做到别家做不到的事，但会改掉没要求改的代码；另有 Cursor 代码库快照进训练数据的争议。建议仅当推理副手做多视角分析，主编码交给 Claude 系。',
       },
       {
         id: 'openhands',
-        text: '官方 Index 未收录（2026-08-09 API 实测：33 个模型无任何 grok-4 条目），无基准背书、无社区实测。蜂群若用 Grok 4 Heavy 作推理核心需注意 best-of-4 分数虚高与安全护栏薄弱风险，敏感步骤人工复核。',
+        text: '2026-08-09 API 实测：官方 Index 33 个模型无 grok-4 条目；Heavy 作推理核心需注意分数虚高与安全护栏薄弱，敏感步骤人工复核。',
       },
     ],
     expertQuotes: [
@@ -408,15 +408,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '无官方集成：xAI 无 Claude Code 官方支持，需第三方桥（OpenRouter 通道 / claude-code-openrouter）注入，Simon Willison 实测可用但提示跑分对象不明（Grok 4 vs Heavy）。HN 共识「people report that Grok 4 is not very good at coding」——Claude Code 场景建议直接换 claude-opus-5 / claude-sonnet-5；若强行接入，仅用于推理型任务（竞赛数学、复杂逻辑判断），避开代码重构。',
+      note: '无官方集成，需第三方桥；HN 共识编程口碑差，Claude Code 场景建议直接用 claude 系。',
     },
     {
       id: 'cursor',
-      note: "实测反馈两极但有一手实证：HN 发布帖用户「able to do some things that other models couldn't (and on the first try)」但「changed areas of the code I did not ask it to」；8/27 Grok Code 进 Cursor（$0.2/$1.5 Mtok）后获「great success in agentic coding... best cost/perf」评价。搭配上仅适合把 Grok 4（或 Heavy）当推理副手做多视角分析，主编码仍交给 Claude 系。",
+      note: '8/27 Grok Code 进 Cursor（$0.2/$1.5），获「best cost/perf」好评。',
     },
     {
       id: 'openhands',
-      note: 'OpenHands 官方 Index 未收录 grok-4（2026-08-09 API 实测 33 模型 0 命中），无基准背书、无社区实测。蜂群若用 Grok 4 Heavy 作推理核心，需注意 best-of-4 分数虚高问题与安全护栏薄弱风险（arXiv 2509.14260 关闭机制破坏实验），敏感步骤人工复核。',
+      note: 'OpenHands 官方 Index 未收录，无基准背书、无社区实测。',
     },
   ],
   teamIds: ['fengshen-flagship', 'wild-ranger'],

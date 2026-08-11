@@ -241,15 +241,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '无官方接入（OpenAI 官方对应物为 Codex CLI，HN 589 分），但已有真实对比实测：B 站程序员阿江真实代码对决中 GPT-5.2「Thread 乱入 Asyncio、中间件写得像脚本」，工程化输给 Claude Opus 4.5（WINNER）；ethanhuang13 从 Claude Code 迁移到 Codex+5.2-Codex 后总结「寫碼能力已不輸 Opus、往往一次寫對不需跑測試自我修正」，但抱怨 Codex 交互低反馈「像安靜的同事」；Zvi 明确建议 hard coding 用 Claude Code+Opus 4.5 / Codex+5.2-Thinking 各试再定。',
+        text: '阿江对决实测 5.2「Thread 乱入 Asyncio、中间件像脚本」输 Opus 4.5；ethanhuang13 迁移后认可「一次寫對、不需跑測試」，但嫌交互低反馈。Zvi 建议两套各试再定，接 5.2 需给足宽松上下文。',
       },
       {
         id: 'cursor',
-        text: 'Cursor 官方自己的极限实验背书：CEO Michael Truell 让 GPT-5.2 在 Cursor 连续运行 7 天（168h）写出 300 万+ 行代码自建浏览器（HTML 解析/CSS 布局/JS 虚拟机，Rust），官方博客结论「GPT-5.2 是长时自主任务首选、适合 Planner 角色——严格遵循指令、保持专注不漂移；Opus 4.5 倾向提前收工走捷径」；Chong-U 实测同一 prompt 在 Cursor Plan 模式一次生成 5 款可玩街机游戏；DataLearner 前端重构对比则提醒「设计感弱，纯代码场景 Opus 4.5 更稳」。',
+        text: '官方实验让 5.2 连续 7 天写 300 万+ 行代码建浏览器，官方结论「严格遵循指令、保持专注不漂移，Opus 4.5 爱走捷径」；DataLearner 提醒「基本没有设计感」，审美类建议换 Gemini 3 Pro 或 Opus。',
       },
       {
         id: 'openhands',
-        text: 'OpenHands 官方 Index（2026-01-29 上线）实测：GPT-5.2 平均分 58.84、5.2-Codex 58.28（5 类任务全跑），落后总分第一的 Claude 4.5 Opus（60.58）；绿地开发（commit0）分榜 5.2-Codex 曾登顶——「工作时长约为 Opus 的两倍，但成功率显著更高」；02-20 修正 commit0 浅克隆漏洞后 5.2-Codex 62.5%→50.0%。官方定性：5.2 系列是长程绿地任务的强力选择，但整体成本偏高、被 Opus 全面压制。',
+        text: '官方 Index 绿地分榜 5.2-Codex 曾登顶——「工作时长约 Opus 两倍但成功率显著更高」，浅克隆修正后 62.5%→50.0%。建议长程绿地/从零构建优先 5.2-Codex（Thinking 档）。',
       },
     ],
     expertQuotes: [
@@ -434,15 +434,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '无官方接入（OpenAI 官方对应物为 Codex CLI，HN 589 分/318 评论）。实测提示：B 站程序员阿江真实代码对决中 5.2 工程化输给 Opus 4.5（Thread 乱入 Asyncio、中间件像脚本）；ethanhuang13 从 Claude Code 迁移 Codex+5.2-Codex 后认可「一次寫對、不需跑測試自我修正」，但抱怨交互低反馈。Zvi 的建议是 hard coding 把 Claude Code+Opus 4.5 与 Codex+5.2-Thinking 各试一遍再定；若坚持在 Claude Code 中接 5.2，注意其过度审查特性、指令需给足宽松上下文，Thinking 档长上下文收集（先读文件再动手）是它相对 Opus 的差异优势。',
+      note: '无官方接入（对应物 Codex CLI）；口碑两极：工程化输 Opus 4.5，亦有迁移者认可一次写对。',
     },
     {
       id: 'cursor',
-      note: 'Cursor 官方背书最强：CEO Michael Truell 让 5.2 连续 7 天（168h）在 Cursor 写出 300 万+ 行浏览器代码，官方结论「长时自主任务首选、Planner 角色最佳——严格遵循指令、保持专注不漂移，Opus 4.5 爱走捷径」。实际搭配：WebDev 场景可选用（Chatbot Arena WebDev 子榜 #2，1486 分）；Chong-U 实测 Plan 模式一次到位生成 5 款游戏；但 DataLearner 前端重构对比直言「基本没有设计感」，UI/审美类任务建议换 Gemini 3 Pro 或 Opus，深度重构/长程任务切 Thinking/Pro 档。',
+      note: 'Cursor 官方背书最强：长时自主任务首选，WebDev 子榜 #2（1486 分）。',
     },
     {
       id: 'openhands',
-      note: 'OpenHands 官方 Index 实测背书：GPT-5.2 平均分 58.84、5.2-Codex 58.28（5 类任务全跑），落后总分第一的 Opus 4.5（60.58）；绿地开发（commit0）分榜 5.2-Codex 曾登顶——「工作时长约 Opus 两倍但成功率显著更高」（浅克隆修正后 62.5%→50.0%）。搭配建议：长程绿地/从零构建任务优先 5.2-Codex（Thinking 档），issue 修复与测试类任务可参考 Index 按分类选模型；注意 5.2 成本偏高、2026-06 起已被 5.5/5.6 在 Codex/Copilot 停用，新项目建议直接评估后继版本。',
+      note: 'OpenHands 均分 58.84/58.28 落后 Opus 4.5；绿地任务强、成本偏高，2026-06 停用。',
     },
   ],
   teamIds: ['fengshen-flagship', 'galaxy-warship'],

@@ -240,15 +240,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '无原生支持，需 LiteLLM / claudex / claude-code-gpt 等代理转译。J.D. Hodges 发布次日（04-24）实测：llm-openai-via-codex 插件复用 Codex OAuth，relay 路径 4.5s vs codex exec 10.7s，称「awesome pair」，50+ 次快速调用后触发限流；claude-code-gpt 同任务 GPT-5.5 约 $4 vs GPT-5.4-mini $0.43。掘金 VP 关嘉伟 05-08 实测：Claude Code「compact 一压半张脸都没了」、验收时「明显的问题没找出来」，两周后转投 Codex 5.5。注意 516 截断经代理路径同样出现（issue #29353），且 GPT-5.5 无 Computer Use 对标（LiteLLM 报错）。',
+        text: 'claude-code-gpt 同任务 GPT-5.5 约 $4 vs GPT-5.4-mini $0.43。注意 516 截断经代理路径同样出现，建议 high/medium 档避开。',
       },
       {
         id: 'cursor',
-        text: '原生接入，CursorBench 3.1 官方成绩：High 58.4%（$2.05/task）、Extra High 58.4%（$2.85）、Medium 53.8%、Low 46.6%（官方公告 72.8% 为内部预发布口径，三方按 3.1 默认口径 59.2%）。Endor Labs 04-27 实测：Cursor SDK + GPT-5.5 功能正确率 87.2% vs 原生 Codex 61.5%（差 26 点），安全项 23.5%。Cursor 联创 Michael Truell 04-24 背书「更聪明、更有韧性、工具调用更可靠」。论坛真实反馈：cache 生命周期过短（Artemonim）、订阅额度被按 on-demand 扣费（29M tokens 异常账单）；50% 折扣至 05-02。',
+        text: 'Endor Labs 实测功能正确率 87.2% vs 原生 Codex 61.5%；建议 default high、避 xhigh，留意 cache 生命周期过短、订阅额度按 on-demand 扣费。',
       },
       {
         id: 'openhands',
-        text: '官方推荐 GPT 家族首选（docs 明确 `openai/gpt-5.5`），OpenHands Index 均分 65.9：swt-bench 83.4、gaia 86.1、swe-bench 78.2、commit0 43.8、swe-bench-multimodal 38.2（04-27~05-08，v1.18.1/v1.21.1）。software-agent-sdk PR #2975（04-27）正式加入配置、集成测试 18/18 通过共 $6.36；agent-canvas PR #1103（06-04）把默认 onboarding LLM 从 claude-opus-4-8 改为 gpt-5.5。经 acp-codex 变体 SWE-bench 仅 64.2%、Terminal-Bench 29.6——harness 差异显著，建议搭配规划型模型。',
+        text: 'SDK 集成测试 18/18 通过共 $6.36；但 acp-codex 变体 SWE-bench 仅 64.2%、Terminal-Bench 29.6，harness 差异显著，建议搭配规划型模型。',
       },
     ],
     expertQuotes: [
@@ -427,15 +427,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '需代理转译层（LiteLLM / claudex / claude-code-gpt）接入，建议 high/medium 档避开 xhigh 的 516。J.D. Hodges 发布次日实测 relay 4.5s 响应、称「awesome pair」；claudex 可让 Claude Code 感知 1M 窗口，系统提示词隔离可把开销从 ~20k 降到 ~6.6k tokens。体感对照：掘金 VP 关嘉伟从 Claude Code 迁移到 Codex 5.5 的实测说明 GPT-5.5 强项在原生 Codex harness，代理路径适合「Claude Code 操作习惯 + GPT-5.5 推理」的混合流。',
+      note: '无官方原生支持，需 LiteLLM 等代理转译接入；J.D. Hodges 发布次日实测称「awesome pair」。',
     },
     {
       id: 'cursor',
-      note: '原生接入 + 官方背书：Cursor 联创 Michael Truell 亲自点赞；CursorBench 3.1 High 档 58.4%/$2.05 per task；Endor Labs 实测功能正确率 87.2%——比原生 Codex 的 61.5% 高 26 点，是当前 GPT-5.5 性价比最高的 harness。建议 default high、避 xhigh，注意 cache 生命周期与订阅扣费异常（论坛多例）；双模型槽位可组「GPT-5.5 执行 + Claude 规划」复核流。',
+      note: '原生接入：CursorBench 3.1 High 档 58.4%，当前 GPT-5.5 性价比最高的 harness。',
     },
     {
       id: 'openhands',
-      note: '官方推荐 GPT 家族首选：OpenHands Index 65.9（swe-bench 78.2、swt-bench 83.4、gaia 86.1），SDK 集成测试 18/18 通过、默认 onboarding LLM 已切到 gpt-5.5；蜂群式长任务调度时 5.5 是执行核心，但 commit0 43.8 与 acp-codex 变体 64.2% 提示长程仓库搭建仍是短板，建议搭配规划型模型使用。',
+      note: '官方推荐 GPT 家族首选：OpenHands Index 65.9。',
     },
   ],
   teamIds: ['fengshen-flagship', 'galaxy-warship'],

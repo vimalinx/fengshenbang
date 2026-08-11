@@ -192,16 +192,16 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: 'Mistral 自家平替路线已验证：官方推 Devstral 2 + Mistral Vibe CLI（Apache 2.0、SWE-bench 72.2%、$0.4/$2.0）作 Claude Code 替代（HN 745 pts，社区「finally we can use a european model to replace claude code」）。实测：500KB 私有项目半小时内正确理解代码库，但「basic edits 会丢闭合括号」「React 代码差、Python 好」，regex 任务 5 分钟+「claude 同题也挂了，codex 更快——not bad」；作 CC 后端最大短板是速度（AA 实测 40 tok/s、TTFB 1.29s）与推理（GPQA 43.9%）。',
+        text: '实测 500KB 私有项目半小时内正确理解代码库，但 basic edits 会丢闭合括号、React 差 Python 好；AA 实测 40 tok/s、TTFB 1.29s，速度与推理是短板，作 CC 后端仅适合写作/文档类轻任务。',
       },
       {
         id: 'cursor',
-        text: '无官方接入（占位保留）：可经 OpenAI 兼容端点/OpenRouter 接入（OpenRouter 在列，2026-08 直查确认）；LiveCodeBench 数据分歧（34.4% / 82.8%）、WebDev Elo ~1487 表明常规编程可用、复杂工程二线；AA 实测「notably slow」（40 tok/s）作 Cursor 后端拖节奏，性价比不如 DS-V3.2/Qwen3，仅多语言/创意写作任务可试。',
+        text: 'OpenRouter 可接入；WebDev Elo ~1487、LiveCodeBench 数据分歧 34.4% / 82.8%；AA 实测 40 tok/s「notably slow」，建议仅在多语言/创意写作任务尝试。',
         placeholder: true,
       },
       {
         id: 'openhands',
-        text: '血缘在但无专门适配：Devstral 初代即 Mistral × All Hands AI（OpenHands）合作产物，但用户实测「OpenHands 化训练 crippled 了实用性」，Devstral 2 已转向自家 CLI；Large 3 可经 OpenAI 兼容端点接入，675B 自托管门槛高（NVFP4 需 8×H100/A100 单节点），OpenHands 上 Large 3 专门量化实测缺失（进存疑）。',
+        text: '用户实测「OpenHands 化训练 crippled 了实用性」，Devstral 2 已转向自家 CLI；675B 自托管需 8×H100/A100 单节点（NVFP4），缺专门量化实测，建议等官方适配。',
       },
     ],
     expertQuotes: [
@@ -377,15 +377,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '无官方集成，但 Mistral 自家平替已验证：Devstral 2 + Mistral Vibe CLI（Apache 2.0、SWE-bench 72.2%、$0.4/$2.0）社区实测作 CC 替代「not bad，但慢」——500KB 代码库理解 OK、React 弱 Python 强。若坚持用 Large 3 需经 OpenAI 兼容端点自接；推理短板（GPQA 43.9%、AAII 16 分）在长程 Agent 场景是硬伤，仅写作/文档/OCR 类任务可作低成本候选，先小流量验证再放量。',
+      note: '无官方集成；平替 Devstral 2 + Vibe CLI（SWE-bench 72.2%）可作 CC 替代，偏慢。',
     },
     {
       id: 'cursor',
-      note: '无官方接入（占位）：OpenRouter 可接入；LiveCodeBench 数据分歧（34.4% / 82.8%）、WebDev Elo ~1487 表明常规编程可用、复杂工程二线；AA 实测输出 40 tok/s「notably slow」作 Cursor 后端拖节奏，性价比不如 DS-V3.2/Qwen3，建议仅在多语言/创意写作任务尝试。',
+      note: '无官方接入，仅 OpenRouter 可用；常规编程可用但复杂工程二线，性价比不如 DS-V3.2/Qwen3。',
     },
     {
       id: 'openhands',
-      note: '可经 OpenAI 兼容端点接入：Devstral 初代是 Mistral × OpenHands 合作产物，但实测「OpenHands 化训练 crippled 实用性」，Devstral 2 已转向自家 CLI；Large 3 675B 自托管需 8×H100/A100 单节点（NVFP4），蜂群流部署成本高；官方无专用 Agent 适配、无专门量化实测，跑分待补（进存疑）。',
+      note: '可经 OpenAI 兼容端点接入；Large 3 无专用适配、自托管门槛高，存疑。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],

@@ -227,15 +227,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '实测丰富：Linux.do 真实 go 项目（1.5 万行、1/3 重构）跑满 100M+ tokens、900+ 请求、总花费不到 ¥50、近零手写代码完成——但「单文件修改 200~300s、多文件重构 800s+」，速度是最大短板；工具调用（Read/Write/Update/Bash/Grep）全程零故障是多方共识好评；免费额度并发 1，须累计充值 ¥50 解锁并发 50 才能丝滑；V2EX 反向案例：PHP 项目幻觉严重，¥15 未过逻辑验证；Thoughtworks 工程师结论「像 Claude Code 的身体里装了一个不同的灵魂」，适合后端 python/预算敏感场景。',
+        text: 'Linux.do go 项目实测：100M+ tokens、900+ 请求、<¥50 完成 1/3 重构，近零手写代码；但单文件修改 200~300s 很慢，幻觉高发场景（如 PHP）需人工复核。',
       },
       {
         id: 'cursor',
-        text: '非原生集成：经 OpenRouter 自定义模型接入（moonshotai/kimi-k2），官方论坛明确 agent mode 无法正常使用、Cursor 提示「模型 agentic 支持有限」；但 K2.5 成为 Cursor Composer 2 基座（HN 276 pts/168 评、TechCrunch 2026-03-22 确认「Cursor admits its new coding model was built on top of Kimi」），反向证明 K2 系列在 Cursor 生态的 harness 价值——初版 K2 走自定义 API 可作编码主力，UI 生成建议用 K2.6+。',
+        text: 'agent mode 无法正常使用、提示「模型 agentic 支持有限」；初版走自定义 API 可作编码主力，UI 生成建议换 K2.6+ 或 Claude。',
       },
       {
         id: 'openhands',
-        text: '官方支持：创始人 Neubig 于 2025-07-15 提交 PR #9706 将 K2（moonshot/kimi-k2-0711-preview）加入推荐模型列表并合并；但其 OpenHands Slack vibe check 排名（2025-08-18）为 GPT-5 > sonnet 4 > Qwen-3 Coder > Kimi-K2——在 OpenHands 实测中未跑赢 Qwen-3 Coder；K2 Thinking 版有 thinking 模式空 content 导致 prompt 注入的 bug（issue #12058，官方确认修复）；长程自治任务可试，幻觉高发场景需交叉验证。',
+        text: 'Slack vibe check（2025-08-18）：GPT-5 > sonnet 4 > Qwen-3 Coder > Kimi-K2；K2 Thinking 版 thinking bug 已修复；幻觉高发场景建议交叉验证。',
       },
     ],
     expertQuotes: [
@@ -410,15 +410,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '社区主流玩法：经 Anthropic 兼容 API（api.moonshot.cn/anthropic）接入 Claude Code 作国产平替，CSDN 教程密集，「工具调用很强，更适合和 ClaudeCode 搭配」成知乎共识。实测数据最厚：Linux.do go 项目 100M+ tokens、900+ 请求、<¥50 完成 1/3 重构，工具调用零故障；但「单文件 200~300s、多文件 800s+」的慢是硬伤，且须累计充值 ¥50 解锁并发 50（免费并发 1 基本不可用）。幻觉高发场景（事实引用、PHP 弱类型）需人工复核，V2EX 反例 ¥15 未过逻辑验证。预算敏感 + 长程 agentic 任务选它，追求交互速度选 Claude。',
+      note: '社区主流玩法：接 Claude Code 作国产平替，预算敏感+长程 agentic 首选，工具调用零故障口碑佳。',
     },
     {
       id: 'cursor',
-      note: 'K2 初版无原生支持，需经 OpenRouter/Novita 自定义模型接入，官方论坛明确 agent mode 无法正常使用、会提示「agentic 支持有限」——编码可作主力，UI 生成建议用 K2.6+ 或换 Claude。但 K2.5 成为 Cursor Composer 2 基座（TechCrunch 2026-03-22 确认「built on top of Kimi」）反向证明系列在 Cursor 生态的核心地位：Cursor 自家 in-house 模型都建立在 K2 架构之上，生态价值被官方验证。',
+      note: 'K2 初版非原生集成；但 K2.5 已成 Cursor Composer 2 基座，生态核心地位被官方验证。',
     },
     {
       id: 'openhands',
-      note: 'OpenHands 官方支持：创始人 Neubig 亲自提交 PR #9706 将 K2 加入推荐模型列表（2025-07-15 合并），配置即用。但 OpenHands Slack 社区 vibe check 排名（2025-08-18）GPT-5 > sonnet 4 > Qwen-3 Coder > Kimi-K2——在 OpenHands 实测中未跑赢 Qwen-3 Coder，长程自治任务可试但期望别拉满；K2 Thinking 版有 thinking 模式 bug（issue #12058）需留意版本。幻觉高发场景需交叉验证。',
+      note: '官方推荐模型，配置即用；但实测排名未跑赢 Qwen-3 Coder，长程自治任务可试、期望别拉满。',
     },
   ],
   teamIds: ['budget-vanguard', 'puppet-workshop'],

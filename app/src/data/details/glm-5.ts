@@ -198,15 +198,15 @@ export const DETAIL: ModelDetailData = {
     harnessReviews: [
       {
         id: 'claude-code',
-        text: '实测充分：智源社区（新智元）「使用 Claude Code 作为外壳，直接接入 GLM-5 的 API」完成 Next.js 全栈、MacOS/iOS 原生应用全流程闭环，25 分钟一镜到底搓出 X 平台监控系统、1 天复刻「丐版 Cursor」（GLMLIFE）；HN 用户实操「I set up a new system this morning with OpenClaw and GLM-5, and I like GLM-5 as the backend for Claude Code. Excellent results.」「GLM-5.1 via Claude Code create a macOS driver for an unsupported USB gamepad... After two sessions I now have a working controller」；配置只需环境变量 + settings.json 改模型名。负面：GLM 会「burn through your weekly quota in a day if you are not precise with your scope」；5.2 时代 subagents 曾报错（base plan 单并发限制）。',
+        text: '官方 SWE-bench 77.8 / Terminal-Bench 56.2 评测就跑在 Claude Code 上，配置只需改模型名。建议复杂工程开 Max effort，注意周配额消耗快、需精准 scope。',
       },
       {
         id: 'cursor',
-        text: '有官方评测数字：CursorBench 3.2 实测 GLM 5.2 Max 55.0% / 平均 $1.76 / 35,946 tok / 58s，High 51.5% / $1.19 / 21,829 tok / 49s——与 Sonnet 5 High（56.9% / $3.19）、GPT-5.6 Luna High（56.8% / $0.16）同场对比，HN 解读「on par with gpt 5.5 medium and sonnet for the same task from results and cost perspective」，但生成速度明显更慢；Cursor 官方 evals 页将 GLM 5.2 列为常测模型，社区有接入指南（settings/双模型槽位）。',
+        text: '官方评测 High 档实测 51.5% / $1.19 / 49s；GPT-5.6 Luna High 56.8% / $0.16 同场，但生成速度明显更慢。建议低成本批量改动交给 GLM-5，高难收尾切 Opus，双模型槽位互补。',
       },
       {
         id: 'openhands',
-        text: '官方文档实测支持（docs.all-hands.dev/modules/usage/llms）：GLM-5（openrouter/z-ai/glm-5）OpenHands Index 49.4、GLM-5.1（openrouter/z-ai/glm-5.1）58.2 居开源前列（同表 MiniMax-M3 57.2、Kimi-K2.6 57.1）；智谱官方亦用 OpenHands 跑 SWE-bench 评测。社区专门实测数据仍在收集中——HN/Reddit 检索 "openhands glm" 无命中，此为占位说明，跑分待补。',
+        text: '同表 MiniMax-M3 57.2、Kimi-K2.6 57.1；智谱官方亦用 OpenHands 跑 SWE-bench 评测。开源 Agent 配开源模型，蜂群流的国产底座；社区专门实测数据仍在收集中，当前为官方数字 + 占位说明。',
       },
     ],
     expertQuotes: [
@@ -382,15 +382,15 @@ export const DETAIL: ModelDetailData = {
   bestInSlot: [
     {
       id: 'claude-code',
-      note: '官方首选接入，同构同调：Coding Plan 用户改模型名为 GLM-5 即用（~/.claude/settings.json），官方 SWE-bench 77.8 / Terminal-Bench 56.2 评测就跑在 Claude Code 上。实测佐证最充分：新智元「Claude Code 外壳 + GLM-5 API」完成 Next.js 全栈 / MacOS 原生应用全流程闭环、25 分钟一镜到底搓出监控系统，HN 用户两 session 交付 USB 手柄 macOS 驱动。复杂工程开 Max effort 逼近 Opus，日常批量任务降档省 token；注意 GLM 周配额消耗快，需精准 scope。',
+      note: '官方首选接入：实测佐证最充分，新智元实测 25 分钟一镜到底搓出完整系统。',
     },
     {
       id: 'cursor',
-      note: '官方认证支持 + CursorBench 3.2 数字背书：GLM 5.2 Max 55.0% / $1.76 与 Sonnet 5 High（56.9% / $3.19）成本上约 45% 优势、与 GPT-5.5 Medium（53.8% / $1.51）同级，但生成速度明显更慢（58s vs 同级模型）；双模型槽位可组「GLM-5 写 + 闭源旗舰审」的复核流。低成本批量改动交给 GLM-5，高难收尾切 Opus，性价比互补。',
+      note: '官方认证支持：CursorBench 3.2 实测 55.0%，与 GPT-5.5 Medium 同级。',
     },
     {
       id: 'openhands',
-      note: 'OpenHands 官方文档支持 GLM-5（Index 49.4，GLM-5.1 升至 58.2 居开源前列，参照 MiniMax-M3 57.2 / Kimi-K2.6 57.1）；智谱官方亦用 OpenHands 跑 SWE-bench 评测——开源 Agent 配开源模型，蜂群流的国产底座。社区专门实测数据仍在收集中（HN/Reddit 无命中），当前为官方数字 + 占位说明。',
+      note: 'OpenHands 官方文档支持：GLM-5 Index 49.4、GLM-5.1 58.2 居开源前列。',
     },
   ],
   teamIds: ['budget-vanguard', 'common-warlord'],
