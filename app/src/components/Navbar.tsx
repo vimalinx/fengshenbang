@@ -8,6 +8,7 @@ export const NAV_LINKS = [
   { to: '/', label: '首页' },
   { to: '/models', label: '模型图鉴' },
   { to: '/harnesses', label: 'Harness 库' },
+  { to: '/benchmarks', label: '测试集' },
   { to: '/teams', label: '配队榜' },
   { to: '/scenarios', label: '场景' },
   { to: '/guides', label: '攻略' },

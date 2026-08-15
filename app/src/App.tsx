@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Models from './pages/Models';
 import ModelDetail from './pages/ModelDetail';
 import Harnesses from './pages/Harnesses';
+import Benchmarks from './pages/Benchmarks';
+import BenchmarkDetail from './pages/BenchmarkDetail';
 import Teams from './pages/Teams';
 import Scenarios from './pages/Scenarios';
 import Guides from './pages/Guides';
@@ -22,6 +24,8 @@ export default function App() {
         <Route path="models" element={<Models />} />
         <Route path="models/:modelId" element={<ModelDetail />} />
         <Route path="harnesses" element={<Harnesses />} />
+        <Route path="benchmarks" element={<Benchmarks />} />
+        <Route path="benchmarks/:benchmarkId" element={<BenchmarkDetail />} />
         <Route path="teams" element={<Teams />} />
         <Route path="scenarios" element={<Scenarios />} />
         <Route path="guides" element={<Guides />} />

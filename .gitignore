@@ -39,3 +39,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+ak-gateway-guide.md
+opus5-fullpage.png

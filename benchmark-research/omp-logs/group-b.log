@@ -1,0 +1,22 @@
+Working...
+9 个条目全部处理完毕，tsc 全量通过（exit 0）。
+
+## 交付报告
+
+| id | ladder | openSource |
+|---|---|---|
+| frontier-bench | 9 行，榜首 Claude Opus 5 44.4%（厂商自报 xhigh，2026-07-24）；余为 benchmarklist 第三方聚合 | closed（Anthropic 内部基准） |
+| frontierswe | 12 行，榜首 Claude Fable 5 0.900（llm-stats 聚合 0–1 均分，2026-08；官方口径为平均名次 2.47 + dominance 89%） | open（GitHub Proximal-Labs/frontier-swe） |
+| frontiercode | 10 行，榜首 Claude Fable 5 53.5%（官方榜 v1.1 Main，2026-07；末行为 Diamond 子集口径） | closed（Cognition 私有） |
+| deepswe | 10 行，榜首 Claude Opus 5 74%（官方 v1.1 榜，2026-08-13 更新） | open（GitHub datacurve-ai/deep-swe） |
+| codeforces | 7 行 Elo，榜首 Gemini 3 Deep Think 3455（自报）；混 CodeElo 实测（o1-mini 1578 等），口径在 note 注明 | open（CodeElo GitHub OpenBMB/CodeElo） |
+| fullstackbench | 2 行（无 ladder：官方 2024-12 后停更，仅有论文实测 o1-preview 66.12 / DeepSeekCoder-V2 56.37 两行有出处） | open（GitHub bytedance/FullStackBench） |
+| kernelbench | 10 行，榜首 Qwen3.8 Max 33.9%（BenchLM 快照 roofline 均分，2026-08-14） | open（GitHub ScalingIntelligence/KernelBench） |
+| cursorbench | 4 行，榜首 Grok 4.6 70.8%（BenchLM 镜像）；Fable 5 70.5%、Opus 5 70.0% 为厂商自报 3.2，末行为 61.3 旧口径作对照 | closed（Cursor 内部基准） |
+| programbench | 10 行，榜首 Claude Opus 5 4.5% resolved（官方 extended 榜，2026-08-10 更新） | open（programbench.com） |
+
+纪律执行说明：
+- **只写有出处的数字**：fullstackbench 初稿曾含 Claude 3.5 Sonnet 55.36 / GPT-4o 51.40 两行，搜不到论文原文出处后已删除，只保留论文明确记载的 o1-preview 与 DeepSeekCoder-V2。
+- 只改了分配的 9 个条目文件，未动 benchmarks.ts / 页面 / 其他条目，无 git 操作。
+- 原有字段全部保留原样；ladder 置于 frontier 之后，traits/openSource 置于 relatedIds 之前。
+- 每文件 tsc 自查无语法错误，最后全量 `tsc --noEmit` exit 0。

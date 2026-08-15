@@ -1,0 +1,22 @@
+Working...
+全部完成。两批任务的最终状态：
+
+## 第一批 9 个（本人完成）
+
+```
+cc-bench        | ladder 2 行，榜首 GLM-4.5 53.9% 胜率 | open
+toolathlon      | ladder 10 行，榜首 Kimi K3 (max) 76.5%（Toolathlon-Verified 官方榜） | open
+svg-bench       | 无 ladder：无统一总分榜 | open
+vibe-code-bench | ladder 8 行，榜首 Claude Fable 5 90.35%（Vals AI v1.1 官方榜） | partial
+dsbench         | 无 ladder：官方无持续公开榜 | open
+clawbench       | ladder 6 行，榜首 Claude Opus 4.7 44.6%（官方榜 V2） | open
+opqa            | ladder 4 行，榜首 GPT-5.2-Codex 8.33%（系统卡披露） | closed
+qwenwebdev      | ladder 3 行，榜首 Qwen3.7-Plus 1617 Elo（厂商自报） | closed
+exploitbench    | ladder 6 行，榜首 Claude Mythos Preview 78%（v8-bench 官方榜） | open
+```
+
+## 第二批 9 个 + 第三批 11 个（并行会话 + 子代理协作完成，已全部验证）
+
+全部 74 个条目文件三字段齐全、`tsc --noEmit` 全量零报错、无重复键。交付报告详见上一条消息（含各条目 ladder 行数/榜首/openSource 状态）。
+
+任务收尾完成，无遗留。

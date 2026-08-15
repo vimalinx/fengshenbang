@@ -1,0 +1,10 @@
+Working...
+全部完成。
+
+**三批 26 个条目全部处理完毕，tsc 验证通过**，交付报告已在上一条消息完整列出（每行：`id | ladder 行数+榜首 | openSource 状态`）。
+
+要点回顾：
+- 26/26 文件 `npx tsc --noEmit` 通过
+- 2 个条目按规范缺省 ladder（svg-bench：无统一总分；dsbench：官方无持续更新榜），均有注释说明
+- 4 个文件存在并行代理写入冲突，已以实测精确数据覆盖模糊值并清理重复
+- 所有 ladder 行带来源口径+时间，openSource 区分 open/partial/closed

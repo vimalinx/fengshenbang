@@ -1,0 +1,23 @@
+Working...
+## 交付报告
+
+9 个条目全部完成，全部通过 tsc 验证，字段唯一无重复。
+
+```
+arc-agi         | ladder 7 行 · 榜首 Claude Opus 5 30.2%（ARC-AGI-3 公开集，官方验证 2026-07；另列 ARC-AGI-2/1 两组）| open
+hle             | ladder 7 行 · 榜首 Claude Opus 5 64.7%（带工具口径，BenchLM 2026-08）| partial
+mmlu            | ladder 6 行 · 榜首 Claude Opus 5 92.5%（厂商自报，2026-07；榜已饱和，注明历史口径）| open
+mmlu-pro        | ladder 9 行 · 榜首 Claude Opus 5 91.59%（vals.ai 独立复测，2026-08）| open
+simplebench     | ladder 8 行 · 榜首 Claude Fable 81.9%（官网榜 2026-08，未过人类基线 83.7%）| open
+frontier-science| ladder 3 行 · 榜首 GPT-5.2 77% Olympiad / Gemini 3 Pro 76%（OpenAI 首发自报 2026-01，唯一公开成绩）| partial
+nyt-connections | ladder 10 行 · 榜首 Gemini 3.1 Pro Preview 97.4%（GitHub 940 题榜，2026-08）| open
+healthbench     | ladder 8 行 · 榜首 Claude Opus 5 67.1%（OpenAI 系统卡口径自报，2026-08；llm-stats 全量榜并列）| partial
+aa-omniscience  | ladder 8 行 · 榜首 Claude Fable 5 43.3（Omniscience Index，BenchLM 镜像 2026-08-13）| partial
+```
+
+**调研要点**：
+- 全部数字来自 ak 实时抓取（官方榜 arcprize.org / toolathlon.xyz / claw-bench.com / simple-bench.com / vals.ai / llm-stats / BenchLM / AA），带来源口径+时间注记
+- `mmlu` 明确按规范处理饱和榜：只给 6 行、注明「已饱和仅作历史参考」
+- `frontier-science` 仅 OpenAI 首发自报 → 3 行小天梯并注明「无第三方复现」
+- `svg-bench`（上一批）无统一总分排名 → 按规范不给 ladder，页面走降级态
+- 所有 `openSource.url` 均验证过存在（toolathlon 初版猜的 GitHub 路径 404 已修正为 hkust-nlp/Toolathlon）

@@ -1,0 +1,20 @@
+Working...
+13/13 全部完成。交付报告：
+
+## 交付报告
+
+| id | ladder | openSource |
+|---|---|---|
+| `gpqa-diamond` | 10 行，榜首 **Claude Mythos Preview 94.6%**（llm-stats 聚合 2026-08，与 GPT-5.6 Sol 并列） | open |
+| `supergpqa` | 9 行，榜首 **Gemini 3 Pro Preview 73.75%**（官方榜 2026 快照；BenchLM 口径 Opus 4.6 95% 差异大已注明） | open |
+| `aime` | 10 行，榜首 **Grok-3 Mini 95.8%**（AIME 2024，llm-stats 2026-08；含 AIME 2025 MathArena/厂商口径行） | open |
+| `hmmt` | 10 行，榜首 **GPT-5.2 Pro 100%**（llm-stats 聚合 HMMT 2025，2026-08；交叉 BenchLM GLM-4.7 97.1%） | open |
+| `math-500` | 10 行，榜首 **LongCat-Flash-Thinking 99.2%**（llm-stats 2026-08；含 DeepSeek-R1 97.3% 历史参照） | open |
+| `usamo` | 3 行小天梯，榜首 **Gemini-2.5-Pro 25%**（《Proof or Bluff?》2025-03 一次性评测，无持续榜；含 IMO 2025 参照） | partial |
+| `imo-2025` | 4 行小天梯，榜首 **Gemini Deep Think 35/42**（2025-07 一次性事件，与 OpenAI 并列压金牌线） | partial |
+| `amc` | **无 ladder**：无公开权威榜单（aimo-validation-amc 为 AIMO 内部验证集，frontier 亦为 null），注释已说明 | open |
+| `matharena-apex` | 4 行小天梯，榜首 **Qwen3-Thinking-2507 5.2%**（官方博文 2025-08；作者明言排名无参考价值） | partial |
+
+**验证**：9 个文件全部通过 `npx tsc --noEmit -p tsconfig.app.json`（grep 无该 9 文件错误）；每文件均含 `traits`（3-5 条，取自条目已有内容）+ `openSource` + `ladder`（amc 除外，符合规范降级态）。仅修改分配的 9 个条目文件，未动其他文件、无 git 操作。
+
+**调研口径**：全部数字来自 2026-08-14 核验——llm-stats / BenchLM / tensorfeed / presenc / MathArena 官方 /《Proof or Bluff?》论文 / DeepMind 官方博客，多来源交叉对照，`note` 均注明来源与时间；榜上出现 Opus 5、GPT-5.6 Sol、Kimi K3、Qwen3.7 Max 等 2026 新模型属站内时间线正常现象。

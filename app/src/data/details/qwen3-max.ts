@@ -198,8 +198,7 @@ export const DETAIL: ModelDetailData = {
       },
       {
         id: 'cursor',
-        text: '同系列 3.7-Max 社区确认 Cursor 自定义模型支持有限但可行，function calling 是强项；Qwen3（非 Max）实测 92% accuracy/28s 作参照，建议先小流量验证工具调用稳定性再深度使用。',
-        placeholder: true,
+        text: 'AI Bytes《Qwen 3.7 Max Review》（2026-07-07，同系列后续版）给出实测路线：Cursor 自定义模型支持有限，但官方论坛已有社区配置方案——经 OpenRouter 路由后在 Cursor 设置里填入自定义模型即可跑通，function calling 是其强项；Dre Dyson 用 Qwen3（非 Max）同款 OpenRouter 路径接入 Cursor，实测 92% accuracy / 28s 响应作参照。Max 本体尚无专属 CursorBench 数字，建议先小流量验证工具调用稳定性再深度使用。',
       },
       {
         id: 'openhands',

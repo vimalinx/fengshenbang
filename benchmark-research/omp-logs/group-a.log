@@ -1,0 +1,22 @@
+Working...
+## 交付报告
+
+全部 10 个条目已补齐 `ladder` / `traits` / `openSource`，`npx tsc --noEmit -p tsconfig.app.json` 退出码 0。
+
+| id | ladder（行数 + 榜首） | openSource |
+|---|---|---|
+| swe-bench-pro | 12 行 · Claude Mythos 5 80.3%（BenchLM 聚合 2026-08-15） | partial（public 集公开，held-out/commercial 保密） |
+| swe-bench-multilingual | 12 行 · Claude Mythos Preview 87.3%（llm-stats 2026-08） | open（HF 数据集 + SWE-bench 官方仓库） |
+| swe-marathon | 11 行 · Claude Opus 5 50.0%（官方榜 v1.1，2026-08） | open（swe-marathon.org） |
+| terminal-bench | 12 行 · Claude Code + Fable 5 83.8%（官方 2.1 榜，2026-06） | open（GitHub terminal-bench-hub） |
+| livecodebench | 7 行 · Qwen3.7 Max 91.6%（BenchLM 2026-08-14，v6 口径） | open（GitHub LiveCodeBench） |
+| aider-polyglot | 8 行 · gpt-5 high 88.0%（官方榜 pass@2，2025-08） | open（Aider 仓库 + Exercism 题源） |
+| humaneval | 8 行 · o4-mini 97.3%（CodeSOTA 2026-04） | open（openai/human-eval） |
+| evalplus | 4 行 · o1-preview 89.0%（官方榜末态 2024-09，榜未更新） | open（evalplus/evalplus） |
+| multipl-e | 6 行 · Qwen3-235B 87.9%（llm-stats 2026-08，18 语言平均） | open（nuprl/MultiPL-E） |
+| cruxeval | 4 行 · gpt-4-turbo+CoT 75.7%（官方榜末态 2024-05，榜未更新） | open（facebookresearch/cruxeval） |
+
+调研口径说明：
+- 优先官方榜（swe-marathon、terminal-bench 2.1、aider、evalplus、cruxeval），其次权威聚合（BenchLM、llm-stats、CodeSOTA），每个 ladder 首行注释注明核验日期与来源口径
+- evalplus / cruxeval 官方榜已停更（分别停在 2024-09 / 2024-05），按规范给小天梯并在 note 注明"榜末态快照"
+- 全部搜索经 `~/bin/ak`（52token 池）完成，数字均来自本次实测抓取的页面，无编造

@@ -6,6 +6,7 @@
 
 import { DETAIL as D_CLAUDE_FABLE_5 } from './details/claude-fable-5';
 import { DETAIL as D_CLAUDE_MYTHOS_5 } from './details/claude-mythos-5';
+import { DETAIL as D_CLAUDE_OPUS_4_7 } from './details/claude-opus-4-7';
 import { DETAIL as D_CLAUDE_OPUS_4_8 } from './details/claude-opus-4-8';
 import { DETAIL as D_CLAUDE_SONNET_5 } from './details/claude-sonnet-5';
 import { DETAIL as D_DEEPSEEK_R1 } from './details/deepseek-r1';
@@ -154,85 +155,6 @@ export interface ModelDetailData {
   trialBad: { label: string; to: string; note?: string }[];
   guideIds: string[];
 }
-
-const OPUS_4_7: ModelDetailData = {
-  modelId: 'claude-opus-4-7',
-  profile: {
-    apiId: 'claude-opus-4-7',
-    vendor: 'Anthropic',
-    releaseDate: '2026-06-02',
-    access: ['API', 'Claude Code 内置'],
-    costNote: '$8/$40 · Mtok',
-    nicknames: ['码仙', 'O4.7'],
-    signature: '40h 连续自治编码',
-  },
-  benchGroups: [
-    {
-      label: '榜单成绩',
-      rows: [
-        { label: 'SWE-bench Verified', value: '82.4%' },
-        { label: 'LMArena ELO', value: '1412' },
-        { label: 'Aider Polyglot', value: '88.1%' },
-      ],
-    },
-    {
-      label: '规格与实测',
-      rows: [
-        { label: '上下文窗口', value: '1,000,000 tok' },
-        { label: '最大输出', value: '128,000 tok' },
-        { label: '价格（入/出）', value: '$8 / $40 · Mtok' },
-        { label: '工具调用成功率', value: '96.8%' },
-        { label: '自治续航（实测）', value: '≈ 40 h' },
-        { label: '发布日期', value: '2026-06-02' },
-        { label: '获取方式', value: 'API · Claude Code 内置' },
-      ],
-    },
-  ],
-  rivalIds: ['gpt-5-2', 'gemini-3-pro', 'claude-opus-5'],
-  talents: [
-    {
-      kind: 'burst',
-      seal: '御',
-      name: '长时间自治',
-      desc: '无人值守连续作业，任务不跑偏。',
-      metric: '续航 40h · 跑偏率 <2%',
-    },
-    {
-      kind: 'skill',
-      seal: '器',
-      name: '工具调用精通',
-      desc: 'MCP 与终端工具如臂使指。',
-      metric: '调用成功率 96.8% · 链长上限 200 步',
-    },
-    {
-      kind: 'passive',
-      seal: '审',
-      name: '审慎模式',
-      desc: '大额改动前先呈上计划书，获允后方动。',
-      metric: '破坏性操作拦截率 99%',
-    },
-  ],
-  constellation: [
-    { version: 'Opus 3', date: '2024-03', effect: '初登仙班 · 首次超越 GPT-4 世代' },
-    { version: 'Opus 3.5', date: '2024-06', effect: '代码修行精进 · 获封「码仙」' },
-    { version: 'Opus 4', date: '2025-05', effect: '自治续航突破 7h · 工具调用觉醒' },
-    { version: 'Opus 4.5', date: '2025-11', effect: '上下文扩至 500k · 审慎模式习得' },
-    { version: 'Opus 4.7', date: '2026-06', effect: '上下文 1M · 续航 40h · 登临 T0', current: true },
-  ],
-  bestInSlot: [
-    { id: 'claude-code', note: '本命装备，同宗同源，自治神通满幅释放。' },
-    { id: 'cursor', note: '双模型槽位可组复核流。' },
-    { id: 'openhands', note: '蜂群流的御灵底座。' },
-  ],
-  teamIds: ['fengshen-flagship', 'puppet-workshop'],
-  trialGood: [
-    { label: '长程代码重构', to: '/scenarios#refactor' },
-    { label: '全栈项目交付', to: '/scenarios#fullstack' },
-    { label: 'Agent 开发', to: '/scenarios#agent' },
-  ],
-  trialBad: [{ label: '算法竞赛', to: '/scenarios#algo', note: '建议换 DeepSeek-R2' }],
-  guideIds: ['case-refactor', 'xinfu-vol2', 'review-flow', 'mech-toolcall'],
-};
 
 const OPUS_5: ModelDetailData = {
   modelId: 'claude-opus-5',
@@ -616,7 +538,7 @@ const OPUS_5: ModelDetailData = {
 };
 
 export const modelDetails: Record<string, ModelDetailData> = {
-  'claude-opus-4-7': OPUS_4_7,
+  'claude-opus-4-7': D_CLAUDE_OPUS_4_7,
   'claude-opus-5': OPUS_5,
   'claude-fable-5': D_CLAUDE_FABLE_5,
   'claude-mythos-5': D_CLAUDE_MYTHOS_5,

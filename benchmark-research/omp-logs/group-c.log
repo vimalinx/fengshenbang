@@ -1,0 +1,22 @@
+Working...
+## 交付报告
+
+```
+cc-bench       | ladder 2 行（GLM-4.5 53.9% vs Kimi K2 / GLM-4.6 48.6% vs Sonnet 4，智谱自报胜率）| open（HF zai-org/CC-Bench-trajectories）
+toolathlon     | ladder 10 行，榜首 Kimi K3 76.5%（官方榜 Toolathlon-Verified）| open（github.com/hkust-nlp/Toolathlon）
+svg-bench      | 无 ladder：按任务分指标、无统一总分，聚合站仅 1 模型 | open（HF starvector SVG-Bench 合集）
+vibe-code-bench| ladder 8 行，榜首 Claude Fable 5 90.35%（Vals AI 官方榜 v1.1）| partial（50 公开 + 50 隐藏测试集）
+dsbench        | 无 ladder：官方无持续更新榜，论文仅报单数字 34.12% | open（github.com/LiqiangJing/DSBench）
+clawbench      | ladder 6 行，榜首 Claude Opus 4.7 44.6%（官方榜 V2 Hermes）| open（github.com/TIGER-AI-Lab/ClawBench）
+opqa           | ladder 4 行，榜首 GPT-5.2-Codex 8.33%（系统卡零散披露）| closed（内部基准）
+qwenwebdev     | ladder 3 行，榜首 Qwen3.7-Plus 1617 Elo（厂商自报）| closed（内部基准）
+exploitbench   | ladder 6 行，榜首 Claude Mythos Preview 78%（官方榜 v8-bench v0.1）| open（github.com/exploitbench/exploitbench）
+```
+
+**验证**：`npx tsc --noEmit -p tsconfig.app.json` exit 0，9 个文件零错误。
+
+**调研要点**：
+- 全部用 `ak` CLI 搜索/抓取，数字来自官方榜（toolathlon.xyz、vals.ai、claw-bench.com、exploitbench.ai）与系统卡/聚合站交叉对照
+- 两个厂商内部基准（opqa、qwenwebdev）无公开榜，ladder 取系统卡/第三方转引的历史披露并注明口径
+- svg-bench、dsbench 查无公开完整排名，按规范缺省 ladder（文件内注释说明原因）
+- 新发现并补充：GPT-5.5 在 OPQA 仅 1.7%（条目原数据未含）；toolathlon 已更新为 Toolathlon-Verified 新分数序列（与条目 frontier 的旧口径 59.9% 不冲突，已在注释中说明）
