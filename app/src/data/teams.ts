@@ -1,6 +1,9 @@
 /**
- * 配队榜数据 — 赛季 2026-07 第 3 周 mock
- * 「本周配队趋势」使用率与首页侧栏共享同一 mock 源（本文件 teams[].usage）。
+ * 配队榜数据。
+ *
+ * 诚信约定：不得出现「使用率」「本周热度」等声称测量真实用户行为的指标——
+ * 本站无遥测、无用户量，此类数字曾以 mock 形式存在，已于 Phase 0 移除。
+ * composite（综合分）是站点主观评估，展示时必须标注为「站点评分」而非实测。
  */
 import type { Tier } from './models';
 
@@ -17,11 +20,8 @@ export interface Team {
   id: string;
   name: string;
   tier: Tier;
-  composite: number; // 综合分
+  composite: number; // 综合分（站点主观评估，非实测）
   costPerHour: number; // ¥/h
-  usage: number; // 本周使用率 %
-  change?: 'up' | 'down' | 'new';
-  changeNote?: string;
   style: TeamStyleId;
   members: TeamMember[];
   scenarios: string[]; // 适用场景名
@@ -36,7 +36,6 @@ export const teams: Team[] = [
     tier: 'T0',
     composite: 96,
     costPerHour: 58,
-    usage: 31,
     style: 'fuidu',
     members: [
       { kind: 'model', refId: 'claude-opus-4-7', role: '主C' },
@@ -49,7 +48,7 @@ export const teams: Team[] = [
       position: 'Opus 4.7 主 C 运行于 Claude Code 终端，GPT-5.2 待命复核。',
       rotation:
         '主 C 自主推进 2–4h → 自检 → 关键节点（删改 >500 行）交 GPT-5.2 复核 → 意见不合时人类仲裁。',
-      keypoint: 'AGENTS.md 必写架构红线；每 90 分钟一次 checkpoint 提交；复核流使返工率 -41%。',
+      keypoint: 'AGENTS.md 必写架构红线；每 90 分钟一次 checkpoint 提交；复核流的价值在于早发现返工。',
     },
   },
   {
@@ -58,9 +57,6 @@ export const teams: Team[] = [
     tier: 'T0',
     composite: 93,
     costPerHour: 26,
-    usage: 24,
-    change: 'up',
-    changeNote: '本周新晋 T0',
     style: 'kuaiman',
     members: [
       { kind: 'model', refId: 'gemini-3-pro', role: '主C' },
@@ -72,7 +68,7 @@ export const teams: Team[] = [
     strategy: {
       position: '3 Pro 驱动 Cursor，Flash 处理命名、注释、小修小补。',
       rotation: '设计稿/截图直喂 3 Pro（2M 上下文整仓吞）→ 组件级生成 → Flash 收尾 polish。',
-      keypoint: '多模态直读截图是关键；杂务分流使成本 -38%。',
+      keypoint: '多模态直读截图是关键；把杂务分流给廉价模型可明显压低单位成本。',
     },
   },
   {
@@ -81,7 +77,6 @@ export const teams: Team[] = [
     tier: 'T1',
     composite: 89,
     costPerHour: 6,
-    usage: 18,
     style: 'kuaiman',
     members: [
       { kind: 'model', refId: 'deepseek-v4', role: '主C' },
@@ -101,9 +96,6 @@ export const teams: Team[] = [
     tier: 'T1',
     composite: 86,
     costPerHour: 22,
-    usage: 9,
-    change: 'new',
-    changeNote: '本周进榜',
     style: 'fengqun',
     members: [
       { kind: 'model', refId: 'claude-sonnet-4-6', role: '主力', count: 3 },
@@ -124,9 +116,6 @@ export const teams: Team[] = [
     tier: 'T1',
     composite: 87,
     costPerHour: 18,
-    usage: 7,
-    change: 'down',
-    changeNote: '降至 T1',
     style: 'jieli',
     members: [
       { kind: 'model', refId: 'gpt-5-2', role: '主C' },
@@ -147,7 +136,6 @@ export const teams: Team[] = [
     tier: 'T2',
     composite: 82,
     costPerHour: 4,
-    usage: 6,
     style: 'kuaiman',
     members: [
       { kind: 'model', refId: 'qwen3-max', role: '主C' },
@@ -167,7 +155,6 @@ export const teams: Team[] = [
     tier: 'T2',
     composite: 79,
     costPerHour: 15,
-    usage: 5,
     style: 'kuaiman',
     members: [
       { kind: 'model', refId: 'grok-5', role: '主C' },
@@ -201,7 +188,7 @@ export const teamStyles: TeamStyle[] = [
     id: 'fuidu',
     name: '复核流',
     desc: '双模型交叉验证，一攻一审。',
-    buff: '返工率 -41% · 成本 +30%',
+    buff: '交叉验证换取更高单价',
     repTeam: '旗舰复核队',
     bonus: 10,
   },
@@ -209,7 +196,7 @@ export const teamStyles: TeamStyle[] = [
     id: 'jieli',
     name: '接力流',
     desc: '长文模型先读摘要，旗舰模型据要而动。',
-    buff: '上下文费 -55%',
+    buff: '摘要前置以省上下文',
     repTeam: '双模接力队',
     bonus: 8,
   },
@@ -217,7 +204,7 @@ export const teamStyles: TeamStyle[] = [
     id: 'fengqun',
     name: '蜂群流',
     desc: '多实例并行切分任务，评审收口。',
-    buff: '吞吐 ×3 · 需正交切分',
+    buff: '并行提吞吐 · 需正交切分',
     repTeam: '蜂群工坊',
     bonus: 12,
   },
@@ -225,7 +212,7 @@ export const teamStyles: TeamStyle[] = [
     id: 'kuaiman',
     name: '快慢流',
     desc: '旗舰规划、廉价执行，好钢用在刀刃。',
-    buff: '成本 -38%',
+    buff: '廉价模型承担执行以省成本',
     repTeam: '星河战舰',
     bonus: 9,
   },

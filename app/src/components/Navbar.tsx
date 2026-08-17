@@ -69,7 +69,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* 右：搜索 + 赛季徽章 + 汉堡 */}
+        {/* 右：搜索 + 数据快照徽章 + 汉堡 */}
         <div className="ml-auto flex items-center gap-3 lg:ml-0">
           <div
             className={cn(
@@ -86,7 +86,7 @@ export default function Navbar() {
             />
           </div>
           <span className="hidden shrink-0 rounded-[4px] border border-line px-2 py-0.5 font-mono text-[11px] text-ink-2 xl:block">
-            2026-07 赛季
+            2026-08 数据
           </span>
           <button
             className="flex h-9 w-9 items-center justify-center rounded-[4px] text-ink-2 transition-colors duration-150 hover:bg-bg-alt lg:hidden"
@@ -146,7 +146,7 @@ export default function Navbar() {
               ))}
               <div className="mt-6 px-4">
                 <span className="rounded-[4px] border border-line px-2 py-0.5 font-mono text-[11px] text-ink-2">
-                  2026-07 赛季
+                  2026-08 数据
                 </span>
               </div>
             </nav>

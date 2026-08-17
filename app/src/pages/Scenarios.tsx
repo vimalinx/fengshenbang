@@ -8,15 +8,13 @@ import {
   Flame,
   Medal,
   Swords,
-  Trophy,
   Users,
 } from 'lucide-react';
 import PageHero from '@/components/PageHero';
 import SectionHeader from '@/components/SectionHeader';
 import StarRating from '@/components/StarRating';
 import { Reveal } from '@/components/Reveal';
-import { CountUp } from '@/components/StatBar';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { TooltipProvider } from '@/components/ui/tooltip';
 import { trials, trialMap } from '@/data/trials';
 import type { Trial, TrialFloor } from '@/data/trials';
 import { cn } from '@/lib/utils';
@@ -102,7 +100,7 @@ function TrialOverviewCard({
           <p className="mt-1 text-xs text-ink-2">{trial.note}</p>
           <span className="mt-2.5 inline-flex items-center gap-1 rounded-full bg-cinnabar/10 px-2.5 py-1 text-[11px] font-medium tracking-[0.04em] text-cinnabar">
             <Flame className="h-3 w-3" aria-hidden />
-            {trial.buff}
+            适配 {trial.suitTarget}
           </span>
         </div>
       </button>
@@ -185,72 +183,6 @@ function FloorRow({
   );
 }
 
-/* ============ S3 右列：名人堂 ============ */
-function HallOfFame({ trial }: { trial: Trial }) {
-  const first = trial.hallOfFame[0];
-  const m = first?.time.match(/^(\d+)(.*)$/);
-  const rankColor = ['text-gold', 'text-[#A89878]', 'text-[#B07A4F]'];
-  return (
-    <div className="rounded-[10px] border border-gold/50 bg-white p-4 shadow-card">
-      <div className="mb-3 flex items-center justify-between">
-        <h4 className="flex items-center gap-1.5 font-serif text-[15px] font-semibold text-ink">
-          <Trophy className="h-4 w-4 text-gold" aria-hidden />
-          名人堂
-        </h4>
-        <span className="font-mono text-[11px] text-ink-3">登仙层 · 最快通关</span>
-      </div>
-      <ul className="space-y-1">
-        {trial.hallOfFame.map((h, i) => (
-          <li key={h.player}>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <div
-                  className={cn(
-                    'flex cursor-default items-center gap-3 rounded-lg px-2.5 py-2 transition-colors hover:bg-gold-soft/60',
-                    i === 0 && 'bg-gold-soft/50',
-                  )}
-                >
-                  <span className={cn('w-5 text-center font-mono text-sm font-bold', rankColor[i])}>
-                    {i + 1}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-baseline gap-2">
-                      {i === 0 && m ? (
-                        <span className="gold-sheen-text font-mono text-base font-bold">
-                          <CountUp to={Number(m[1])} />
-                          {m[2]}
-                        </span>
-                      ) : (
-                        <span className="font-mono text-sm font-bold text-ink">{h.time}</span>
-                      )}
-                      <span className="truncate text-[13px] text-ink">仙号「{h.player}」</span>
-                    </div>
-                    <p className="mt-0.5 font-mono text-[11px] text-ink-3">
-                      {h.team} · {h.date}
-                    </p>
-                  </div>
-                  {i === 0 && (
-                    <img src="/seal-stamp.svg" alt="封神榜认证" className="h-8 w-8 shrink-0 opacity-80" />
-                  )}
-                </div>
-              </TooltipTrigger>
-              <TooltipContent side="left" className="max-w-[220px]">
-                <p className="text-xs">
-                  {h.team} 通关配置已收录，
-                  <Link to="/teams" className="font-medium text-gold underline underline-offset-2">
-                    前往配队推演
-                  </Link>
-                  查看完整站位与轮转。
-                </p>
-              </TooltipContent>
-            </Tooltip>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 /* ============ S3. 试炼详情面板 ============ */
 function TrialDetailPanel({ trial }: { trial: Trial }) {
   const [openFloor, setOpenFloor] = useState<number | null>(null);
@@ -304,17 +236,17 @@ function TrialDetailPanel({ trial }: { trial: Trial }) {
         </div>
       </div>
 
-      {/* 右列：增益 + 推荐配队 + 名人堂 */}
+      {/* 右列：适配体系 + 推荐配队 */}
       <div className="space-y-5 lg:col-span-5">
         <div className="rounded-xl border border-cinnabar/30 bg-cinnabar/5 p-4">
           <div className="flex items-center gap-2">
             <Flame className="h-4 w-4 text-cinnabar" aria-hidden />
-            <h3 className="font-serif text-base font-semibold text-cinnabar">当期增益</h3>
+            <h3 className="font-serif text-base font-semibold text-cinnabar">适配体系</h3>
           </div>
           <p className="mt-2 font-serif text-sm font-semibold text-ink">
-            本周：{trial.buffTarget}角色全属性 +15%
+            本场景最吃 {trial.suitTarget} 的长处
           </p>
-          <p className="mt-1 font-mono text-[11px] text-ink-3">增益每周一 04:00 轮换</p>
+          <p className="mt-1 font-mono text-[11px] text-ink-3">站点编排的适配建议，非实测</p>
         </div>
 
         <div className="rounded-xl border border-line bg-white p-4 shadow-card">
@@ -346,13 +278,7 @@ function TrialDetailPanel({ trial }: { trial: Trial }) {
                   {r.name}
                 </span>
                 <span className="shrink-0 font-mono text-xs text-ink-2">
-                  通关率 <span className="font-bold text-ink">{r.passRate}%</span>
-                  {r.avgCost && (
-                    <>
-                      <span className="mx-1 text-ink-3">·</span>
-                      均耗 <span className="font-bold text-gold">{r.avgCost}</span>
-                    </>
-                  )}
+                  推荐 #{i + 1}
                 </span>
                 <ArrowRight className="h-3.5 w-3.5 shrink-0 -translate-x-1 text-cinnabar opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100" />
               </Link>
@@ -360,7 +286,6 @@ function TrialDetailPanel({ trial }: { trial: Trial }) {
           </div>
         </div>
 
-        <HallOfFame trial={trial} />
       </div>
     </motion.div>
   );
@@ -401,7 +326,7 @@ export default function Scenarios() {
         title="试炼之境"
         en="// TRIALS OF THE REALM"
         verdict="六境轮回，各验其道。过登仙层者，名刻封神台。"
-        badges={['试炼 6 座', '每周增益轮换', '名人堂 18 席']}
+        badges={[`场景 ${trials.length} 类`, '三层难度分级', '站点主观编排']}
       />
 
       <div className="mx-auto max-w-[1280px] px-4 py-10 md:px-6">
@@ -471,22 +396,17 @@ export default function Scenarios() {
       <section className="border-t border-line bg-paper-alt" aria-label="试炼通则">
         <div className="mx-auto max-w-[1280px] px-4 py-10 md:px-6">
           <SectionHeader title="试炼通则" en="// RULES OF THE REALM" />
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2">
             {[
               {
                 icon: CalendarClock,
-                title: '增益轮换',
-                body: '每周一 04:00 轮换体系/流派增益，顺势而为事倍功半。',
+                title: '三层难度分级',
+                body: 'L1/L2/L3 按任务规模与容错空间递进，条件写明「做到什么算过」，方便横向比较模型与配队的适用面。',
               },
               {
                 icon: Medal,
-                title: '封神徽记',
-                body: '登仙层通关可得，集齐六枚可兑换「六境通玄」称号（站点头像框，纯荣誉）。',
-              },
-              {
-                icon: Trophy,
-                title: '名人堂',
-                body: '通关记录由玩家投稿、编辑核验后收录（演示数据）。',
+                title: '口径说明',
+                body: '场景分类、难度星级与适配体系均为本站主观编排，非实测跑分；积分与徽章是风味文案，本站并无对应机制。',
               },
             ].map((r, i) => (
               <Reveal key={r.title} delay={i * 0.1}>

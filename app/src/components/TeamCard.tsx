@@ -51,37 +51,6 @@ function MemberAvatar({ kind, refId, role, size, primary }: { kind: 'model' | 'h
   );
 }
 
-/** 使用率细线进度环（1.5px stroke，accent） */
-function UsageRing({ pct, size = 44 }: { pct: number; size?: number }) {
-  const r = (size - 4) / 2;
-  const c = 2 * Math.PI * r;
-  return (
-    <div className="relative shrink-0" style={{ width: size, height: size }} title={`本周使用率 ${pct}%`}>
-      <svg width={size} height={size}>
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#E4E4E7" strokeWidth={1.5} />
-        <motion.circle
-          cx={size / 2}
-          cy={size / 2}
-          r={r}
-          fill="none"
-          stroke="#B8860B"
-          strokeWidth={1.5}
-          strokeLinecap="round"
-          strokeDasharray={c}
-          initial={{ strokeDashoffset: c }}
-          whileInView={{ strokeDashoffset: c * (1 - pct / 100) }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          transform={`rotate(-90 ${size / 2} ${size / 2})`}
-        />
-      </svg>
-      <span className="absolute inset-0 flex items-center justify-center font-mono text-[11px] font-bold text-ink">
-        {pct}%
-      </span>
-    </div>
-  );
-}
-
 /**
  * 配队卡：横向卡 + 成员标徽组 + 成本/综合 + 打法手风琴（250ms）。
  */
@@ -143,15 +112,14 @@ export default function TeamCard({
             ))}
           </div>
         </div>
-        {/* 右：成本 + 综合 + 使用率 */}
+        {/* 右：成本 + 综合（站点评分） */}
         <div className="flex items-center gap-4">
           <div className="text-right">
             <div className="font-mono text-lg font-bold text-ink">¥{team.costPerHour}/h</div>
-            <div className="font-mono text-xs text-ink-2">
-              综合 <span className="font-bold text-accent">{team.composite}</span>
+            <div className="font-mono text-xs text-ink-2" title="站点主观评估，非实测">
+              站点评分 <span className="font-bold text-accent">{team.composite}</span>
             </div>
           </div>
-          <UsageRing pct={team.usage} />
         </div>
       </div>
       {/* 打法思路手风琴 */}

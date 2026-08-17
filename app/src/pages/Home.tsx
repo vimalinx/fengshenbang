@@ -13,13 +13,14 @@ import ModelCard, { ModelMonogram } from '@/components/ModelCard';
 import GuideListItem from '@/components/GuideListItem';
 import UpdateLog from '@/components/UpdateLog';
 import { Reveal } from '@/components/Reveal';
-import { modelMap, ladderComposite, ladderCode, ladderValue, systemMap, type Model } from '@/data/models';
+import { modelMap, ladderComposite, ladderCode, ladderValue, modelsByRelease, systemMap, type Model } from '@/data/models';
 import { trials } from '@/data/trials';
-import { guides, guideCategories } from '@/data/guides';
+import { guidesSorted, guideCategories } from '@/data/guides';
 import { teams } from '@/data/teams';
+import { changelogLatestDate } from '@/data/changelog';
 import { cn } from '@/lib/utils';
 
-/* ================= S1. 本期推荐 / THIS WEEK（纯排版轮播卡） ================= */
+/* ================= S1. 编辑推荐（纯排版轮播卡） ================= */
 
 interface UpBanner {
   tag: string;
@@ -34,7 +35,7 @@ interface UpBanner {
 
 const UP_BANNERS: UpBanner[] = [
   {
-    tag: '本期推荐 · 模型',
+    tag: '编辑推荐 · 模型',
     name: 'Claude Opus 4.7',
     title: '长程自治旗舰',
     tier: 'T0',
@@ -47,15 +48,15 @@ const UP_BANNERS: UpBanner[] = [
     ],
   },
   {
-    tag: '本期推荐 · HARNESS',
+    tag: '编辑推荐 · HARNESS',
     name: 'Claude Code 2.0',
     title: '终端智能体',
     verdict: '终端内体验最完整的 Coding Agent，全仓感知能力领先。',
-    capsules: ['CLI 工具', 'Claude 系 +18%', '$20/月起'],
+    capsules: ['CLI 工具', 'Claude 系官方同源', '$20/月起'],
     cta: [{ label: '查看 Harness →', to: '/harnesses', primary: true }],
   },
   {
-    tag: '本期推荐 · 性价比',
+    tag: '编辑推荐 · 性价比',
     name: 'DeepSeek-V4',
     title: '高性价比开源主力',
     verdict: '以约十分之一的旗舰价格，提供八成以上的代码能力。',
@@ -64,26 +65,10 @@ const UP_BANNERS: UpBanner[] = [
   },
 ];
 
-/** 倒计时：距轮换 12 天起逐秒跳动 */
-function useCountdown() {
-  const [left, setLeft] = useState(12 * 86400 + 7 * 3600 + 42 * 60 + 33);
-  useEffect(() => {
-    const t = setInterval(() => setLeft((v) => (v > 0 ? v - 1 : 0)), 1000);
-    return () => clearInterval(t);
-  }, []);
-  const d = Math.floor(left / 86400);
-  const h = Math.floor((left % 86400) / 3600);
-  const m = Math.floor((left % 3600) / 60);
-  const s = left % 60;
-  const pad = (n: number) => String(n).padStart(2, '0');
-  return `距轮换 ${d}天 ${pad(h)}:${pad(m)}:${pad(s)}`;
-}
-
 function UpCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [index, setIndex] = useState(0);
   const [hover, setHover] = useState(false);
-  const countdown = useCountdown();
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -108,9 +93,9 @@ function UpCarousel() {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      {/* 倒计时徽章 */}
+      {/* 数据快照徽章 */}
       <div className="absolute right-4 top-4 z-20 rounded-[4px] border border-line bg-white px-2.5 py-1 font-mono text-xs font-bold text-ink">
-        {countdown}
+        数据快照 {changelogLatestDate}
       </div>
 
       <div className="overflow-hidden rounded-[6px] border border-line bg-white" ref={emblaRef}>
@@ -246,10 +231,12 @@ function LadderRow({
 function LadderSection() {
   const cards: {
     title: string;
-    rows: { rank: number; model?: Model; right: string }[];
+    note: string;
+    rows: { rank: number; model: Model; right: string }[];
   }[] = [
     {
       title: '综合战力榜',
+      note: '// 站点主观评估，非实测',
       rows: ladderComposite.slice(0, 5).map((m, i) => ({
         rank: i + 1,
         model: m,
@@ -258,6 +245,7 @@ function LadderSection() {
     },
     {
       title: '代码能力榜',
+      note: '// SWE-bench Verified 官方成绩',
       rows: ladderCode.slice(0, 5).map((m, i) => ({
         rank: i + 1,
         model: m,
@@ -266,10 +254,11 @@ function LadderSection() {
     },
     {
       title: '性价比榜',
+      note: '// 每 $1 输出价（$/Mtok）换得的 SWE-bench 分；自部署与未发布模型不参与',
       rows: ladderValue.map((r) => ({
         rank: r.rank,
-        model: r.modelId ? modelMap[r.modelId] : undefined,
-        right: '',
+        model: modelMap[r.modelId],
+        right: r.ratio.toFixed(0),
       })),
     },
   ];
@@ -329,42 +318,33 @@ function LadderSection() {
               transition={{ duration: 0.2 }}
               className="space-y-0.5"
             >
-              {active.rows.map((r, ri) =>
-                r.model ? (
-                  <LadderRow
-                    key={r.model.id}
-                    rank={r.rank}
-                    model={r.model}
-                    right={r.right}
-                    delay={ri * 0.03}
-                  />
-                ) : (
-                  <div key={`x-${r.rank}`} className="flex items-center gap-2.5 rounded-[4px] px-2 py-1.5">
-                    <span className="w-5 shrink-0 text-center font-mono text-sm font-bold text-ink-3">
-                      {r.rank}
-                    </span>
-                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-[6px] bg-bg-alt font-mono text-[10px] font-semibold text-ink-3">
-                      MI
-                    </span>
-                    <span className="flex-1 truncate text-[13px] text-ink">Mistral Large 4</span>
-                  </div>
-                ),
-              )}
+              {active.rows.map((r, ri) => (
+                <LadderRow
+                  key={r.model.id}
+                  rank={r.rank}
+                  model={r.model}
+                  right={r.right}
+                  delay={ri * 0.03}
+                />
+              ))}
             </motion.div>
           </AnimatePresence>
+          <p className="mt-2 border-t border-line pt-2 font-mono text-[10px] leading-relaxed text-ink-3">
+            {active.note}
+          </p>
         </div>
       </Reveal>
     </section>
   );
 }
 
-/* ================= S2-B. 当期场景 ================= */
+/* ================= S2-B. 编程场景 ================= */
 
 function TrialsSection() {
   const featured = ['refactor', 'frontend', 'agent'].map((id) => trials.find((t) => t.id === id)!);
   return (
     <section>
-      <SectionHeader title="当期场景" en="// SCENARIOS" moreTo="/scenarios" moreLabel="全部场景 →" />
+      <SectionHeader title="编程场景" en="// SCENARIOS" moreTo="/scenarios" moreLabel="全部场景 →" />
       <div className="flex gap-4 overflow-x-auto pb-1 md:grid md:grid-cols-3 md:overflow-visible">
         {featured.map((t, i) => (
           <Reveal key={t.id} delay={i * 0.04} className="min-w-[260px] md:min-w-0">
@@ -377,7 +357,7 @@ function TrialsSection() {
                   {String(i + 1).padStart(2, '0')} / {t.name}
                 </span>
                 <span className="rounded-[4px] bg-accent-soft px-1.5 py-px font-mono text-[11px] text-accent">
-                  {t.buff}
+                  适配 {t.suitTarget}
                 </span>
               </div>
               <div className="flex flex-1 flex-col p-4">
@@ -386,7 +366,6 @@ function TrialsSection() {
                 <p className="mt-1 text-xs text-ink-2">{t.note}</p>
                 <p className="mt-3 border-t border-line pt-2.5 text-xs text-ink-2">
                   推荐配队：<span className="font-medium text-accent">{t.recommend[0].name}</span>
-                  <span className="ml-2 font-mono text-ink-3">通过率 {t.recommend[0].passRate}%</span>
                 </p>
               </div>
             </Link>
@@ -394,7 +373,7 @@ function TrialsSection() {
         ))}
       </div>
       <p className="mt-3 font-mono text-[11px] text-ink-3">
-        场景增益每周一 04:00 轮换 · 通关大师层可获大师徽章
+        场景为编程任务的难度分层，用于横向比较模型与配队的适用面
       </p>
     </section>
   );
@@ -406,11 +385,7 @@ function GuidesSection() {
   const tabs = guideCategories.map((c) => c.id);
   const [tab, setTab] = useState<(typeof tabs)[number]>('认知');
   const list = useMemo(
-    () =>
-      guides
-        .filter((g) => g.category === tab)
-        .sort((a, b) => b.readsNum - a.readsNum)
-        .slice(0, 6),
+    () => guidesSorted.filter((g) => g.category === tab).slice(0, 6),
     [tab],
   );
 
@@ -534,38 +509,46 @@ function StartHereSection() {
 
 /* ================= 侧栏 ================= */
 
-function RotationCard() {
+/**
+ * 最近发布：按模型真实发布日期倒序取 4 条。
+ * 本站不设赛季，也没有人为的周期轮换——时间锚点就是厂商的实际发布节奏。
+ */
+function RecentReleasesCard() {
+  const recent = modelsByRelease.filter((m) => !m.unreleased).slice(0, 4);
   return (
     <div className="rounded-[6px] border border-line bg-white p-4">
-      <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">
-        // 本周轮换 · WEEK 3
-      </p>
-      <div className="mt-3 space-y-2">
-        {[
-          { label: 'Claude 系', value: '+15%' },
-          { label: '复核流', value: '+15%' },
-        ].map((r) => (
-          <div key={r.label} className="flex items-center justify-between text-[13px]">
-            <span className="text-ink">{r.label}</span>
-            <span className="font-mono text-xs font-bold text-accent">{r.value}</span>
-          </div>
+      <h3 className="flex items-center gap-2 text-[15px] font-semibold text-ink">
+        <span className="inline-block h-3 w-1 bg-accent" aria-hidden />
+        最近发布
+      </h3>
+      <ul className="mt-3 space-y-2">
+        {recent.map((m) => (
+          <li key={m.id} className="flex items-center justify-between gap-2 text-[13px]">
+            <Link
+              to={m.hasDetail ? `/models/${m.id}` : '/models'}
+              className="min-w-0 flex-1 truncate text-ink transition-colors duration-150 hover:text-accent"
+            >
+              {m.name}
+            </Link>
+            <span className="shrink-0 font-mono text-xs text-ink-3">{m.releaseDate}</span>
+          </li>
         ))}
-      </div>
-      <p className="mt-3 border-t border-line pt-2.5 text-xs leading-relaxed text-ink-2">
-        场景增益每周一 04:00 轮换，本周适配长程重构场景。
+      </ul>
+      <p className="mt-3 border-t border-line pt-2.5 font-mono text-[11px] text-ink-3">
+        // 按厂商发布日期排序
       </p>
     </div>
   );
 }
 
 function TeamTrendCard() {
-  const top = [...teams].sort((a, b) => b.usage - a.usage).slice(0, 3);
+  const top = [...teams].sort((a, b) => b.composite - a.composite).slice(0, 3);
   const colors = ['#09090B', '#B8860B', '#A1A1AA'];
   return (
     <div className="rounded-[6px] border border-line bg-white p-4">
       <h3 className="flex items-center gap-2 text-[15px] font-semibold text-ink">
         <span className="inline-block h-3 w-1 bg-accent" aria-hidden />
-        本周配队趋势
+        配队推荐
       </h3>
       <ul className="mt-3 space-y-2">
         {top.map((t, i) => (
@@ -574,26 +557,12 @@ function TeamTrendCard() {
               {t.name}
             </Link>
             <span className="font-mono text-xs font-bold" style={{ color: colors[i] }}>
-              {t.usage}%
+              {t.composite}
             </span>
           </li>
         ))}
       </ul>
-      {/* 占比条 */}
-      <div className="mt-3 flex h-1 overflow-hidden rounded-full bg-line">
-        {top.map((t, i) => (
-          <motion.div
-            key={t.id}
-            className="h-full"
-            style={{ backgroundColor: colors[i] }}
-            initial={{ width: 0 }}
-            whileInView={{ width: `${t.usage}%` }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.05, ease: 'easeOut' }}
-          />
-        ))}
-      </div>
-      <p className="mt-2 font-mono text-[11px] text-ink-3">// 榜单使用占比 · WEEK 3</p>
+      <p className="mt-3 font-mono text-[11px] text-ink-3">// 站点综合评分 · 非使用量统计</p>
     </div>
   );
 }
@@ -602,10 +571,10 @@ function DisclaimerCard() {
   return (
     <div className="rounded-[6px] border border-line bg-bg-alt p-4">
       <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">
-        SEASON 2026-07 · FICTIONAL DATA FOR DEMO
+        DATA SNAPSHOT 2026-08-15
       </p>
       <p className="mt-2 text-[11px] leading-relaxed text-ink-3">
-        本站为爱好者演示 Wiki，数值均为虚构 mock。
+        榜单成绩与价格来自公开渠道调研，具有时效性，请以官方渠道为准；站点评分为主观评估。
       </p>
     </div>
   );
@@ -630,7 +599,7 @@ export default function Home() {
         </Reveal>
       </div>
 
-      {/* S1 本期推荐轮播（页面顶部，替代原大标题 Hero） */}
+      {/* S1 编辑推荐轮播（页面顶部，替代原大标题 Hero） */}
       <div className="mx-auto max-w-[1280px] px-4 md:px-6">
         <Reveal>
           <UpCarousel />
@@ -655,7 +624,7 @@ export default function Home() {
         {/* 右栏：配队趋势置顶 */}
         <aside className="order-3 grid content-start gap-4 sm:grid-cols-2 lg:sticky lg:top-[76px] lg:grid-cols-1 lg:self-start">
           <TeamTrendCard />
-          <RotationCard />
+          <RecentReleasesCard />
           <UpdateLog />
           <DisclaimerCard />
         </aside>

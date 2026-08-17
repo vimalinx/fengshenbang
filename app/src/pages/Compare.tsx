@@ -42,7 +42,7 @@ function CompareList() {
         title="对决"
         en="COMPARE"
         verdict="模型与 Harness 两两对决：维度对比、场景结论与 FAQ 一页看懂，选型不再拍脑袋。"
-        badges={['10 组对决', '双参考派生', '赛季 2026-08']}
+        badges={['10 组对决', '双参考派生', '站点主观编排']}
       />
       <div className="mx-auto max-w-[1280px] space-y-10 px-4 py-10 md:px-6">
         {comparisonGroups.map((g) => (
@@ -108,7 +108,7 @@ function CompareDetail({ c }: { c: Comparison }) {
         title={`${a.name} vs ${b.name}`}
         en="DUEL"
         verdict={c.verdict}
-        badges={[c.kind === 'harness' ? '装备对决' : '模型对决', '赛季 2026-08']}
+        badges={[c.kind === 'harness' ? '装备对决' : '模型对决', '站点主观编排']}
       />
       <div className="mx-auto max-w-[1080px] space-y-12 px-4 py-10 md:px-6">
         {/* 双参考卡 */}

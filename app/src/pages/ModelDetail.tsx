@@ -32,7 +32,7 @@ function FitRing({ pct, size = 44 }: { pct: number; size?: number }) {
   const r = (size - 6) / 2;
   const c = 2 * Math.PI * r;
   return (
-    <div className="relative" style={{ width: size, height: size }} title={`契合度 ${pct}%`}>
+    <div className="relative" style={{ width: size, height: size }} title={`契合度 ${pct}%（站点评估，非实测）`}>
       <svg width={size} height={size}>
         <circle cx={size / 2} cy={size / 2} r={r} fill="#FFFFFF" stroke="#F5F0E6" strokeWidth={4} />
         <motion.circle
@@ -593,7 +593,7 @@ export default function ModelDetail() {
                   transition={{ duration: 0.35, delay: 0.3 + specRows.length * 0.05 }}
                   className="bg-gold-soft/60 px-3 py-2.5"
                 >
-                  <div className="text-xs text-ink-3">综合战力</div>
+                  <div className="text-xs text-ink-3" title="站点主观评估，非实测">综合战力 · 站点评分</div>
                   <div className="mt-0.5 font-mono text-sm font-bold leading-snug text-cinnabar">
                     {model.unreleased ? '未发布' : model.composite}
                   </div>
@@ -1167,7 +1167,7 @@ export default function ModelDetail() {
                         {g.title}
                       </span>
                       <span className="shrink-0 font-mono text-xs text-ink-3">
-                        {g.author} · 阅读 {g.reads} · {g.date}
+                        {g.pending ? '待撰写' : '已撰写'}
                       </span>
                     </div>
                     {g.excerpt && (

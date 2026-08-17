@@ -39,7 +39,7 @@ type SortKey = 'composite' | 'fit' | 'price';
 
 const priceFilters: PriceFilter[] = ['全部', '开源', '订阅', '按量'];
 const sortOptions: { id: SortKey; label: string }[] = [
-  { id: 'composite', label: '综合评分' },
+  { id: 'composite', label: '站点评分' },
   { id: 'fit', label: '契合度' },
   { id: 'price', label: '价格' },
 ];
@@ -221,7 +221,10 @@ function HarnessDrawer({ harness, onClose }: { harness: Harness; onClose: () => 
             transition={{ duration: 0.45, delay: 0.3, ease }}
             className="mt-4 rounded-[10px] border border-line bg-white p-4 shadow-card"
           >
-            <h3 className="mb-3 font-serif text-sm font-semibold text-ink">适配角色 · 契合度</h3>
+            <h3 className="mb-3 font-serif text-sm font-semibold text-ink">
+              适配角色 · 契合度
+              <span className="ml-1.5 font-mono text-[11px] font-normal text-ink-3">站点评估</span>
+            </h3>
             <div className="space-y-3">
               {harness.topFits.map((fit, i) => {
                 const m = modelMap[fit.modelId];
@@ -472,7 +475,9 @@ export default function Harnesses() {
             </Link>
             可自由试算。
           </p>
-          <p className="font-mono text-[11px] text-ink-3">价格与能力均为 2026-07 演示 mock。</p>
+          <p className="font-mono text-[11px] text-ink-3">
+            价格与开源状态来自各 Harness 官方渠道，具有时效性；契合度与综合评分为站点主观评估，非实测。
+          </p>
         </Reveal>
       </section>
 

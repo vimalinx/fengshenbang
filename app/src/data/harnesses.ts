@@ -1,6 +1,9 @@
 /**
- * Harness 库数据 — 2026-07 mock
- * Harness = AI 编程装备，按形态分五类。
+ * Harness 库数据。Harness = AI 编程装备，按形态分五类。
+ *
+ * 诚信约定：Harness 本身与其价格/开源状态为可核实事实；
+ * 但 topFits[].pct（契合度 %）与 composite（综合评分）是站点主观评估，
+ * 无对照实测支撑，展示时必须标注为「站点评估」，不得呈现为实测数据。
  */
 import type { SystemId } from './models';
 
@@ -8,7 +11,7 @@ export type HarnessType = 'CLI 工具' | 'IDE 集成' | '编辑器插件' | '自
 
 export interface HarnessFit {
   modelId: string;
-  pct: number;
+  pct: number; // 契合度 %：站点主观评估，非实测
 }
 
 export interface Harness {
@@ -31,7 +34,7 @@ export interface Harness {
   openSource: boolean;
   verdict: string;
   obtain: string;
-  composite: number; // 综合评分（排序用）
+  composite: number; // 综合评分（排序用）：站点主观评估，非实测
 }
 
 export const harnessTypes: { id: HarnessType; note: string; icon: string }[] = [
@@ -53,9 +56,9 @@ export const harnesses: Harness[] = [
     pricing: '订阅',
     monthlyUSD: 20,
     icon: '/icon-harness-claudecode.svg',
-    passive: '代码库全图感知，Claude 系自治续航 +18%',
+    passive: '代码库全图感知，与 Claude 系模型配合最顺',
     passiveDetail:
-      '全仓索引常驻，跨文件改动不丢失上下文；Claude 系模型接入时自治续航 +18%。',
+      '全仓索引常驻，跨文件改动不丢失上下文；官方同源，Claude 系模型接入时长程自治表现最稳。',
     fitSystems: 'Claude 系',
     fitSystemIds: ['claude'],
     topFits: [

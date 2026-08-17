@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import type { Team, TeamStyle } from '@/data/teams';
 import { teams, teamStyles } from '@/data/teams';
 import type { Tier } from '@/data/models';
+import { latestReleased } from '@/data/models';
 import PageHero from '@/components/PageHero';
 import SectionHeader from '@/components/SectionHeader';
 import TeamCard from '@/components/TeamCard';
@@ -12,121 +13,51 @@ import TierSeal from '@/components/TierSeal';
 import { Reveal } from '@/components/Reveal';
 import { cn } from '@/lib/utils';
 
-/* ---------------- 赛季倒计时 ---------------- */
+/* ---------------- 榜单横幅 ---------------- */
 
-/** 下一次赛季轮换：每周一 04:00（本地时区） */
-function nextRotation(from: Date): Date {
-  const day = from.getDay(); // 0=周日 … 6=周六
-  const add = (8 - day) % 7;
-  const target = new Date(from.getFullYear(), from.getMonth(), from.getDate() + add, 4, 0, 0, 0);
-  if (target.getTime() <= from.getTime()) target.setDate(target.getDate() + 7);
-  return target;
-}
-
-function useCountdown() {
-  const [now, setNow] = useState(() => new Date());
-  useEffect(() => {
-    const timer = window.setInterval(() => setNow(new Date()), 1000);
-    return () => window.clearInterval(timer);
-  }, []);
-  const diff = Math.max(0, nextRotation(now).getTime() - now.getTime());
-  const sec = Math.floor(diff / 1000);
-  return {
-    d: Math.floor(sec / 86400),
-    h: Math.floor((sec % 86400) / 3600),
-    m: Math.floor((sec % 3600) / 60),
-    s: sec % 60,
-  };
-}
-
-function FlipUnit({ value, pad = 2 }: { value: number; pad?: number }) {
-  const text = String(value).padStart(pad, '0');
-  return (
-    <span className="relative inline-block overflow-hidden align-baseline">
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span
-          key={text}
-          initial={{ y: -14, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 14, opacity: 0 }}
-          transition={{ duration: 0.3, ease: 'easeOut' }}
-          className="inline-block"
-        >
-          {text}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  );
-}
-
-function SeasonBanner() {
-  const { d, h, m, s } = useCountdown();
-  const changes = useMemo(() => {
-    const list: { key: string; text: string; cls: string; dy: number }[] = [];
-    for (const t of teams) {
-      if (t.change === 'up')
-        list.push({ key: t.id, text: `↑ ${t.name} 升至 ${t.tier}`, cls: 'text-cinnabar', dy: -8 });
-    }
-    for (const t of teams) {
-      if (t.change === 'down')
-        list.push({
-          key: t.id,
-          text: `↓ ${t.name} ${t.changeNote ?? '降位'}`,
-          cls: 'text-tech',
-          dy: 8,
-        });
-    }
-    for (const t of teams) {
-      if (t.change === 'new')
-        list.push({ key: t.id, text: `NEW ${t.name} 进榜`, cls: 'text-gold', dy: -8 });
-    }
-    return list;
-  }, []);
-
+/**
+ * 配队榜横幅。
+ * 本站不设赛季，也没有人为的周期轮换——时间锚点用真实的模型发布日期。
+ */
+function LadderBanner() {
   return (
     <Reveal>
       <div className="rounded-[12px] bg-gold-grad p-[1.5px] shadow-card">
         <div className="flex flex-col gap-6 rounded-[10.5px] bg-gold-soft px-6 py-5 md:flex-row md:items-center md:justify-between md:gap-8">
           {/* 左：榜名 */}
           <div className="shrink-0">
-            <h2 className="font-brand text-[22px] leading-tight text-ink">本期配队榜</h2>
+            <h2 className="font-brand text-[22px] leading-tight text-ink">配队榜</h2>
             <p className="mt-1 font-mono text-[11px] tracking-[0.12em] text-ink-2">
-              SEASON 2026-07 · WEEK 3
+              {teams.length} 支配队 · {teamStyles.length} 种流派
             </p>
           </div>
-          {/* 中：倒计时 */}
+          {/* 中：编排口径 */}
           <div className="text-left md:text-center">
-            <div className="font-mono text-[28px] font-bold leading-none text-gold">
-              <FlipUnit value={d} />
-              <span className="mx-1 text-base font-medium text-ink-2">天</span>
-              <FlipUnit value={h} />
-              <span className="mx-1.5 text-ink-3">:</span>
-              <FlipUnit value={m} />
-              <span className="mx-1.5 text-ink-3">:</span>
-              <FlipUnit value={s} />
-            </div>
-            <p className="mt-1.5 text-[11px] text-ink-2">距赛季轮换（每周一 04:00）</p>
+            <p className="text-[13px] leading-relaxed text-ink-2">
+              配队与站位由本站主观编排，
+              <br className="hidden md:block" />
+              成本按站内价格快照试算，非实测。
+            </p>
           </div>
-          {/* 右：上周变动 */}
-          <div className="shrink-0 space-y-1 border-t border-gold/30 pt-3 md:border-l md:border-t-0 md:pl-6 md:pt-0">
-            {changes.map((c, i) => (
-              <motion.p
-                key={c.key}
-                initial={{ opacity: 0, y: c.dy }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.3 + i * 0.1, ease: 'easeOut' }}
-                className={cn('font-mono text-xs font-medium', c.cls)}
-              >
-                {c.text}
-              </motion.p>
-            ))}
+          {/* 右：最近发布的模型（真实发布日期） */}
+          <div className="shrink-0 border-t border-gold/30 pt-3 md:border-l md:border-t-0 md:pl-6 md:pt-0">
+            <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">
+              最近发布
+            </p>
+            <Link
+              to={latestReleased.hasDetail ? `/models/${latestReleased.id}` : '/models'}
+              className="mt-1 block font-serif text-[15px] font-semibold text-ink transition-colors hover:text-cinnabar"
+            >
+              {latestReleased.name}
+            </Link>
+            <p className="mt-0.5 font-mono text-[11px] text-ink-2">{latestReleased.releaseDate}</p>
           </div>
         </div>
       </div>
     </Reveal>
   );
 }
+
 
 /* ---------------- 梯队榜 ---------------- */
 
@@ -228,17 +159,17 @@ export default function Teams() {
         title="配队推演"
         en="// TEAM COMPOSITIONS"
         verdict="独木不成林，单仙难登天。配队之妙，在于相生。"
-        badges={['在榜 7 队', '流派 4 支', '赛季 2026-07']}
+        badges={[`在榜 ${teams.length} 队`, `流派 ${teamStyles.length} 支`, '站点主观编排']}
       />
 
-      {/* S2 赛季轮换横幅 */}
+      {/* S2 榜单横幅 */}
       <section className="mx-auto max-w-[1280px] px-4 pt-10 md:px-6">
-        <SeasonBanner />
+        <LadderBanner />
       </section>
 
       {/* S3 梯队榜 */}
       <section className="mx-auto max-w-[1280px] px-4 pt-12 md:px-6">
-        <SectionHeader title="赛季梯队榜" en="// TIER LIST · WEEK 3" />
+        <SectionHeader title="梯队榜" en="// TIER LIST" />
         <div className="space-y-10">
           {tierGroups.map((g) => (
             <TierGroup

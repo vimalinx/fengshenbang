@@ -5,8 +5,13 @@ import PageHero from '@/components/PageHero';
 import SectionHeader from '@/components/SectionHeader';
 import GuideListItem from '@/components/GuideListItem';
 import { Reveal } from '@/components/Reveal';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { guides, guideCategories } from '@/data/guides';
+import {
+  guides,
+  guidesSorted,
+  guideCategories,
+  guidesWrittenCount,
+  guidesPendingCount,
+} from '@/data/guides';
 import type { Guide, GuideCategory } from '@/data/guides';
 import { cn } from '@/lib/utils';
 
@@ -83,7 +88,7 @@ function FeaturedCard({ guide, onOpen }: { guide: Guide; onOpen: () => void }) {
             variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}
             className="font-mono text-xs text-ink-3"
           >
-            阅读 {guide.reads} · 仙号「{guide.author}」· {guide.date}
+            编辑精选 · 已撰写
           </motion.p>
           <motion.div variants={{ hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } }}>
             <button
@@ -186,8 +191,7 @@ function ReaderDrawer({
                 《{guide.title}》
               </h1>
               <p className="mt-3 font-mono text-xs text-ink-2">
-                仙号「{guide.author}」 · {guide.date} · 阅读 {guide.reads}
-                {guide.words && ` · ${guide.words}`}
+                {guide.category} · {guide.pending ? '待撰写' : '已撰写'}
               </p>
               <div className="cloud-line mt-4 h-3 w-full opacity-50" aria-hidden />
 
@@ -238,10 +242,10 @@ function ReaderDrawer({
                 /* 誊抄中占位 */
                 <div className="mt-10 flex flex-col items-center py-14 text-center">
                   <img src="/seal-stamp.svg" alt="" className="h-16 w-16 opacity-60" />
-                  <h2 className="mt-5 font-serif text-lg font-semibold text-ink">传记编撰中</h2>
+                  <h2 className="mt-5 font-serif text-lg font-semibold text-ink">此篇待撰写</h2>
                   <div className="cloud-line mt-3 h-3 w-40 opacity-50" aria-hidden />
                   <p className="mt-4 font-serif text-sm italic text-ink-2">
-                    「此文尚在玉简誊抄中，敬请期待。」
+                    「此卷仅登记选题，正文尚缺。欢迎认领撰写。」
                   </p>
                 </div>
               )}
@@ -255,7 +259,7 @@ function ReaderDrawer({
                   ))}
                 </div>
                 <p className="mt-4 font-mono text-[11px] text-ink-3">
-                  收录于攻略阁 · 内容为演示 mock
+                  收录于攻略阁
                 </p>
               </div>
             </motion.div>
@@ -270,20 +274,14 @@ function ReaderDrawer({
 export default function Guides() {
   const [tab, setTab] = useState<GuideCategory>('认知');
   const [query, setQuery] = useState('');
-  const [sort, setSort] = useState<'latest' | 'hottest'>('latest');
   const [openGuide, setOpenGuide] = useState<Guide | null>(null);
 
   const featured = useMemo(() => guides.find((g) => g.featured) ?? guides[0], []);
 
   const list = useMemo(() => {
     const q = query.trim();
-    const filtered = guides.filter(
-      (g) => g.category === tab && (!q || g.title.includes(q)),
-    );
-    return [...filtered].sort((a, b) =>
-      sort === 'hottest' ? b.readsNum - a.readsNum : b.date.localeCompare(a.date),
-    );
-  }, [tab, query, sort]);
+    return guidesSorted.filter((g) => g.category === tab && (!q || g.title.includes(q)));
+  }, [tab, query]);
 
   return (
     <div>
@@ -293,7 +291,11 @@ export default function Guides() {
         title="攻略阁"
         en="// PAVILION OF GUIDES"
         verdict="他山之石，可以攻玉。前人渡劫手记，尽藏于此阁。"
-        badges={['收录攻略 86 篇', '作者 23 位', '本周新增 9 篇']}
+        badges={[
+          `已撰写 ${guidesWrittenCount} 篇`,
+          `待撰写 ${guidesPendingCount} 篇`,
+          '开放认领',
+        ]}
       />
 
       <div className="mx-auto max-w-[1280px] px-4 pt-10 md:px-6">
@@ -344,15 +346,6 @@ export default function Guides() {
                 className="h-8 w-[160px] rounded-lg border border-line bg-white pl-8 pr-3 text-[13px] text-ink outline-none transition-all placeholder:text-ink-3 focus:w-[200px] focus:border-gold"
               />
             </div>
-            <Select value={sort} onValueChange={(v) => setSort(v as 'latest' | 'hottest')}>
-              <SelectTrigger className="h-8 w-[92px] border-line bg-white text-[13px]">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="latest">最新</SelectItem>
-                <SelectItem value="hottest">最热</SelectItem>
-              </SelectContent>
-            </Select>
           </div>
         </div>
       </div>
@@ -362,7 +355,7 @@ export default function Guides() {
         <SectionHeader title={tab} en="// GUIDE ARCHIVE" />
         <AnimatePresence mode="wait">
           <motion.div
-            key={tab + sort + query}
+            key={tab + query}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}

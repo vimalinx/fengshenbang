@@ -1361,8 +1361,8 @@ export default function Tools() {
         {/* 底部说明带 */}
         <Reveal className="mt-12">
           <div className="rounded-xl border border-line bg-paper-alt p-4 text-center text-xs leading-relaxed text-ink-2">
-            算盘、罗盘、阵盘皆为纯前端本地演算；价格、系数与契合度均为 2026-07 演示
-            mock，较真你就输了。
+            三个工具皆为纯前端本地演算，不上传任何数据。价格取自站内图鉴的调研快照（2026-08-15），
+            契合度与权重系数为站点主观评估——结果仅供量级参考，实际账单请以各官方计价为准。
           </div>
         </Reveal>
       </div>

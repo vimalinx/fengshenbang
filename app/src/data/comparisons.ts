@@ -1,5 +1,5 @@
 /**
- * 对比数据 — 2026-08 赛季
+ * 对比数据。对决组合与结论为站点主观编排；引用的分数、价格以图鉴调研为准。
  * 结论基于 models.ts / harnesses.ts 当前数据派生，与图鉴数值保持一致。
  * 结构：a vs b 双参照 + 维度表 + 场景结论 + FAQ。
  */
@@ -37,7 +37,7 @@ export const comparisons: Comparison[] = [
     verdict: '追求终端内全仓自治选 Claude Code；习惯可视化 IDE 与双模型复核流选 Cursor。',
     dimensions: [
       { name: '形态', a: 'CLI + IDE 插件', b: '桌面 IDE', winner: 'tie' },
-      { name: '模型适配', a: 'Claude 系自治续航 +18%', b: '全系通用，Gemini 3 Pro 契合 92%', winner: 'b' },
+      { name: '模型适配', a: 'Claude 系官方同源，长程自治最稳', b: '全系通用，Gemini 3 Pro 契合度高（站点评估）', winner: 'b' },
       { name: '后台任务', a: '✓ 原生', b: '✓', winner: 'tie' },
       { name: '计费', a: '$20/月 Pro · $100/月 Max', b: '$20/月 Pro', winner: 'b' },
       { name: '上手曲线', a: '终端命令行，偏专业', b: 'IDE 开箱即用，偏新手', winner: 'b' },
@@ -62,7 +62,7 @@ export const comparisons: Comparison[] = [
     dimensions: [
       { name: '模型生态', a: 'Kimi K3（2M 长文、中文特化）', b: 'Claude 系（Opus 4.7 长程自治）', winner: 'tie' },
       { name: '中文语境', a: '✓ 原生优势', b: '良好但非特化', winner: 'a' },
-      { name: '长程自治', a: '中等', b: '+18% 续航，旗舰级', winner: 'b' },
+      { name: '长程自治', a: '中等', b: '旗舰级，官方同源', winner: 'b' },
       { name: '价格档', a: '更低', b: '$20/月 Pro · $100/月 Max', winner: 'a' },
     ],
     scenarios: [
@@ -72,7 +72,7 @@ export const comparisons: Comparison[] = [
     ],
     faq: [
       { q: 'Kimi Code 支持什么模型？', a: '原生 Kimi K3 等 Moonshot 系模型，2M 上下文处理长文档能力强。' },
-      { q: 'Claude Code 只能用 Claude 吗？', a: '最佳契合 Claude 系（+18% 续航），但非原生体系也有 60-75% 契合度。' },
+      { q: 'Claude Code 只能用 Claude 吗？', a: '最佳契合 Claude 系（官方同源），非原生体系也能用，只是契合度略低（契合度为站点评估）。' },
     ],
   },
   {
@@ -146,7 +146,7 @@ export const comparisons: Comparison[] = [
       { name: '定位', a: '多模态旗舰', b: '长程自治旗舰', winner: 'tie' },
       { name: '上下文', a: '2M', b: '1M', winner: 'a' },
       { name: 'Agent 续航', a: '强', b: '40 小时级连续自治', winner: 'b' },
-      { name: 'Cursor 契合', a: '92%', b: '86%', winner: 'a' },
+      { name: 'Cursor 契合（站点评估）', a: '92%', b: '86%', winner: 'a' },
     ],
     scenarios: [
       { name: '多模态 + 大文档混合任务', pick: 'a', note: '2M 上下文 + 多模态旗舰。' },
@@ -222,7 +222,7 @@ export const comparisons: Comparison[] = [
     verdict: '终端自治与 Claude 生态选 Claude Code；编辑器内开源自由选 Cline。',
     dimensions: [
       { name: '形态', a: 'CLI + IDE 插件', b: 'VSCode 插件', winner: 'tie' },
-      { name: '模型生态', a: 'Claude 系 +18% 续航', b: '任意模型自由', winner: 'b' },
+      { name: '模型生态', a: 'Claude 系官方同源', b: '任意模型自由', winner: 'b' },
       { name: '价格', a: '$20/月起', b: '开源免费', winner: 'b' },
       { name: '自治能力', a: '旗舰级全仓自治', b: '强', winner: 'a' },
     ],

@@ -17,7 +17,7 @@ const TIER_OPTIONS: Tier[] = ['T0', 'T1', 'T2'];
 
 type SortKey = 'composite' | 'release' | 'price' | 'context' | 'speed';
 const SORT_OPTIONS: { id: SortKey; label: string }[] = [
-  { id: 'composite', label: '综合评分 ↓' },
+  { id: 'composite', label: '站点评分 ↓' },
   { id: 'release', label: '发布日期 ↓' },
   { id: 'price', label: '价格 ↑' },
   { id: 'context', label: '上下文 ↓' },
@@ -325,10 +325,13 @@ export default function Models() {
         <section className="border-t border-line bg-paper-alt">
           <div className="mx-auto max-w-[1280px] space-y-1.5 px-4 py-6 text-xs leading-relaxed text-ink-2 md:px-6">
             <p>
-              位阶评定规则：综合战力 = 代码修行 40% + 推理道行 25% + 性价比 20% + 生态契合
-              15%，每周一 04:00 重算。
+              榜单成绩、价格、上下文窗口、发布日期为公开渠道调研整理，逐条对应
+              research-addenda/ 下的调研笔记；具有时效性，请以各官方渠道为准。
             </p>
-            <p>数值来源为 2026-07 季度演示 mock，仅供观赏，不代表真实跑分。</p>
+            <p>
+              「综合战力」与六维属性是本站主观评估（代码 40% + 推理 25% + 性价比 20% +
+              生态契合 15%），非实测跑分，仅供横向参考。
+            </p>
           </div>
         </section>
       </Reveal>

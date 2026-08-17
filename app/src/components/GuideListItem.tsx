@@ -25,11 +25,16 @@ export default function GuideListItem({
       >
         {guide.category}
       </span>
-      <span className="min-w-0 flex-1 truncate text-sm text-ink transition-colors duration-150 group-hover:text-accent">
+      <span
+        className={cn(
+          'min-w-0 flex-1 truncate text-sm transition-colors duration-150',
+          guide.pending ? 'text-ink-3' : 'text-ink group-hover:text-accent',
+        )}
+      >
         {guide.title}
       </span>
       <span className="shrink-0 font-mono text-xs text-ink-3">
-        阅读 {guide.reads} · {guide.date}
+        {guide.pending ? '待撰写' : '已撰写'}
       </span>
     </>
   );

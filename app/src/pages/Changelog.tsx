@@ -2,13 +2,14 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
 import { AnimatePresence, motion } from 'framer-motion';
 import { BellRing, ChevronDown, ChevronUp } from 'lucide-react';
-import { toast, Toaster } from 'sonner';
+import { Toaster } from 'sonner';
 import PageHero from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import {
   changelogRecent,
   changelogArchive,
   changelogCount,
+  changelogLatestDate,
   logTypeColor,
 } from '@/data/changelog';
 import type { LogDay, LogItem, LogType } from '@/data/changelog';
@@ -131,7 +132,7 @@ export default function Changelog() {
         title="编纂录"
         en="// CHRONICLE OF UPDATES"
         verdict="榜上有春秋，笔笔有来处。"
-        badges={[`本赛季记录 ${changelogCount} 条`, '最近更新 07-18']}
+        badges={[`记录 ${changelogCount} 条`, `最近更新 ${changelogLatestDate}`]}
       />
 
       {/* 类型筛选 chips（吸顶） */}
@@ -164,7 +165,7 @@ export default function Changelog() {
       <div className="mx-auto max-w-[860px] px-4 py-10">
         {recent.length === 0 && archive.length === 0 ? (
           <div className="rounded-xl border border-line bg-white p-10 text-center text-sm text-ink-2">
-            此类目下本赛季尚无记录。
+            此类目下尚无记录。
           </div>
         ) : (
           <div className="relative">
@@ -226,16 +227,17 @@ export default function Changelog() {
         <Reveal className="mt-12">
           <div className="flex flex-col items-center justify-between gap-4 rounded-xl border border-line bg-paper-alt p-5 sm:flex-row">
             <p className="text-xs leading-relaxed text-ink-2">
-              编纂录仅记本赛季（2026-07）之事。更早的洪荒纪元？那时本站还不存在。
+              每条记录对应仓库里一个真实 commit，首次提交为 2026-08-02。
             </p>
-            <button
-              type="button"
-              onClick={() => toast('已记入封神台玉简（并不会真的提醒你）')}
+            <a
+              href="https://github.com/vimalinx/fengshenbang/commits/main"
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-cinnabar px-4 py-2 text-xs font-medium text-white transition-all hover:scale-[1.02] hover:bg-cinnabar-deep active:scale-[0.98]"
             >
               <BellRing className="h-3.5 w-3.5" />
-              订阅轮换提醒（演示）
-            </button>
+              在 GitHub 查看提交历史
+            </a>
           </div>
         </Reveal>
       </div>
