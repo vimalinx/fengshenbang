@@ -1,0 +1,549 @@
+---
+id: deepseek-v4-flash
+name: DeepSeek V4 Flash
+system: deepseek
+releaseDate: "2026-07-31"
+collectedDate: 08-09
+specs:
+  contextTokens: 1000000
+  contextLabel: 1M
+  maxOutputTokens: 384000
+  priceIn: 0.14
+  priceOut: 0.28
+  priceLabel: $0.14/$0.28
+scores:
+  swe: 79
+editorial:
+  title: 性价比之王
+  tags:
+    - 性价比
+    - 开源
+    - Agent
+  roles:
+    - 性价比
+    - 代码
+    - 开源
+profile:
+  apiId: deepseek-v4-flash
+  vendor: DeepSeek（深度求索）
+  releaseDate: "2026-07-31"
+  access:
+    - API
+    - 开源权重 · MIT
+    - 本地部署
+    - Codex 生态
+  costNote: >-
+    $0.14/$0.28 · Mtok，缓存命中低至 $0.0028（98% 折扣，全榜 #1）；输出约为 V4-Pro 的 1/3，AA 全套评测成本 $72 vs Pro
+    $1071；ARC-AGI-2 每任务仅 $0.04
+  nicknames:
+    - 性价比之王
+    - 市场崩盘者
+    - 刷分怪
+  signature: AA 指数 52 分 · ARC-AGI-1 89.0% · 全套评测仅 $72，约为 V4-Pro 的 1/15
+benchGroups:
+  - label: 榜单成绩
+    rows:
+      - label: AA 智能指数 v4.1.1
+        value: "52 分 · 类内 #3/101（Max 档）"
+      - label: ARC-AGI-1 Semi-Private
+        value: 89.0% · Max 档 · $0.02/任务
+      - label: ARC-AGI-2 Semi-Private
+        value: 61.4% · Max 档 · $0.04/任务
+      - label: GDPval-AA v2 Elo
+        value: 1559 · 较 Preview +370，开源第二
+      - label: SWE-bench Verified
+        value: 79.0%（V4-Pro 80.6）
+      - label: LiveCodeBench Pass@1
+        value: 91.6%（V4-Pro 93.5）
+      - label: Terminal Bench 2.1
+        value: 82.7% · 超 V4-Pro-Preview 的 72.1
+      - label: AA 缓存命中价
+        value: "$0.003/M · #1"
+  - label: 规格与接入
+    rows:
+      - label: 上下文窗口
+        value: 1,000,000 tok
+      - label: 最大输出
+        value: 384,000 tok
+      - label: 价格（入/出）
+        value: $0.14 / $0.28 · Mtok（缓存命中 $0.0028）
+      - label: effort 档位
+        value: 非推理 / Think / Think Max
+      - label: 模型架构
+        value: 284B MoE · 13B 激活 · CSA+HCA
+      - label: 发布日期
+        value: "2026-07-31"
+      - label: 获取方式
+        value: API · 开源权重 MIT · 本地部署
+constellation:
+  - version: DeepSeek V3
+    date: 2024-12
+    effect: 训练成本仅 $5.6M · 开源炸场
+  - version: DeepSeek R1
+    date: 2025-01
+    effect: 推理觉醒 · 英伟达单日蒸发 $600B
+  - version: DeepSeek V3.2
+    date: 2025-11
+    effect: 开源 SWE 登顶 · Speciale 斩获 IMO 金牌
+  - version: V4-Flash Preview
+    date: 2026-04
+    effect: V4 家族首秀 · 1M 上下文轻量分支
+  - version: V4-Flash-0731
+    date: 2026-07
+    effect: Agent 跑分翻 7 倍 · ARC-AGI 独立验证 · 加冕性价比之王
+    current: true
+talents:
+  - kind: burst
+    seal: 省
+    name: 性价比之王
+    desc: >-
+      白菜价贴脸前沿智能：$60 限额内实测约 15.8 万请求/月，缓存命中 98% 折扣把输入价打到地板；AA 图表上每任务成本约为 Luna 的 1/4，r/opencode 实测
+      Intelligence 49.9 仅差 GLM-5.2 1 分。
+    metric: $0.14/$0.28 · 全套评测 $72 vs Pro $1071
+  - kind: skill
+    seal: 程
+    name: Agent 编程跃升
+    desc: >-
+      仅重做后训练、零架构改动，Agent 基准全面翻倍；跨工具边界的交错思考链适合多步 Agent，Terminal Bench 2.1 82.7% 反超 V4-Pro-Preview 的
+      72.1，第三方公开 harness 已复现该数字。
+    metric: DeepSWE 7.3 → 54.4 · Terminal Bench 2.1 82.7%
+  - kind: burst
+    seal: 破
+    name: 抽象推理破局
+    desc: >-
+      ARC Prize 独立验证 ARC-AGI-1 Semi-Private 89.0%、ARC-AGI-2 61.4%（均 Max 档），每任务成本仅
+      $0.02/$0.04；高低档位阶梯清晰（87.0/84.0、56.0/46.0），Think Max 是主战场。
+    metric: ARC-AGI-1 89.0% · ARC-AGI-2 61.4% · $0.02/$0.04 每任务
+  - kind: normal
+    seal: 速
+    name: 快响应低延迟
+    desc: >-
+      比 V4-Pro 快约 3 倍，延迟敏感交互不拖沓，IDE 编程体验接近 Pro、价格只有约 1/3；但 0731 正式版被 nwienert 实测比 Preview 慢约 2.5
+      倍，社区提醒"不再算快模型"。
+    metric: ~123 tok/s · TTFT ~1.1s · final 较 preview 慢 2.5×
+  - kind: passive
+    seal: 源
+    name: 开源可本地跑
+    desc: >-
+      MIT 权重同日开源，Unsloth 无损 Q8 与 3-bit 量化方案当日落地，128GB+ 内存即可自部署；antirez 专写 DS4 引擎，M3 Max 全速生成峰值功耗仅
+      50W，社区实测 4× RTX Pro 6000 单请求 ~250 tok/s。
+    metric: "Q8 168GB · 3-bit 110GB · llama.cpp PR #24162"
+community:
+  strengths:
+    - 性价比碾压同级
+    - Agent 工具调用
+    - 编码接近 V4-Pro
+    - 1M 长上下文
+    - 开源可本地部署
+  weaknesses:
+    - 复杂长链 Agent
+    - 幻觉率偏高
+    - token 用量偏大
+    - 非推理模式指令弱
+    - 无多模态
+  upgradeConsensus: worth
+  platforms:
+    - name: Reddit
+      tone: pos
+      summary: >-
+        r/LocalLLaMA 高度正面：更新帖 1065 分/298 评论（当月最高）、market crash 帖 609 分/232 评论；夹杂跑分质疑——「Arena -16 分
+        vs GLM +4，benchmarks are cherry picked」；数字为 08-09 快照、本次未能独立复核（Reddit 全站封锁 API）。
+    - name: HackerNews
+      tone: pos
+      summary: >-
+        发布与评测帖 745 分/347 评论、594 分/312 评论，主帖 772 分/463 评论（实为 ARC Prize 结果页，已实测修正
+        768/460）；正评「像圣诞节」「好用到成本可忽略」，质疑集中在 3.6 倍 token 效率、final 比 preview 慢 2.5 倍与无多模态。
+    - name: X
+      tone: pos
+      summary: >-
+        Artificial Analysis / Unsloth 官方号盛赞：指数 +10 分、领先 V4-Pro 6 分、168GB
+        即可本地跑；开发者称「frontier-adjacent at Haiku-tier pricing」「roughly equivalent to Gemini 3.6 Flash
+        at 1/20th the price」。
+    - name: 知乎
+      tone: pos
+      summary: >-
+        问答与媒体引 AA 50 分评价偏正面，观察者网标题「正式版来了，但只来了一半」；国内定价 ¥1/¥2 被强调为「10M token 仅约
+        ¥2」，但官方涨价预告让「便宜窗口」话题升温。
+    - name: V2EX
+      tone: neg
+      summary: >-
+        深度用户偏负面/务实：2 亿 token「没体验出智能」、与 Minimax M2.7「一桌」；非推理模式不跟随指令、被迫切 Kimi；「deepseek-v4-flash
+        好像没大家说的这么智能啊？」帖实测 16 回复；官方发布帖链接未能复核。
+    - name: Linux.do
+      tone: mix
+      summary: 个人体验帖 1.8k views/81 likes：接近 GPT-5.4-xhigh 与 Luna Max；同时有讨论指 DeepSeek 滥用「不是…而是」句式，中文风格对齐存疑。
+  quotes:
+    - text: New Deepseek models are like Christmas for me.
+      source: HN · baalimago
+      tone: pos
+    - text: 竟然完爆 V4 Pro Preview，那 V4 Pro 正式版还得了。
+      source: V2EX · johnniang
+      tone: pos
+    - text: DeepSeek-V4-Flash-0731 is going to cause another market crash.
+      source: Reddit 帖标题
+      tone: pos
+    - text: It's so cost effective I can offer a generous free tier.
+      source: HN · jmathai
+      tone: pos
+    - text: it takes about 3.6x more tokens to finish the same work as Gemini Flash 3.6.
+      source: HN · WhitneyLand
+      tone: neg
+    - text: 感觉就比 minimax m2.7 强点，实在没体验出智能。
+      source: V2EX · lynn1su
+      tone: neg
+    - text: v4 flash final is about 2.5x slower than preview, no longer a fast model.
+      source: HN · nwienert
+      tone: neg
+    - text: without multi-modality it's slightly dead-in-the-water for my usecase.
+      source: HN · sim04ful
+      tone: neg
+  controversies:
+    - event: >-
+        跑分框架红利争议：0731 的 Agent 基准用即将开源但尚未公开的 DeepSeek Harness 极简模式 + max 档位测得（官方技术报告原文 "evaluated
+        with the minimal mode of DeepSeek Harness (to be released) as the agent framework, using the
+        max reasoning effort level with temperature = 1.0, top_p = 0.95"），HN segmondy 转引原文、Reddit
+        直言「benchmarks are cherry picked, plenty of benchmarks where it underperforms」。
+      response: >-
+        官方 changelog 确认 0731 结构与 Preview 一致、仅重做后训练；DeepSeek Harness 极简模式「即将发布/开源」；8/09 已有第三方用公开
+        harness 复现 Terminal-Bench 2.1 82.7%，初步支撑跑分可信度。
+    - event: >-
+        Chatbot Arena 落差：0731 在 Arena 为 -16 分而 GLM 5.2 为 +4，与官方 Agent 跑分碾压 Pro-Preview 的叙事矛盾，被疑「借
+        benchmaxxing 抢 Kimi K3 发布风头」。
+      response: 官方确认更新范围仅限 Flash API，V4-Pro 正式版「coming ASAP」；8/09 仍未发布，与涨价预告互相印证社区「Pro 更贵」的猜测。
+    - event: >-
+        官方「大幅涨价」预告（08-06）：DeepSeek 邮件公告 "We plan to raise the overall pricing for DeepSeek API
+        services in the near future, with a significant increase expected"，HN 与 r/DeepSeek
+        双热帖；社区第一猜测是与 V4-Pro 正式版联动（"uses more resources than the preview did"）。
+      response: 官方未给幅度与 ETA；反方观点称 MIT 权重可转投第三方、涨价只影响官方端点。
+    - event: >-
+        审查漂移（08-05 曝光）：ctgt.ai LineageEval 重测显示官方 0731 构建比 Preview 选择性更审查——mean matched gap
+        +32.0→+44.0、median +33.3→+56.1、敏感侧更审查配对比例 79%→88%（对照组 GPT-OSS-120B 仅 +3.9）。
+      response: DeepSeek 未直接回应；开源社区称可自行微调去审查（已有蒸馏去审查项目）。
+    - event: 中文体感落差：V2EX 用户称 Preview 指令遵循差、长记忆差、「和 Minimax 一桌」，与跑分碾压叙事冲突（部分差评针对 Preview，但削弱信任）。
+  subBoards:
+    - name: AA 智能指数
+      rank: "类内 #3/101 · 52 分"
+      note: 领先 V4-Pro 6 分，距 GPT-5.6 Luna / GLM-5.2 各差 1 分
+    - name: ARC-AGI 官方验证
+      rank: ARC-AGI-1 89.0% · ARC-AGI-2 61.4%
+      note: ARC Prize 独立收录，每任务 $0.02/$0.04
+    - name: GDPval-AA v2
+      rank: 1559 · 开源第二
+      note: 仅次于 Kimi K3 的 1687，高于 GLM-5.2 的 1510
+    - name: AA Agentic
+      rank: "45.7"
+      note: 与 Grok 4.5 持平，高于 GLM-5.2 的 43.1
+    - name: Chatbot Arena
+      rank: "-16 分"
+      note: GLM 5.2 为 +4；0731 发布仅 1 天，子榜单尚无稳定数据
+    - name: DSBench（WebDev 代理）
+      rank: FullStack 68.7 / Hard 59.6
+      note: 仍低于 Opus 4.8 的 71.6 / 71.7
+  heat:
+    - label: HN 主帖（ARC Prize 页）
+      value: 772 分 · 463 评论
+    - label: r/LocalLLaMA 更新帖
+      value: 1065 分 · 298 评论
+    - label: HN 更新帖
+      value: 745 分 · 347 评论
+    - label: market crash 帖
+      value: 609 分 · 232 评论
+  expertQuotes:
+    - text: "V4-Flash-0731 update: was only re-post-trained; V4-Pro official release coming ASAP."
+      name: DeepSeek 官方
+      role: API 文档 changelog · X @deepseek_ai
+      tone: pos
+    - text: >-
+        DeepSeek V4 Flash 0731 scores 50 on the Artificial Analysis Intelligence Index, a 10-point
+        jump over DeepSeek V4 Flash (released April 2026) that puts it 6 points ahead of DeepSeek V4
+        Pro.
+      name: Artificial Analysis
+      role: 机构评测 · X @ArtificialAnlys
+      tone: pos
+    - text: >-
+        At max effort, DeepSeek V4 Flash 0731 scores 89.0% on ARC-AGI-1 Semi-Private at $0.02 per
+        task and 61.4% on ARC-AGI-2 Semi-Private at $0.04 per task.
+      name: ARC Prize
+      role: 独立验证机构 · 官方结果页
+      tone: pos
+    - text: >-
+        DeepSeek V4 Flash 0731 can now be run locally! Run DeepSeek V4 Flash lossless 4-bit on 168GB
+        RAM and 3-bit on 110GB RAM. V4 Flash 0731 outperforms V4 Pro.
+      name: Unsloth AI
+      role: 机构 · X @UnslothAI
+      tone: pos
+    - text: DeepSeek V4 is almost on the frontier, a fraction of the price.
+      name: Simon Willison
+      role: X · 开发者/KOL
+      tone: pos
+    - text: >-
+        So GLM 5.2/Gemini 3.6 level intelligence for $0.28/m output. Plus a size you can genuinely
+        run at home.
+      name: scosman
+      role: HN · 发布帖热评
+      tone: pos
+    - text: >-
+        I've been using it extensively since the release and the best summary I can give is that
+        it's good enough to use it for (almost) everything and cheap enough that the cost are
+        irrelevant.
+      name: LaurensBER
+      role: HN · 主帖热评（Oh My Pi 5-6 会话日花费 <$5）
+      tone: pos
+    - text: >-
+        DeepSeek V4 Flash 0731 is the undisputed price-performance leader: ~158,000 requests/month
+        within the $60 limit, Intelligence 49.9 and Agentic 45.7 – tied with Grok 4.5 and above
+        GLM-5.2 (43.1).
+      name: u/ r/opencode 实测帖
+      role: Reddit r/opencode · 477 分/72 评论
+      tone: pos
+    - text: >-
+        It has zero issues with any regular coding task I threw at it. v4-flash is remarkably "good
+        enough" for what I needed.
+      name: speu
+      role: HN · OpenCode 实测
+      tone: pos
+    - text: >-
+        Deepseek V4 Flash (with opencode as the harness). It has been almost indistinguishable from
+        Codex / Claude Code for me.
+      name: christophilus
+      role: HN · OpenCode 实测
+      tone: pos
+    - text: 竟然完爆 V4 Pro Preview，那 V4 Pro 正式版还得了。
+      name: V2EX johnniang
+      role: V2EX 发布讨论楼
+      tone: pos
+    - text: DeepSeek-V4-Flash-0731 is going to cause another market crash.
+      name: u/ 帖标题
+      role: Reddit r/LocalLLaMA · 609 分/232 评论
+      tone: pos
+    - text: >-
+        The really interesting thing is how big of a jump was achieved with just extra
+        fine-tuning... makes me pretty excited for the future of small models.
+      name: kamranjon
+      role: HN · 热评
+      tone: pos
+    - text: >-
+        It's exciting that a model scoring this high is dirt cheap. It's also so inefficient… it
+        takes about 3.6x more tokens to finish the same work as Gemini Flash 3.6.
+      name: WhitneyLand
+      role: HN · 热评
+      tone: mix
+    - text: >-
+        the v4 flash final is about 2.5x slower than preview making it no longer a fast model...
+        Reading the DS reasoning is wild, it's constantly going in circles.
+      name: nwienert
+      role: HN · 主帖热评（负面实测）
+      tone: neg
+    - text: it needs to 5x the tokens to get the same results as GPT 5.6 Luna at a much lower TPS.
+      name: refulgentis
+      role: HN · 热评
+      tone: neg
+    - text: >-
+        benchmarks are cherry picked, there are plenty of benchmarks where ds v4 flash 0731
+        underperforms plenty competitors.
+      name: u/ HuggingFace 帖评论
+      role: Reddit r/LocalLLaMA
+      tone: neg
+    - text: >-
+        DS v4 Flash 0731 is at -16, GLM 5.2 is at +4. Plus it's not even open weights. So looks like
+        it's just DS way to steal some spot light from K3 by benchmaxxing.
+      name: u/ market crash 帖评论
+      role: Reddit r/LocalLLaMA
+      tone: neg
+    - text: 感觉就比 minimax m2.7 强点，感觉不如 qwen3.6plus、glm5 和 kimi2.5，我已经用了 2 亿多 token 了，实在没体验出智能。
+      name: V2EX lynn1su
+      role: V2EX · 深度用户长测
+      tone: neg
+    - text: flash 用来做简单的单一任务还是挺好的…但切到 flash 直接不跟随指令，不得已改提示词效果还是不好，只能切到 kimi。
+      name: V2EX yangyaofei
+      role: V2EX · 实战用户
+      tone: neg
+    - text: without multi-modality it's slightly dead-in-the-water for my usecase.
+      name: sim04ful
+      role: HN · 热评
+      tone: neg
+    - text: >-
+        The official build is (selectively) more censored than its preview: mean matched gap rose
+        from +32.0 to +44.0, sensitive-side share from 79% to 88%.
+      name: ctgt.ai
+      role: LineageEval 研究 · 审查漂移报告
+      tone: neg
+  timeline:
+    - date: 04-24
+      event: V4 系列发布：V4-Pro + V4-Flash Preview 上线 API，legacy 指针切至 Flash 非推理/推理模式
+    - date: 06-30
+      event: 媒体预热 V4 定价与 7 月中旬发布计划（峰值/谷值动态定价策略）
+    - date: 07-31
+      event: >-
+        V4-Flash-0731 正式版 GA：API 公测 + HF 权重（MIT）同日发布；AA 当日更新评测（50 分）；ARC Prize 收录 ARC-AGI 成绩；Unsloth
+        发布量化；Reddit/HN 多帖爆发
+    - date: 08-02
+      event: Linux.do 个人向体验帖（1.8k views/81 likes）：接近 GPT-5.4-xhigh 和 Luna Max
+    - date: 08-04
+      event: HN 'DeepSeek V4 Flash on a Single AMD MI300X'（382 分/108 评论），单卡本地推理热度高
+    - date: 08-05
+      event: >-
+        r/DeepSeek 'I canceled Claude and coded 7 days straight with DeepSeek V4 Flash 0731'（517
+        分/231 评论）；同日 ctgt.ai 曝光审查漂移（gap +32→+44）
+    - date: 08-06
+      event: 官方邮件预告「大幅涨价」："significant increase expected"，HN 与 r/DeepSeek 双热帖，社区猜与 V4-Pro 正式版联动
+    - date: 08-07
+      event: >-
+        HN 主帖（ARC Prize 页）达 772 分/463 评论；同日 'Is It Cheaper to Run It at Home or Pay per Token?'
+        讨论本地自建 vs API 成本
+  sources:
+    - title: DeepSeek-V4-Flash Update
+      platform: DeepSeek官方
+      url: https://api-docs.deepseek.com/updates/
+    - title: DeepSeek V4 Flash 0731 Intelligence, Performance and Price Analysis
+      platform: Artificial Analysis
+      url: https://artificialanalysis.ai/models/deepseek-v4-flash
+    - title: DeepSeek V4 Flash 0731 - ARC-AGI Results
+      platform: ARC Prize
+      url: https://arcprize.org/results/deepseek-v4-flash-0731
+    - title: "HN: DeepSeek V4 Flash 0731（ARC Prize 页 · 772 pts/463 cmts）"
+      platform: Hacker News
+      url: https://news.ycombinator.com/item?id=49214008
+    - title: "HN: DeepSeek V4 Flash 0731 Intelligence, Performance and Price Analysis"
+      platform: Hacker News
+      url: https://news.ycombinator.com/item?id=49120299
+    - title: "HN: DeepSeek-V4-Flash Update"
+      platform: Hacker News
+      url: https://news.ycombinator.com/item?id=49119559
+    - title: "HN: Tell HN - Upcoming DeepSeek API Billing Adjustment"
+      platform: Hacker News
+      url: https://news.ycombinator.com/item?id=49197176
+    - title: "r/LocalLLaMA: DeepSeek-V4-Flash-0731 is going to cause another market crash"
+      platform: Reddit
+      url: >-
+        https://www.reddit.com/r/LocalLLaMA/comments/1vbjdby/deepseekv4flash0731_is_going_to_cause_another/
+    - title: "r/opencode: DeepSeek V4 Flash 0731（price-performance leader 实测）"
+      platform: Reddit
+      url: https://www.reddit.com/r/opencode/comments/1vbnuda/deepseek_v4_flash_0731/
+    - title: DeepSeek's Official V4 Flash Censors More Than Its Preview, Selectively
+      platform: ctgt.ai
+      url: https://www.ctgt.ai/research/v4-flash-0731-drift
+    - title: deepseek-v4-flash 好像没大家说的这么智能啊？
+      platform: V2EX
+      url: https://www.v2ex.com/t/1210082
+  uncertainties:
+    - Chatbot Arena 子榜单：0731 发布仅 1 天，整体 -16 分，编程/长上下文/WebDev 子榜尚无稳定 0731 专项数据
+    - >-
+      Reddit 全站数字（更新帖 1065/298、market crash 609/232 等）为 data.json 快照值，本次 6
+      种途径（search/old/comments/PullPush/jina）均被反爬拦截，未能独立复核
+    - DeepSeek Harness 极简模式尚未开源，官方 Agent 跑分是否含框架红利无法完全验证（8/09 第三方公开 harness 复现 82.7% 为初步支撑）
+    - 官方「大幅涨价」预告未给幅度与 ETA，与 V4-Pro 正式版联动的猜测未证实
+    - GPT-5.6 Terra 的 Terminal Bench 2.1 精确值两说并存（78.4 vs 87.4），只引用 Flash 侧 82.7
+    - 各平台情绪比例为代表性帖文估算（约 60/25/15），非严格量化
+  versionDelta:
+    base: DeepSeek V4-Flash Preview（2026-04-24）
+    improves:
+      - AA 智能指数 40 → 50（v4.0 口径，08-09 快照升至 52）
+      - GDPval-AA v2 Elo 1189 → 1559（+370，人类基线 1000）
+      - DeepSWE 7.3 → 54.4，翻 7 倍
+      - Cybergym 38.7 → 76.7、DSBench-FullStack 37.0 → 68.7（均翻倍以上）
+      - Terminal Bench 2.1 61.8 → 82.7%，反超 V4-Pro-Preview 的 72.1
+      - ARC Prize 独立验证：ARC-AGI-1 89.0%、ARC-AGI-2 61.4%（Preview 无官方记录）
+      - 原生支持 Responses API 并针对性适配 Codex
+    regresses:
+      - final 较 preview 慢约 2.5 倍（nwienert 实测），不再算「快模型」
+      - reasoning 疯狂绕圈：最轻微提示词含糊即来回纠结，推理长度约 5 倍于 preview
+      - token 效率被指偏低：同任务约需 Gemini 3.6 Flash 的 3.6 倍 token
+      - 审查漂移：LineageEval 官方构建较 preview 选择性更审查（gap +32.0→+44.0）
+      - Chatbot Arena 为 -16 分（GLM 5.2 为 +4），与官方跑分叙事有落差
+      - 复杂 Agent 对 Opus 4.8 仍赢 0 项，DSBench-Hard 差 12 分
+  harnessReviews:
+    - id: claude-code
+      text: >-
+        BiraIgnacio 实测「每天 3 小时、一周不到 $1」、dw_arthur 全天约 $1 且只缺多模态，SWE-bench 79.0 距 V4-Pro 仅 1.6
+        分；建议简单任务开非推理档控 token、复杂规划交旗舰复核。
+    - id: cursor
+      text: >-
+        可经 OpenAI 兼容 API 自行配置，建议高频补全与轻量重构跑 Flash（$0.14/$0.28、缓存命中 98%
+        折扣），交付细节要求高的活切回旗舰；无官方评测、实测数据待补。
+      placeholder: true
+    - id: openhands
+      text: >-
+        OpenCode/Codex 才是主流入口，christophilus 实测「与 Codex/Claude Code 几乎无差别」，$60 额度内约 15.8
+        万请求/月；建议作蜂群性价比执行单元，复杂长链交旗舰。
+      placeholder: true
+  demos:
+    - title: 官方更新公告：Agent 能力发布
+      desc: >-
+        DeepSeek API 文档 Change Log 发布 0731 更新：9 项 Agent 基准全数超越 V4-Pro-Preview（Terminal Bench 2.1
+        82.7、DeepSWE 54.4、Cybergym 76.7 等），并演示原生 Responses API 格式。
+    - title: ARC Prize 官方结果页
+      desc: >-
+        ARC Prize 独立验证 ARC-AGI-1 Semi-Private 89.0%（$0.02/任务）、ARC-AGI-2 Semi-Private
+        61.4%（$0.04/任务），Max/High/Low 三档阶梯 89.0/87.0/84.0 与 61.4/56.0/46.0。
+    - title: HuggingFace 权重发布模型卡
+      desc: deepseek-ai/DeepSeek-V4-Flash-0731 模型卡（MIT 许可），附官方基准表、架构说明与推理配置，为开源社区提供本地部署入口。
+    - title: 官方 Codex 集成文档
+      desc: 演示 Codex 生态中使用 deepseek-v4-flash 的完整配置（Responses API 格式、base_url、model 参数），官方称模型针对性适配 Codex。
+relations:
+  rivals:
+    - glm-5-2
+    - gemini-3-6-flash
+    - deepseek-v4
+  teams:
+    - budget-vanguard
+    - common-warlord
+  guides:
+    - beginner-budget
+    - mech-output-token
+    - mech-cache
+    - mech-toolcall
+  bestInSlot:
+    - id: claude-code
+      note: 实测验证的性价比主力：Claude Code 生态口碑极佳，编码接近 V4-Pro、输出价仅约 1/3。
+    - id: cursor
+      note: 占位推荐：社区称达 Opus 4.8 级、价格约 Pro 的 1/3。
+    - id: openhands
+      note: 占位推荐：无 OpenHands 专项评测，性价比口碑第一（OpenCode Go 约 1/12 官方价）。
+  trialGood:
+    - label: IDE 编程 Agent
+      to: /scenarios#agent
+    - label: 低成本代码重构
+      to: /scenarios#refactor
+    - label: 批量摘要标注
+      to: /scenarios#docs
+    - label: 全栈快速交付
+      to: /scenarios#fullstack
+  trialBad:
+    - label: 长链多工具 Agent
+      to: /scenarios#agent
+      note: 累计误差大、对 Opus 4.8 赢 0 项，升 DeepSeek V4 或换 Kimi K3
+    - label: 幻觉敏感事实查询
+      to: /scenarios#docs
+      note: 84% 幻觉率需验证层，换 Claude Opus 5
+    - label: 中文复杂指令任务
+      to: /scenarios#algo
+      note: 非推理模式不遵循指令，换 GLM-5 或 Kimi K3
+    - label: token 预算极紧任务
+      to: /scenarios#docs
+      note: 偏啰嗦 token 用量达 3.6 倍，换 Gemini 3.6 Flash
+---
+
+## 一句话点评
+
+白菜价贴脸前沿智能：Agent 跑分翻 7 倍、SWE 逼近 Pro；代价是 token 啰嗦与幻觉偏高，跑分还藏着未开源 Harness 的红利。
+
+## 社区反馈 · 编程
+
+基准接近 Pro：SWE-bench 79.0 vs 80.6、LiveCodeBench 91.6 vs 93.5，Agent 编码 DeepSWE 从 7.3 飙到 54.4；实战分化——HN 称「几便士写一天代码、无 token 焦虑」，DevelopersDigest 确认为其站点生产环境日常使用，christophilus 用 opencode 实测「与 Codex/Claude Code 几乎无差别」、jmathai 表示「成本低到能给产品开 generous 免费层」；但 V2EX 称「coding 场景 v4 pro 都不如 glm5.1」、nwienert 实测「0731 final 比 preview 慢约 2.5 倍、reasoning 绕圈 5 倍长」、debazel 的 Rust+OpenGL 纹理问题 2 小时未解、r/opencode 用户实测 token 用量偏大。分歧源于场景与框架差异：简单任务零翻车，复杂图形栈/长链规划翻车概率明显更高。
+
+## 社区反馈 · 推理
+
+Think Max 档是主战场：AA 智能指数 Max 档 52 分、非推理仅 36 分，差约 16 分；GPQA Diamond 91%、HLE 37%、SciCode 50%；ARC Prize 独立验证 ARC-AGI-1 Semi-Private 89.0%（$0.02/任务）创同价位纪录、ARC-AGI-2 61.4%（$0.04/任务）——每任务成本比 Luna 低约一个数量级；但达到 GPT-5.6 Luna 同等结果需约 5 倍 token 且 TPS 更低，WhitneyLand 称效率为 Gemini 3.6 Flash 的 1/3.6，nwienert 直言「最轻微的提示词含糊它都会来回绕圈」。
+
+## 社区反馈 · 中文
+
+中文社区反馈偏负面：V2EX 用户用 2 亿 token 后称「没体验出智能」、900k 剧本长记忆召回差；非推理模式复杂指令不遵循、被迫切到 Kimi；Linux.do 另吐槽「不是…而是」句式，中文风格对齐是短板。多数差评针对 Preview 或非推理模式，0731 正式版中文专项反馈尚少；官方 8 月初已公告「大幅涨价」预告，国内 ¥1/¥2 定价的「10M token 仅约 ¥2」窗口期能维持多久存疑。
+
+## 升级共识
+
+Agent/Coding 工作流是质变级升级：SWE 距 Pro 仅 1.6 分、输出便宜约 3 倍，默认 Flash、验证失败再升 Pro 的策略普遍成立，值得直接换；但跑分含未开源 Harness 的红利、Arena -16 分存在落差，且 8/06 官方已预告「大幅涨价」、final 版较 preview 慢 2.5 倍——不急于求成的用户可等 V4-Pro 正式版与涨价细则落地再定夺。
+
+## 榜单与实测落差
+
+跑分登顶与体感分化并存：正向在 coding/性价比——HN 多人称「几便士写一天代码」、r/opencode 实测 $60 内 15.8 万请求/月、DevelopersDigest 生产环境日常使用、christophilus 称 opencode 实测与 Codex/Claude Code 几乎无差别、jmathai 成本低到开免费层；负向在中文长记忆、非推理模式指令遵循、token 效率（3.6–5 倍）、final 较 preview 慢 2.5 倍（nwienert：reasoning 疯狂绕圈）与 Arena -16 分。根因是跑分用未开源的 DeepSeek Harness 极简模式 + max 档测得，框架红利直到 8/09 第三方公开 harness 复现 82.7% 才部分缓解；缓解：默认 Think Max 档、依赖稳定提示词吃缓存命中折扣，中文复杂指令任务先小样验证。

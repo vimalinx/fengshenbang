@@ -1,0 +1,509 @@
+---
+id: llama-4
+name: Llama 4
+system: llama
+releaseDate: "2025-04-05"
+collectedDate: 08-09
+specs:
+  contextTokens: 10000000
+  contextLabel: 10M
+  priceIn: null
+  priceOut: null
+  priceLabel: 开源
+scores:
+  swe: 24
+editorial:
+  title: 开源翻车
+  tags:
+    - 多模态
+    - 长文
+    - 开源
+  roles:
+    - 开源
+    - 多模态
+    - 长文
+profile:
+  apiId: llama-4
+  vendor: Meta（Meta AI / FAIR）
+  releaseDate: "2025-04-05"
+  access:
+    - 开源权重
+    - 本地部署
+    - Llama API
+    - 第三方云 API
+  costNote: >-
+    开源权重免费自部署（Scout 4-bit 量化需 50GB+ 显存）；Llama API 官方定价 Scout 输入 $0.10/Mtok、Maverick $0.19/Mtok（3:1
+    blended 官方估算，2026-03 抓取）；DeepInfra 第三方最低 Scout $0.08/$0.30 · Mtok
+  nicknames:
+    - 翻车羊
+    - 刷榜怪
+    - fudged 羊
+  signature: Scout 10M 上下文创开源纪录 · Cerebras 实测 2,500 tok/s · 发布 36 小时差评如潮
+benchGroups:
+  - label: 榜单成绩
+    rows:
+      - label: LMArena ELO（特调实验版）
+        value: 1417 · 官方宣称第 2，后被证伪
+      - label: LMArena（开源未修改版）
+        value: "#32 · 与特调版落差 30 名"
+      - label: SWE-bench Verified
+        value: 官方宣称 41.8% · 第三方复现 ~24%
+      - label: Aider Polyglot（实测）
+        value: 15.6% · 低于 Qwen2.5-Coder-32B 的 16.4%
+      - label: HumanEval（官方宣称）
+        value: 94.2%
+      - label: GPQA Diamond（Epoch 复现）
+        value: Maverick 67% / Scout 52% · 与官方 69.8%/57.2% 基本吻合
+      - label: Fiction.liveBench（Scout · 128K）
+        value: 15.6% vs Gemini 2.5 Pro 90.6%
+      - label: Cerebras 实测推理速度
+        value: 2,500 tok/s · 400B MoE 单流
+  - label: 规格与接入
+    rows:
+      - label: 上下文窗口
+        value: Scout 10,000,000 tok · Maverick 1,000,000 tok
+      - label: 最大输出
+        value: —
+      - label: 价格（入/出）
+        value: 开源权重 · Llama API $0.10/$0.19 · Mtok
+      - label: effort 档位
+        value: —（不支持 effort 调节；2025-04-29 另有 Reasoning 17B 推理版）
+      - label: 模型架构
+        value: MoE：Scout 109B / 17B 激活 · Maverick 400B / 17B 激活 · 原生多模态
+      - label: 发布日期
+        value: 2025-04-05（Reasoning 版 04-29）
+      - label: 获取方式
+        value: 开源权重 · 本地部署 · Llama API · 第三方云 API
+constellation:
+  - version: Llama 1
+    date: 2023-02
+    effect: 初代开源 · 研究级开放引爆社区
+  - version: Llama 2
+    date: 2023-07
+    effect: 开源权重商业化首作 · 挑战闭源格局
+  - version: Llama 3
+    date: 2024-04
+    effect: 8B/70B 开源登顶 · 生态爆发
+  - version: Llama 3.3
+    date: 2024-12
+    effect: 70B 稠密口碑稳 · 部署友好无争议
+  - version: Llama 4
+    date: 2025-04
+    effect: MoE 首作 · 10M 纪录与刷榜争议齐飞
+    current: true
+talents:
+  - kind: burst
+    seal: 长
+    name: 十兆上下文
+    desc: Scout 原生 10M 上下文创开源纪录，iRoPE 无位置编码交错注意力支撑全代码库推理；但训练仅 256K，超窗后质量骤降，「有长度没质量」。
+    metric: 10M tok（官方宣称）· 训练 256K · 有效 ~5M
+  - kind: skill
+    seal: 算
+    name: MoE 高效推理
+    desc: >-
+      17B 激活参数对 CPU 友好，双路 EPYC 可跑 ~10 tok/s；Cerebras 实测单流 2,500 tok/s 创开源纪录；社区实测 Maverick 400B 单卡
+      RTX 4090 + 512GB DDR5（K-Transformers）可达 45+ tok/s。
+    metric: 2,500 tok/s（Cerebras）· 4090 单卡 45+ tok/s · CPU ~10 tok/s
+  - kind: normal
+    seal: 文
+    name: 原生多模态
+    desc: 首个开源权重原生多模态，图文输入、仅文本输出；官方称最多 8 图视觉推理、Scout grounding 同类最佳——但中文 OCR 实测不及预期，12 种支持语言不含中文。
+    metric: 8 图输入 · MMMU 73.4（Maverick 官方）
+  - kind: passive
+    seal: 源
+    name: 开放权重
+    desc: 开放权重 license 可本地部署、研究自由；代价是 4-bit 量化也要 50GB+ 显存，普通玩家装不下；对比同期 DeepSeek/Qwen 的性价比叙事，「开源开了个寂寞」。
+    metric: 4-bit 50GB+ 显存 · Scout Int4 单卡 H100 可跑
+community:
+  strengths:
+    - 超长上下文（10M 理论）
+    - MoE 高效推理
+    - CPU 友好部署
+    - 开放权重
+    - 原生多模态
+  weaknesses:
+    - 编程能力极差
+    - 幻觉严重
+    - 聊天冗长兴奋
+    - 有长度没质量
+    - 部署门槛高
+  upgradeConsensus: wait
+  platforms:
+    - name: Reddit
+      tone: neg
+      summary: >-
+        r/LocalLLaMA 约 70% 负面：「I'm incredibly disappointed with Llama-4」476 赞/222 评、「Serious issues
+        in Llama 4 training. I Have Submitted My Resignation to GenAI」984 赞/230 评（刷榜争议最强证据帖）、「Notes
+        on Llama 4: The hits, the misses, and the disasters」129 赞；少数正面帖称 Maverick 类似 GPT-4o-0806、MoE
+        本地友好，「Llama 4 is actually goat」154 赞，单卡 4090 45+ tok/s 实测帖 198 赞。
+    - name: HackerNews
+      tone: neg
+      summary: >-
+        「The Llama 4 herd」1235 分/658 评，「Llama 4 Smells Bad」41 分/26 评直接表达不满，「Llama 4 Is Banned in the
+        EU」10 分/6 评；约 65% 负面，用户集中质疑 benchmark 可信度与「期待落空」（"feels like a flop because the expectations
+        are real"）。
+    - name: X
+      tone: mix
+      summary: >-
+        分化且随时间恶化：发布时 LeCun 高调宣传「BOOM!」；2026-01-02 LeCun 亲口承认「Results were fudged a little
+        bit」引爆二次声浪，@tillmantino 指出榜单模型与可下载模型并非同一个；Simon Willison 称「模型评分对我毫无价值，因为我根本用不上得高分的那个版本」。
+    - name: 知乎
+      tone: neg
+      summary: >-
+        「Llama 4 五大疑点曝光」专栏逐层扒皮刷榜争议；澎湃《从高光到塌房，Meta Llama 4 遭遇惊魂 72 小时》梳理 Licheng Yu 实名回应「为了刷点而
+        overfit 测试集我们从来没有做过」；中文情绪约 75% 负面，浏览数因反爬未量化。
+    - name: V2EX
+      tone: neg
+      summary: >-
+        「Llama 4 发布以及其引起的争议」多回复称「实测拉了/拉垮」；tool2dx 吐槽 109B 参数普通玩家装不下、「开源开了个寂寞，还不如 gemma3/phi4
+        可玩性高」；聊天版「你好都回几千 token」成为经典吐槽。
+    - name: 智源社区
+      tone: neg
+      summary: >-
+        标题直称「开源模型的全面倒退」；面向研究与开发者，态度客观但结论负面，指向刷榜争议、编程能力差与长上下文落差；InfoQ 引 randomfoo2（vLLM
+        维护者）复测结论：Scout ≈ Mistral Small 3.1 / Gemma 3 27B，Maverick ≈ GPT-4o 略落后 DeepSeek-V3。
+  quotes:
+    - text: Llama4 Maverick isn't actually that bad—its performance is similar to GPT-4o-0806.
+      source: Reddit · 正面实测
+      tone: pos
+    - text: OK token generation speed (around 10 tokens/s) thanks to its MoE configuration.
+      source: Reddit r/LocalLLaMA
+      tone: pos
+    - text: Llama 4 is actually goat.
+      source: Reddit · 154 赞实测帖
+      tone: pos
+    - text: I'm incredibly disappointed with Llama-4.
+      source: Reddit · 476 赞帖标题
+      tone: neg
+    - text: I strongly advise against using Llama 4 for coding.
+      source: Reddit r/LocalLLaMA
+      tone: neg
+    - text: 开源开了个寂寞，还不如 gemma3/phi4 可玩性高。
+      source: V2EX · tool2dx
+      tone: neg
+    - text: 实测拉了。
+      source: V2EX · 多用户回复
+      tone: neg
+    - text: Results were fudged a little bit.
+      source: Yann LeCun · X
+      tone: neg
+  controversies:
+    - event: >-
+        刷榜作弊：Meta 送测 LMArena 的是特调聊天版 Llama-4-Maverick-03-26-Experimental（训练得 '非常兴奋' 以取悦人类评分者），ELO
+        1417 宣称第 2；开源未修改版实测暴跌至 #32，与 DeepSeek R1(#7)、Qwen2.5-Max(#11) 差距悬殊，Aider 编程仅
+        15.6%。r/LocalLLaMA「Serious issues in Llama 4 training」员工匿名爆料帖 984 赞/230 评，称领导层要求把基准测试集混入
+        post-training、辞职并要求技术报告不署名。
+      response: >-
+        Meta VP Al-Dahle 否认在测试集上训练（"simply not true"）；后训练成员 Licheng Yu 实名回应「为了刷点而 overfit
+        测试集我们从来没有做过」；LMArena 声明 Meta 应更清楚说明特调版性质，后补录开源版排名（#32）。
+    - event: >-
+        2026-01-02 LeCun 亲口承认 'Results were fudged a little bit'、'different models were used for
+        different benchmarks'，并称与 LLM 项目早已无关；同周 GenAI VP Al-Dahle 离职加入 Airbnb，GenAI 组织被边缘化。
+    - event: >-
+        Behemoth 旗舰冻结：约 2T 参数因 MoE 路由与分块注意力问题，2025-05 推迟后悄然冻结，从未发布也未正式取消；2026-04-08 Meta 转向发布闭源 Muse
+        Spark，被解读为放弃开源 Llama 路线。
+    - event: >-
+        欧盟区域封锁：Llama 4 在欧盟不可用（HN 帖「Llama 4 Is Banned in the EU: Open AI, Region-Locked」10 分/6
+        评），dionwiggins Substack 专栏详述区域限制，与 Meta AI 的欧盟数据合规问题相关。
+  subBoards:
+    - name: LMArena 总榜（未修改版）
+      rank: "#32"
+      note: "特调版宣称 #2，落差 30 名；NVIDIA 改造的 Llama-3.3-Nemotron-Super-49B(#17) 都排在前面"
+    - name: 长上下文子榜
+      rank: 有效约 5M
+      note: Fiction.liveBench 128K 仅 15.6%；4-bit 量化 5M 后困惑度 +15-20%
+    - name: 多模态/视觉子榜
+      rank: 官方宣称
+      note: MMMU 73.4 / DocVQA 94.4（Maverick 官方），第三方仅 Epoch 交叉验证推理部分
+    - name: EQBench 长文写作榜
+      rank: 垫底
+      note: _sqrkl 说明：写到后面大段内容重复、写作公式化（量子位报道）
+    - name: WebDev 子榜
+      rank: —
+      note: 缺乏充足社区数据，无法确认排名
+  heat:
+    - label: HN 发布帖
+      value: 1,235 pts · 658 评
+    - label: HN 刷榜曝光帖
+      value: 347 pts · 161 评
+    - label: Reddit 员工辞职帖
+      value: 984 ↑ · 230 评
+    - label: Reddit 失望帖
+      value: 476 ↑ · 222 评
+  expertQuotes:
+    - text: >-
+        Meta's interpretation of our policy did not match what we expect from model providers. Meta
+        should have made it clearer that Llama-4-Maverick-03-26-Experimental was a customized model
+        to optimize for human preference.
+      name: LMArena 官方声明
+      role: 机构 · 刷榜事件后声明
+      tone: neg
+    - text: Cerebras 实测 Llama 4 Maverick 推理速度 2,500 token/s（400B MoE 单流），创开源模型速度纪录。
+      name: Cerebras 新闻稿
+      role: 硬件厂商 · 正面实测
+      tone: pos
+    - text: >-
+        Scout 以 10M 上下文窗口创开源模型纪录，行业领先（官方宣称）；Maverick 是同类最佳多模态模型，在编码、推理、多语言、长上下文和图像基准上超越 GPT-4o 与
+        Gemini 2.0 Flash。
+      name: Meta 官方
+      role: 官方发布 · 技术报告
+      tone: pos
+    - text: >-
+        BOOM! The Llama-4 brood is out. Today is the start of a new era of natively multimodal AI
+        innovation.
+      name: Yann LeCun
+      role: Meta 首席 AI 科学家 · X
+      tone: pos
+    - text: >-
+        Results were fudged a little bit... different models were used for different benchmarks to
+        give better results.
+      name: Yann LeCun
+      role: X · 2026-01-02 承认刷榜
+      tone: neg
+    - text: I've had almost nothing to do with the LLM project since the original Llama shipped.
+      name: Yann LeCun
+      role: X · 与 LLM 项目切割
+      tone: neg
+    - text: >-
+        The model that topped the leaderboards wasn't the model developers could actually download
+        and use.
+      name: "@tillmantino"
+      role: X · 开发者
+      tone: neg
+    - text: 这次的发布总体非常令人困惑。模型评分对我来说毫无价值，因为我甚至无法使用那个得分很高的模型版本。
+      name: Simon Willison
+      role: AI 工具维护者（Datasette/llm）· InfoQ 引述
+      tone: neg
+    - text: Llama-4 不可能在 120k 上下文长度下退化得这么严重。像 Meta 这样的大型 AI 实验室怎么可能宣称支持 10M 上下文窗口，却在实际使用中表现这么差？
+      name: Ivan Fioravant
+      role: CoreViewHQ 联合创始人兼 CTO · 长上下文质疑
+      tone: neg
+    - text: Llama 4 是开源模型的全面倒退。
+      name: 智源社区
+      role: 中文机构 · 深度评测标题
+      tone: neg
+    - text: Llama 4 大模型跌落神坛：作弊刷榜、代码能力极差、和 DeepSeek 比就是伪开源。
+      name: 腾讯新闻
+      role: 中文媒体 · 报道标题
+      tone: neg
+    - text: 从高光到塌房，Meta Llama 4 遭遇惊魂 72 小时。
+      name: 澎湃新闻
+      role: 中文媒体 · 报道标题
+      tone: neg
+    - text: I'm incredibly disappointed with Llama-4.
+      name: u/ 热帖楼主
+      role: Reddit r/LocalLLaMA · 476 赞 222 评
+      tone: neg
+    - text: >-
+        I strongly advise against using Llama 4 for coding. Perhaps it might be worth trying for
+        long text translation or multimodal tasks.
+      name: u/ 失望帖楼主
+      role: Reddit r/LocalLLaMA
+      tone: neg
+    - text: >-
+        Llama4 Maverick isn't actually that bad — its performance is similar to GPT-4o-0806, and the
+        low activation parameter count makes it easier to run locally.
+      name: u/ 正面实测
+      role: Reddit r/LocalLLaMA
+      tone: pos
+    - text: Llama 4 is actually goat —— 我在本地跑通了，效果比预期好不少。
+      name: u/ goat 帖楼主
+      role: Reddit · 154 赞实测帖
+      tone: pos
+    - text: Maverick 400B 单卡 RTX 4090 + 512GB DDR5（K-Transformers）实测 45+ tok/s，终于跑起来了！
+      name: u/ texasdude11
+      role: Reddit · 198 赞部署帖
+      tone: pos
+    - text: 有长度没质量。
+      name: 多平台共识
+      role: 社区流行评价 · 超长上下文实测落差
+      tone: neg
+    - text: 开源开了个寂寞，还不如 gemma3/phi4 可玩性高。
+      name: V2EX · tool2dx
+      role: V2EX 深度吐槽
+      tone: neg
+    - text: Llama 4 五大疑点曝光，逐层扒皮！全球 AI 进步停滞。
+      name: 知乎专栏
+      role: 中文社区 · 深度扒皮文
+      tone: neg
+    - text: It's not a big deal. Llama 4 feels like a flop because the expectations are real.
+      name: HN 热评
+      role: HackerNews · 期望落差讨论
+      tone: mix
+    - text: 为了刷点而 overfit 测试集我们从来没有做过。这两天虚心聆听各方 feedback，希望下一版有提升。
+      name: Licheng Yu
+      role: Meta GenAI 后训练成员 · 实名回应（澎湃引述）
+      tone: mix
+  timeline:
+    - date: "2025-04-05"
+      event: >-
+        Scout / Maverick 正式开源发布（首个开源权重原生多模态 + MoE），Behemoth 仅预览；HN 帖 1235 分/658 评；次日起 r/LocalLLaMA
+        出现 "I'm incredibly disappointed with Llama-4"（476 赞/222 评），实测落差开始发酵
+    - date: "2025-04-07"
+      event: 刷榜作弊传闻爆发：员工匿名爆料（r/LocalLLaMA 984 赞/230 评）称测试集混入后训练并辞职；中文媒体密集报道（腾讯/CSDN/量子位）
+    - date: "2025-04-08"
+      event: >-
+        The Verge 刊文 'Meta got caught gaming AI benchmarks'（HN 347 分/161 评），Meta 副总裁辟谣、Licheng Yu
+        实名回应，LMArena 重测；NVIDIA 同日发布 Nemotron Ultra 253B「暴击」Meta
+    - date: "2025-04-14"
+      event: "未修改版 Maverick 在 LMArena 排名暴跌至约 #32，官方 ELO 1417 第二名的可信度崩塌；GitHub Models 同日上线 Llama 4"
+    - date: "2025-04-29"
+      event: LlamaCon 大会：发布推理版 Llama 4 Reasoning 17B（Maas API）+ Llama API（Reddit 547 赞）；Vertex AI 同日 GA
+    - date: "2025-05-31"
+      event: Cerebras 宣布以 2,500 token/s 推理 Maverick 400B（HN 93 分），少有的正面硬件成绩
+    - date: "2026-01-02"
+      event: LeCun 承认榜单结果 "were fudged a little bit"（Reddit 358 赞、Slashdot 报道），并称与 LLM 项目早已无关
+    - date: "2026-04-08"
+      event: Meta 转向发布闭源推理模型 Muse Spark，被解读为"Meta 杀死开源 Llama 路线"
+  sources:
+    - title: "The Llama 4 herd: The beginning of a new era of natively multimodal AI innovation"
+      platform: Meta官方
+      url: https://ai.meta.com/blog/llama-4-multimodal-intelligence/
+    - title: The Llama 4 herd | Hacker News
+      platform: HackerNews
+      url: https://news.ycombinator.com/item?id=43595585
+    - title: "r/LocalLLaMA: I'm incredibly disappointed with Llama-4"
+      platform: Reddit
+      url: https://www.reddit.com/r/LocalLLaMA/comments/1jsl37d/
+    - title: "r/LocalLLaMA: Serious issues in Llama 4 training. I Have Submitted My Resignation to GenAI"
+      platform: Reddit
+      url: >-
+        https://old.reddit.com/r/LocalLLaMA/comments/1jt8yug/serious_issues_in_llama_4_training_i_have/
+    - title: Meta accused of Llama 4 bait-n-switch to juice LMArena rank
+      platform: The Register
+      url: https://www.theregister.com/2025/04/08/meta_llama4_cheating/
+    - title: Yann LeCun confirms Meta’s Llama 4 benchmarks were "fudged a little bit"
+      platform: Slashdot
+      url: >-
+        https://tech.slashdot.org/story/26/01/02/1449227/results-were-fudged-departing-meta-ai-chief-confirms-llama-4-benchmark-manipulation
+    - title: Everything we announced at our first-ever LlamaCon（Reasoning 17B + Llama API）
+      platform: Meta官方
+      url: https://ai.meta.com/blog/llamacon-llama-news/
+    - title: "Llama 4 Scout vs Maverick: API Cost & Self-Hosting Guide"
+      platform: TokenCost
+      url: https://tokencost.app/blog/llama-4-scout-vs-maverick-api-pricing
+    - title: Llama 4 详细评测：开源模型的全面倒退？
+      platform: 智源社区
+      url: https://hub.baai.ac.cn/view/44717
+    - title: Llama 4 先后被 DeepSeek、英伟达暴击，Meta 不再是大模型开源"霸主"了
+      platform: InfoQ
+      url: https://www.infoq.cn/article/tIjeIpjtNBRZhxvSOc69
+  uncertainties:
+    - 多模态/视觉子榜单仅有官方宣称数据（MMMU 73.4 / DocVQA 94.4），第三方仅 Epoch 交叉验证推理部分；WebDev 子榜数据不足，无法确认排名
+    - >-
+      Llama API 官方定价 $0.10/$0.19 为 2026-03 抓取值且当时仍 waitlist；2026-08 llama.developer.meta.com 已转向
+      Muse Spark 为主，Llama 4 API 定价时点效力待确认
+    - Llama 4 Reasoning 17B 仅有 Maas API 版、无开源权重、无第三方 SWE-bench 复现，社区实测数字缺失
+    - >-
+      第三方复现 SWE-bench Verified ~24% 来自 codersera 2026 复盘，未获 Artificial Analysis 独立交叉验证；但 Epoch 对
+      GPQA Diamond 的复现（67%/52%）与官方基本一致
+    - 知乎具体浏览/关注数未能抓取（反爬），中文热度以标题与媒体报道佐证，未量化
+    - >-
+      Behemoth 冻结状态未正式公布：2025-05 推迟后未发布也未取消，2026-04 Meta 转向闭源 Muse Spark，Llama 开源路线前景不确定；初版不支持
+      effort 调节，未输出 effortBench（Reasoning 17B 为独立版本）
+  versionDelta:
+    base: Llama 3.3 70B
+    improves:
+      - 上下文窗口 128K → 10M（Scout），创开源纪录（训练仅 256K，超窗质量骤降）
+      - 首次采用 MoE：17B 激活参数即可运行，推理效率理论大幅提升（双路 EPYC ~10 tok/s）
+      - 原生多模态（图文输入），Llama 3 不具备；MMMU 73.4（Maverick 官方）
+      - 官方宣称 Maverick 部分基准优于 GPT-4o 与 Gemini 2.0 Flash
+      - Cerebras 实测推理 2,500 token/s（400B MoE 单流），创开源推理速度纪录
+      - Epoch 复现 GPQA Diamond Maverick 67%，与官方 69.8% 基本吻合（非全盘注水）
+    regresses:
+      - 编程能力严重退步：Aider Polyglot 仅 15.6%（低于 Qwen2.5-Coder-32B 的 16.4%）
+      - 第三方复现 SWE-bench Verified 仅约 24%（官方宣称 41.8%）
+      - 长上下文实测远不如宣传：Fiction.liveBench 128K 仅 15.6%（Gemini 2.5 Pro 90.6%）
+      - 聊天特调版过度兴奋，日常问答几乎不可用（「你好」回几千 token）
+      - 本地部署门槛极高：Scout 4-bit 量化需 50GB+ 显存，普通玩家装不下
+      - 旗舰 Behemoth 因 2T 规模问题被悄然冻结，至今未发布（官方无正式声明）
+  harnessReviews:
+    - id: claude-code
+      text: >-
+        无 Llama 4 专项实测：Ollama 自 2026-01 原生兼容 Anthropic Messages API，本地起服务经代理即可接入；教程示范均为
+        Qwen/gpt-oss，SWE 复现约 24%，接入前先按此预期规划。
+      placeholder: true
+    - id: cursor
+      text: >-
+        无 Llama 4 实测：Cursor 官方无直连，但 Llama API 即 OpenAI SDK 兼容，可指向官方或自部署端点；无系统评测数据，编程 Aider 仅 15.6%
+        预期不佳，用 Scout 10M 吃超长文档前先验证质量。
+      placeholder: true
+    - id: openhands
+      text: >-
+        无 Llama 4 实测：OpenHands 支持 Ollama 本地端点，SWE-bench 评测体系成熟（Index 已评 9 款模型），但公开榜单无 Llama 4
+        条目；按复现约 24% 推断长任务成功率不佳，建议小任务先行验证。
+      placeholder: true
+  demos:
+    - title: The Llama 4 herd 官方博客
+      desc: >-
+        发布页内置多模态视频演示与图片理解示例；宣称 Scout 图像 grounding 同类最佳、可输入最多 8 张图做视觉推理；官方称单卡 H100（Int4）可跑 Scout 10M
+        上下文。
+    - title: 10M 上下文长文档/代码库演示
+      desc: >-
+        官方宣称 Scout 支持单卡 H100（Int4 量化）跑 10M 上下文，演示多文档摘要、全代码库推理（iRoPE 无位置编码交错注意力）；但第三方
+        Fiction.liveBench 128K 仅 15.6%，「有长度没质量」。
+    - title: 本地部署实战演示
+      desc: >-
+        社区实测：Maverick 400B 单卡 RTX 4090 + 512GB DDR5 + K-Transformers 45+ tok/s（198 赞帖附视频）；Cerebras
+        平台 2,500 tok/s 单流演示为官方合作亮点。
+relations:
+  rivals:
+    - qwen3
+    - deepseek-v3-2
+    - deepseek-r1
+  teams:
+    - common-warlord
+    - wild-ranger
+  guides:
+    - mech-context-decay
+    - review-flow
+    - beginner-first-model
+  bestInSlot:
+    - id: claude-code
+      note: 无官方支持，可经 Ollama 代理接入；编程口碑垫底，只适合长文档/多模态辅助槽位。
+    - id: cursor
+      note: 无官方直连，但 Llama API 兼容 OpenAI SDK；编程预期不佳，仅适合图文/长文本等非编程任务。
+    - id: openhands
+      note: 支持 Ollama 端点接入；榜单无 Llama 4 条目，仅适合作研究 MoE 架构的玩具。
+  trialGood:
+    - label: 超长文档处理
+      to: /scenarios#docs
+    - label: 长文本翻译
+      to: /scenarios#docs
+    - label: 多模态图文输入
+      to: /scenarios#docs
+  trialBad:
+    - label: 编程/代码任务
+      to: /scenarios#refactor
+      note: Aider Polyglot 仅 15.6%、SWE 复现约 24%（官方 41.8% 已被证伪），换 DeepSeek V3.2 或 Qwen3
+    - label: 知识问答/低幻觉场景
+      to: /scenarios#docs
+      note: 幻觉严重、回答冗长不可靠，换 DeepSeek R1
+    - label: 复杂推理/数学
+      to: /scenarios#algo
+      note: 初版非推理模型，弱于 DeepSeek V3.2；需推理请用 04-29 的 Reasoning 17B（仅 Maas API）
+---
+
+## 一句话点评
+
+开源史上最大翻车：官方成绩被 LeCun 亲口承认 fudged，实测编程 15.6%、SWE 仅约 24%，有长度没质量，社区共识为全面倒退。
+
+## 社区反馈 · 编程
+
+共识是最短板：Aider Polyglot 实测仅 15.6%，Reddit 帖直书 "I strongly advise against using Llama 4 for coding"（476 赞帖正文）；官方宣称 SWE-bench 41.8% 但第三方复现仅约 24%，同期 DeepSeek V4 Pro 达 80.6%、Qwen 3.6-27B 达 77.2%；甚至被比它小得多的 Qwen2.5-Coder-32B（16.4%）反超。官方 LiveCodeBench 43.4%（Maverick）与第三方实测落差巨大，rootly.com 专门发文《Llama 4 underperforms: a benchmark against coding-centric models》。
+
+## 社区反馈 · 推理
+
+2025-04-05 初版为非推理模型，数学与逻辑弱于 DeepSeek V3；但 Epoch AI 独立复现 GPQA Diamond Maverick 67% / Scout 52%，与官方宣称的 69.8% / 57.2% 基本吻合，并非全盘注水。2025-04-29 发布推理版 Llama 4 Reasoning 17B（Maas API，547↑ Reddit 帖），官方话术从「不推理」转向补推理短板；社区共识 Maverick 智能约等于 GPT-4o-0806 旧版（Artificial Analysis 复现），不足以激励迁移。
+
+## 社区反馈 · 中文
+
+无明显优势且偏弱：官方 12 种支持语言不含中文，AI 超元域实测「中文 OCR 表现不及预期」；知乎评测指出 DeepSeek V3 以中文能力见长，Llama 4 中文创作/理解乏善可陈；社区缺乏专门好评，反观 Qwen 系列在中文场景更受推荐，中文用户普遍转向国产开源。
+
+## 升级共识
+
+社区共识明确「不值得升级」：编程/推理/日常问答全面落后 DeepSeek 与 Qwen 系，「等下版」是主流意见；Epoch AI 复现虽证明 GPQA Diamond 官方分数基本可信（Maverick 67% vs 官方 69.8%），但社区体感仍差——Artificial Analysis 定位 Maverick ≈ GPT-4o-0806 旧版、Scout ≈ Mistral Small 3.1 / Gemma 3 27B，均不足以构成迁移理由；仅超长上下文（Scout 10M）与多模态图文输入且能接受 50GB+ 显存部署门槛的用户可考虑，且需自行验证「有长度没质量」——Fiction.liveBench 128K 仅 15.6%（Gemini 2.5 Pro 90.6%）、4-bit 量化 5M 后困惑度 +15-20%。
+
+## 榜单与实测落差
+
+落差极大，「分数高但体感差」是最大痛点：官方 SWE-bench 41.8% vs 第三方复现约 24%，Aider 实测编程仅 15.6%，官方 LiveCodeBench 43.4% 与第三方 Aider 实测 16% 完全脱节；LMArena 特调版 ELO 1417 第 2 vs 开源版第 32，落差 30 名。根因是送测特调版与开源权重并非同一模型，加上发布仓促（据 The Information，DeepSeek 冲击下 Meta 内部恐慌、多次推迟后赶 4 月底 Deadline 交付）；缓解：以 Aider/第三方复现成绩为准绳，把 10M 上下文当营销参数、按约 5M 有效窗口规划任务，编程槽位一律换 DeepSeek V3.2 或 Qwen3。

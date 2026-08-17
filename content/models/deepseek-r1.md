@@ -1,0 +1,511 @@
+---
+id: deepseek-r1
+name: DeepSeek-R1
+system: deepseek
+releaseDate: "2025-01-20"
+collectedDate: 08-09
+specs:
+  contextTokens: 128000
+  contextLabel: 128k
+  priceIn: 0.55
+  priceOut: 2.19
+  priceLabel: $0.55/$2.19
+scores:
+  swe: 50
+  arenaElo: 1398
+  aiderPolyglot: 71.6
+editorial:
+  title: 开源推理先锋
+  tags:
+    - 推理
+    - 性价比
+    - 开源
+  roles:
+    - 推理
+    - 性价比
+    - 开源
+profile:
+  apiId: deepseek-reasoner
+  vendor: DeepSeek（深度求索）
+  releaseDate: "2025-01-20"
+  access:
+    - API
+    - 开源权重（MIT）
+    - 本地部署
+  costNote: $0.55/$2.19 · Mtok（缓存命中仅 $0.14），约为 OpenAI o1 的 2% 价格；开源权重可免费本地部署
+  nicknames:
+    - 推理之王
+    - $0.10 模型
+    - 话痨
+  signature: 首个问鼎 Arena 总榜的开源模型，发布一周内引爆 6 条 HN 300+ 分热帖、令英伟达单日市值蒸发 $600B
+benchGroups:
+  - label: 榜单成绩
+    rows:
+      - label: AIME 2024
+        value: 79.8% Pass@1（o1 为 79.2%）
+      - label: MATH-500
+        value: 97.3%
+      - label: Codeforces
+        value: 96.3% 百分位（Rating 2029，o1 为 2061）
+      - label: GPQA Diamond
+        value: 71.5%
+      - label: SWE-bench Verified
+        value: 49.2%（官方，低于 Claude 3.5 的 50.8%）
+      - label: Chatbot Arena 总榜
+        value: "~1398 Elo · 开源 #1"
+      - label: Aider-Polyglot（0528）
+        value: 71.6% · +14.5pts · 全场第 3
+      - label: WebDev Arena（0528）
+        value: "并列 #1（与 Claude Opus 4 并列）"
+  - label: 规格与接入
+    rows:
+      - label: 上下文窗口
+        value: 128,000 tok
+      - label: 最大输出
+        value: —
+      - label: 价格（入/出）
+        value: $0.55 / $2.19 · Mtok（缓存命中 $0.14）
+      - label: effort 档位
+        value: —（无分档，推理深度由思考 token 控制）
+      - label: 模型架构
+        value: MoE 671B 总参 / 37B 激活
+      - label: 发布日期
+        value: 2025-01-20（0528 更新 2025-05-28）
+      - label: 获取方式
+        value: API · 开源权重（MIT）· 本地部署
+constellation:
+  - version: R1-Lite-Preview
+    date: 2024-11
+    effect: 初试推理 · o1-preview 级 AIME/MATH
+  - version: R1-Zero
+    date: 2025-01
+    effect: 纯 RL 觉醒 · 顿悟时刻自发涌现
+  - version: R1 初版
+    date: "2025-01-20"
+    effect: 开源登顶 · 首个问鼎 Arena 总榜
+  - version: R1-0528
+    date: "2025-05-28"
+    effect: 思考加深 · Aider 71.6% · WebDev 并列第一
+    current: true
+talents:
+  - kind: burst
+    seal: 算
+    name: 推理之王
+    desc: >-
+      数学/逻辑推理是核心卖点：MATH-500 97.3%、AIME 2024 79.8% 双超 o1（96.4%/79.2%），初等数学 97% 冠绝当时开源界；R1-Zero 纯 RL
+      训练中自发出现「顿悟时刻」，被视为推理范式转折点。
+    metric: MATH-500 97.3% · AIME 2024 79.8%
+  - kind: skill
+    seal: 程
+    name: 竞赛编程
+    desc: >-
+      Codeforces 96.3% 百分位（Rating 2029）仅比 o1 的 2061 低 32 分；0528 版 Aider-Polyglot 多文件编辑
+      56.9%→71.6%（+14.5pts），Aider 作者 Paul Gauthier 亲自发推确认全场第 3。
+    metric: Codeforces 96.3% 百分位 · Aider 71.6%
+  - kind: passive
+    seal: 价
+    name: 白菜价开源
+    desc: >-
+      MIT 许可开源权重可免费部署，API 价约为 o1 的 2%（缓存命中仅 $0.14/Mtok），被社区称为「$0.10 模型」；蒸馏 1.5B-70B 六档齐发，8B 蒸馏版部分基准超
+      GPT-4o、1.5B 可端侧运行。
+    metric: $0.55/$2.19 · Mtok · 约为 o1 的 2%
+  - kind: normal
+    seal: 验
+    name: 范式开创
+    desc: >-
+      纯 RL 训练练出推理能力获学界认可，论文登《自然》；技术报告公开 24 小时内 Open-R1/TinyZero/GRPO-Zero 等复现项目群涌现（Open-R1 首发帖 394
+      pts），训练细节至今是社区持续话题。
+    metric: 论文登《自然》 · 复现项目 24h 内涌现
+community:
+  strengths:
+    - 数学推理
+    - 竞赛编程
+    - 性价比
+    - 开源自由
+    - 纯 RL 范式
+  weaknesses:
+    - 安全防护缺失
+    - 政治审查
+    - 多轮追问崩塌
+    - 中文创意平平
+    - 过度思考话痨
+  upgradeConsensus: worth
+  platforms:
+    - name: Reddit
+      tone: pos
+      summary: >-
+        开源里程碑主战场：r/LocalLLaMA 高度活跃，「首个登顶 Arena 的开源模型」帖引爆讨论，「DeepSeek-R1-0528 🔥」获高赞、共识「不再偷懒」；但
+        r/DeepSeek 有用户直言「SWE 50% 还不够做平均工程师」，0528 讨论中「absolute yap bot（话痨）」吐槽思考链冗长、多数 provider 速度仅为
+        Gemini 2.5 Pro 的 ~50%。正面约 70%，是开源圈的狂欢现场。
+    - name: HackerNews
+      tone: mix
+      summary: >-
+        技术圈主论坛：发布帖 1843 pts/663 评论、技术报告帖 1351 pts/1056 评论、Simon Willison 代码评测帖 979 pts/746 评论，发布周共 6
+        条 300+ 分热帖，密度为 2025 年 AI 圈罕见；赞赏开源与技术突破（llama.cpp PR 99% 代码由 R1 写成），但也分化出「复现只停在 Step
+        1」「没人真正读了报告」「overhyped trash」等质疑声，正面约 55%。
+    - name: 知乎
+      tone: pos
+      summary: >-
+        技术解析为主，多篇万赞解析称「推理之王」，数学/逻辑推理获高度认可；对纯 RL 训练范式（R1-Zero 顿悟时刻）与蒸馏小模型（1.5B 超
+        GPT-4o）讨论热烈，态度偏学术向、正面约 60%。
+    - name: V2EX
+      tone: neg
+      summary: 偏负面吐槽：「Deepseek R1 追问质量堪忧」成代表帖，追问时幻觉严重、回答质量「差的离谱」；中文首次回答虽靠谱，但多轮使用体验拖累整体口碑，是现文件负面情绪的主要来源。
+    - name: X
+      tone: pos
+      summary: >-
+        Marc Andreessen 盛赞「开源是对世界的深刻礼物」、开源社区高呼「LET's F'ING GO」，正面约 80%；另有母公司幻方（160 人、$7B AUM
+        对冲基金）「以小博大」叙事刷屏，HN 转引讨论激烈。
+    - name: GitHub
+      tone: pos
+      summary: >-
+        开源生态最繁荣的一集：claude-code-router 36.5K★、DeepClaude 2937★（R1 推理 + Claude 执行的组合流）、Unsloth
+        1.58-bit 量化、Open-R1 复现项目群与蒸馏模型矩阵持续迭代；issue #6466 里 OpenHands 官方晒出 SWE 34% 实测，issue #836 记录
+        deepseek-reasoner 不支持 tool_choice 的集成硬伤。
+  quotes:
+    - text: >-
+        This is the first time an open source model ranking 1st in LMSYS Chatbot Arena right? Just
+        WOW.
+      source: Reddit r/LocalLLaMA
+      tone: pos
+    - text: It has much more patience... it doesn't look so lazy now.
+      source: Reddit · R1-0528 讨论
+      tone: pos
+    - text: >-
+        Deepseek R1 is one of the most amazing and impressive breakthroughs I've ever seen — and as
+        open source, a profound gift to the world.
+      source: X · Marc Andreessen
+      tone: pos
+    - text: 追问的回答质量差的离谱，幻想问题尤其严重。
+      source: V2EX
+      tone: neg
+    - text: Completely overhyped trash. Does well in benchmarks and fails in real-world scenarios.
+      source: Hacker News · 发布帖热评
+      tone: neg
+    - text: deepseek r1 has 50 percent swe benchmark... cant do a avg engineer work.
+      source: Reddit r/DeepSeek
+      tone: neg
+    - text: DeepSeek R1 exhibited a 100% attack success rate, failing to block a single harmful prompt.
+      source: Cisco 安全报告
+      tone: neg
+    - text: 话痨（absolute yap bot）：输出冗长，多数 provider 速度仅为 Gemini 2.5 Pro 的 ~50%。
+      source: Reddit r/LocalLLaMA
+      tone: neg
+  controversies:
+    - event: >-
+        安全漏洞（2025-02-03）：Cisco 联合宾大 HarmBench 50 条越狱提示测试，R1 攻击成功率 100%、未拦截任何一条有害提示；Enkrypt AI 报告 R1
+        比 o1 高 11 倍有害内容生成概率、4 倍不安全代码、3.5 倍 CBRN 内容，案例含硫芥子气与 DNA 生化反应详解。
+      response: DeepSeek 未正面回应；社区以 MIT 权重本地部署与外部安全护栏（如 Enkrypt 检测器）缓解。
+    - event: >-
+        政治审查：Promptfoo 发布 1156 题 CCP 敏感话题数据集，涉台独、文革、天安门等拒绝率约 85%；arxiv R1dacted 证实审查嵌入模型权重层（非仅 API
+        过滤），91.2% 回答呈亲华倾向；deepseek-r1-abliterated 与 Perplexity r1-1776 等去审查版广泛传播。
+      response: DeepSeek 以 MIT 许可开源权重允许本地部署绕过 API 层审查；官方未正面回应审查争议，0528 版仅称「减少幻觉」。
+    - event: >-
+        隐私禁令风暴（2025-01-28 起）：意大利 Garante 封禁并要求 20 天内说明数据存储地，应用被从意区 Apple/Google 商店下架；Wiz 曝光两个无鉴权
+        ClickHouse 库泄露 100 万+ 条聊天记录与 API Key（通告后约 1 小时修复）；美国禁令 8 天内连下——海军（01-24）、五角大楼
+        DISA（01-28）、国会（01-30）、得州 Abbott 州长（01-31 首个州）、NASA（01-31）；OpenAI 与 Microsoft
+        以「蒸馏」为由启动调查（NYT/Bloomberg Law 报道）。
+      response: DeepSeek 未公开回应禁令；Wiz 通告后约 1 小时修复数据库。
+    - event: >-
+        复现争议：HN 指出公开复现实验未完成（「只停在 Step 1」），技术报告被指过度吹捧（「没人真正读了报告」）；Open-R1 项目 2026-06-11 仍有更新帖（246
+        pts），社区对「MIT 开源但训练细节不可复现」持续争论。
+  subBoards:
+    - name: WebDev Arena（0528）
+      rank: "并列 #1"
+      note: 与 Claude Opus 4 并列
+    - name: Chatbot Arena 编程子榜
+      rank: "#2"
+    - name: Chatbot Arena 总榜（初版）
+      rank: 开源第一 · ~1398 Elo
+      note: 首个问鼎总榜的开源模型
+    - name: Hard Prompts
+      rank: "#4"
+      note: 初版仅落后 o1 一分，置信区间较宽
+    - name: 数学子榜
+      rank: "#5"
+  heat:
+    - label: HN 发布帖
+      value: 1,843 pts / 663 评论
+    - label: HN 技术报告帖
+      value: 1,351 pts / 1,056 评论
+    - label: HN 代码评测帖（Simon Willison）
+      value: 979 pts / 746 评论
+    - label: HN 0528 更新帖
+      value: 451 pts / 250 评论
+  expertQuotes:
+    - text: DeepSeek-R1 正式发布并开源（MIT 许可）；0528 更新：AIME 2025 87.5%、思考深度增加，新增 JSON 输出与 function calling 支持。
+      name: DeepSeek
+      role: 官方发布 · API 文档
+      tone: pos
+    - text: DeepSeek R1 exhibited a 100% attack success rate, failing to block a single harmful prompt.
+      name: Cisco
+      role: 安全博客 · 联合宾大
+      tone: neg
+    - text: 1156 题 CCP 敏感话题测试中，中国相关争议话题约 85% 被拒绝，涉及台湾独立、文化大革命、天安门等。
+      name: Promptfoo
+      role: 机构评测 · 数据集发布
+      tone: neg
+    - text: R1 比 OpenAI o1 高 11 倍概率生成有害内容、4 倍不安全代码、3.5 倍 CBRN 内容，案例含硫芥子气与 DNA 生化反应详解。
+      name: Enkrypt AI
+      role: 安全机构报告
+      tone: neg
+    - text: >-
+        Deepseek R1 is one of the most amazing and impressive breakthroughs I've ever seen — and as
+        open source, a profound gift to the world.
+      name: Marc Andreessen
+      role: X · a16z 联合创始人
+      tone: pos
+    - text: >-
+        Running it against a few hundred lines of code mainly to read its chain of thought — it's
+        good for things like refactoring... Even if the code it writes has mistakes, the thinking
+        helps spot bits of the code I may have otherwise forgotten to look at.
+      name: Simon Willison
+      role: Hacker News · 代码评测帖 979 pts 作者
+      tone: pos
+    - text: >-
+        In disruptive tech, closed-source moats are fleeting... our real moat lies in our team's
+        growth. Open-source is cultural, not just commercial. Giving back is an honor, and it
+        attracts talent.
+      name: 梁文锋
+      role: DeepSeek 创始人 · thechinaacademy 访谈
+      tone: pos
+    - text: >-
+        even just the Llama 8B model trained on R1 outputs... is stronger than Claude 3.5 Sonnet
+        (except on GPQA)... an insane transfer of capabilities to a relatively tiny model.
+      name: HN 热评 pizza
+      role: Hacker News · 发布帖
+      tone: pos
+    - text: >-
+        Reading the thinking output, it understood exactly what I requested, and then made a small
+        concise addition of code that worked on the first try! I'm completely floored by how good it
+        is.
+      name: Cursor 论坛业余作者
+      role: Cursor 论坛 · R1 model is amazing 帖
+      tone: pos
+    - text: >-
+        R1 is the first model that I can say I prefer to use over sonnet 3.5... in actual usage, R1
+        feel much stronger. It's my new favorite.
+      name: Cursor 论坛用户
+      role: Cursor 论坛 · R1 讨论帖
+      tone: pos
+    - text: 「推理之王」——R1 数学/逻辑推理是核心卖点，初等数学 97% 正确率超越 o1-mini。
+      name: 知乎技术解析帖
+      role: 知乎 · 万赞解析
+      tone: pos
+    - text: 0528 版 AIME 2025 从 70% 提升至 87.5%，与 o3 性能接近但无需极端设置。
+      name: VentureBeat
+      role: 科技媒体 · 0528 报道
+      tone: pos
+    - text: China's DeepSeek R1 model is 'an excellent AI advancement'.
+      name: Nvidia
+      role: 官方声明 · CNBC 报道
+      tone: pos
+    - text: We did and it got 34% on SWE-Bench Verified.
+      name: OpenHands 团队
+      role: "官方 · GitHub issue #6466"
+      tone: mix
+    - text: >-
+        DeepSeek-R1 performed slightly better than o1-preview, and is roughly at the level of
+        frontier models in September of 2024.
+      name: METR
+      role: 官方评测报告 · 2025-03-05
+      tone: mix
+    - text: >-
+        R1 performs exceptionally well in understanding code and identifying bugs. However, when it
+        comes to writing or modifying code across multiple files, it doesn't match the performance
+        of Claude 3.5 Sonnet.
+      name: Jim Clyde Monge
+      role: 技术博客 · Cursor 实测
+      tone: mix
+    - text: >-
+        Sonnet is still king of code... R1 seems good at reasoning out deeper compile-time errors.
+        Using them together based on their strengths feels pretty good.
+      name: Cursor 论坛用户
+      role: Cursor 论坛 · Claude 3.5 Sonnet vs Deepseek-r1 帖
+      tone: mix
+    - text: Completely overhyped trash. Does well in benchmarks and fails in real-world scenarios.
+      name: HN 热评 dimgl
+      role: Hacker News · 发布帖
+      tone: neg
+    - text: >-
+        if you have a long file lets say its 300 lines, since R1 do the thinking first it takes from
+        the context so when it write codes mid writing it spits this error and fails.
+      name: Cursor 论坛用户
+      role: Cursor 论坛 · DeepSeek R1 (Cancelled) 帖
+      tone: neg
+    - text: 追问的回答质量差的离谱，幻想问题尤其严重。
+      name: V2EX 用户
+      role: V2EX · 使用体验帖
+      tone: neg
+    - text: >-
+        deepseek r1 has 50 percent swe benchmark, i think our r1 is still not smart and cant do a
+        avg engineer work.
+      name: u/ 编程吐槽帖
+      role: Reddit r/DeepSeek
+      tone: neg
+    - text: absolute yap bot（话痨）：输出冗长，多数 provider 速度仅为 Gemini 2.5 Pro 的 ~50%。
+      name: u/ 0528 吐槽帖
+      role: Reddit r/LocalLLaMA
+      tone: neg
+  timeline:
+    - date: 01-20
+      event: 正式发布并开源（MIT）：含 R1-Zero 及 1.5B-70B 蒸馏版；HN 首发帖 1843 分/663 评论，r/LocalLLaMA 称「首个登顶 Arena 的开源模型」
+    - date: 01-24
+      event: 美国海军 OpNav 全海军邮件禁用 R1「in any capacity」（CNBC 报道）
+    - date: 01-25
+      event: 技术报告公开（arxiv 2501.12948），HN 1351 分/1056 评论，纯 RL 推理范式获学界关注
+    - date: 01-27
+      event: 免费 App 登顶美区 App Store 免费榜挤掉 ChatGPT；英伟达单日市值蒸发近 $600B（美股市值历史最大单日跌幅）
+    - date: 01-29
+      event: Wiz 曝光无鉴权 ClickHouse 库泄露 100 万+ 条聊天记录/API Key（约 1 小时修复）；OpenAI/Microsoft 启动蒸馏调查；应用被意区商店下架
+    - date: 01-31
+      event: 得州州长 Abbott 签禁令（首个州，连坐 RedNote）+ NASA 全面封禁；美国禁令链 8 天内连下五级
+    - date: 02-03
+      event: Cisco×宾大 HarmBench 测试：R1 攻击成功率 100%，安全争议爆发
+    - date: 05-28
+      event: >-
+        R1-0528 更新发布并开源：Aider-Polyglot 56.9%→71.6%、思考 token 12K→23K，新增 JSON 输出/function calling；HN
+        451 分/250 评论
+  sources:
+    - title: DeepSeek-R1
+      platform: GitHub
+      url: https://github.com/deepseek-ai/DeepSeek-R1
+    - title: "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via RL"
+      platform: arxiv
+      url: https://arxiv.org/abs/2501.12948
+    - title: DeepSeek-R1 | Hacker News
+      platform: Hacker News
+      url: https://news.ycombinator.com/item?id=42768072
+    - title: DeepSeek API 官方定价文档
+      platform: DeepSeek 官方文档
+      url: https://api-docs.deepseek.com/quick_start/pricing/
+    - title: DeepSeek sparks AI stock selloff; Nvidia posts record market-cap loss
+      platform: Reuters
+      url: https://www.reuters.com/technology/chinas-deepseek-sets-off-ai-market-rout-2025-01-27/
+    - title: "R1dacted: Investigating Local Censorship in DeepSeek's R1"
+      platform: arxiv
+      url: https://arxiv.org/abs/2505.12625
+    - title: Details about METR's preliminary evaluation of DeepSeek-R1
+      platform: METR
+      url: https://metr.org/evaluations/deepseek-r1-report/
+    - title: Test with DeepSeek R1（OpenHands SWE 34%）
+      platform: GitHub · OpenHands
+      url: https://github.com/All-Hands-AI/OpenHands/issues/6466
+    - title: R1 model is amazing（Cursor 论坛实测）
+      platform: Cursor 论坛
+      url: https://forum.cursor.com/t/r1-model-is-amazing/44056
+    - title: ErlichLiu/DeepClaude（R1 + Claude Code 组合流）
+      platform: GitHub
+      url: https://github.com/ErlichLiu/DeepClaude
+  uncertainties:
+    - Reddit 实时数字无法实测（直连 403/pullpush 拒绝），「多帖千赞」沿用 2026-08-01 快照，为代表性帖文估算
+    - >-
+      Greptile《DeepSeek R1 is far better than OpenAI o1 at finding bugs in pull
+      requests》页面已删除（410），原对比数字无法核实
+    - 「论文登《自然》封面」未获第二来源确认；Nature 论文（s41586-025-09422-z）存在性已确认
+    - OpenHands SWE 34% 为 2025-01-26 初版口径，0528 更新后官方未披露新值
+    - X 推文互动数字需登录无法取，Marc Andreessen 帖转赞数未核实
+    - SWE-bench ~50%（官方 49.2%）为初版数据，0528 版未披露更新值
+  versionDelta:
+    base: DeepSeek-R1 初版
+    improves:
+      - AIME 2025 正确率 70% → 87.5%，与 o3 接近但无需极端设置
+      - Aider-Polyglot 多文件代码编辑 56.9% → 71.6%（+14.5pts，全场第 3）
+      - 平均思考 token 12K → 23K，思考深度显著增加
+      - 新增 JSON 输出与 function calling 支持（初版无原生 function calling，METR 需 code-fenced 块绕行）
+      - 减少幻觉
+      - "前端能力增强，WebDev Arena 与 Claude Opus 4 并列 #1"
+    regresses:
+      - 思考链变长，响应延迟上升（0528 思考 23K tokens）
+      - 推理成本上升（思考 token 翻倍）
+      - 过度思考：简单任务上浪费算力
+      - 多数 provider 速度仅为 Gemini 2.5 Pro 的 ~50%
+      - 多轮追问质量未见改善，幻觉仍重
+      - SWE-bench 未披露更新值，工程编程差距仍在（OpenHands 34% 口径）
+  harnessReviews:
+    - id: claude-code
+      text: >-
+        DeepClaude（2937★，R1 推理 + Claude 执行）、claude-code-router（36.5K★）砍一半 token 账单。建议按此接入；硬伤是不支持
+        tool_choice，WebSearch 需微代理剥字段。
+    - id: cursor
+      text: >-
+        官方 2025-01-30 接入（Fireworks 托管，Chat 免 Pro、Composer 需 Pro）；Aider 官方验证「R1 Architect + Sonnet
+        editor 超越 o1」。建议双模型槽位抄这套组合。
+    - id: openhands
+      text: >-
+        REXBENCH 12 个任务执行成功率 0%；WebGen-Bench 框架适配关键：OpenHands 下仅 10.2%，换 Bolt.diy 后 27.8%
+        反超全部闭源。建议优先试框架组合，框架适配比模型更决定成败。
+  demos:
+    - title: DeepSeek-R1 技术报告（arxiv 2501.12948）
+      desc: 开篇演示 R1/R1-Zero 推理能力：AIME 2024 79.8%、MATH-500 97.3%、Codeforces 96.3 百分位，附 R1-Zero「顿悟时刻」推理轨迹。
+    - title: DeepSeek-R1 官方 GitHub 仓库
+      desc: >-
+        模型卡演示 R1 与 R1-Zero 评估结果表（SWE Verified 49.2、Codeforces Rating
+        2029）、蒸馏版（1.5B-70B）性能对比，及本地推理部署示例（vLLM/Hugging Face）。
+    - title: DeepSeek API 官方文档 news250528
+      desc: 演示 R1-0528 更新：AIME 2025 87.5%、思考深度增加，新增 JSON 输出与 function calling 支持。
+relations:
+  rivals:
+    - deepseek-v3-2
+    - gpt-5
+    - kimi-k2
+  teams:
+    - budget-vanguard
+    - common-warlord
+  guides:
+    - case-algo
+    - beginner-budget
+    - beginner-harness
+    - mech-toolcall
+  bestInSlot:
+    - id: claude-code
+      note: 无官方支持，但两条社区成熟路线口碑好、性价比高。
+    - id: cursor
+      note: 实测口碑「单文件强、多文件弱」，月成本降 ~30%，性价比高。
+    - id: openhands
+      note: 官方实测 SWE-bench 仅 34%，定位是「单轮高难推理单元」而非多步代理主力。
+  trialGood:
+    - label: 算法与数学推理
+      to: /scenarios#algo
+    - label: Agent 推理核心
+      to: /scenarios#agent
+    - label: 代码审查与重构
+      to: /scenarios#refactor
+  trialBad:
+    - label: 多轮深度追问
+      to: /scenarios#agent
+      note: 追问质量崩塌、幻觉严重，建议换 Kimi K3 或 Qwen3-Max 保持多轮稳定
+    - label: 中文创意写作
+      to: /scenarios#docs
+      note: 文学创作不如 Claude，建议换 Claude Sonnet 5
+    - label: 安全敏感生产
+      to: /scenarios#fullstack
+      note: HarmBench 100% 越狱成功率，生产环境建议换 DeepSeek V4 或 GPT-5
+    - label: 延迟敏感任务
+      to: /scenarios#frontend
+      note: 思考链长、TPS 约为 Gemini 2.5 Pro 一半，前端快速迭代建议换 Gemini 3 Flash
+---
+
+## 一句话点评
+
+开源推理里程碑：数学登顶、白菜价惊艳全球，却因安全越狱与审查争议遭双重审视——便宜能打，也代价分明。
+
+## 社区反馈 · 编程
+
+两极分化是 R1 最鲜明的画像：竞赛编程 Codeforces 96.3% 百分位（Rating 2029，仅比 o1 低 32 分）顶级，0528 版 Aider-Polyglot 56.9%→71.6%（+14.5pts）获 r/LocalLLaMA 高赞、Aider 作者 Paul Gauthier 发推称全场第 3；但工程编程落差明显——SWE-bench Verified 官方 49.2%（还低于 Claude 3.5 Sonnet 的 50.8%），OpenHands 实测仅 34%（issue #6466），REXBENCH 12 个科研扩展任务执行成功率 0%（对比 OpenHands+Claude 4 Sonnet 的 33%）。Cursor 论坛实测「单文件强、多文件弱」：找 bug、算法设计一次过，跨文件上下文保持不住；社区通行玩法是「R1 出思路 + Claude 3.5 Sonnet 当 editor」——Aider 官方验证该组合超越 o1。框架适配比模型更决定成败：WebGen-Bench 里 OpenHands+R1 仅 10.2%，换 Bolt.diy 后 R1 以 27.8% 反超全部闭源模型。
+
+## 社区反馈 · 推理
+
+推理是 R1 名副其实的招牌：MATH-500 97.3%、AIME 2024 79.8% 双超 o1（96.4%/79.2%），初等数学 97% 冠绝当时开源界；0528 版 AIME 2025 从 70% 冲到 87.5%，VentureBeat 称「与 o3 性能接近但无需极端设置」。范式层面，R1-Zero 纯 RL 训练自发涌现「顿悟时刻」、论文登《自然》，被视为推理模型训练范式转折点。但 agentic 场景推理溢价有限：METR 评测 76 个自治任务上 R1「仅略优于 o1-preview、相当于 2024 年 9 月前沿水平」，且「思考链冗长拉高延迟、function call 偶发幻觉」。社区体感两极：HN 热评称 8B 蒸馏版能力迁移惊人，dimgl 则直言「overhyped trash，榜单强、实战拉胯」；多轮追问质量崩塌是 V2EX 集中槽点。
+
+## 社区反馈 · 中文
+
+中文首次回答靠谱、适合国内问题沟通，官方中文榜单 C-Eval 91.8、C-SimpleQA 63.7 均列第一梯队；但创意写作/文学不如 Claude Sonnet，长尾任务（哲学思考、中文诗歌、算命）反有意外脑洞——HN 上甚至出现基于 R1 的 BaziAI 算命产品。审查是中文场景最大变量：Promptfoo 1156 题测试涉台独/文革/天安门等争议话题拒绝率约 85%，arxiv R1dacted 证实审查嵌入模型权重层、91.2% 回答呈亲华倾向——本地部署（MIT 权重）或 abliterated/Perplexity r1-1776 去审查版是绕过手段，但会损失对齐。
+
+## 升级共识
+
+0528 版 Aider-Polyglot 56.9%→71.6%（+14.5pts）属显著跃升而非渐进迭代，WebDev Arena 并列第 1、Aider 作者 Paul Gauthier 亲自发推背书，社区共识「不再偷懒，愿意尝试难题」——升级值得；但思考 token 12K→23K 带来延迟与成本双升，多数 provider 速度仅为 Gemini 2.5 Pro 的 ~50%，简单任务反而过度思考。对纯推理/竞赛/高性价比用户，R1-0528 是 2025 年开源首选；对工程编程多文件任务，社区仍倾向「R1 出思路 + Claude 当 editor」的组合而非单挂 R1。
+
+## 榜单与实测落差
+
+数学推理名副其实（MATH-500 97.3% 与体感一致），但 agentic 编程「分数高体感差」链条完整：SWE-bench 官方 49.2% 低于 Claude 3.5 Sonnet 的 50.8%，OpenHands 实测仅 34%，METR 判定 R1「只相当于 2024 年 9 月前沿水平」且推理期算力在自治任务上提升「surprisingly」有限，REXBENCH 上执行成功率 0%。根因是榜单多测单轮/单题，而 agent 任务依赖函数调用与长上下文保持——R1 初版无原生 function calling（METR 需 code-fenced 块绕行）、多轮追问崩塌，恰是工具链的命门；缓解用 0528 版（新增 function calling）+ 缓存命中价 $0.14，或「R1 推理 + Claude 编辑」双核组合。

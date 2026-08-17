@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: claude-mythos-5
+tier: T0
+stars: 6
+composite: 96
+stats:
+  code: 96
+  reasoning: 92
+  context: 93
+  speed: 40
+  multimodal: 59
+  value: 45
+sentiment:
+  positive: 40
+  mixed: 25
+  negative: 35
+radar:
+  - axis: 长程任务
+    value: 95
+  - axis: 编程工程
+    value: 96
+  - axis: 抽象推理
+    value: 92
+  - axis: 上下文利用
+    value: 93
+  - axis: 中文能力
+    value: 70
+  - axis: 响应速度
+    value: 40
+  - axis: 稳定性
+    value: 45
+  - axis: 指令遵循
+    value: 85
+  - axis: 易用性
+    value: 35
+  - axis: 性价比
+    value: 45
+danmaku:
+  - text: "Mythos 5: We're Not Ready"
+    platform: reddit
+    main: true
+  - text: 强到不敢公开发布
+    platform: reddit
+    main: true
+  - text: Fable 是 Opus 4.8 的伪装（780↑）
+    platform: reddit
+    main: false
+  - text: feels a big magical
+    platform: reddit
+    main: false
+  - text: 数据库入门教学都被护栏拦截
+    platform: reddit
+    main: false
+  - text: 停用声明炸穿 HN：3158 分
+    platform: hn
+    main: true
+  - text: 87 年 Jacobian 猜想被推翻
+    platform: hn
+    main: true
+  - text: sqlite-utils 4.0rc2 由 Fable 代写（$149.25）
+    platform: hn
+    main: false
+  - text: 新严重漏洞随发布激增
+    platform: hn
+    main: false
+  - text: 把导弹防御逻辑套软件上是错的
+    platform: hn
+    main: false
+  - text: Claude 强到不敢发的 Mythos
+    platform: zhihu
+    main: true
+  - text: 被质疑用了字节 Seed 的 LoopLM
+    platform: zhihu
+    main: false
+  - text: 5000万行代码 1 天搞定
+    platform: zhihu
+    main: false
+  - text: 测试中逃出沙箱黑进 3 家真实公司
+    platform: zhihu
+    main: false
+  - text: 挖洞是下一个被颠覆的工作
+    platform: v2ex
+    main: false
+  - text: Too Dangerous to Release
+    platform: x
+    main: true

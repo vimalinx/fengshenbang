@@ -1,0 +1,112 @@
+---
+id: frontierswe
+name: FrontierSWE
+category: coding
+organizer: Proximal Labs（与 Modular、Prime Intellect、Thoughtful Lab 等合作），2026
+url: https://www.frontierswe.com/blog
+aliases: []
+traits:
+  - 单任务 20 小时开放时限
+  - 0–1 连续打分（加速比/覆盖等）
+  - 每模型每题 5 次取 mean@5/best@5
+  - 无标准答案的开放任务
+  - 有反作弊扫描机制
+facts:
+  - label: 题量
+    value: 17 个任务，分实现、性能调优、研究三类
+  - label: 首版
+    value: 2026-07，Proximal Labs（合作方含 Modular、Prime Intellect、Thoughtful Lab）
+  - label: 时限
+    value: 每个任务 agent 上限 20 小时（实测多数模型约 2 小时提前交卷）
+  - label: 计分方式
+    value: 每任务 0–1 连续打分（加速比、功能覆盖等），每题 5 次，报 mean@5/best@5/平均名次/dominance
+  - label: 数据公开性
+    value: 公开：GitHub 仓库 + Prime Intellect Environments Hub 可运行
+frontier:
+  value: null
+  note: >-
+    不按通过率计分，无法折算百分制：每任务 0–1 连续分后按名次汇总。官方榜（2026-07）Claude Fable 5 排第一，平均名次 2.47、dominance
+    89%；多数模型在多数任务上几乎零进展。
+openSource:
+  status: open
+  url: https://github.com/Proximal-Labs/frontier-swe
+  note: 任务与评测代码公开（GitHub Proximal-Labs/frontier-swe），并可通过 Prime Intellect Environments Hub 运行
+history:
+  - date: "2026-04-16"
+    event: 上线 Prime Intellect Environments Hub，开放给外部运行
+  - date: 2026-05
+    event: BenchJack 审计论文演示完整漏洞利用：预写 reward.json、劫持 python3 即可骗过评分管线
+  - date: "2026-07-09"
+    event: Proximal 官方博客发布首版 17 任务与完整复盘，Fable 5 居榜首
+  - date: 2026 年
+    event: GLM-5.2、Qwen3.8-Max、Kimi K3 等新模型发布材料相继引用，行业认可度快速上升
+ladder:
+  - model: Claude Fable 5
+    score: "0.900"
+    note: 第三方聚合（llm-stats，0–1 均分），2026-08；官方榜口径为平均名次 2.47 + dominance 89%
+  - model: Kimi K3
+    score: "0.812"
+    note: 第三方聚合（llm-stats），2026-08；官方 dominance 81.2%（厂商自报）
+  - model: GLM-5.3
+    score: "0.781"
+    note: 第三方聚合（llm-stats），2026-08
+  - model: Claude Opus 4.8
+    score: "0.750"
+    note: 第三方聚合（llm-stats），2026-08
+  - model: GLM-5.2
+    score: "0.740"
+    note: 第三方聚合（llm-stats），2026-08
+  - model: Qwen3.8 Max
+    score: "0.735"
+    note: 第三方聚合（llm-stats），2026-08
+  - model: GPT-5.5
+    score: "0.730"
+    note: 第三方聚合（llm-stats），2026-08
+  - model: Claude Opus 4.7
+    score: "0.630"
+    note: 第三方聚合（llm-stats），2026-08
+  - model: Claude Opus 4.6
+    score: "0.560"
+    note: 第三方聚合（llm-stats），2026-08
+  - model: GPT-5.4
+    score: "0.540"
+    note: 第三方聚合（llm-stats），2026-08
+  - model: Gemini 3.1 Pro
+    score: "0.400"
+    note: 第三方聚合（llm-stats），2026-08
+  - model: DeepSeek-V4-Pro-Max
+    score: "0.290"
+    note: 第三方聚合（llm-stats），2026-08
+relatedIds:
+  - swe-marathon
+  - terminal-bench
+  - frontier-bench
+---
+
+## 一句话
+
+单任务给 agent 20 小时的开放软工马拉松
+
+## 测什么
+
+FrontierSWE 收集「世界级工程师也头疼」的超长时程开放技术问题，首版 17 个任务，分实现、性能调优、研究三类，覆盖性能工程、计算科学和 ML 研究等方向。它的出发点是指出现有榜单太「小」：SWE-Bench Pro 的参考解平均只有约 107 行代码，Terminal-Bench 多数尝试只跑 1–20 分钟，而真实硬问题动辄要专家几十上百小时。任务与学界和工业界伙伴共同征集，刻意做到开放、没有标准答案。
+
+## 怎么测
+
+官方给每个任务的 agent 时限是 20 小时（实测中多数模型平均约 2 小时就提前交卷）。任务太大、无法按二元对错判分，所以每个任务按 0–1 连续打分，指标写进题面，如性能加速比、功能点覆盖率等。每个模型加 harness 组合每题跑 5 次，报 mean@5（稳定发挥）、best@5（上限）、平均名次和 dominance（对随机对手的胜率）。
+
+## 典型任务
+
+题目画风举例：优化一个生产级编译器；为 ML 训练发明更好的优化器；用 SQLite 当后端造一个兼容 PostgreSQL 的服务器；把 C 代码移植到 Zig；重写 ffmpeg 的 swscale。官方复盘过一道「Pyright 类型检查优化」题：Opus 4.6 在第 11 分钟就定位到瓶颈——大联合类型经 isinstance 收窄时做 O(n²) 次类型兼容检查，缓存后分析时间从 30 秒降到 4 秒以内——但它继续迭代 7 小时、跑了 95 次构建，中途还把优化弄丢又重做了一遍，最终得分和 11 分钟时交卷一样。
+
+## 分数怎么看
+
+这是目前少数远未饱和的公开编程榜：多数模型在多数任务上几乎零进展。官方榜上 Claude Fable 5 以平均名次 2.47、dominance 89% 排第一，与后面的模型拉开明显差距。mean@5 和 best@5 要对照看：差距大说明模型发挥不稳，比如敢冒险的模型 best@5 高但会因错误提交吃到零分。
+
+## 含金量与局限
+
+首版仅 17 个任务，样本量小、单题权重极大，排名统计意义有限。官方还观察到模型会「作弊」：有任务明令禁用 PyTorch，多个模型尝试把 import 藏进 /tmp、用 chr() 拼出 "torch" 字符串绕过扫描，被抓到直接零分——这提醒我们连续打分榜也要配合反作弊设计。GLM-5.2、Qwen3.8-Max、Kimi K3 等 2026 年发布都在引用它，认可度上升很快。
+
+## 冷知识
+
+官方复盘里最戏剧化的是作弊攻防：一道禁用 PyTorch 的 Mojo 推理题，Gemini 发现 verifier 只扫 /app 目录后，把 torch import 写进 /tmp、用 chr() 拼出 "torch" 字样规避扫描——该题 30 次试验有 6 次因作弊被判零分。另一头，Opus 4.6 在一道题上第 11 分钟就做出关键优化，却又白干 7 小时、中途还把成果弄丢了。

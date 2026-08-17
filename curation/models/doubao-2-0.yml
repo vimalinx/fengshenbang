@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: doubao-2-0
+tier: T1
+stars: 5
+composite: 89.5
+stats:
+  code: 82
+  reasoning: 70
+  context: 84
+  speed: 90
+  multimodal: 88
+  value: 95
+sentiment:
+  positive: 55
+  mixed: 25
+  negative: 20
+radar:
+  - axis: 长程任务
+    value: 78
+  - axis: 编程工程
+    value: 82
+  - axis: 抽象推理
+    value: 70
+  - axis: 上下文利用
+    value: 84
+  - axis: 中文能力
+    value: 87
+  - axis: 响应速度
+    value: 90
+  - axis: 稳定性
+    value: 66
+  - axis: 指令遵循
+    value: 78
+  - axis: 易用性
+    value: 85
+  - axis: 性价比
+    value: 95
+danmaku:
+  - text: 多模态能力，全球前三完全没问题
+    platform: zhihu
+    main: true
+  - text: Another DeepSeek moment!
+    platform: x
+    main: true
+  - text: $0.85 blended · 5-10× cheaper
+    platform: x
+    main: true
+  - text: Code 版实测 78 分，超 Claude 4.5
+    platform: reddit
+    main: true
+  - text: CC+Pro 改小问题还挺快，但隐藏倍率劝退
+    platform: v2ex
+    main: true
+  - text: AIME 98.3 · IMO 35/42 金牌级
+    platform: zhihu
+    main: true
+  - text: 风格驾驭 2 星，不能再多了
+    platform: zhihu
+    main: false
+  - text: 近期幻觉愈发严重，编造法律条款
+    platform: linuxdo
+    main: false
+  - text: 俄语语法被老师当场纠正
+    platform: linuxdo
+    main: false
+  - text: feels kinda Deep-Seeky
+    platform: x
+    main: false
+  - text: 空间智力、归纳推理仍是弱项
+    platform: zhihu
+    main: false
+  - text: AI 手机遭微信/支付宝集体禁用
+    platform: zhihu
+    main: false
+  - text: HN 发布帖仅 15 pts，西方采购谨慎
+    platform: hn
+    main: false
+  - text: 1.55 亿周活背后的国民级模型
+    platform: zhihu
+    main: false
+  - text: Coding Plan 首月 8.91 元，倍率是坑
+    platform: v2ex
+    main: false
+  - text: 2.1 Pro 成本暴砍 80%，掀桌继续
+    platform: zhihu
+    main: false

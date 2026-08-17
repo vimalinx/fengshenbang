@@ -1,0 +1,82 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: llama-5-maverick
+tier: T2
+stars: 4
+composite: 0
+stats:
+  code: 0
+  reasoning: 0
+  context: 0
+  speed: 0
+  multimodal: 0
+  value: 0
+sentiment:
+  positive: 30
+  mixed: 35
+  negative: 35
+radar:
+  - axis: 长程任务
+    value: 62
+  - axis: 编程工程
+    value: 65
+  - axis: 抽象推理
+    value: 58
+  - axis: 上下文利用
+    value: 60
+  - axis: 中文能力
+    value: 50
+  - axis: 响应速度
+    value: 48
+  - axis: 稳定性
+    value: 45
+  - axis: 指令遵循
+    value: 55
+  - axis: 易用性
+    value: 58
+  - axis: 性价比
+    value: 70
+danmaku:
+  - text: Watermelon 已追上 GPT-5.5（内部自证）
+    platform: x
+    main: true
+  - text: The llama brand is too strong to abandon
+    platform: reddit
+    main: true
+  - text: I don't really think it'll be open weights
+    platform: reddit
+    main: true
+  - text: Llama 5 发布帖：0（Algolia 核验）
+    platform: hn
+    main: true
+  - text: Meta 内部都改用 Claude 写代码了
+    platform: zhihu
+    main: true
+  - text: 102% chance weights will be available soon
+    platform: reddit
+    main: true
+  - text: 10× Muse Spark 算力，内部匹配 GPT-5.5
+    platform: x
+    main: false
+  - text: It might come by may, but not open weights
+    platform: reddit
+    main: false
+  - text: At this rate it would be an ancient relic
+    platform: reddit
+    main: false
+  - text: Muse Spark 393 pts：开源时代落幕
+    platform: hn
+    main: false
+  - text: 从开源折戟到闭源破局
+    platform: zhihu
+    main: false
+  - text: zuck 把 Fable 克隆成开源 Llama 5？
+    platform: x
+    main: false
+  - text: Manifold 2027 前仅 1.9%
+    platform: hn
+    main: false
+  - text: If it flops, biggest disaster of the decade
+    platform: x
+    main: false

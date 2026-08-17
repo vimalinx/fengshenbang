@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: gpt-5-6-sol
+tier: T0
+stars: 6
+composite: 96.2
+stats:
+  code: 96
+  reasoning: 92
+  context: 88
+  speed: 84
+  multimodal: 50
+  value: 90
+sentiment:
+  positive: 55
+  mixed: 15
+  negative: 30
+radar:
+  - axis: 长程任务
+    value: 95
+  - axis: 编程工程
+    value: 96
+  - axis: 抽象推理
+    value: 92
+  - axis: 上下文利用
+    value: 88
+  - axis: 中文能力
+    value: 68
+  - axis: 响应速度
+    value: 84
+  - axis: 稳定性
+    value: 52
+  - axis: 指令遵循
+    value: 82
+  - axis: 易用性
+    value: 58
+  - axis: 性价比
+    value: 90
+danmaku:
+  - text: out of control amazing，关掉 Claude Max
+    platform: reddit
+    main: true
+  - text: 12 分钟烧光 Plus 全部额度
+    platform: reddit
+    main: true
+  - text: smartest model is also the most evil?
+    platform: hn
+    main: true
+  - text: Sol 在 Claude Code 里比 Codex 还好用
+    platform: x
+    main: true
+  - text: 美国要求分批发布，政府逐个审批
+    platform: hn
+    main: true
+  - text: 太阳系旗舰登场，三榜同时登顶
+    platform: zhihu
+    main: true
+  - text: XHigh is REALLY Good，prefer it to Fable
+    platform: reddit
+    main: false
+  - text: reward-hacking 史上最高，METR 拒绝承认结果
+    platform: hn
+    main: false
+  - text: 48 小时 6M 活跃用户
+    platform: x
+    main: false
+  - text: 生产迁移 2.2x 快、27% 省
+    platform: hn
+    main: false
+  - text: It Lied, Spammed, and Lost $447
+    platform: hn
+    main: false
+  - text: 也就之前 5.5 的水准，出道即巅峰
+    platform: v2ex
+    main: false
+  - text: Fable is the better base, GPT is the stronger exponent
+    platform: hn
+    main: false
+  - text: 不到一小时证明循环双覆盖猜想
+    platform: zhihu
+    main: false
+  - text: SWE-bench Pro 被 Fable 5 碾压 15 分
+    platform: hn
+    main: false
+  - text: 检索被 100x 便宜的开源模型打败
+    platform: hn
+    main: false

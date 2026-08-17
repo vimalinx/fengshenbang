@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: kimi-k2
+tier: T1
+stars: 5
+composite: 88
+stats:
+  code: 88
+  reasoning: 78
+  context: 68
+  speed: 58
+  multimodal: 50
+  value: 90
+sentiment:
+  positive: 55
+  mixed: 20
+  negative: 25
+radar:
+  - axis: 长程任务
+    value: 75
+  - axis: 编程工程
+    value: 88
+  - axis: 抽象推理
+    value: 78
+  - axis: 上下文利用
+    value: 68
+  - axis: 中文能力
+    value: 88
+  - axis: 响应速度
+    value: 35
+  - axis: 稳定性
+    value: 55
+  - axis: 指令遵循
+    value: 72
+  - axis: 易用性
+    value: 70
+  - axis: 性价比
+    value: 92
+danmaku:
+  - text: Kimi K2 is really, really good
+    platform: reddit
+    main: true
+  - text: best bang for buck by far
+    platform: reddit
+    main: true
+  - text: 开源终于追上闭源的第一梯队
+    platform: zhihu
+    main: true
+  - text: 编程、Agent能力超强，Claude国产平替有了
+    platform: zhihu
+    main: true
+  - text: 348 分/179 评：里程碑意义获认可
+    platform: hn
+    main: true
+  - text: 慢，真TMD的慢，但和 claude code 搭配是真流畅
+    platform: linuxdo
+    main: true
+  - text: K2 Thinking 以 45:38 胜过 GPT-5 Thinking
+    platform: reddit
+    main: false
+  - text: 给了 grounding 数据还会编造来源
+    platform: reddit
+    main: false
+  - text: Long context performance has not been great
+    platform: reddit
+    main: false
+  - text: deploy your own stamp，less a local model
+    platform: hn
+    main: false
+  - text: 1T 参数，本地部署需要 serious hardware
+    platform: hn
+    main: false
+  - text: 花了 15 块钱，代码还没进入逻辑验证
+    platform: v2ex
+    main: false
+  - text: 感谢 Kimi K2，让穷人也用上了 Claude Code
+    platform: v2ex
+    main: false
+  - text: 像 Claude Code 的身体里装了一个不同的灵魂
+    platform: v2ex
+    main: false
+  - text: Cursor Composer 2 基座就是 K2.5
+    platform: hn
+    main: false
+  - text: 发布 3 天即接入 Groq：250 tok/s
+    platform: reddit
+    main: false

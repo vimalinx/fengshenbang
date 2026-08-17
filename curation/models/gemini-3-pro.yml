@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: gemini-3-pro
+tier: T0
+stars: 6
+composite: 93.5
+stats:
+  code: 92
+  reasoning: 88
+  context: 98
+  speed: 72
+  multimodal: 96
+  value: 72
+sentiment:
+  positive: 50
+  mixed: 25
+  negative: 25
+radar:
+  - axis: 长程任务
+    value: 82
+  - axis: 编程工程
+    value: 86
+  - axis: 抽象推理
+    value: 90
+  - axis: 上下文利用
+    value: 80
+  - axis: 中文能力
+    value: 78
+  - axis: 响应速度
+    value: 74
+  - axis: 稳定性
+    value: 60
+  - axis: 指令遵循
+    value: 66
+  - axis: 易用性
+    value: 75
+  - axis: 性价比
+    value: 68
+danmaku:
+  - text: "LMArena 1501 首破 1500 · 全榜 #1"
+    platform: x
+    main: true
+  - text: 下一个时代的大模型灯塔
+    platform: zhihu
+    main: true
+  - text: 发布帖 1735 points · 技术突破惊人
+    platform: hn
+    main: true
+  - text: After seeing the benchmark numbers I had to give it a try
+    platform: reddit
+    main: true
+  - text: High IQ, High Ego：准确率 55.9% 但幻觉率 88%
+    platform: reddit
+    main: true
+  - text: Karpathy：clearly a tier 1 LLM · daily driver 潜力
+    platform: x
+    main: true
+  - text: becoming really lazy · 每问题仅搜索 3 次
+    platform: reddit
+    main: false
+  - text: Kilo Code 独立测试 72% vs 54% vs 18%
+    platform: x
+    main: false
+  - text: Deep Think 模式上线 · HN 1081 分
+    platform: hn
+    main: false
+  - text: 前 Google 员工：最令人沮丧的开发模型
+    platform: hn
+    main: false
+  - text: MathArena Apex 23.4% · 20x 跳跃
+    platform: x
+    main: false
+  - text: 实际上下文 ~32K（Web App 实测）
+    platform: hn
+    main: false
+  - text: 幻觉比 GPT-5.1 严重得多，一逗就出来
+    platform: zhihu
+    main: false
+  - text: 门门 90+ 的全能状元
+    platform: zhihu
+    main: false
+  - text: 唯一真神 · 仿 Windows Web OS 单 prompt
+    platform: zhihu
+    main: false
+  - text: vast intelligence with no spine
+    platform: reddit
+    main: false

@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: glm-4-6
+tier: T1
+stars: 5
+composite: 89.5
+stats:
+  code: 88
+  reasoning: 80
+  context: 74
+  speed: 82
+  multimodal: 55
+  value: 93
+sentiment:
+  positive: 75
+  mixed: 18
+  negative: 7
+radar:
+  - axis: 长程任务
+    value: 76
+  - axis: 编程工程
+    value: 88
+  - axis: 抽象推理
+    value: 80
+  - axis: 上下文利用
+    value: 74
+  - axis: 中文能力
+    value: 90
+  - axis: 响应速度
+    value: 82
+  - axis: 稳定性
+    value: 68
+  - axis: 指令遵循
+    value: 72
+  - axis: 易用性
+    value: 85
+  - axis: 性价比
+    value: 93
+danmaku:
+  - text: GLM 4.6 IS A FUKING AMAZING MODEL
+    platform: reddit
+    main: true
+  - text: 代码国内最强
+    platform: zhihu
+    main: true
+  - text: Cline 百万次实测 94.9%，距 Sonnet 4.5 仅 1.3pt
+    platform: x
+    main: true
+  - text: Sonnet 4.5 晚一天发布，它就是 agentic 最佳
+    platform: hn
+    main: true
+  - text: 开源 MIT，本地随便跑
+    platform: hn
+    main: true
+  - text: 1/7 价格享受 Claude 9/10 智商
+    platform: v2ex
+    main: true
+  - text: way better autonomy than any proprietary model
+    platform: reddit
+    main: false
+  - text: 一点复杂度就开始 loop，然后切中文
+    platform: x
+    main: false
+  - text: "对话到一半突然终止（neubig Issue #11234）"
+    platform: reddit
+    main: false
+  - text: echoing 深植核心，prompt 修不好
+    platform: reddit
+    main: false
+  - text: For complex tasks, Codex is still a level above
+    platform: reddit
+    main: false
+  - text: 300 万 token 还搞不定 Unity 包版本
+    platform: reddit
+    main: false
+  - text: 278 个测试用例 18.31s 全过
+    platform: zhihu
+    main: false
+  - text: GLM for Generation, Claude for Polish
+    platform: reddit
+    main: false
+  - text: 免费 token 一小时消耗 50 多万？不对啊
+    platform: linuxdo
+    main: false
+  - text: 千万别信它的视觉理解能力
+    platform: x
+    main: false

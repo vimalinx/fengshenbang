@@ -1,3 +1,7 @@
 node_modules
 dist
 .DS_Store
+
+# 内容构建产物：真身是根目录 content/，由 scripts/build-content.ts 生成
+# 不提交以避免出现第二份「真相」
+src/data/generated/

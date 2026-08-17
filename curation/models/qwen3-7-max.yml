@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: qwen3-7-max
+tier: T0
+stars: 6
+composite: 93.4
+stats:
+  code: 88
+  reasoning: 90
+  context: 90
+  speed: 62
+  multimodal: 50
+  value: 55
+sentiment:
+  positive: 40
+  mixed: 25
+  negative: 35
+radar:
+  - axis: 长程任务
+    value: 95
+  - axis: 编程工程
+    value: 88
+  - axis: 抽象推理
+    value: 90
+  - axis: 上下文利用
+    value: 90
+  - axis: 中文能力
+    value: 85
+  - axis: 响应速度
+    value: 62
+  - axis: 稳定性
+    value: 84
+  - axis: 指令遵循
+    value: 82
+  - axis: 易用性
+    value: 72
+  - axis: 性价比
+    value: 55
+danmaku:
+  - text: cheap, fast, and actually good
+    platform: hn
+    main: true
+  - text: alibaba cooked：1158 次调用、10x 加速
+    platform: x
+    main: true
+  - text: Never open-sourcing Qwen 3.7
+    platform: reddit
+    main: true
+  - text: 速度很快，改的很快，基本满意
+    platform: v2ex
+    main: true
+  - text: Qwen3.7Max 实测体验效果非常棒
+    platform: linuxdo
+    main: true
+  - text: 以前觉得 Agent 过五个来回就会崩，一天半还在进化
+    platform: zhihu
+    main: true
+  - text: This is not an open model.
+    platform: hn
+    main: false
+  - text: 只对比 Opus-4.6，benchmark 选择性对比
+    platform: hn
+    main: false
+  - text: GPQA 92.4 全球第 7，超 Opus 4.6
+    platform: reddit
+    main: false
+  - text: Plus 更快更便宜，Max 旗舰溢价不显著
+    platform: reddit
+    main: false
+  - text: haven't touched Claude for coding in months
+    platform: hn
+    main: false
+  - text: Rio3.5 城市政府模型反超 Qwen3.7（142 分帖）
+    platform: hn
+    main: false
+  - text: 对比御三家还是有点差距，但 Agent 案例有惊喜
+    platform: zhihu
+    main: false
+  - text: Claude Code 两行配置就能切过来
+    platform: zhihu
+    main: false
+  - text: HLE 41.4 超 Opus-4.6 的 40.0
+    platform: zhihu
+    main: false
+  - text: 国产替代测试：Qwen 3.7 Max 测试结果
+    platform: linuxdo
+    main: false

@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: gpt-5-mini-nano
+tier: T2
+stars: 4
+composite: 82
+stats:
+  code: 65
+  reasoning: 62
+  context: 68
+  speed: 75
+  multimodal: 55
+  value: 90
+sentiment:
+  positive: 50
+  mixed: 15
+  negative: 35
+radar:
+  - axis: 长程任务
+    value: 55
+  - axis: 编程工程
+    value: 65
+  - axis: 抽象推理
+    value: 62
+  - axis: 上下文利用
+    value: 68
+  - axis: 中文能力
+    value: 72
+  - axis: 响应速度
+    value: 75
+  - axis: 稳定性
+    value: 42
+  - axis: 指令遵循
+    value: 68
+  - axis: 易用性
+    value: 80
+  - axis: 性价比
+    value: 90
+danmaku:
+  - text: tool calling 大幅改进，可替代 o3
+    platform: reddit
+    main: true
+  - text: godsend：$20 plan 额度延长 3.3 倍
+    platform: reddit
+    main: true
+  - text: a lot of bang for the buck
+    platform: reddit
+    main: false
+  - text: NOBODY 在谈 GPT-5-mini 有多惊艳
+    platform: reddit
+    main: false
+  - text: not just bad, it's a disaster
+    platform: reddit
+    main: true
+  - text: 5 mini 比 5.2 慢很多
+    platform: reddit
+    main: false
+  - text: Pro 静默重定向到 mini 基座，$200/月
+    platform: reddit
+    main: false
+  - text: simple 任务 99% 时间 mini 就够
+    platform: hn
+    main: true
+  - text: mini 发布比旗舰更能反映真实进步
+    platform: hn
+    main: false
+  - text: gpt-5-nano 明显不如 o4-mini（首日实测）
+    platform: hn
+    main: false
+  - text: mini medium ≈ o4-mini medium（NYT Connections）
+    platform: hn
+    main: false
+  - text: 12 月停用，5.4 mini 涨价 3 倍
+    platform: hn
+    main: false
+  - text: Tau² 提示词重写 +22%
+    platform: hn
+    main: false
+  - text: 小模型不是阉割版，推理链真的不错
+    platform: zhihu
+    main: true
+  - text: 日均 10 万次以下选 Mini，纯分类选 Nano
+    platform: zhihu
+    main: true
+  - text: nano 的性价比几乎无敌
+    platform: zhihu
+    main: false

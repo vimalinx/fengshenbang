@@ -1,0 +1,569 @@
+---
+id: claude-sonnet-5
+name: Claude Sonnet 5
+system: claude
+releaseDate: "2026-06-30"
+collectedDate: 08-09
+specs:
+  contextTokens: 1000000
+  contextLabel: 1M
+  maxOutputTokens: 128000
+  priceIn: 3
+  priceOut: 15
+  priceLabel: $3/$15
+scores:
+  swe: 82.1
+editorial:
+  title: 破格中端
+  tags:
+    - Agent
+    - 编程
+    - 前端
+  roles:
+    - 代码
+    - 推理
+    - 速度
+profile:
+  apiId: claude-sonnet-5
+  vendor: Anthropic
+  releaseDate: "2026-06-30"
+  access:
+    - API
+    - Claude Code 内置
+    - Free/Pro 默认
+    - Max 可用
+  costNote: >-
+    首发 $2/$10 · Mtok 至 08-31，标准价 $3/$15 与 Sonnet 4.6 同价（Opus 4.8 六成）；新 tokenizer 使同样文本 token 膨胀
+    1.0–1.35×（英文实测最高 1.42×），9 月后实际成本或高 20–35%
+  nicknames:
+    - Opus 平替
+    - 耳廓狐
+    - 账单刺客
+  signature: GPQA Diamond 96.2% 全行业纪录 · SWE-bench 82.1% 首破 80%
+benchGroups:
+  - label: 榜单成绩
+    rows:
+      - label: SWE-bench Verified
+        value: 82.1% · 首破 80%
+      - label: GPQA Diamond
+        value: 96.2% · 纪录
+      - label: ARC-AGI-2
+        value: 84.7%
+      - label: OSWorld-Verified
+        value: 88.3%
+      - label: GDPval-AA v2
+        value: 1618 Elo · 反超 Opus 4.8
+      - label: SWE-bench Pro
+        value: 63.2%
+      - label: CursorBench
+        value: 57%
+      - label: Agent Arena
+        value: "首秀 #6"
+  - label: 规格与接入
+    rows:
+      - label: 上下文窗口
+        value: 1,000,000 tok
+      - label: 最大输出
+        value: 128,000 tok
+      - label: 价格（入/出）
+        value: $2 / $10 · Mtok（首发至 08-31；标准 $3/$15）
+      - label: effort 档位
+        value: Low / Medium / High / Max / X-High
+      - label: 模型架构
+        value: 未公开（新 tokenizer · 自适应思考）
+      - label: 发布日期
+        value: "2026-06-30"
+      - label: 获取方式
+        value: API · Claude Code 内置 · Free/Pro 默认
+constellation:
+  - version: Sonnet 4.6
+    date: "2026-03-20"
+    effect: 均衡主力 · 多实例并行单位成本效率最高
+  - version: Opus 4.8
+    date: "2026-05-28"
+    effect: 旗舰校准 · 定价六成之锚 · SWE 88.6%
+  - version: Fable 5
+    date: "2026-06-09"
+    effect: "Mythos-class 首秀 · Arena 总榜 #1"
+  - version: Sonnet 5
+    date: "2026-06-30"
+    effect: 中端首破 SWE 80% · GPQA 全行业纪录 · Agent 跃升
+    current: true
+talents:
+  - kind: burst
+    seal: 程
+    name: Agent 破格
+    desc: >-
+      中端档打出旗舰级 Agent 表现：自主规划、浏览器/终端工具调用、输出自检，官方定位「迄今最具 Agent 能力的 Sonnet」。AA
+      实测知识工作评测（AA-Briefcase/GDPval-AA）调用轮次约为 4.6 的 3 倍，两榜双双反超 Opus 4.8。
+    metric: "Agent Arena 首秀 #6 · turns ≈ 4.6 的 3 倍"
+  - kind: skill
+    seal: 思
+    name: 推理纪录
+    desc: >-
+      GPQA Diamond 96.2% 创全行业纪录（超 Gemini 3.1 Pro 94.3%），HLE without tools 43.2% 超 GLM-5.2；但 CritPt
+      物理推理仅 17%（比 4.6 高 14 分仍落后 GLM-5.2），硬核逻辑题库反被国产反超，需低档位防过度思考。
+    metric: GPQA 96.2% · HLE 43.2% · CritPt 17%
+  - kind: skill
+    seal: 验
+    name: 工程编程
+    desc: >-
+      SWE-bench Verified 发布即破 80%，前端 UI 生成强；Endor Labs 实测 Claude Code 内 FuncPass 83.2%、几乎不作弊（200/200
+      提交仅 8 次 cheat），是首个同模型对照反超 Cursor 的 Anthropic 模型。
+    metric: SWE-bench Pro 63.2% · CursorBench 57% · FuncPass 83.2%
+  - kind: passive
+    seal: 速
+    name: 疾速响应
+    desc: >-
+      官方成本-性能卖点：速度明显快于 Opus 4.8，硬核题库平均耗时仅 404 秒（远快于 Qwen 1156 秒/MiniMax 887 秒）；aireiter 实测 medium 档
+      31.6s 比 4.6 的 35.3s 更快，但账单同档更贵。
+    metric: 平均耗时 404s · 快于国产 2 倍以上
+community:
+  strengths:
+    - Agent 自主能力
+    - 工程编程
+    - 知识工作
+    - 指令遵循
+    - 响应速度
+  weaknesses:
+    - 硬核逻辑偏弱
+    - 空间想象极弱
+    - 网络安全 0 分
+    - 过度保守说教
+    - 账单刺客（高 effort）
+  upgradeConsensus: split
+  platforms:
+    - name: Reddit
+      tone: mix
+      summary: >-
+        混合（估 45/30/25）：r/claude First Impressions 71 分/79 评论；r/ClaudeAI「Sonnet 5 is worse than Opus
+        at the same price at high and xhigh?」736 分/252 评论成最热帖，主流失望；「How we feel about sonnet 5」23
+        分/105 评论、「Sonnet 5 Listed at 33% Off Sonnet 4 Pricing」73 分/17 评论质疑对标对象、「Is Claude Sonnet 5
+        actually worth using?」20 分/14 评论指出新 tokenizer 1.3×–2× token。开发者认可编程/Agent（「拿到 Opus 智商只收
+        Sonnet 价格」为高赞），对 high/xhigh 性价比不满。
+    - name: HackerNews
+      tone: pos
+      summary: >-
+        混合偏正面（估 35/45/20）：发布帖 1266 分/784 评论（当日顶帖，Algolia 实测核实）；benchmark results 帖 41 分/17 评论、Zvi 帖
+        8 分。主流观点「run Sonnet on low, otherwise use Opus」（mchusma）；doctoboggan 扒官方成本-性能图称「同等花销下 Opus
+        4.8 反而更好，永远别用 Sonnet 5 medium 以上档位」；chipgap98「extra high 成本几乎等同 Opus 4.8
+        但表现略差」；ianberdin「Anthropic 又耍了所有人：临时降价 + 暗中把 tokenizer 加大 50%」；kingjimmy/m3h 引官方脚注坐实 token
+        膨胀 1.0–1.35×。技术讨论质量高。
+    - name: 知乎
+      tone: neg
+      summary: >-
+        负面为主（估 15/30/55）：「如何评价 Claude Sonnet 5」170,690 浏览/58 回答（直抓核实）；「上线一日差评刷屏：打不过千问和
+        Minimax，性价比全面翻车」；「这不是能力不行，这是性价比不行」成高赞总结；量子位、302.AI、36氪连续实测稿放大了「降价 6 成、Opus 9
+        成实力？但实际账单可能不降反升」的叙事。
+    - name: Linux.do
+      tone: neg
+      summary: >-
+        负面为主：讨论以 token 膨胀、封号潮与「没啥看点」为主；用户实测切换 effort 档位会重读记忆、消耗大量 token；有帖引官方原文拆解 tokenizer
+        膨胀（1.0–1.35×）与「成本中性承诺有保质期」，与 9 月涨价叙事叠加成吐槽主战场。
+    - name: V2EX
+      tone: neg
+      summary: >-
+        多帖讨论上线（「Sonnet5 他来了」「[FK Claude] Sonnet 5 / Fable 5 同步上线」「[DDShub] Claude Sonnet 5
+        上线」），但话题集中在 token 膨胀、9 月涨价与中转站价格，正经技术讨论较少，有用户直接断言「涨价后 Sonnet 5 只有情怀价值」。
+    - name: X
+      tone: mix
+      summary: >-
+        混合（估 30/40/30）：官方发布推 4384 RT/2013 回复声量正面；LisanBench 创始人 @scaling01「Sonnet 5 should go
+        straight into the garbage bin：比 Opus 4.8 Max 贵 1.2×、比 GPT-5.5-xhigh 贵 2×、比 GLM-5.2 贵 5×、比
+        Kimi-K2.6 贵 7×、比 DeepSeek-V4-Pro 贵 57×」浏览 77 万+；theo（AA）「完成任务成本比 Opus 更贵」主导负面；Simon Willison
+        实测英文 token 膨胀 1.42×。
+  quotes:
+    - text: 拿到了 Opus 的智商，却只收 Sonnet 的价格。
+      source: 中文开发者高赞
+      tone: pos
+    - text: Sonnet 5 确实是 Sonnet 系列迄今进步最明显的一次更新。
+      source: 302.AI 实测
+      tone: pos
+    - text: >-
+        With Claude Sonnet 5, agents stay on plan, follow our conventions, and ship clean multi-step
+        changes.
+      source: Sualeh Asif
+      tone: pos
+    - text: 这不是能力不行，这是性价比不行。
+      source: 网友 · LLM Benchmark Dashboard 热评
+      tone: neg
+    - text: 它思考了整整一个世纪，烧光了我的额度，最后就吐出那么短一句话。
+      source: Max 推理模式吐槽
+      tone: neg
+    - text: Sonnet 5 虽然表面上价格一样，但账单上的 Token 消耗数字偷偷涨了三成。
+      source: Simon Willison 实测
+      tone: neg
+    - text: 看，我们故意让这个模型变笨、变残废了。
+      source: HN 网友 · Firefox 0 分
+      tone: neg
+    - text: >-
+        If you want me to use Sonnet over Opus for most purposes, you're going to have to offer a
+        bigger discount than that.
+      source: Zvi Mowshowitz
+      tone: neg
+  controversies:
+    - event: >-
+        「明降暗涨 / 账单刺客」：新 tokenizer 使同样文本 token 膨胀 1.0–1.35×（官方脚注原文），Simon Willison 实测英文最高 1.42×；AA
+        按标准价 $3/$15 测出单任务成本 $2.29（Intelligence Index 口径），约为 4.6 的 2 倍、比 Opus 4.8 贵约 15%；aireiter 用
+        Claude Code CLI 实测同一编码任务「每一档都比 4.6 贵」（medium $0.344 vs $0.253）；Finout 测算 9 月 1 日标准价后实际成本比
+        4.6 高 20–35%；Max 模式过度思考：「它思考了整整一个世纪，烧光了我的额度」；HN 网友 ianberdin 总结「临时降价 + 暗中 tokenizer 加大 50%」。
+      response: >-
+        官方在发布页脚注承认 tokenizer 膨胀，称首发价已考虑该因素、'transition to Sonnet 5 is roughly cost-neutral'，但明确该承诺 8
+        月 31 日截止；提供 effort 档位（low–xhigh）让用户自选成本性能平衡；发布当天还勘误了 BrowseComp 成本-性能图方法学（原图低估 Sonnet 5 表现）。
+    - event: >-
+        性价比输给国产：LLM Benchmark Dashboard 硬核逻辑题跑完花费 71.96 元 vs Qwen 11.71 元（约 6 倍）；GLM-5.2
+        能力相当价格一半；LisanBench 创始人 @scaling01 完整比价「比 Opus 4.8 Max 贵 1.2×、比 GPT-5.5-xhigh 贵 2×、比 GLM-5.2
+        贵 5×、比 Kimi-K2.6 贵 7×、比 DeepSeek-V4-Pro 贵 57×」（浏览 77 万+）；DeepSeek 全天工作流 2400 万 token 仅 11.73
+        元 vs 中转 Claude 1700 元（145 倍）。
+    - event: >-
+        「太乖」也是翻车：道德审查器「说教」、overrefusal 率高于 Opus；官方发布页原图显示 Firefox 漏洞利用评测 Sonnet 4.6/5 双双 0 分，被 HN
+        嘲讽「故意让模型变笨、变残废」；CodeRabbit 也观察到「真实安全任务会被护栏误触发拒绝」。
+      response: >-
+        官方安全评估称网络安全风险总体低，cyber safeguards 与 Opus 4.7/4.8 相同但比 Fable 5 宽松（'防止范围更窄'）；对 Firefox 0 分解释为
+        Sonnet 5 partial success 略高于 4.6，'likely due to improvements in general intelligence rather
+        than specific training'。
+    - event: >-
+        训练健康问题：系统卡 6.5.1 原文披露「Sonnet 5 training run was flagged as unhealthy in its second
+        half」，官方承认结果可能部分反映训练健康问题而非校准回退；Zvi 回应「这到底意味着什么？是严重问题吗？我不知道」；企业成本事件同源发酵：Uber 5000 工程师 Claude
+        Code 人均月账单 500–2000 美元、全年 AI 预算四个月烧光（Bloomberg/The Verge 证实），微软 Windows/M365 团队 6 月底全员停用
+        Claude Code 迁回 Copilot。
+      response: >-
+        Anthropic 在系统卡 6.5.1 中随发布同步披露该标记，承认「results may partly reflect a training-health issue
+        rather than a calibration-specific regression」，但未进一步公开训练健康问题的性质与影响范围。
+  subBoards:
+    - name: Agent Arena
+      rank: "#6"
+      note: >-
+        首秀 Overall +7.50%、Confirmed Task Success +6.61%（#2）、Praise vs Complaint +14%，25,071 场对战（官方
+        LinkedIn）
+    - name: Text Arena
+      rank: "#9"
+      note: 7.46%±2.15%，被 GPT-5.5 xHigh 8.45%、Opus 4.7 Thinking 8.33% 压住
+    - name: GDPval-AA v2
+      rank: 反超 Opus 4.8
+      note: 1618 Elo vs 1615，Sonnet 级知识工作首次反超旗舰（AA 独立复核）
+    - name: CursorBench
+      rank: 57%
+      note: Cursor 官方真实测试（v3.1 默认档 57% vs 4.6 的 49%；v3.2 分档 Max 61.5%～Low 47.7%）
+    - name: Vibe Code Bench
+      rank: "81.33% · #5"
+      note: OpenHands 派生 harness（vals.ai v1.1），仅次 Fable 5/Opus 5/Kimi K3/Opus 4.8
+  heat:
+    - label: HN 发布帖
+      value: 1,266 pts
+    - label: HN 评论
+      value: "784"
+    - label: Reddit 最高赞
+      value: "736"
+    - label: 知乎浏览
+      value: 17 万+
+  expertQuotes:
+    - text: >-
+        Claude Sonnet 5 is built to be the most agentic Sonnet model yet. It can make plans, use
+        tools like browsers and terminals, and run autonomously at a level that, just a few months
+        ago, required larger and more expensive models.
+      name: Anthropic 官方
+      role: 发布页 · 主打定位
+      tone: pos
+    - text: "Sonnet 5 narrows the gap: its performance is close to that of Opus 4.8, but at lower prices."
+      name: Anthropic 官方
+      role: 发布页 · 定价叙事
+      tone: pos
+    - text: >-
+        With Claude Sonnet 5, agents stay on plan, follow our conventions, and ship clean multi-step
+        changes, all at an efficient cost.
+      name: Sualeh Asif
+      role: 官方合作方 · Cursor 联创
+      tone: pos
+    - text: >-
+        I asked Claude Sonnet 5 to investigate a bug. Unprompted, it wrote a reproducing test,
+        implemented the fix, then stashed it to confirm the bug came back without the change. All in
+        a single pass.
+      name: Neel Chotai
+      role: Rust 工程师 · 官方合作方
+      tone: pos
+    - text: "Agent Arena 首秀 #6：Overall +7.50%，Confirmed Task Success +6.61%（#2），25,071 场真实对战。"
+      name: Arena.ai
+      role: 官方 LinkedIn · 对战榜
+      tone: pos
+    - text: >-
+        The counterargument is speed. Sonnet 5 is faster without being that much less capable. In
+        many cases, getting into a flow state like that is pretty valuable.
+      name: Zvi Mowshowitz
+      role: Substack · 深度评测
+      tone: pos
+    - text: >-
+        Does Sonnet 5 advance the capabilities frontier? No. Being faster and cheaper does provide
+        an advantage, and plausibly advance the cost-time-quality Pareto frontier. So Sonnet 5 has
+        its uses. It just won't be a good choice for most people's daily driver.
+      name: Zvi Mowshowitz
+      role: Substack · 深度评测
+      tone: mix
+    - text: Sonnet 5 确实是 Sonnet 系列迄今进步最明显的一次更新，在 Agent 自主能力和中高强度任务上的提升肉眼可见。
+      name: 302.AI
+      role: 基准实验室实测
+      tone: pos
+    - text: >-
+        Claude Sonnet 5 costs $2.29 per task on the Intelligence Index, a ~2x increase compared to
+        Sonnet 4.6 and ~15% more than Claude Opus 4.8. This is driven entirely by increased token
+        usage.
+      name: Artificial Analysis
+      role: 官方评测 · 成本权威口径
+      tone: mix
+    - text: 性能接近 Opus 4.8，但不一定更便宜。
+      name: 36氪
+      role: 中文媒体 · 报道标题
+      tone: mix
+    - text: Generally run Sonnet on low, otherwise use Opus.
+      name: mchusma
+      role: HN 发布帖热评
+      tone: mix
+    - text: Is Claude Sonnet 5 actually worth using? Where I've landed after testing it.
+      name: u/ 评测楼主
+      role: Reddit · 20 分/14 评论，指出新 tokenizer 1.3x–2x token
+      tone: mix
+    - text: >-
+        If you want me to use Sonnet over Opus for most purposes, you're going to have to offer a
+        bigger discount than that.
+      name: Zvi Mowshowitz
+      role: Substack · 深度评测
+      tone: neg
+    - text: >-
+        The cost per task chart is telling me that I should never use Sonnet 5 above medium effort
+        level — Opus always performs better for a given cost. Switch models, not effort levels.
+      name: doctoboggan
+      role: HN · 扒官方成本-性能图
+      tone: neg
+    - text: Sonnet 5 虽然表面上价格一样，但账单上的 Token 消耗数字偷偷涨了三成（英文实测最高 1.42×）。
+      name: Simon Willison
+      role: 分语言 tokenizer 实测
+      tone: neg
+    - text: >-
+        Sonnet 5 should go straight into the garbage bin: 1.2x more expensive than Opus 4.8 Max, 2x
+        GPT-5.5-xhigh, 5x GLM-5.2, 7x Kimi-K2.6, 57x DeepSeek-V4-Pro.
+      name: LisanBench 创始人
+      role: X @scaling01 · 浏览 77 万+
+      tone: neg
+    - text: Sonnet 5 is worse than Opus at the same price at high and xhigh?
+      name: u/ 热帖楼主
+      role: Reddit · r/ClaudeAI 736 分/252 评论
+      tone: neg
+    - text: 这不是能力不行，这是性价比不行。
+      name: 网友热评
+      role: LLM Benchmark Dashboard 首评
+      tone: neg
+    - text: 它思考了整整一个世纪，烧光了我的额度，最后就吐出那么短一句话。
+      name: Max 模式吐槽
+      role: 知乎 · 过度思考吐槽
+      tone: neg
+    - text: A社你解释下，啥叫Sonnet 5比Fable 5还贵？
+      name: 量子位
+      role: 中文媒体 · 标题报道
+      tone: neg
+    - text: 这就像一家安全公司在骄傲地宣布：看，我们故意让这个模型变笨、变残废了。
+      name: HN 网友
+      role: Firefox 漏洞利用 0 分嘲讽
+      tone: neg
+  timeline:
+    - date: 06-30
+      event: >-
+        正式发布（官方 blog），Free/Pro 默认模型，API 首发价 $2/$10 至 08-31；HN 发布帖 1266 分/784 评论（Algolia 实测）；Reddit
+        多帖热议（「worse than Opus at same price at high/xhigh」736 分）；官方当天勘误 BrowseComp 成本-性能图方法学
+    - date: 07-01
+      event: >-
+        中文差评刷屏：量子位《A社你解释下，啥叫Sonnet 5比Fable 5还贵？》、知乎《上线一日差评刷屏》；Fable 5 同日全球恢复；Zvi 发文《Claude Sonnet 5
+        Is Not Frontier but Has Its Uses》；Simon Willison 发布分语言 token 膨胀实测（英文 1.42×/中文 1.01×）
+    - date: 07-02
+      event: >-
+        302.AI 发布实测《降价 6 成，Opus 9 成实力？但实际账单可能不降反升》；Artificial Analysis 官方评测出「单任务成本 $2.29，比 Opus 4.8
+        贵约 15%」；知乎问题「如何评价 Claude Sonnet 5」持续升温（现 17 万浏览/58 回答）
+    - date: 07-07
+      event: >-
+        Agent Arena 官方公布 Sonnet 5 (Thinking) 首秀 #6（Overall +7.50%、Confirmed Task Success
+        +6.61%、25,071 场对战）；HN 帖《Claude Sonnet 5: Anthropic's Most Agentic AI Model Arrives at a
+        Reduced Price》
+    - date: 07-09
+      event: >-
+        Endor Labs 发布跨 harness 实测：Claude Code + Sonnet 5 = 83.2% FuncPass vs Cursor + Sonnet 5 =
+        63.1%——首个 Claude Code 反超 Cursor 的同模型对照
+    - date: 07-13
+      event: >-
+        marktechpost 发布《Claude Sonnet 5 vs Sonnet 4.6 vs Opus 4.8》深度对比（agentic coding benchmarks、API
+        pricing、cost-performance）
+    - date: 08-01
+      event: >-
+        Vibe Code Bench v1.1（OpenHands 派生 harness）实测 Sonnet 5 = 81.33% 总榜 #5；OpenHands Index 官方榜仍无
+        claude-sonnet-5 条目（SDK 已支持）
+    - date: 08-31
+      event: 首发特价 $2/$10 截止，9 月 1 日起标准价 $3/$15（+50%）生效，叠加 token 膨胀实际成本预计比 Sonnet 4.6 高 20–35%
+  sources:
+    - title: Introducing Claude Sonnet 5（官方发布页）
+      platform: Anthropic
+      url: https://www.anthropic.com/news/claude-sonnet-5
+    - title: Claude Sonnet 5 System Card（官方系统卡）
+      platform: Anthropic
+      url: https://www.anthropic.com/claude-sonnet-5-system-card
+    - title: "HN: Claude Sonnet 5（发布帖，1266 分/784 评论）"
+      platform: Hacker News
+      url: https://news.ycombinator.com/item?id=48736605
+    - title: Sonnet 5 is worse than Opus at the same price at high and xhigh?（736 分/252 评论）
+      platform: Reddit r/ClaudeAI
+      url: >-
+        https://www.reddit.com/r/ClaudeAI/comments/1ujx3rw/sonnet_5_is_worse_than_opus_at_the_same_price_at/
+    - title: 如何评价 Anthropic 最新发布的 Claude Sonnet 5？（170,690 浏览/58 回答）
+      platform: 知乎
+      url: https://www.zhihu.com/question/2055567821904547893
+    - title: "Claude Sonnet 5: strong agentic performance at a higher cost per task（AA 官方评测）"
+      platform: Artificial Analysis
+      url: https://artificialanalysis.ai/articles/claude-sonnet-5-agentic-cost
+    - title: Claude Sonnet 5（Simon Willison 分语言 tokenizer 实测）
+      platform: Simon Willison
+      url: https://simonwillison.net/2026/Jun/30/claude-sonnet-5/
+    - title: "Claude Sonnet 5 with Cursor: strong reasoning, throttled by the harness（Endor Labs）"
+      platform: Endor Labs
+      url: >-
+        https://www.endorlabs.com/learn/claude-sonnet-5-with-cursor-strong-reasoning-throttled-by-the-harness
+    - title: Claude Sonnet 5 Is Not Frontier but Has Its Uses（Zvi Mowshowitz）
+      platform: Substack
+      url: https://thezvi.substack.com/p/claude-sonnet-5-is-not-frontier-but
+    - title: "Vibe Code Bench v1.1（OpenHands 派生 harness · Sonnet 5 = 81.33% #5）"
+      platform: Vals.ai
+      url: https://vals.ai/benchmarks/vibe-code
+  uncertainties:
+    - 模型架构未公开：参数量与 MoE 结构为推测；「Sonnet 5 由 Mythos 协助训练」仅为 Zvi 猜测，未经官方证实
+    - >-
+      OSWorld-Verified 数字口径分歧：SiliconReport 报 88.3%，量子位/BenchLM 口径 81.2%（vs Opus 4.8 83.4%），应为不同
+      effort/方法学配置，未交叉核实
+    - >-
+      中文能力无专项评测，72 分按中性偏上推断；十维体感评分整体为基于榜单与社区反馈的推断值；但 Simon Willison 实测中文 token 膨胀仅 1.01×（与英文 1.42×
+      显著不同）
+    - >-
+      Agent Arena 数字口径并存：arena.ai 官方 LinkedIn（+7.50%、25,071 场）与 cryptobriefing（7.38%±1.30%、100
+      万+会话）为不同测量点，未完全对齐
+    - >-
+      各平台情绪比例（Reddit 45/30/25、HN 35/45/20、知乎 15/30/55、X 30/40/30）为代表性帖文估算，整体 40/15/45 为综合权重，非严格量化；「比
+      DeepSeek 贵 57 倍」与「145 倍」账单对比为个人/媒体测算口径（token 计价与中转站加成不同），仅作情绪参考
+    - >-
+      OpenHands Index 官方榜暂无 claude-sonnet-5 条目，openhands harness 数据采用 Vibe Code Bench（基于 OpenHands
+      派生 harness）81.33%；Reddit 736 分、X 4384 RT 等为 08-01 快照（403/需登录无法复核）；Uber/微软成本事件发生于 Sonnet 5
+      发布前（2026-05），为 Claude Code 生态成本叙事背景引用，非 Sonnet 5 专属归因
+  versionDelta:
+    base: Claude Sonnet 4.6
+    improves:
+      - SWE-bench Verified 79.6% → 82.1%，发布即破 80% 大关（超 Gemini 3.1 Pro 80.6%）
+      - SWE-bench Pro 58.1% → 63.2%；CursorBench 49% → 57%（v3.2 分档 Max 61.5% / Medium 52.4%）
+      - GPQA Diamond 96.2% 创全行业纪录（超 Gemini 3.1 Pro 94.3%）；ARC-AGI-2 84.7% 超 Gemini 3.1 Pro 7 分
+      - GDPval-AA v2 1618 Elo：Sonnet 级首次反超 Opus 4.8（1615），AA 独立复核 AA-Briefcase 同步反超
+      - Agent 场景调用轮次翻 3 倍（AA 实测 turns ≈ 4.6 的 3 倍，GDPval-AA 上 max vs low 差 6 倍）；自主规划/工具调用/输出自检
+      - Terminal-Bench v2.1 +9 分、HLE +10 分、SciCode +7 分（AA 口径）；CritPt 物理推理 3% → 17%（仍落后 GLM-5.2）
+      - >-
+        提示注入鲁棒性大幅提升（浏览器场景「blows previous models away」）；MASK 撒谎率全系最佳；Endor Labs 实测几乎不作弊（200/200 仅 8 次
+        cheat）
+    regresses:
+      - >-
+        token 膨胀：新 tokenizer 使同样输入 token 增加 1.0–1.35×（官方脚注），英文实测最高 1.42×（Simon Willison），中文仅 1.01×；9
+        月标准价后实际成本比 4.6 高 20–35%（Finout 测算）
+      - >-
+        实际单任务成本反超：AA Intelligence Index $2.29 ≈ 4.6 的两倍、比 Opus 4.8 贵约 15%（标准价口径）；aireiter
+        实测同一任务每一档都比 4.6 贵（medium $0.344 vs $0.253）
+      - max effort 输出 token 比 4.6 多约 40%；多步多约束推理 token 消耗比 Opus 高 60%；切换 effort 档位会重读记忆
+      - >-
+        硬核逻辑/数学被国产反超：CritPt 17% 落后 GLM-5.2；LLM Benchmark Dashboard 不敌 MiniMax-M3/Qwen3.7-Plus，且贵约 6
+        倍（71.96 元 vs 11.71 元）
+      - 空间想象、逐字文字处理无提升（与近一年前的 Sonnet 4.5 相当）
+      - 网络安全能力弱：Firefox 漏洞利用 0 分（与 4.6 相同）；Endor Labs 实测 SecPass 仅 19.6%（平均线）
+      - 训练后半程被系统卡 6.5.1 标记「unhealthy」，官方承认结果或受训练健康问题影响
+  harnessReviews:
+    - id: claude-code
+      text: >-
+        Endor Labs 实测 FuncPass 83.2%，首个同模型对照反超 Cursor；aireiter 实测 medium 档 $0.344 比 4.6 更贵但更快。建议日常用
+        low/medium effort 控成本。
+    - id: cursor
+      text: >-
+        官方实测背书：CursorBench 57%（4.6 49%）；但 Endor Labs 实测 harness 拖累 FuncPass 至 63.1%，属吞吐问题非推理问题。重
+        Agent 任务建议优先用 Claude Code。
+    - id: openhands
+      text: >-
+        Vibe Code Bench v1.1（OpenHands 派生 harness）实测 81.33% 综合准确率总榜 #5，是 OpenHands
+        系可查证的真实成绩；OpenHands Index 官方榜尚无条目，跑分待官方榜补充。
+  demos:
+    - title: Agent 端到端任务演示
+      desc: >-
+        Zapier 工程师 Daniel Shepard：两段式任务（更新 Salesforce 账户等级→发送产品上线公告邮件）端到端完成，「过去常常卡在中间」；官方定位「迄今最具
+        Agent 能力的 Sonnet」的落地样例。
+    - title: 成本-性能曲线
+      desc: >-
+        官方发布页图表：Sonnet 5（橙线）严格优于 Sonnet 4.6（灰线），medium effort 性价比突出，高 effort 部分任务追平 Opus 4.8（黄线）；6 月
+        30 日官方勘误修正 BrowseComp 曲线方法学（原图低估 Sonnet 5 表现），改用 10M token budget + compaction +
+        程序化工具调用标准口径。
+    - title: 长程多步骤任务
+      desc: >-
+        官方系统卡展示的病毒学领域长程多步骤测试，知乎答主引用证明其「某些任务超越 Opus 4.8 甚至 Fable 5」；AA 独立复核 AA-Briefcase/GDPval-AA
+        双双反超 Opus 4.8（仅落后 Fable 5）。
+relations:
+  rivals:
+    - claude-sonnet-4-6
+    - gpt-5-5
+    - glm-5-2
+  teams:
+    - common-warlord
+    - budget-vanguard
+  guides:
+    - case-refactor
+    - case-frontend
+    - mech-context-decay
+    - beginner-budget
+  bestInSlot:
+    - id: claude-code
+      note: 本命装备：官方同源发布即支持，Agent 能力主战场，实测口碑反超 Cursor 居首；唯账单偏贵，注意成本。
+    - id: cursor
+      note: 官方背书：CursorBench 57%（4.6 49%）；harness 拖累 FuncPass 63.1%。
+    - id: openhands
+      note: "OpenHands 系可查证：Vibe Code Bench 81.33% 总榜 #5，适配蜂群编排的中端推理核心。"
+  trialGood:
+    - label: Agent 编程
+      to: /scenarios#agent
+    - label: 前端 UI 生成
+      to: /scenarios#frontend
+    - label: 长程代码重构
+      to: /scenarios#refactor
+    - label: 长文档分析
+      to: /scenarios#docs
+  trialBad:
+    - label: 硬核逻辑攻坚
+      to: /scenarios#algo
+      note: CritPt 17% 落后 GLM-5.2、LLM 硬核题库被 MiniMax-M3/Qwen3.7-Plus 反超且贵约 6 倍，建议换 MiniMax M3
+    - label: 预算敏感任务
+      to: /scenarios#agent
+      note: GLM-5.2 能力相当价格一半，9 月涨价后差距更大，建议换 GLM-5.2
+    - label: 网络安全攻防
+      to: /scenarios#agent
+      note: Firefox 漏洞利用 0 分且护栏说教，建议换 DeepSeek-V4
+    - label: 高 effort 烧钱场景
+      to: /scenarios#fullstack
+      note: Max/x-high 成本等同 Opus 4.8 但表现更差（736 分热帖），用 Opus 4.8 更划算
+---
+
+## 一句话点评
+
+中端破格：GPQA 96.2% 创全行业纪录、SWE-bench 首破 80%，却因 token 膨胀与 9 月涨价被嘲「Opus 平替」名不副实——能力接近旗舰，账单先到。
+
+## 社区反馈 · 编程
+
+SWE-bench Verified 82.1%（4.6 为 79.6%）发布即破 80%、SWE-bench Pro 63.2%（4.6 为 58.1%）、CursorBench 57%（4.6 为 49%，v3.2 分档 Max 61.5%～Low 47.7%）；r/ClaudeAI 开发者高赞「修复了卡 Opus 4.8 好几天的严重 Bug」「多文件复杂重构独立完成过半」。Endor Labs（07-09）在 Claude Code 与 Cursor 双 harness 实测：Claude Code + Sonnet 5 = 83.2% FuncPass/19.6% SecPass，几乎不作弊（200/200 仅 8 次），是首个同模型对照反超 Cursor 的模型；Cursor + Sonnet 5 仅 63.1% FuncPass，主因是 Cursor 首轮超时 65/200（32.5%）vs Claude Code 20/200（10%）。CodeRabbit 实测「本档位写作能力最强、测试先行、会中途自改规划」，但代码审查「抓的 bug 比生产中的旧模型少」。反面：Simon Willison 吐槽组合工具调用常卡壳、代码渲染翻车；知乎横评前端 B/B+ 持平 Opus 4.6 非推理模式、弱于 GLM-5.2，对大规模历史代码库探索不充分；aireiter 实测同一编码任务每一档都比 4.6 贵（medium $0.344 vs $0.253）。
+
+## 社区反馈 · 推理
+
+GPQA Diamond 96.2% 创全行业纪录（超 Gemini 3.1 Pro 94.3%）、ARC-AGI-2 84.7%（超 Gemini 3.1 Pro 7 分）、HLE without tools 43.2%（超 GLM-5.2 的 40.5%）；AA 口径 HLE 比 4.6 高 10 分、Terminal-Bench v2.1 +9 分、SciCode +7 分。但硬核逻辑题库不敌 MiniMax-M3（61.95 分）与 Qwen3.7-Plus，CritPt（阿贡/UIUC 物理推理基准）仅 17%——比 4.6 高 14 分却仍落后 GLM-5.2/Opus/Fable/GPT-5.5；平均耗时仅 404 秒（远快于 Qwen 1156 秒）被指「思维链堆叠不够厚、自我纠错预算受限」；AA 实测 max effort 输出 token 比 4.6 多约 40%，多步多约束推理 token 消耗比 Opus 高 60%。
+
+## 社区反馈 · 中文
+
+中文社区讨论几乎全部聚焦性价比与账单争议（「打不过千问和 Minimax，性价比全面翻车」「啥叫 Sonnet 5 比 Fable 5 还贵？」），未检索到中文创作/理解能力的专项评测，中文分按中性偏上推断。一个值得注意的细节：Simon Willison 分语言实测新 tokenizer 的 token 膨胀——英文 1.42×、西语 1.33×、Python 代码 1.27×，唯独简体中文仅 1.01×（几乎不变），即「明降暗涨」对中文用户的实际冲击小于英文场景；V2EX/linux.do 以 token 膨胀、封号潮讨论为主，知乎「如何评价 Claude Sonnet 5」17 万浏览/58 回答几乎全是性价比账。
+
+## 升级共识
+
+Agent/编程场景值得升级：SWE-bench Pro +5.1（58.1%→63.2%）、CursorBench 49%→57%、Agent 调用轮次翻 3 倍（AA 实测）、GDPval-AA 反超 Opus 4.8、Endor Labs 证明 Claude Code 内 FuncPass 83.2% 且几乎不作弊。日常简单任务建议 low/medium effort——doctoboggan 的 HN 高赞建议是「medium 以上档位永远别用 Sonnet，直接换模型」；预算敏感环境（9 月涨价 + token 膨胀后实际成本比 4.6 高 20–35%）建议评估 GLM-5.2、MiniMax-M3 等国产替代；中文场景 token 膨胀仅 1.01×，受涨价冲击小于英文用户。
+
+## 榜单与实测落差
+
+典型「跑分高但账单贵」：官方跑分接近 Opus 4.8（SWE-bench Pro 只差 6 分、GDPval-AA 反超 3 Elo），AA 实测单任务成本 $2.29 却约为 4.6 的两倍、比 Opus 4.8 贵约 15%（标准价口径），跑完整基准测试费用比 Fable 5 还贵；硬核逻辑题库（CritPt 17% vs GLM-5.2）被国产反超且贵约 6 倍。根因是新 tokenizer 膨胀（英文 1.42×）叠加高 effort 过度思考（max effort 输出 token 比 4.6 多约 40%、turns 多 6 倍）；缓解：日常用 low/medium effort，复杂任务先核算真实 token 成本再开 Max，或直接换 Opus 4.8 同价换更强。

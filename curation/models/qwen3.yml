@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: qwen3
+tier: T1
+stars: 5
+composite: 88.5
+stats:
+  code: 85
+  reasoning: 90
+  context: 70
+  speed: 60
+  multimodal: 45
+  value: 90
+sentiment:
+  positive: 55
+  mixed: 20
+  negative: 25
+radar:
+  - axis: 长程任务
+    value: 55
+  - axis: 编程工程
+    value: 85
+  - axis: 抽象推理
+    value: 90
+  - axis: 上下文利用
+    value: 70
+  - axis: 中文能力
+    value: 92
+  - axis: 响应速度
+    value: 60
+  - axis: 稳定性
+    value: 75
+  - axis: 指令遵循
+    value: 85
+  - axis: 易用性
+    value: 80
+  - axis: 性价比
+    value: 90
+danmaku:
+  - text: Qwen3 looks like the best open source model rn
+    platform: reddit
+    main: true
+  - text: 对一句 hi 烧几千 token，Too Many Thoughts
+    platform: reddit
+    main: true
+  - text: 发布帖 869 分 388 评，开源王座登顶
+    platform: hn
+    main: true
+  - text: Bye Qwen3-235B-A22B, hello 2507
+    platform: x
+    main: true
+  - text: 仅需 4 张 H20 即可部署满血版
+    platform: zhihu
+    main: true
+  - text: 开源模型首次稳定逼近闭源旗舰
+    platform: reddit
+    main: true
+  - text: C 嵌入式结对编程约等于 R1 甚至略好
+    platform: reddit
+    main: false
+  - text: Instruct-2507 证明非思考模型也能强推理
+    platform: reddit
+    main: false
+  - text: 只会聚合资料，不擅长真正思考新问题
+    platform: hn
+    main: false
+  - text: 2 小时狂揽 17k 星的开源里程碑
+    platform: x
+    main: false
+  - text: 中文表达自然、指令跟随好
+    platform: zhihu
+    main: false
+  - text: Aider 基准被指造假？Wolfram 复现属实
+    platform: reddit
+    main: false
+  - text: 等下版修好 overthinking 再全面切换
+    platform: zhihu
+    main: false
+  - text: 2507 拆分双体：17 项基准 Thinking 领先
+    platform: hn
+    main: false
+  - text: Claude Code 驱动 Qwen3 全栈替代 Opus 4.6
+    platform: hn
+    main: false
+  - text: thought token forcing：英文回答被系统导向正面叙事
+    platform: hn
+    main: false

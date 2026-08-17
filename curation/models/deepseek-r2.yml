@@ -1,0 +1,85 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: deepseek-r2
+tier: T1
+stars: 5
+composite: 82.8
+stats:
+  code: 76
+  reasoning: 98
+  context: 60
+  speed: 48
+  multimodal: 30
+  value: 88
+sentiment:
+  positive: 55
+  mixed: 25
+  negative: 20
+radar:
+  - axis: 长程任务
+    value: 62
+  - axis: 编程工程
+    value: 68
+  - axis: 抽象推理
+    value: 95
+  - axis: 上下文利用
+    value: 70
+  - axis: 中文能力
+    value: 80
+  - axis: 响应速度
+    value: 30
+  - axis: 稳定性
+    value: 55
+  - axis: 指令遵循
+    value: 60
+  - axis: 易用性
+    value: 48
+  - axis: 性价比
+    value: 78
+danmaku:
+  - text: 让 R2 完整展示推理链，别催它交卷
+    platform: linuxdo
+    main: true
+  - text: 新思维链出现了，以 I am 开头
+    platform: linuxdo
+    main: true
+  - text: 官网 R2 比 ollama 的 R1 好十倍
+    platform: reddit
+    main: true
+  - text: R2 是完全不同的智能，不只是渐进改进
+    platform: linuxdo
+    main: true
+  - text: 华为芯片试训失败，发布一拖再拖
+    platform: reddit
+    main: true
+  - text: 期待值拉满，热度却被 V4-Flash 抢走
+    platform: hn
+    main: true
+  - text: First R2 doesn't exist
+    platform: reddit
+    main: false
+  - text: 本地跑不要 API 费，但得自己买硬件
+    platform: reddit
+    main: false
+  - text: 140 pts：CEO 对进展不满，发布搁浅
+    platform: hn
+    main: false
+  - text: 推理成本暴降 97.3%（剧透，未证实）
+    platform: zhihu
+    main: false
+  - text: 编码主 V4、难题主 R2
+    platform: zhihu
+    main: false
+  - text: Opus still has an edge on bigger refactors
+    platform: reddit
+    main: false
+  - text: 山寨官网蹭热度，无真实规格
+    platform: x
+    main: false
+  - text: 08-06 官方预告 API 大幅涨价
+    platform: hn
+    main: false
+  - text: 算法周赛登顶记：R2 的推理链有多长
+    platform: zhihu
+    main: false

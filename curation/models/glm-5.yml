@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: glm-5
+tier: T2
+stars: 4
+composite: 75.8
+stats:
+  code: 68
+  reasoning: 70
+  context: 66
+  speed: 70
+  multimodal: 56
+  value: 86
+sentiment:
+  positive: 55
+  mixed: 25
+  negative: 20
+radar:
+  - axis: 长程任务
+    value: 90
+  - axis: 编程工程
+    value: 92
+  - axis: 抽象推理
+    value: 78
+  - axis: 上下文利用
+    value: 82
+  - axis: 中文能力
+    value: 90
+  - axis: 响应速度
+    value: 72
+  - axis: 稳定性
+    value: 76
+  - axis: 指令遵循
+    value: 80
+  - axis: 易用性
+    value: 84
+  - axis: 性价比
+    value: 86
+danmaku:
+  - text: GLM 5 is definitely the GOAT
+    platform: reddit
+    main: true
+  - text: 测完沉默了，国产什么时候这么能打了
+    platform: zhihu
+    main: true
+  - text: Frontier Intelligence Belongs to Everyone
+    platform: hn
+    main: true
+  - text: 涨价了，翻了接近一倍
+    platform: v2ex
+    main: true
+  - text: 25 分钟一镜到底搓出完整系统
+    platform: zhihu
+    main: true
+  - text: 思考模式把正文写进思维链，体感差距很大
+    platform: linuxdo
+    main: true
+  - text: I just realised how good GLM 5 is
+    platform: reddit
+    main: false
+  - text: GLM 5 is a local GOAT
+    platform: reddit
+    main: false
+  - text: Several one shot prompt made mind blowing results!!
+    platform: reddit
+    main: false
+  - text: 工程能力站到了 Opus 同一梯队
+    platform: zhihu
+    main: false
+  - text: 第一次对国产编程模型说出能打两个字
+    platform: zhihu
+    main: false
+  - text: 开源界的 Opus 平替？
+    platform: bilibili
+    main: false
+  - text: 等 5.1/5.2 迭代再正式用
+    platform: zhihu
+    main: false
+  - text: writes correct diagnoses but ignores its own analysis
+    platform: reddit
+    main: false
+  - text: PRO 430，MAX 862，翻了接近一倍
+    platform: v2ex
+    main: false
+  - text: GLM 5.2 is Fully Open
+    platform: hn
+    main: false

@@ -1,0 +1,82 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: deepseek-r1
+tier: T1
+stars: 5
+composite: 82
+stats:
+  code: 65
+  reasoning: 92
+  context: 70
+  speed: 55
+  multimodal: 45
+  value: 95
+sentiment:
+  positive: 65
+  mixed: 22
+  negative: 13
+radar:
+  - axis: 长程任务
+    value: 55
+  - axis: 编程工程
+    value: 65
+  - axis: 抽象推理
+    value: 92
+  - axis: 上下文利用
+    value: 70
+  - axis: 中文能力
+    value: 78
+  - axis: 响应速度
+    value: 55
+  - axis: 稳定性
+    value: 60
+  - axis: 指令遵循
+    value: 62
+  - axis: 易用性
+    value: 82
+  - axis: 性价比
+    value: 95
+danmaku:
+  - text: 首个登顶 Arena 总榜的开源模型
+    platform: reddit
+    main: true
+  - text: 发布帖 1843 分：开源推理范式突破
+    platform: hn
+    main: true
+  - text: 推理之王：数学推理问鼎开源
+    platform: zhihu
+    main: true
+  - text: 开源是对世界的深刻礼物
+    platform: x
+    main: true
+  - text: 0528 不再偷懒，Aider 71.6%
+    platform: reddit
+    main: true
+  - text: 追问质量差的离谱，幻觉严重
+    platform: v2ex
+    main: true
+  - text: SWE 50% 还不够做平均工程师
+    platform: reddit
+    main: false
+  - text: absolute yap bot 话痨实锤
+    platform: reddit
+    main: false
+  - text: 复现只停在 Step 1
+    platform: hn
+    main: false
+  - text: overhyped trash：榜单强实战拉胯
+    platform: hn
+    main: false
+  - text: 纯 RL 训练范式突破，登《自然》
+    platform: zhihu
+    main: false
+  - text: LET's F'ING GO
+    platform: x
+    main: false
+  - text: 蒸馏 1.5B 也能打：部分基准超 GPT-4o
+    platform: reddit
+    main: false
+  - text: R1 思考链当教科书：错了也能帮你找茬
+    platform: hn
+    main: false

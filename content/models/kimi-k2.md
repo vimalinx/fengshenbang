@@ -1,0 +1,518 @@
+---
+id: kimi-k2
+name: Kimi K2
+system: kimi
+releaseDate: "2025-07-11"
+collectedDate: 08-09
+specs:
+  contextTokens: 128000
+  contextLabel: 128K
+  priceIn: 0.55
+  priceOut: 2.2
+  priceLabel: $0.55/$2.2
+scores:
+  swe: 65.8
+editorial:
+  title: 开源编程破局
+  tags:
+    - 开源
+    - 编程
+    - Agent
+  roles:
+    - 代码
+    - 性价比
+    - 开源
+profile:
+  apiId: moonshotai/Kimi-K2-Instruct
+  vendor: Moonshot AI / 月之暗面
+  releaseDate: "2025-07-11"
+  access:
+    - API
+    - 开源权重
+    - 本地部署
+    - 托管平台
+  costNote: $0.55/$2.20 · Mtok，缓存输入约 $0.10/M；同任务仅约 Claude Sonnet 4 的 1/10（dev.to 实测 $0.53 vs $5）
+  nicknames:
+    - Claude 国产平替
+    - 封神之作
+    - 万亿编程旗舰
+  signature: SWE-bench 65.8% 开源双料 SOTA · 超 DeepSeek-V3-0324 约 27pt
+benchGroups:
+  - label: 榜单成绩
+    rows:
+      - label: SWE-bench Verified（初版）
+        value: "65.8% · 开源 #1"
+      - label: SWE-bench Multilingual（初版）
+        value: 47.3%
+      - label: Tau2-Bench（初版）
+        value: "66.1"
+      - label: ACEBench En（初版）
+        value: "76.5"
+      - label: EQ-Bench Creative Writing v3
+        value: "#1 · 超越 o3 与 Claude Opus"
+      - label: SWE-bench Verified（K2 Thinking）
+        value: "71.3% · 开源 #1"
+      - label: LiveCodeBench v6（K2 Thinking）
+        value: 83.1%
+  - label: 规格与接入
+    rows:
+      - label: 上下文窗口
+        value: 128,000 tok
+      - label: 最大输出
+        value: —
+      - label: 价格（入/出）
+        value: $0.55 / $2.20 · Mtok
+      - label: effort 档位
+        value: —（非 reasoning 系，无档位调节）
+      - label: 模型架构
+        value: MoE · 总参 1T / 激活 32B · 384 专家 · MLA
+      - label: 发布日期
+        value: "2025-07-11"
+      - label: 获取方式
+        value: API · 开源权重 · 本地部署
+constellation:
+  - version: Kimi K2
+    date: "2025-07-11"
+    effect: 1T 开源双料 SOTA · 封神之作 · 开源破局
+    current: true
+  - version: Kimi K2.5
+    date: "2026-01-27"
+    effect: 视觉 Agentic 开源 · 前端审美起步 · 成 Cursor Composer 2 基座
+  - version: Kimi K2.6
+    date: "2026-04-20"
+    effect: SWE Pro 58.6 开源 SOTA · 盲测全球第一
+  - version: Kimi K3
+    date: "2026-07-16"
+    effect: "前端登顶 #1 · 2.8T 全球最大开源"
+talents:
+  - kind: burst
+    seal: 破
+    name: 开源破局
+    desc: 万亿参数 MoE 全开源，编程双料 SOTA，把开源带进闭源第一梯队；发布 3 天内被 Groq/OpenRouter/Cline 全线接入，生态一夜成型。
+    metric: SWE 65.8% · 超 DeepSeek-V3 约 27pt
+  - kind: skill
+    seal: 程
+    name: Agentic 编程
+    desc: >-
+      原生自主工具调用工作流，代码能力落位 Claude 3.7~4.0 之间；Cline 数千用户一周生产数据显示真实 diff 编辑失败率低至 3.3%，匹配（偶尔超过）Claude 4
+      Sonnet。
+    metric: Tau2-Bench 66.1 · diff 失败率 3.3%
+  - kind: passive
+    seal: 源
+    name: 开放自由
+    desc: Modified MIT 许可（非 OSI 合规：>1 亿 MAU 或 >$20M 月收入需显示 "Kimi K2" 标识），无价值观护栏，自部署与托管接入任选。
+    metric: 1T 总参 · 384 专家 · 权重 958.52 GB
+  - kind: normal
+    seal: 价
+    name: 性价比
+    desc: >-
+      API 价仅约 Claude 零头，社区公认「best bang for buck by far」；Thoughtworks 实测 Sonnet 4 一个任务 $10-20，K2
+      十个类似任务只要 ¥50（$7）。
+    metric: $0.55/$2.20 · 缓存 $0.10
+community:
+  strengths:
+    - Agentic 编程
+    - 工具调用
+    - 数学推理
+    - 开源性价比
+    - MIT 开放自由
+  weaknesses:
+    - 幻觉严重
+    - 长上下文不稳
+    - 输出速度慢
+    - 前端 UI 审美偏弱
+    - 本地部署门槛高
+  upgradeConsensus: worth
+  platforms:
+    - name: Reddit
+      tone: pos
+      summary: >-
+        r/LocalLLaMA 发布帖 354 赞/113 评（98.3% 好评率）、K2 Thinking 798 votes；「best bang for buck by
+        far」为主流，开发者实测「编程性能非常出色，比任何模型都懂上下文」。负面集中在幻觉：「Kimi K2 and hallucinations」帖 14 votes/29
+        comments、后续帖 10 votes/17 comments 均吐槽编造来源；长上下文帖反映「has not been great」。
+    - name: HackerNews
+      tone: mix
+      summary: >-
+        发布帖 348 分/179 评（Algolia 实测核验一致）；认可开源里程碑与「可以选择信任谁来运行」的自由（"I may not be able to reasonably run
+        it myself, but at least I can choose who I trust to run it"）。务实批判本地运行不现实——权重 958.52
+        GB、「deploy your own stamp，less a local model」、需 serious hardware；Simon Willison 现场实测「pelican
+        on a bicycle」SVG 并质疑其 modified MIT 许可。
+    - name: 知乎
+      tone: pos
+      summary: >-
+        「编程、Agent能力超强，Claude国产平替有了」成主流，多篇万赞文章，发布 48 小时内「海啸般讨论」；智源社区有 Kimi 员工复盘「为什么聚焦
+        Agent、为什么开源」。EQ-Bench Creative Writing v3 登顶后「K2 创作文风强」成为新共识，与「前端 UI 审美偏弱」形成对照——多数评测建议与
+        Claude Code 搭配做平替。
+    - name: V2EX
+      tone: mix
+      summary: >-
+        「感谢 Kimi K2，让穷人也用上了 Claude Code」（2025-07-12，用 K2 替换 Claude Code 默认模型）；亦有「对 claude code 中的
+        kimi-k2 表现有些失望」（2025-07-22，PHP 项目 ¥15 未过逻辑验证）。共同痛点：免费额度并发 1、须累计充值 ¥50 解锁并发 50；输出 15 t/s
+        左右「编辑个文件还没人改的快」；「K2 上下限差别太大，可能是 MoE 的通病」。
+    - name: Linux.do
+      tone: mix
+      summary: >-
+        「迟到的使用体验」实测帖（2025-07-23）为最厚中文一手数据：1.5 万行 go 项目 100M+ tokens、900+ 请求、<¥50 完成 1/3
+        重构+新功能、近零手写代码；「最大的感受就是慢，真 TMD 的慢，单文件修改 200~300s、多文件重构 800s+」，但「和 claude code
+        搭配是真流畅，工具调用没出过一点问题」。共识：写代码过关、速度是最大短板，官方提速前「不会再充钱」。
+    - name: X
+      tone: pos
+      summary: >-
+        官方推文 1133 转推/273 回复；Arena 官方确认 K2 系列 #1 开源模型；速度吐槽推文「Kimi K2 is SLOOOOOOOOW」188 转推/145 回复，官方
+        08-01 回应推出 turbo-preview。Nathan Lambert 发布当天断言「Kimi K2 will have a major impact on
+        enterprises」；Hrishi 视频评测称「best agentic open-source model I tested—BY A MILE」。
+  quotes:
+    - text: 编程性能非常出色，比我测试过的任何模型都更好地理解上下文。
+      source: kimi-k2.org 用户
+      tone: pos
+    - text: >-
+        I've tried a bunch of different cheap models, and kimi seems to be the best bang for buck by
+        far.
+      source: Reddit · r/LocalLLaMA
+      tone: pos
+    - text: 编程、Agent能力超强，Claude国产平替有了。
+      source: 知乎评测
+      tone: pos
+    - text: >-
+        K2 0905 is still likely the best choice for many since it's open source and free of google's
+        embedded values.
+      source: Reddit · r/LocalLLaMA
+      tone: pos
+    - text: When asked for sources it has tendency to make them up.
+      source: Reddit · r/LocalLLaMA
+      tone: neg
+    - text: Long context performance has not been great.
+      source: Reddit · r/LocalLLaMA
+      tone: neg
+    - text: This is more of a deploy your own stamp model, less a local model.
+      source: Hacker News
+      tone: neg
+    - text: 最大的感受就是慢，真TMD的慢，但和 claude code 搭配是真流畅。
+      source: Linux.do 实测帖
+      tone: pos
+  controversies:
+    - event: >-
+        幻觉频发：r/LocalLLaMA 多帖（14 votes/29 comments、10 votes/17 comments）反映即使提供 grounding 数据仍编造来源；V2EX
+        实测 PHP 项目「导入了不存在的类、调用了不存在的方法」花 ¥15 未过逻辑验证；LessWrong 记录配置文件中频繁出现非显而易见错误。
+      response: >-
+        Moonshot AI 在 r/LocalLLaMA 举办 AMA 直接回应，承诺「thanks for the feedback and we will find a better
+        way asap」。
+    - event: >-
+        输出速度被吐槽「Kimi K2 is SLOOOOOOOOW」：官方承认约 10 tok/s，V2EX 实测 15 t/s、dev.to 实测 34.1
+        tok/s（OpenRouter 端差异），均远低于 Sonnet 4 的 91.3 t/s，严重影响 agentic 体验。
+      response: >-
+        官方公开回应承认速度问题，并于 08-01 推出 kimi-k2-turbo-preview（4× 提速至 40 tok/s，限时 5 折：$0.30 cache hit /
+        $1.20 miss / $5.00 output per M）。
+    - event: >-
+        本地部署被指不现实：1T 参数权重 958.52 GB 需专业级硬件，「deploy your own stamp，less a local
+        model」；V2EX「想多了，目前大模型配置要求这么高怎么可能做到用户端本地部署」。
+    - event: >-
+        Cursor「白标 Kimi」争议（2026-03）：社区扒出 Cursor 自家 Composer 2 基座是 Kimi K2.5 + RL 微调，官方未主动披露（HN 276
+        pts/168 评），质疑违反 Moonshot ToS；TechCrunch 报道「Cursor admits its new coding model was built on
+        top of Kimi」。
+      response: >-
+        Cursor 官方随后确认 Composer 2 基于 K2.5；HN 高赞评论认为「Cursor 的护城河很薄——VS Code fork + 开源 LLM
+        fork」，「Anthropic 可能因此禁止 Cursor 使用自家模型」。
+  subBoards:
+    - name: Chatbot Arena
+      rank: "#1 开源模型"
+      note: lmarena.ai 官方确认
+    - name: EQ-Bench Creative Writing v3
+      rank: "#1 · 超越 o3 与 Claude Opus"
+      note: Nature 援引；Drew Breunig 分析其 RL 训练方式
+    - name: WebDev Arena
+      rank: 上榜
+      note: K2 与 K2.5-thinking 均已登上
+    - name: Frontend Code Arena
+      rank: "K2.6 位列 #18"
+      note: "后续 K3 从 #18 跃升至 #1（1679 pts），印证前端持续进步"
+    - name: 长上下文子榜
+      rank: 偏弱（推断）
+      note: 社区反馈长上下文表现不稳定
+  heat:
+    - label: HN 发布帖
+      value: 348 pts（Algolia 实测核验）
+    - label: HN 评论
+      value: "179"
+    - label: Reddit 发布帖
+      value: 354 赞 · 98.3% 好评率
+    - label: X 官方推文
+      value: 1,133 转推
+  expertQuotes:
+    - text: >-
+        Kimi K2 will have a major impact on enterprises rather than consumer, so it'll take longer
+        to happen.
+      name: Nathan Lambert
+      role: Interconnects AI 创始人 · 前 AI2 高级研究科学家
+      tone: pos
+    - text: >-
+        It is the new best-available open model by a clear margin. China is continuing to approach
+        (or reached) the absolute frontier of modeling performance.
+      name: Nathan Lambert
+      role: Interconnects ·《Kimi K2 and when "DeepSeek Moments" become normal》
+      tone: pos
+    - text: >-
+        I think this may be the largest ever open weights model? 958.52 GB on Hugging Face, trained
+        with the Muon optimizer.
+      name: Simon Willison
+      role: 知名开发者博客作者 · 发布当天实测
+      tone: pos
+    - text: Chinese AI model Kimi K2 marks "another DeepSeek moment".
+      name: Nature
+      role: 顶刊 · 经 China Daily 报道
+      tone: pos
+    - text: >-
+        Kimi is the real deal. Unless it's really Sonnet in a trench coat, this is the best agentic
+        open-source model I've tested — BY A MILE.
+      name: Hrishi
+      role: 视频评测 · Zvi Mowshowitz 引述
+      tone: pos
+    - text: "Kimi-K2 is now the #1 open model in the Arena."
+      name: lmarena.ai
+      role: X · 官方账号
+      tone: pos
+    - text: >-
+        Claude Code is, after all, designed for Claude Sonnet 4 — when I'm using Kimi K2 with Claude
+        Code, it's like there's a different soul in Claude Code's body!
+      name: Zhenjia Zhou
+      role: Thoughtworks 软件工程师 · 发布当天即接入实测
+      tone: mix
+    - text: >-
+        In real-world diff editing tasks, Kimi K2 is achieving failure rates as low as 3.3%,
+        matching and occasionally outperforming Claude 4 Sonnet.
+      name: Cline 官方博客
+      role: 数千用户一周生产数据
+      tone: pos
+    - text: 杨植麟被梁文锋叫醒了！Kimi 新模型发布即开源。
+      name: 量子位
+      role: 行业媒体
+      tone: pos
+    - text: Moonshot AI's Kimi K2 outperforms GPT-4 in key benchmarks.
+      name: VentureBeat
+      role: 海外科技媒体
+      tone: pos
+    - text: Kimi K2 发布两天即「封神」？80% 成本优势追平 Claude 4。
+      name: InfoQ
+      role: 技术媒体
+      tone: pos
+    - text: Kimi K2 is really, really good.
+      name: u/ 热帖楼主
+      role: Reddit · r/LocalLLaMA · 354 赞帖
+      tone: pos
+    - text: >-
+        I've tried a bunch of different cheap models, and kimi seems to be the best bang for buck by
+        far.
+      name: u/ 高赞评论
+      role: Reddit · r/LocalLLaMA
+      tone: pos
+    - text: K2 定位「开放智能体（Open Agentic Intelligence）」，原生支持自主工具调用工作流。
+      name: Moonshot AI
+      role: 官方技术博客
+      tone: pos
+    - text: 复盘 K2：为什么聚焦 Agent、为什么开源——这是 K2 最核心的两个决策。
+      name: 智源社区 · Kimi 员工复盘
+      role: 复盘文章
+      tone: pos
+    - text: >-
+        With Kimi K2, you had to stop what you were doing, create files, and load them in a browser
+        just to confirm that the output worked.
+      name: Second Talent 评测
+      role: K2 vs Claude 对比评测
+      tone: neg
+    - text: >-
+        Hallucinations even in some cases when grounding data is provided like via web search is
+        still an issue. When asked for sources it has tendency to make them up.
+      name: u/ 幻觉帖楼主
+      role: Reddit · r/LocalLLaMA
+      tone: neg
+    - text: >-
+        It's not so funny when non-obvious errors constantly show up in configuration files and
+        instructions.
+      name: LessWrong 评测者
+      role: LessWrong · 个人评测
+      tone: neg
+    - text: 最大的感受就是慢，真TMD的慢……单文件修改的任务经常 200~300s，多文件重构修改有时候会上 800s+。
+      name: Linux.do 实测帖楼主
+      role: 真实 go 项目 · 100M+ tokens 实测
+      tone: neg
+    - text: 花了 15 元人民币了，但 k2 写出来的代码甚至无法进入逻辑验证的阶段。
+      name: V2EX 用户
+      role: Claude Code + K2 · PHP 项目实测
+      tone: neg
+    - text: This is more of a deploy your own stamp model, less a local model.
+      name: HN 热评
+      role: Hacker News · 发布帖
+      tone: neg
+    - text: 整体审美能力偏弱，但工具调用很强，更适合和 ClaudeCode 搭配做一个平替。
+      name: 知乎评测
+      role: 知乎 · 代码能力评测
+      tone: mix
+  timeline:
+    - date: "2025-07-11"
+      event: >-
+        Kimi K2 初版（0711）开源发布：1T 总参/32B 激活 MoE，SWE-bench Verified 65.8% 开源 SOTA；HN 348 分/179
+        评、r/LocalLLaMA 354 赞/113 评（98.3% 好评率）、X 推文 1133 转推/273 回复
+    - date: "2025-07-12"
+      event: >-
+        V2EX 首发实测帖「用 Kimi K2 替换 Claude Code 默认模型」，开源平替叙事启动；发布 3 天内 Groq（250 tok/s）/OpenRouter/Cline
+        全线接入
+    - date: "2025-07-15"
+      event: >-
+        官方公开回应速度吐槽「Kimi K2 is SLOOOOOOOOW」，承认约 10 tok/s 影响 agentic 体验；OpenHands 创始人 Neubig 提交 PR
+        #9706 将 K2 加入推荐模型
+    - date: "2025-07-21"
+      event: >-
+        K2 技术报告发布，07-28 上 arXiv 2507.20534，确认 MuonClip 优化器与 15.5T token 零 loss spike 训练；Nature
+        刊文称「another DeepSeek moment」
+    - date: "2025-08-01"
+      event: >-
+        kimi-k2-turbo-preview 发布：同模型 4× 提速（10→40 tok/s），限时 5 折（$0.30 cache hit / $1.20 miss / $5.00
+        output per M）
+    - date: "2025-09-05"
+      event: Kimi K2-0905 更新：前端与工具调用增强、上下文扩至 256K、API 提速；r/LocalLLaMA 877 赞/202 评（99.2% 好评率）
+    - date: "2025-11-06"
+      event: Kimi K2 Thinking 发布：HLE 44.9%、BrowseComp 60.2%、SWE-bench Verified 71.3%；HN 936 分/427 评（系列最高）
+    - date: "2026-03-20"
+      event: >-
+        Cursor Composer 2 被扒出基座 = Kimi K2.5 + RL（HN 276 pts/168 评），TechCrunch 03-22 报道「Cursor admits
+        its new coding model was built on top of Kimi」
+  sources:
+    - title: "Kimi K2: Open Agentic Intelligence"
+      platform: Moonshot AI 官方
+      url: https://moonshotai.github.io/Kimi-K2/
+    - title: moonshotai/Kimi-K2
+      platform: GitHub
+      url: https://github.com/moonshotai/kimi-k2
+    - title: "Kimi K2: Open Agentic Intelligence - arXiv"
+      platform: arXiv
+      url: https://arxiv.org/abs/2507.20534
+    - title: Kimi K2 is a state-of-the-art MoE language model - Hacker News
+      platform: Hacker News
+      url: https://news.ycombinator.com/item?id=44533403
+    - title: 迟到的使用体验，真实 golang 项目使用 kimi-k2+claude code 的感受(100M+ tokens)
+      platform: Linux.do
+      url: https://linux.do/t/topic/809833
+    - title: "Kimi K2: What's all the fuss and what's it like to use?"
+      platform: Thoughtworks
+      url: >-
+        https://www.thoughtworks.com/en-us/insights/blog/generative-ai/kimi-k2-whats-fuss-whats-like-use
+    - title: "Moonshot's Kimi K2 for Coding: Our First Impressions in Cline"
+      platform: Cline 官方博客
+      url: https://cline.bot/blog/moonshots-kimi-k2-for-coding-our-first-impressions-in-cline
+    - title: Kimi K2 and when "DeepSeek Moments" become normal
+      platform: Interconnects · Nathan Lambert
+      url: https://www.interconnects.ai/p/kimi-k2-and-when-deepseek-moments
+    - title: moonshotai/Kimi-K2-Instruct - Simon Willison
+      platform: Simon Willison
+      url: https://simonwillison.net/2025/Jul/11/kimi-k2/
+    - title: Cursor admits its new coding model was built on top of Kimi
+      platform: TechCrunch
+      url: >-
+        https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/
+  uncertainties:
+    - 各平台情绪比例为基于帖子采样的估算（整体 55/25/20），非精确统计；Reddit 实时数字 2026-08-09 复核时被 403 拦截，保留 2026-08-01 快照值
+    - K2 初版与后续 K2 Thinking/K2.5 等版本社区反馈可能存在混淆，部分引用为系列整体评价
+    - "前端 UI 审美评价主要基于 K2.5/K2.6 评测反推初版 K2 弱点，初版缺乏直接专项评测（EQ-Bench 创作文风 #1 与 UI 审美弱是不同维度）"
+    - 初版 K2 不支持 effort 分档调节（非 reasoning 系模型），故省略 effortBench 字段
+    - Cursor 中 K2（非 K2.5）agent 模式无系统性评测，仅有「非原生集成」官方说明与零散使用反馈
+  versionDelta:
+    base: Kimi K1.5
+    improves:
+      - 参数从百亿级跃升至 1T 总参 / 32B 激活，稠密 → MoE 跨越
+      - SWE-bench Verified 0 → 65.8%（开源非思考 SOTA，超 DeepSeek-V3-0324 的 38.8% 约 27pt）
+      - SWE-bench Multilingual 47.3% · Tau2-Bench 66.1 · ACEBench 76.5
+      - 首次定位「开放智能体」，原生支持自主工具调用工作流；发布 3 天内被 Groq（250 tok/s）/OpenRouter/Cline 全线接入
+      - MuonClip 优化器：15.5T token 预训练全程零 loss spike
+      - K2 Thinking 后续 SWE-bench 71.3%，超越 Minimax 2.4pt 登顶开源第一
+    regresses:
+      - 长上下文 128K 在 agentic 场景易被塞满，社区反馈「has not been great」，推理中断偶发
+      - 幻觉仍突出：V2EX 实测「花了 15 块钱，代码还没进入逻辑验证」
+      - >-
+        输出速度 10~15 tok/s（官方承认 10、V2EX 测 15、dev.to 测 34.1），dev.to 实测为 Sonnet 4 的 1/3（34.1 vs 91.3
+        t/s）
+      - 前端 UI 审美偏弱（创作文风强 ≠ UI 审美强），K2.5 起才重点卷、K2.6 才「摸到第一梯队」
+      - 本地部署门槛极高：1T 参数权重 958.52 GB，需专业级硬件
+      - 坏 prompt 下写作易变得 sloppy；免费额度并发 1，须累计充值 ¥50 解锁并发 50
+  harnessReviews:
+    - id: claude-code
+      text: >-
+        Linux.do go 项目实测：100M+ tokens、900+ 请求、<¥50 完成 1/3 重构，近零手写代码；但单文件修改 200~300s 很慢，幻觉高发场景（如
+        PHP）需人工复核。
+    - id: cursor
+      text: agent mode 无法正常使用、提示「模型 agentic 支持有限」；初版走自定义 API 可作编码主力，UI 生成建议换 K2.6+ 或 Claude。
+    - id: openhands
+      text: >-
+        Slack vibe check（2025-08-18）：GPT-5 > sonnet 4 > Qwen-3 Coder > Kimi-K2；K2 Thinking 版
+        thinking bug 已修复；幻觉高发场景建议交叉验证。
+  demos:
+    - title: 官网网页版 kimi.com
+      desc: 官方主演示渠道，网页/App/API 三端可用，GitHub README 首页置顶 Chat 入口。
+    - title: 官方技术博客
+      desc: "Kimi K2: Open Agentic Intelligence 完整展示页，附 GitHub / HuggingFace / arXiv 入口。"
+    - title: X 官方发布推文
+      desc: 「Hello, Kimi K2! Open-Source Agentic Model!」附演示视频，1133 转推/273 回复。
+relations:
+  rivals:
+    - deepseek-v3-2
+    - glm-4-6
+    - deepseek-r1
+  teams:
+    - budget-vanguard
+    - puppet-workshop
+  guides:
+    - beginner-budget
+    - mech-toolcall
+    - case-refactor
+    - swarm-intro
+  bestInSlot:
+    - id: claude-code
+      note: 社区主流玩法：接 Claude Code 作国产平替，预算敏感+长程 agentic 首选，工具调用零故障口碑佳。
+    - id: cursor
+      note: K2 初版非原生集成；但 K2.5 已成 Cursor Composer 2 基座，生态核心地位被官方验证。
+    - id: openhands
+      note: 官方推荐模型，配置即用；但实测排名未跑赢 Qwen-3 Coder，长程自治任务可试、期望别拉满。
+  trialGood:
+    - label: Agentic 编程
+      to: /scenarios#agent
+    - label: 数学推理
+      to: /scenarios#algo
+    - label: 预算敏感编程
+      to: /scenarios#fullstack
+  trialBad:
+    - label: 事实引用任务
+      to: /scenarios#docs
+      note: 幻觉严重会编造来源，建议换 claude-sonnet-5
+    - label: 输出速度敏感
+      to: /scenarios#fullstack
+      note: 10~15 tok/s 单文件 200~300s，建议换 gemini-3-6-flash
+    - label: 个人本地部署
+      to: /scenarios#fullstack
+      note: 1T 参数权重 958.52 GB 需专业级硬件，建议换 deepseek-v3-2
+    - label: 前端 UI 审美要求高
+      to: /scenarios#frontend
+      note: 初版 UI 审美偏弱，建议换 gemini-3-6-flash 或等 K2.6+
+---
+
+## 一句话点评
+
+开源破局的万亿 MoE：编程双料 SOTA 逼近闭源第一梯队，白菜价与 MIT 自由吸粉；幻觉与长上下文不稳是硬伤。
+
+## 社区反馈 · 编程
+
+最大亮点：SWE-bench Verified 65.8% 开源 SOTA，代码能力落位 Claude 3.7~4.0 之间、略好于 DeepSeek R1；Cline 一周生产数据显示 diff 编辑失败率仅 3.3%，匹配甚至偶尔超过 Claude 4 Sonnet。Linux.do 真实 go 项目实测（1.5 万行、1/3 重构）跑满 100M+ tokens、900+ 请求、总花费不到 ¥50，近乎零手写代码完成，工具调用（Read/Write/Update/Bash/Grep）全程零故障。但落差同样明显：V2EX 用 Claude Code 跑 PHP 项目，第一版架构惊喜、review 时幻觉爆炸——导入不存在的类、方法参数错误、调用不存在的方法，花费 ¥15 仍无法进入逻辑验证；单测生成「很少能一遍过」；前端 UI 生成审美偏弱（创作文风强是另一回事，见下）。
+
+## 社区反馈 · 推理
+
+数学推理是设计重点：K2 Thinking 在 SWE-bench 官方榜超越 Minimax 2.4pt（12 个任务实例）登顶开源第一，用户对比 GPT-5 Thinking 以 45:38 胜出；HLE 44.9%、BrowseComp 60.2% 一度压过闭源。但复杂推理场景仍有幻觉，LessWrong 记录其编造「与同事做的实验」；Superlinear Academy 评测指出它「擅长采集与汇编，不擅长提炼高层洞察」——更像顶级信息采集员而非分析师，非 reasoning 模型思考深度受限。
+
+## 社区反馈 · 中文
+
+中文理解与创作自然流畅，知乎/V2EX 讨论热烈，「Claude 国产平替」成中文社区主流叙事；EQ-Bench Creative Writing v3 登顶（超越 o3 与 Claude Opus，Nature 亦援引）证明其中文与英文创作文风都强。需区分：创作文风强 ≠ 前端 UI 审美强——后者初版偏弱（K2.5 才重点卷、K2.6 才「摸到第一梯队」）；深度中文创作在审美层面仍略逊 Claude 系。
+
+## 升级共识
+
+编程与 Agent 场景值得立即升级：SWE 65.8% 开源 SOTA、API 白菜价（同任务 $0.53 vs Claude $5，约 1/10）、MIT 系许可自由部署——Linux.do 真实 go 项目不到 ¥50 完成 1/3 重构是「值得」的最硬证据。但两个前置条件：一、免费额度并发 1 基本不可用，须累计充值 ¥50 解锁并发 50 才丝滑；二、幻觉高发场景（事实引用、PHP 等弱类型语言）需人工复核，长上下文任务受 128K 窗口限制。部分用户认为 0905 及后续迭代更好，追新可等 K2 Thinking（SWE 71.3%）。
+
+## 榜单与实测落差
+
+「分数高但体感两极」：SWE-bench 65.8% 看着很高，真实工作流里 Cline 实测 diff 失败率低至 3.3%（匹配 Sonnet 4），但 V2EX 用 Claude Code 跑 PHP 却「¥15 进不了逻辑验证」——上限高、下限低，稳定性是 MoE 通病。速度是最大落差来源：榜单不测 t/s，而 10~15 tok/s 的实测让「单文件修改 200~300s、多文件重构 800s+」成为 Linux.do 实测帖的主线吐槽。另一面性价比超预期：同 token 量 $0.53 vs $5（dev.to）、$10-20 vs ¥50（Thoughtworks），「best bang for buck」共识稳。落差本质是「模型强、生态未适配」：Claude Code 为 Claude 定制，K2 接进去「像讲着带不同口音的同一语言」（Superlinear）。

@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: grok-4-5
+tier: T1
+stars: 5
+composite: 89
+stats:
+  code: 92
+  reasoning: 70
+  context: 80
+  speed: 88
+  multimodal: 72
+  value: 95
+sentiment:
+  positive: 40
+  mixed: 20
+  negative: 40
+radar:
+  - axis: 长程任务
+    value: 85
+  - axis: 编程工程
+    value: 92
+  - axis: 抽象推理
+    value: 70
+  - axis: 上下文利用
+    value: 80
+  - axis: 中文能力
+    value: 55
+  - axis: 响应速度
+    value: 88
+  - axis: 稳定性
+    value: 65
+  - axis: 指令遵循
+    value: 60
+  - axis: 易用性
+    value: 85
+  - axis: 性价比
+    value: 95
+danmaku:
+  - text: 4.3 是笑话，4.5 是第一选择
+    platform: reddit
+    main: true
+  - text: FREE 进 coding agent，500K 上下文
+    platform: x
+    main: true
+  - text: it's a cheatcode：订阅即接入
+    platform: x
+    main: true
+  - text: $30 三个月哎，嫖了再说
+    platform: v2ex
+    main: true
+  - text: 偷传代码：12GB 仓库传 5.10GiB
+    platform: hn
+    main: true
+  - text: 幻觉率翻倍：25% → 54%
+    platform: hn
+    main: true
+  - text: 便宜但质量比 gpt 5.4 差
+    platform: reddit
+    main: false
+  - text: GLM 5.2 表现相似，价格只要零头
+    platform: reddit
+    main: false
+  - text: cool. But fuck Musk
+    platform: reddit
+    main: false
+  - text: 写了一两千字后中文语法都忘了
+    platform: zhihu
+    main: false
+  - text: 演都不演 默认上传 太6了 急着训
+    platform: v2ex
+    main: false
+  - text: grok4.5 整的还行，有那么点意思
+    platform: v2ex
+    main: false
+  - text: good and cheap 到不讲道理
+    platform: reddit
+    main: false
+  - text: "Arena 从 #3 跌至第六"
+    platform: zhihu
+    main: false
+  - text: better than Opus 4.8，harness 顺滑
+    platform: hn
+    main: false
+  - text: Grok Build 1.0 藏 Computer Hub
+    platform: hn
+    main: false

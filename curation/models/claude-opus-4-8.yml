@@ -1,0 +1,82 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: claude-opus-4-8
+tier: T0
+stars: 6
+composite: 95.4
+stats:
+  code: 88
+  reasoning: 85
+  context: 75
+  speed: 40
+  multimodal: 45
+  value: 35
+sentiment:
+  positive: 45
+  mixed: 15
+  negative: 40
+radar:
+  - axis: 长程任务
+    value: 55
+  - axis: 编程工程
+    value: 88
+  - axis: 抽象推理
+    value: 85
+  - axis: 上下文利用
+    value: 75
+  - axis: 中文能力
+    value: 65
+  - axis: 响应速度
+    value: 40
+  - axis: 稳定性
+    value: 50
+  - axis: 指令遵循
+    value: 80
+  - axis: 易用性
+    value: 60
+  - axis: 性价比
+    value: 35
+danmaku:
+  - text: 4.8 gets us back on track
+    platform: reddit
+    main: true
+  - text: a frustrating downgrade
+    platform: reddit
+    main: true
+  - text: 像回到 GPT-2 时代，连文件都读不了
+    platform: hn
+    main: true
+  - text: 实测封神！强到离谱，也贵到肉痛
+    platform: zhihu
+    main: true
+  - text: 官方 API 问身份，自称通义千问
+    platform: linuxdo
+    main: true
+  - text: Claude 4.8 爱编造性能数据
+    platform: x
+    main: true
+  - text: honesty change is real
+    platform: reddit
+    main: false
+  - text: The king is back（stet.sh craft leader）
+    platform: reddit
+    main: false
+  - text: 最道德说教的一代，一周拒我 8 次
+    platform: reddit
+    main: false
+  - text: 零知识弱了，agent coding 更易犯错
+    platform: zhihu
+    main: false
+  - text: Fable 5 编码默认路由到 4.8
+    platform: hn
+    main: false
+  - text: Max effort token 约为 4.7 的 5 倍
+    platform: x
+    main: false
+  - text: 蒸馏回旋镖：曾指控别人，如今自称千问
+    platform: v2ex
+    main: false
+  - text: 回流帖：Opus 4.8 > Opus 5
+    platform: reddit
+    main: false

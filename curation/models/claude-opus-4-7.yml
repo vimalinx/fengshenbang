@@ -1,0 +1,82 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: claude-opus-4-7
+tier: T0
+stars: 6
+composite: 96.2
+stats:
+  code: 96
+  reasoning: 92
+  context: 90
+  speed: 68
+  multimodal: 85
+  value: 55
+sentiment:
+  positive: 52
+  mixed: 26
+  negative: 22
+radar:
+  - axis: 长程任务
+    value: 97
+  - axis: 编程工程
+    value: 90
+  - axis: 抽象推理
+    value: 86
+  - axis: 上下文利用
+    value: 90
+  - axis: 中文能力
+    value: 70
+  - axis: 响应速度
+    value: 58
+  - axis: 稳定性
+    value: 64
+  - axis: 指令遵循
+    value: 76
+  - axis: 易用性
+    value: 66
+  - axis: 性价比
+    value: 45
+danmaku:
+  - text: 40 hours. It just… kept going.
+    platform: x
+    main: true
+  - text: 无人值守的神，结对编程的坑
+    platform: zhihu
+    main: true
+  - text: 发布帖 986 points：续航是真突破，编号是真迷惑
+    platform: hn
+    main: true
+  - text: 工具调用 96.8%，蜂群最稳底座
+    platform: linuxdo
+    main: true
+  - text: 4.6 felt better at everything except not stopping
+    platform: reddit
+    main: true
+  - text: Why is 4.7 shipping after 4.8?
+    platform: hn
+    main: false
+  - text: 睡前丢重构，早上验收 PR
+    platform: zhihu
+    main: false
+  - text: 编号喝假酒的一代
+    platform: linuxdo
+    main: false
+  - text: $8/$40 跑一夜，账单四位数
+    platform: v2ex
+    main: false
+  - text: agentic endurance is the new frontier
+    platform: x
+    main: false
+  - text: 窄手电式幻觉，偶尔吓人
+    platform: x
+    main: false
+  - text: Vending-Bench 唯一没被骗汇款的
+    platform: hn
+    main: false
+  - text: 发布即备胎：前有 4.8，后有 Opus 5
+    platform: reddit
+    main: false
+  - text: 1M 全仓真香，但 250K 后要手动重注入
+    platform: v2ex
+    main: false

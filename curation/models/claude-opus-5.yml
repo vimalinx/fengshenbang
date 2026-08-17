@@ -1,0 +1,82 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: claude-opus-5
+tier: T0
+stars: 6
+composite: 97.1
+stats:
+  code: 98
+  reasoning: 97
+  context: 92
+  speed: 62
+  multimodal: 86
+  value: 78
+sentiment:
+  positive: 45
+  mixed: 20
+  negative: 35
+radar:
+  - axis: 长程任务
+    value: 96
+  - axis: 编程工程
+    value: 90
+  - axis: 抽象推理
+    value: 98
+  - axis: 上下文利用
+    value: 88
+  - axis: 中文能力
+    value: 72
+  - axis: 响应速度
+    value: 38
+  - axis: 稳定性
+    value: 45
+  - axis: 指令遵循
+    value: 42
+  - axis: 易用性
+    value: 40
+  - axis: 性价比
+    value: 80
+danmaku:
+  - text: Literally the BEST at long-horizon task
+    platform: reddit
+    main: true
+  - text: ADHD 模型：简单任务变数小时马拉松
+    platform: reddit
+    main: true
+  - text: 发布帖 1378 points：能力令人惊叹
+    platform: hn
+    main: true
+  - text: 集大成的模型，比肩 Fable 的编程能力
+    platform: linuxdo
+    main: true
+  - text: "I hate working with it, yet ranked it #1 blind"
+    platform: x
+    main: true
+  - text: opus5 用起来比 fable 好一些
+    platform: linuxdo
+    main: false
+  - text: 被吹太狠了，实际有点弱智
+    platform: linuxdo
+    main: false
+  - text: brilliant but annoying
+    platform: x
+    main: false
+  - text: claude.md 加 laconic mode 才好用
+    platform: reddit
+    main: false
+  - text: medium effort + /doctor 可救
+    platform: reddit
+    main: false
+  - text: 多项测试展现超出 Fable 5 的能力
+    platform: zhihu
+    main: false
+  - text: 快速迭代用 Opus 5，加固换 GPT 5.6 Sol
+    platform: linuxdo
+    main: false
+  - text: Opus 5 is the laziest model yet
+    platform: reddit
+    main: false
+  - text: 关注 /doctor 与上下文过载研究
+    platform: zhihu
+    main: false

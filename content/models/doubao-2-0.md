@@ -1,0 +1,504 @@
+---
+id: doubao-2-0
+name: Doubao Seed 2.0
+system: doubao
+releaseDate: "2026-02-14"
+collectedDate: 08-09
+specs:
+  contextTokens: 256000
+  contextLabel: 256k
+  maxOutputTokens: 128000
+  priceIn: 0.47
+  priceOut: 2.37
+  priceLabel: $0.47/$2.37
+scores:
+  swe: 76.5
+editorial:
+  title: 掀桌性价比屠夫
+  tags:
+    - 性价比
+    - 多模态
+    - 数学
+  roles:
+    - 性价比
+    - 推理
+    - 多模态
+profile:
+  apiId: doubao-seed-2-0
+  vendor: 字节跳动 ByteDance
+  releaseDate: "2026-02-14"
+  access:
+    - 火山引擎 API
+    - 豆包 App 专家模式
+    - TRAE IDE 集成
+    - 方舟 Coding Plan
+  costNote: >-
+    Pro $0.47/$2.37 · Mtok（人民币口径 3.2/16 元·百万 token），输入/输出分别较 GPT-5.2 便宜约 3.7×/5.9×，较 Opus 4.5 便宜约
+    10×；方舟 Coding Plan 首月低至 8.91 元
+  nicknames:
+    - 掀桌选手
+    - DeepSeek Moment 第二弹
+    - 油腻豆
+  signature: AIME 98.3 · 多模态 12/19 第一 · 价格低一个数量级
+benchGroups:
+  - label: 榜单成绩
+    rows:
+      - label: AIME 2025
+        value: "98.3"
+      - label: HLE-text
+        value: 54.2 · 纪录
+      - label: GPQA Diamond
+        value: 88.9%
+      - label: SWE-bench Verified（Code 版）
+        value: 76.5%
+      - label: LiveCodeBench v6
+        value: "87.8"
+      - label: Codeforces
+        value: 3020 rating
+      - label: VideoMME
+        value: "89.5"
+      - label: Chatbot Arena
+        value: "Text #6 · Vision #3-4"
+  - label: 规格与接入
+    rows:
+      - label: 上下文窗口
+        value: 256,000 tok
+      - label: 最大输出
+        value: 128,000 tok
+      - label: 价格（入/出）
+        value: $0.47 / $2.37 · Mtok（Pro）
+      - label: effort 档位
+        value: —
+      - label: 模型架构
+        value: 闭源 · 参数量未公开
+      - label: 发布日期
+        value: "2026-02-14"
+      - label: 获取方式
+        value: 火山引擎 API · 豆包 App 专家模式 · TRAE · 方舟 Coding Plan
+constellation:
+  - version: Doubao 1.5
+    date: 2025-02
+    effect: 首个 50 倍价差屠夫 · 平价先行
+  - version: Doubao 1.8
+    date: 2025-08
+    effect: 国民级助手登顶 · 周活 1.55 亿
+  - version: Doubao-Seed-2.0
+    date: "2026-02-14"
+    effect: 数学多模态登顶 · 价格低一个数量级
+    current: true
+  - version: Doubao-Seed-2.0-lite
+    date: "2026-05-06"
+    effect: 全模态理解首作 · 5.4 元/千次
+  - version: 豆包 2.1 Pro
+    date: "2026-06-23"
+    effect: 编程 Agent 质变 · 成本暴砍 80%
+talents:
+  - kind: burst
+    seal: 算
+    name: 竞赛数学屠榜
+    desc: >-
+      AIME 98.3、IMO 35/42 金牌级、CMO 金牌、5 项 ICPC 全部金牌，竞赛级数学登顶，超越 GPT-5.2 与 Opus
+      4.5；还能解埃尔德什级别数学问题（官方称「从奥赛迈向研究级推理」）。
+    metric: AIME 98.3 · IMO 35/42 · ICPC 5 金
+  - kind: skill
+    seal: 观
+    name: 原生多模态
+    desc: "视觉推理/文档理解/长视频理解全面领先，19 项多模态基准 12 项第一，EgoTempo 超人类分数，Arena Vision #3-4；四款变体均支持文字/图片/视频输入。"
+    metric: VideoMME 89.5 · 12/19 基准第一
+  - kind: skill
+    seal: 价
+    name: 掀桌定价
+    desc: >-
+      $0.85 blended 交付 85-90% 前沿性能，比 GPT-5.2 便宜约 3.7×/5.9×，比 Opus 4.5 便宜约 10×；10 亿输出 token 月费仅
+      $2,370 vs GPT-5.2 的 $14,000。
+    metric: $0.47/$2.37 · 价差 5-10×
+  - kind: passive
+    seal: 程
+    name: Code 版专用
+    desc: >-
+      纯强化学习训练的专用编程变体，官方称「适配 Claude Code 等 IDE 工具链」，TRAE 集成实测超过 Claude 4.5 Sonnet，成本降 62.7%；火山
+      OpenViking 官方用其做 Claude Code 基准裁判。
+    metric: SWE 76.5 · TRAE bash 78 vs 70
+community:
+  strengths:
+    - 性价比屠夫
+    - 竞赛数学
+    - 多模态视觉
+    - 中文搜索
+    - 长上下文
+  weaknesses:
+    - 写作风格驾驭差
+    - 幻觉/降智
+    - 空间智力弱
+    - 闭源不可复现
+    - Coding Plan 额度/倍率坑
+  upgradeConsensus: worth
+  platforms:
+    - name: Reddit
+      tone: pos
+      summary: >-
+        偏正面约 55%、中性 30%、负面 15%（主要针对闭源），讨论量小众。r/accelerate 认可「Seed 2.0 Pro 在多项基准接近 SOTA」（closes the
+        gap 帖）；r/LocalLLaMA 认可「视觉推理和数学很强」，但指出「编程相对弱、非开源所以关注度低」；TRAE+Doubao-Seed-Code bash 实测 78 分超
+        Claude 4.5 Sonnet 的 70 分是英文社区传播最广的编程证据。精确 upvotes 本次未独立核验（API 403），沿用 2026-08-01 调研快照。
+    - name: HackerNews
+      tone: mix
+      summary: >-
+        声量极小且偏谨慎：发布帖「ByteDance Seed2.0 LLM: breakthrough in complex real-world tasks」实测仅 15 pts/5
+        评论（HN Algolia，2026-08-09 核验），Model Card 帖 3 pts、Dola-Seed-2.0-Preview 帖 3 pts——与 Opus 5 发布帖
+        1378 pts 差两个数量级。主要提及 ByteDance 背景的地缘政治审查顾虑与「Western procurement
+        acceptance」障碍，技术认可度存在但采购谨慎；2026 年 HN 上字节系唯一高热是视频模型 Seedance 2.5（442 pts，08-01）。
+    - name: 知乎
+      tone: pos
+      summary: >-
+        多问答与高赞长文认可性价比与多模态登顶；「为什么豆包模型实际很强却被低估」逐项评分帖成为口碑分水岭——认知深度 4.7 星 vs 风格驾驭 2 星（「我甚至可以给它 0
+        星」）。1.55 亿周活的国民级模型是讨论底色，问答热度远高于海外；2.1 Pro 发布（06-23）后被社区回溯为对 2.0 短板（空间智力/归纳推理）的补强。
+    - name: Linux.do
+      tone: neg
+      summary: >-
+        集中吐槽「降智」：幻觉加剧、编造不存在的法律条款（80aj 转载帖阅读 505，2026-04-13），俄语学习捏造语法被老师当场纠正，AI
+        分身将无关手机号错误关联引发骚扰；中文社区整体正面约 50%、混合 30%、负面 20%。降智反馈被归因于「模型崩溃/过度微调导致基础能力退化」风险，官方未系统性回应。
+    - name: V2EX
+      tone: mix
+      summary: >-
+        多帖讨论火山引擎 Coding Plan 与 Seed 2.0 接入：性价比获认可（首月 8.91 元），但「火山云的 Coding Plan 值得买吗」（t/1206049）11
+        条回复几乎一边倒——「隐藏倍率别买，请求+token 计费」「豆包 pro 可能是我用过的比较垃圾那一类」「响应速度极慢」；仅 1 条正面「CC+Doubao-Seed-2.0-pro
+        改一些小问题还是挺快的」。隐私与闭源、AI 手机生态反制是主要顾虑。
+    - name: X
+      tone: pos
+      summary: >-
+        讨论有限但偏正面约 60%：「Seed 2.0 LLM neat read, feels kinda Deep-Seeky」（SlipperyGem 深度拆解）；发布当天
+        DeryaTR_ 称「Another DeepSeek moment from China! ByteDance just released Seed 2.0」；罗永浩点赞 AI
+        手机称「技术革命谁都拦不住」。海外 KOL 声量集中在定价屠夫叙事，编程/Agent 实测帖稀缺。
+  quotes:
+    - text: 豆包 Seed 2.0 的多模态能力，全球前三完全没问题
+      source: 腾讯新闻评测
+      tone: pos
+    - text: At $0.85 blended, 5-10× cheaper while delivering 85-90% of their benchmark ceiling
+      source: TokenMix
+      tone: pos
+    - text: TRAE + Doubao-Seed-Code outperforms Claude 4.5 Sonnet using bash, 78 versus 70
+      source: Reddit · r/LocalLLaMA
+      tone: pos
+    - text: Gold medals on IMO (35/42), CMO, and all five ICPC competitions
+      source: Evolink 2026
+      tone: pos
+    - text: CC+Doubao-Seed-2.0-pro 改一些小问题还是挺快的
+      source: V2EX · t/1206049
+      tone: pos
+    - text: 风格驾驭能力 2 星，不能再多了，我甚至可以给它 0 星
+      source: 知乎
+      tone: neg
+    - text: 近期豆包智能水平下滑，幻觉愈发严重，甚至凭空捏造不存在的法律条款
+      source: Linux.do/80aj
+      tone: neg
+    - text: 这两个模型和豆包一样幽默……glm-5.1 是最佳选择
+      source: V2EX · Coding Plan 帖
+      tone: neg
+  controversies:
+    - event: >-
+        AI 手机助手被集体禁用（2025-12）：豆包手机助手经 INJECT_EVENTS 签名级高危权限可读取屏幕并模拟点击任意 App，微信强制退出、淘宝拦截、银行 App
+        弹窗、支付宝及阿里系多款 App 陆续限制，财联社称「系统级控制权争夺战」；12 月 5 日官方下线金融类应用与刷分/游戏场景。
+      response: >-
+        12 月 3 日深夜声明：已下线操作微信能力、被禁账号陆续解封，否认黑客行为，称 INJECT_EVENTS 为系统级权限、仅在用户主动授权后调用；12 月 5
+        日再发声明下线金融类应用并推动与各应用厂商制定规则。
+    - event: 幻觉「降智」（2026-04/05）：Linux.do 多位技术从业者反馈智能下滑、幻觉严重，编造不存在的法律条款；俄语学习捏造语法被老师纠正；AI 分身将无关手机号错误关联引发骚扰。
+      response: 豆包 AI 分身评论区承认「事件基本属实，是豆包模型信息错配导致的乌龙」；官方未对「降智」系统性回应。
+    - event: >-
+        闭源 + 西方市场受限：非开源权重，社区可复现性受限；Anthropic 2025-09 起限制中国实体 Claude 访问，字节 Trae 新加坡版 2025-11-05 下架
+        Claude 系模型——豆包系 harness 与 Claude 生态割裂的根因，HN 用户以地缘政治与采购谨慎为由观望。
+      response: >-
+        Trae 官方 Discord 安抚用户称将以 OpenAI/Google/DeepSeek 集成补位，「We are full of confidence in the
+        future」；字节转向自研 TRAE + Code 变体路线。
+  subBoards:
+    - name: Chatbot Arena Text
+      rank: "#6"
+      note: 与 Gemini 3 Pro、GPT-5.2 同一梯队
+    - name: Chatbot Arena Vision
+      rank: "#3-4"
+      note: 视觉推理与文档理解领先
+    - name: 长上下文子榜
+      rank: DUDE / MMLongBench SOTA
+      note: 业界最佳
+    - name: 数学竞技榜
+      rank: IMO 35/42 · CMO 金牌 · ICPC 5 金
+      note: 超越 GPT-5.2 与 Opus 4.5
+    - name: 编程子榜
+      rank: SWE-bench 76.5（Code 版）
+      note: 旧版 Pro 相对弱；高难代码基准与国际领先仍有差距
+  heat:
+    - label: 豆包 App 周活
+      value: 1.55 亿（中国第一）
+    - label: 10 亿输出 tok 月费
+      value: $2,370（vs GPT-5.2 $14,000）
+    - label: HN 发布帖实测
+      value: 15 pts · 5 评论（2026-08-09 核验）
+    - label: 方舟 Coding Plan 首月
+      value: 8.91 元（腾讯新闻）
+  expertQuotes:
+    - text: GPT-5.2 tier performance, 6-10x cheaper tokens.
+      name: ByteDance
+      role: 官方 · Seed 2.0 Model Card
+      tone: pos
+    - text: 从「基准刷分」转向真实任务执行：深度研究、自主搜索代理、TRAE 编码助手落地生产。
+      name: ByteDance
+      role: 官方 · 春节礼盒发布
+      tone: pos
+    - text: >-
+        Code（doubao-seed-2-0-code-preview-260215）编程加强版，适配 Claude Code 等 IDE 工具链；围绕 Agent
+        使用和大规模生产，做了系统性优化。
+      name: 赛博禅心
+      role: 腾讯新闻「问AI」· 全网最全发布整理（79 页 Model Card）
+      tone: pos
+    - text: 豆包 Seed 2.0 模型的多模态能力，全球前三完全没问题。
+      name: 腾讯新闻评测
+      role: 媒体 · 发布评测
+      tone: pos
+    - text: >-
+        Pricing is the headline: ~3.7x cheaper than GPT-5.2 on input, ~5.9x cheaper on output, and
+        ~10x cheaper than Claude Opus 4.5.
+      name: Evolink
+      role: 评测机构 · 2026 定价分析
+      tone: pos
+    - text: >-
+        At $0.85 blended, Seed 2.0 Pro is 5-10× cheaper than international frontier while delivering
+        85-90% of their benchmark ceiling.
+      name: TokenMix
+      role: 评测机构 · Seed 2.0 Pro Review
+      tone: pos
+    - text: >-
+        Seed 2.0 Pro earned gold medals on IMO (35/42 points), CMO, and all five ICPC programming
+        competitions tested — outperforming both GPT-5.2 and Claude Opus 4.5.
+      name: Evolink
+      role: 评测机构 · 竞赛成绩验证
+      tone: pos
+    - text: Another DeepSeek moment from China! ByteDance just released Seed 2.0.
+      name: DeryaTR_
+      role: X · 发布当天热评
+      tone: pos
+    - text: 技术革命谁都拦不住。
+      name: 罗永浩
+      role: 名人 · 点赞 AI 手机
+      tone: pos
+    - text: >-
+        TRAE + Doubao-Seed-Code outperforms Claude 4.5 Sonnet (20250929) using bash to score 78
+        versus 70 on verified.
+      name: u/ LocalLLaMA 实测
+      role: Reddit · TRAE+Code 对比帖
+      tone: pos
+    - text: CC+Doubao-Seed-2.0-pro 改一些小问题还是挺快的，方舟的套餐其他家的模型基本不可用太慢了，版本也不更新。
+      name: jixule
+      role: V2EX · 火山云 Coding Plan 实测
+      tone: pos
+    - text: 视觉推理和数学很强。
+      name: u/ LocalLLaMA 用户
+      role: Reddit · r/LocalLLaMA
+      tone: pos
+    - text: 豆包 2.0 Pro 搜索能力 4 星，中文搜索 4.5 星，认知深度和连贯性 4.7 星。
+      name: 知乎高赞共识
+      role: 知乎 · 「为什么豆包被低估」帖
+      tone: pos
+    - text: 风格驾驭能力 2 星，不能再多了，我甚至可以给它 0 星……油腻、装逼味儿，网厂经理味儿很浓。
+      name: 知乎用户
+      role: 知乎 · 风格评分帖
+      tone: neg
+    - text: 豆包 pro 可能是我用过的比较垃圾那一类，然后就是豆包倍率高的逆天。
+      name: Chisa
+      role: V2EX · Coding Plan 实测
+      tone: neg
+    - text: 响应速度极慢，体验极差，每次只能选一个模型调用（得在控制台选）。
+      name: suguss
+      role: V2EX · Coding Plan 实测
+      tone: neg
+    - text: 这两个模型和豆包一样幽默，如果你是用国内模型，只谈论模型能力的话，glm-5.1 是最佳选择。
+      name: ebushicao
+      role: V2EX · Coding Plan 实测
+      tone: neg
+    - text: 近期豆包智能水平下滑，幻觉愈发严重，甚至凭空捏造不存在的法律条款。
+      name: 80aj
+      role: Linux.do · 降智吐槽帖
+      tone: neg
+    - text: 用豆包学俄语，AI 自信提供两种语法变体，被老师当场纠正，GPT-4 确认第二种纯属捏造。
+      name: Linux.do 用户
+      role: Linux.do · 俄语学习翻车帖
+      tone: neg
+    - text: INJECT_EVENTS 使 Android 沙箱数据隔离失效，用户数据可跨 App 无限制转移拼凑画像。
+      name: 王磊
+      role: 北京理工大学学者 · 财联社引述
+      tone: neg
+    - text: We are full of confidence in the future. （Trae 下架 Claude 系列后的安抚声明）
+      name: Trae 官方
+      role: 官方 Discord · Anthropic 限制中国实体事件
+      tone: mix
+    - text: 技术认可度存在，但地缘政治审查顾虑与 Western procurement acceptance 障碍让采购谨慎。
+      name: HN 用户
+      role: HackerNews · 采购谨慎讨论
+      tone: mix
+  timeline:
+    - date: "2025-11-05"
+      event: 背景：Anthropic 限制中国实体访问，字节 Trae 新加坡版下架 Claude 系模型（SCMP）——豆包系 harness 与 Claude 生态割裂的起点
+    - date: 02-14
+      event: 正式发布：豆包大模型 Seed 2.0（含 Pro/Code/Lite/Mini 四变体），豆包 App 专家模式与火山引擎 API 同步上线；同日 HN 发布帖仅 15 pts
+    - date: 02-16
+      event: >-
+        Seed 2.0 Model Card 公开（「GPT-5.2 tier performance, 6-10x cheaper tokens」，79
+        页），Dola-Seed-2.0-Preview 登上 arena.ai #6
+    - date: 05-18
+      event: X 用户 YouJiacheng 指出「豆包 App 里跑的模型其实不是 Doubao-Seed-2.0」，引发 App 与 API 模型不一致讨论
+    - date: 06-23
+      event: 后续节点：豆包 2.1 Pro 发布，Coding 与 Agent 能力跨「质变点」（新华网），被社区回溯为对 2.0 短板的补强
+    - date: 06-24
+      event: 后续节点：火山引擎 2.1 Pro 每百万 token 仅 30 元，成本较前代暴砍 80%（36氪「字节掀桌」）
+    - date: 07-06
+      event: HN 报道豆包与 Qwen 将于 7 月 15 日关闭个性化 AI Agent 功能（16 pts，监管/隐私收紧信号）
+    - date: 08-07
+      event: 后续节点：HN 多帖报道 ByteDance 预训练 10T 参数模型「直指 Anthropic」（2-4 pts，多源）
+  sources:
+    - title: Seed 2.0 Model Card GPT-5.2 tier 6-10x cheaper
+      platform: ByteDance 官方
+      url: https://seed.bytedance.com/en/seed2
+    - title: 豆包 2.0 模型发布，全信息整理（79 页 Model Card）
+      platform: 腾讯新闻 · 赛博禅心
+      url: https://news.qq.com/rain/a/20260214A04AJ700
+    - title: 火山云的 Coding Plan 值得买吗（CC+Doubao-Seed-2.0-pro 实测）
+      platform: V2EX
+      url: https://www.v2ex.com/t/1206049
+    - title: "Tech war: ByteDance cuts off Claude model after Anthropic restricts China access"
+      platform: SCMP
+      url: >-
+        https://www.scmp.com/tech/big-tech/article/3331638/tech-war-bytedance-cuts-claude-model-after-anthropic-restricts-china-access
+    - title: OpenViking judge.py — Doubao as Claude Code judge model
+      platform: GitHub · volcengine
+      url: https://github.com/volcengine/OpenViking/blob/main/benchmark/locomo/claudecode/judge.py
+    - title: 豆包大模型 Seed-2.0 正式发布
+      platform: 知乎
+      url: https://www.zhihu.com/question/2006012406770455579
+    - title: 为什么豆包模型实际很强但被低估
+      platform: 知乎
+      url: https://www.zhihu.com/question/2013902668985292076
+    - title: "r/LocalLLaMA: TRAE + Doubao-Seed-Code vs Claude 4.5 Sonnet"
+      platform: Reddit
+      url: >-
+        https://www.reddit.com/r/LocalLLaMA/comments/1oygsii/could_the_universe_of_open_source_models/
+    - title: Doubao Seed 2.0 Pro Review $0.47 Frontier
+      platform: TokenMix
+      url: https://tokenmix.ai/blog/doubao-seed-2-0-pro-review-2026
+    - title: 豆包降智幻觉加剧编造法律依据
+      platform: Linux.do/80aj
+      url: https://www.80aj.com/2026/04/13/ai-hallucination-logic-fail/
+  uncertainties:
+    - 星座中 Doubao 1.5（2025-02）、Doubao 1.8（2025-08）发布日期为约数：调研未给出精确日期
+    - 各平台情绪比例为代表性帖文估算（整体 55/25/20），非严格量化
+    - 模型架构未公开：参数量与 MoE 结构为推断，2.0 系列无开源版
+    - Reddit 帖精确 upvotes 未独立核验（Reddit API 403 / pullpush 限流 / arctic-shift 无命中），沿用 2026-08-01 快照
+    - "LMArena 当前精确 ELO/排名未独立核验（API 被 Cloudflare 重定向），Text #6 / Vision #3-4 沿用 data.json"
+    - 「7 月 Pro 输出价微调至约 $2.35」未核验到一手来源，价格以 $2.37 口径为主
+  versionDelta:
+    base: Doubao 1.8
+    improves:
+      - AIME 2025 提升至 98.3，IMO 35/42 金牌级 · CMO 金牌 · 5 项 ICPC 全部金牌
+      - HLE-text 54.2（人类最后考试最高分）
+      - 多模态与数学视觉推理 19 项基准中 12 项第一，EgoTempo 超人类分数
+      - 长上下文 DUDE、MMLongBench 业界最佳，上下文窗口统一 256K
+      - 新增专用 Code 版：SWE-bench Verified 76.5，官方称适配 Claude Code 等 IDE 工具链，TRAE 集成实测超 Claude 4.5 Sonnet
+      - 从「基准刷分」转向真实任务：BrowseComp 77.3、Terminal Bench 55.8，深度研究长链路 Pro/Lite 均出色
+      - 价格较同级 GPT/Claude 便宜一个数量级（$0.85 blended；10 亿输出 token 月费 $2,370 vs GPT-5.2 $14,000）
+    regresses:
+      - 写作风格驾驭仍是短板：知乎评「风格驾驭 2 星，甚至可以给 0 星」，AI 味/油腻感明显
+      - 空间智力、归纳推理等传统劣势未明显改善
+      - 幻觉问题：2026 年 4-5 月被集中反馈「降智」，编造不存在的法律条款
+      - 闭源策略未变，社区可复现性与好感度受限；HN 发布帖仅 15 pts，西方采购谨慎
+      - 旧版 Pro 编程相对弱于 Code 版
+      - 方舟 Coding Plan 隐藏倍率、额度低、响应慢（V2EX t/1206049 实测）
+  harnessReviews:
+    - id: claude-code
+      text: >-
+        有实测：V2EX jixule 实测 Claude Code 经方舟 OpenAI 兼容端点接入豆包改小问题挺快；官方称 Code 变体适配 Claude
+        Code。但同帖其余回复一边倒：隐藏倍率、响应慢，小改动可用。
+    - id: cursor
+      text: >-
+        无直接实测但接线证据充分：方舟 API 为 OpenAI 兼容端点，doubao 系已被 cherry-studio、lobehub 等工具链收录，Cursor
+        可自定义端点接入。低预算中文开发可试。
+    - id: openhands
+      text: >-
+        未检索到 OpenHands 接入实测：开源生态主要接开源模型，闭源 Seed 2.0 集成度低，字节系 harness 与开源生态割裂。可经兼容端点跑批量数据流水线，Agent
+        编排建议优先开源系。
+  demos:
+    - title: 真实世界任务发布演示
+      desc: >-
+        2026-02-14 与 Seedance 2.0 视频、Seedream 4.5 图像一同发布的压轴演示，主打「从基准刷分转向真实任务执行」：深度研究、自主搜索代理、TRAE
+        编码助手落地生产（BrowseComp 77.3、Terminal Bench 55.8）；三项深度研究评测 Pro/Lite 均出色，「找资料→归纳→写结论」长链路是核心卖点。
+    - title: TRAE + Doubao-Seed-Code 编码实战
+      desc: >-
+        Reddit r/LocalLLaMA 用户实测：TRAE+Doubao-Seed-Code 用 bash 完成评测得 78 分，超过 Claude 4.5 Sonnet 的 70
+        分；官方宣称与 IDE/TRAE 深度集成使成本降低 62.7%，火山 OpenViking 官方基准用豆包做 Claude Code judge。
+    - title: 豆包 App 专家模式多模态演示
+      desc: >-
+        2 月 14 日豆包 App 上线专家模式免费体验，视觉推理/文档理解/长视频理解（VideoMME 89.5）随 App 端到端可玩，Arena Vision 榜
+        #3-4；科学能力演示：HealthBench 第一、SuperGPQA 超 GPT-5.2，高尔基体蛋白分析实验方案获领域专家「超预期」反馈。
+relations:
+  rivals:
+    - qwen3-7-max
+    - deepseek-v4
+    - gpt-5-2
+  teams:
+    - budget-vanguard
+    - common-warlord
+  guides:
+    - beginner-budget
+    - beginner-first-model
+    - mech-cache
+    - case-algo
+  bestInSlot:
+    - id: claude-code
+      note: 可接线且有实测：Claude Code 经方舟 OpenAI 兼容端点可接入，但响应慢、倍率坑，只适合小改动。
+    - id: cursor
+      note: 无实测但可接线：Cursor 可接方舟 OpenAI 兼容接口，工具链已收录，适合低预算中文开发补充位。
+    - id: openhands
+      note: 无 OpenHands 实测：开源生态主接开源模型，闭源 Seed 集成度低；可经兼容端点跑批量任务，编排建议开源系。
+  trialGood:
+    - label: 中文问答创作
+      to: /scenarios#docs
+    - label: 数学竞赛推理
+      to: /scenarios#algo
+    - label: Code 版编程开发
+      to: /scenarios#refactor
+    - label: 自主代理任务
+      to: /scenarios#agent
+  trialBad:
+    - label: 严肃法律条文查证
+      to: /scenarios#docs
+      note: 幻觉可编造不存在的法律条款，建议换 gpt-5-2 并人工复核
+    - label: 文学个性写作
+      to: /scenarios#docs
+      note: 文风油腻、风格驾驭仅 2 星，建议换 claude-sonnet-5
+    - label: 开源可复现研究
+      to: /scenarios#algo
+      note: 闭源无权重，研究场景建议换 deepseek-r2
+    - label: 隐私敏感代理
+      to: /scenarios#agent
+      note: AI 手机全屏操作遭生态禁用，换 llama-5-maverick 自部署更稳
+---
+
+## 一句话点评
+
+数学多模态登顶、价格砍到国际前沿十分之一的掀桌组合：AIME 98.3、12/19 基准第一；代价是文风油腻、幻觉翻车。
+
+## 社区反馈 · 编程
+
+Code 版是显著亮点：SWE-bench Verified 76.5、LiveCodeBench v6 87.8，纯强化学习训练，官方定位「适配 Claude Code 等 IDE 工具链」（腾讯新闻赛博禅心整理，附 79 页 Model Card）；TRAE+Code 在 bash 编码评测 78 分超 Claude 4.5 Sonnet 的 70（r/LocalLLaMA 实测），官方称成本降 62.7%。但社区实测分化：V2EX「方舟 Coding Plan 值得买吗」11 条回复中仅 1 条正面（jixule「CC+Doubao-Seed-2.0-pro 改一些小问题还是挺快的」），其余集中吐槽隐藏倍率、额度低、响应慢（suguss「响应速度极慢，体验极差」、ebushicao「不值得买……glm-5.1 是最佳选择」）。高难基准与国际领先仍有差距，旧版 Pro 编程相对弱。
+
+## 社区反馈 · 推理
+
+数学是核心强项：AIME 2025 98.3、Codeforces 3020、GPQA Diamond 88.9、HLE-text 54.2（人类最后考试最高分）、IMO 35/42 金牌级，SuperGPQA 超 GPT-5.2、HealthBench 第一、FrontierSci 部分场景超 Gemini 3 Pro（腾讯新闻整理）。官方称「从奥赛迈向研究级推理」，能尝试埃尔德什级别数学问题。但复杂归纳推理依赖暴力穷举，空间智力弱、「找不到正确思路」；深度研究「找资料→归纳→写结论」长链路是官方主推卖点（BrowseComp 77.3、Terminal Bench 55.8）。
+
+## 社区反馈 · 中文
+
+知乎「为什么豆包模型实际很强却被低估」逐项评分：搜索 4 星、中文搜索 4.5 星、认知深度 4.7 星，日常问答/文案润色/中文创作更高效；但风格驾驭仅 2 星（「油腻、装逼味儿，网厂经理味儿很浓」），需额外提示词去味。作为 1.55 亿周活中国第一 AI 聊天机器人背后的模型，中文知识广度与搜索是护城河，海外 HN 声量却极小（发布帖仅 15 pts）——中文口碑与英文冷遇形成镜像。
+
+## 升级共识
+
+性价比/多模态/数学场景形成强共识，2.0 值得升级：$0.85 blended 交付 85-90% 前沿性能（TokenMix），AIME 98.3 与多模态 12/19 第一是硬指标，10 亿输出 token 月费 $2,370 vs GPT-5.2 的 $14,000（Toolworthy）。编程场景用 Code 版 + TRAE 有明确替代价值（bash 78 vs 70 超 Claude 4.5 Sonnet，成本降 62.7%），但方舟 Coding Plan 套餐体验分化——V2EX 实测隐藏倍率、额度低、响应慢，仅「改小问题」级任务口碑正面。写作/风格场景口碑未定，建议等 2.1 打磨版再切；严肃法律/外语场景需警惕幻觉（编造法律条款先例）。
+
+## 榜单与实测落差
+
+榜单数学与多模态全面登顶（AIME 98.3、19 项基准 12 项第一、HLE-text 54.2 破纪录、SuperGPQA 超 GPT-5.2、HealthBench 第一），实测却「分数高、文风差」：知乎认知深度 4.7 星而风格驾驭仅 2 星，幻觉在严肃法律/外语场景「一本正经胡说八道」（80aj 转载帖阅读 505）。编程侧榜单 76.5 与实测的「慢、额度坑」并存——SWE-bench 高分的 Code 变体在方舟套餐里被倍率与延迟拖累（V2EX 11 条回复仅 1 条正面）。根因是风格约束与事实校准不足、Coding Plan 计费设计反噬体验，而非能力缺陷；Code 版 + TRAE 补足编程短板，2.1 Pro 再按社区反馈补强空间智力与归纳推理。

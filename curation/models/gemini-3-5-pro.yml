@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: gemini-3-5-pro
+tier: T2
+stars: 4
+composite: 84
+stats:
+  code: 52
+  reasoning: 74
+  context: 76
+  speed: 55
+  multimodal: 90
+  value: 48
+sentiment:
+  positive: 20
+  mixed: 25
+  negative: 55
+radar:
+  - axis: 长程任务
+    value: 72
+  - axis: 编程工程
+    value: 52
+  - axis: 抽象推理
+    value: 74
+  - axis: 上下文利用
+    value: 76
+  - axis: 中文能力
+    value: 50
+  - axis: 响应速度
+    value: 55
+  - axis: 稳定性
+    value: 38
+  - axis: 指令遵循
+    value: 56
+  - axis: 易用性
+    value: 42
+  - axis: 性价比
+    value: 48
+danmaku:
+  - text: new checkpoint is deadass insane
+    platform: reddit
+    main: true
+  - text: The END · 942 票哀嚎
+    platform: reddit
+    main: true
+  - text: 3.5 Pro High 5 分钟完成 Fable 5 半小时任务
+    platform: hn
+    main: true
+  - text: 3.5 Pro 相关 HN 主流报道合计 ≤18 分
+    platform: hn
+    main: true
+  - text: 又一次跳票，硅谷最尴尬 AI 模型
+    platform: zhihu
+    main: true
+  - text: 御三家要换人了，grok 可上位
+    platform: linuxdo
+    main: true
+  - text: fundamentals are shaky and old
+    platform: reddit
+    main: false
+  - text: make stuff you didn't ask for
+    platform: reddit
+    main: false
+  - text: It didn't beat opus 4.8 on a single benchmark
+    platform: reddit
+    main: false
+  - text: Gemini 3.5 deleted 28,745 lines, broke production
+    platform: hn
+    main: false
+  - text: Gemini models increasingly stucking in thinking loop
+    platform: hn
+    main: false
+  - text: consistently the most frustrating model for development
+    platform: hn
+    main: false
+  - text: Google has become the laughing stock of frontier AI
+    platform: x
+    main: false
+  - text: best UI/design taste yet
+    platform: x
+    main: false
+  - text: 发布一周后被削智，Gemini 周期律
+    platform: zhihu
+    main: false
+  - text: 已被悄悄取消？转推 Gemini 4
+    platform: linuxdo
+    main: false

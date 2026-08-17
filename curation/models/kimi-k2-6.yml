@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: kimi-k2-6
+tier: T1
+stars: 5
+composite: 89.5
+stats:
+  code: 92
+  reasoning: 52
+  context: 80
+  speed: 60
+  multimodal: 80
+  value: 90
+sentiment:
+  positive: 50
+  mixed: 20
+  negative: 30
+radar:
+  - axis: 长程任务
+    value: 88
+  - axis: 编程工程
+    value: 92
+  - axis: 抽象推理
+    value: 52
+  - axis: 上下文利用
+    value: 80
+  - axis: 中文能力
+    value: 85
+  - axis: 响应速度
+    value: 60
+  - axis: 稳定性
+    value: 72
+  - axis: 指令遵循
+    value: 74
+  - axis: 易用性
+    value: 70
+  - axis: 性价比
+    value: 90
+danmaku:
+  - text: K2.6 is perfect, low level coding asm+rust very fast
+    platform: reddit
+    main: true
+  - text: 发布帖 710 分，系列最高热度
+    platform: hn
+    main: true
+  - text: 开源平替 Opus，价格便宜一个量级
+    platform: hn
+    main: true
+  - text: 载人绕月：推理来到国模第一
+    platform: zhihu
+    main: true
+  - text: 推理无限否定自己，堪比 qwq-32b
+    platform: v2ex
+    main: true
+  - text: An S-tier open-source model team
+    platform: x
+    main: true
+  - text: the mighty turtle that wins the race
+    platform: reddit
+    main: false
+  - text: NOT worth the hype（131 赞）
+    platform: reddit
+    main: false
+  - text: still nowhere near opus or gpt 5.4
+    platform: reddit
+    main: false
+  - text: 顶着思考预算上限跑，消耗高 3 倍
+    platform: zhihu
+    main: false
+  - text: 编码能力可以，基本一次能写对
+    platform: v2ex
+    main: false
+  - text: Claude Code 直连：coding 20x cheaper
+    platform: hn
+    main: false
+  - text: opencode+K2.6 可用，但 Claude Code 更好
+    platform: hn
+    main: false
+  - text: 不是总的第一，Agentic 却亮眼
+    platform: linuxdo
+    main: false
+  - text: Unity C# 横评速度排名第 13
+    platform: linuxdo
+    main: false
+  - text: 13 小时重构吞吐 +185%，慢但能赢
+    platform: reddit
+    main: false

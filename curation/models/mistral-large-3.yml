@@ -1,0 +1,82 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: mistral-large-3
+tier: T2
+stars: 4
+composite: 81
+stats:
+  code: 60
+  reasoning: 45
+  context: 70
+  speed: 75
+  multimodal: 88
+  value: 70
+sentiment:
+  positive: 35
+  mixed: 20
+  negative: 45
+radar:
+  - axis: 长程任务
+    value: 55
+  - axis: 编程工程
+    value: 60
+  - axis: 抽象推理
+    value: 45
+  - axis: 上下文利用
+    value: 70
+  - axis: 中文能力
+    value: 62
+  - axis: 响应速度
+    value: 75
+  - axis: 稳定性
+    value: 68
+  - axis: 指令遵循
+    value: 78
+  - axis: 易用性
+    value: 65
+  - axis: 性价比
+    value: 70
+danmaku:
+  - text: this seems to be the new llama4
+    platform: reddit
+    main: true
+  - text: Medium 3.2 都比 Large 3 聪明
+    platform: reddit
+    main: true
+  - text: 写作长测 62 赞：幻觉漂移显著更低
+    platform: reddit
+    main: false
+  - text: just below Qwen3 30B，这排名认真的？
+    platform: reddit
+    main: false
+  - text: 675B 太大，普通玩家跑不动
+    platform: reddit
+    main: false
+  - text: 发布帖 826 points / 236 评论（实测核验）
+    platform: hn
+    main: true
+  - text: Mistral 已掉队，推理模型都做不好
+    platform: hn
+    main: true
+  - text: DeepSeek-V3.2 抢先一天，风头全没了
+    platform: hn
+    main: false
+  - text: 曾经的欧洲战神 Mistral 又来了
+    platform: zhihu
+    main: true
+  - text: 等 Magistral 推理版再升级
+    platform: zhihu
+    main: true
+  - text: 论开源，国内才是独一档
+    platform: zhihu
+    main: false
+  - text: 对标全是中国模型，说明中国开源已成标杆
+    platform: zhihu
+    main: false
+  - text: Devstral 2 才是官方编程栈，SWE 72.2%
+    platform: reddit
+    main: false
+  - text: antirez：欧洲 AI 技术延迟越积越多
+    platform: hn
+    main: false

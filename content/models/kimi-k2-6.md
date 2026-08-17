@@ -1,0 +1,511 @@
+---
+id: kimi-k2-6
+name: Kimi K2.6
+system: kimi
+releaseDate: "2026-04-20"
+collectedDate: 08-09
+specs:
+  contextTokens: 262144
+  contextLabel: 256K
+  priceIn: 0.95
+  priceOut: 4
+  priceLabel: $0.95/$4
+scores:
+  swe: 80.2
+editorial:
+  title: 开源编程偏科王
+  tags:
+    - 编程
+    - 开源
+    - Agent
+  roles:
+    - 代码
+    - 性价比
+    - 开源
+profile:
+  apiId: kimi-k2-6
+  vendor: 月之暗面 / Moonshot AI
+  releaseDate: "2026-04-20"
+  access:
+    - API
+    - 开源权重
+    - 本地部署
+  costNote: $0.95/$4 · Mtok，约为 Opus 4.7 的 1/8–1/10；缓存读取 $0.16/M（1h 有效）；Ollama Cloud Pro $20/月可全量接入
+  nicknames:
+    - mighty turtle
+    - 无限否定怪
+    - 龟兔赛跑的龟
+  signature: 编程盲测全球第一 · SWE-Bench Pro 58.6 开源 SOTA
+benchGroups:
+  - label: 榜单成绩
+    rows:
+      - label: SWE-Bench Pro
+        value: 58.6 · 开源 SOTA（超 GPT-5.4 57.7、Opus 4.6 53.4）
+      - label: SWE-Bench Verified
+        value: 80.2（Opus 4.6 为 80.8）
+      - label: SWE-Bench Multilingual
+        value: 76.7 · 逼近 Opus 4.6 77.8
+      - label: LiveCodeBench v6
+        value: "89.6"
+      - label: Terminal-Bench 2.0
+        value: 66.7 · 超 GPT-5.4 65.4
+      - label: AIME 2026
+        value: 96.4% · 排名 3/18
+      - label: BenchLM 数学
+        value: "100th 百分位 · #1/7"
+      - label: AA 智能指数
+        value: "#6/100 · 44/100"
+      - label: 编程盲测挑战赛
+        value: 22 分 7-1-0 · 全球第一
+  - label: 规格与接入
+    rows:
+      - label: 上下文窗口
+        value: 262,144 tok（256K）
+      - label: 最大输出
+        value: —
+      - label: 价格（入/出）
+        value: $0.95 / $4.00 · Mtok（缓存读 $0.16）
+      - label: effort 档位
+        value: —（仅思考/非思考模式）
+      - label: 模型架构
+        value: MoE · 总参 1T / 激活 32B · MLA · INT4
+      - label: 发布日期
+        value: "2026-04-20"
+      - label: 获取方式
+        value: API · 开源权重 · 本地部署
+constellation:
+  - version: Kimi K2
+    date: 2025-07
+    effect: 开源双料 SOTA · SWE 65.8% 逼近 Sonnet 4 · 封神之作
+  - version: Kimi K2.5
+    date: 2026-01
+    effect: 编程评测 83 分 · 100 子 Agent 初具规模 · 也是 Cursor Composer 2 的底座
+  - version: Kimi K2.6
+    date: "2026-04-20"
+    effect: SWE Pro 58.6 开源 SOTA · 盲测全球第一 · 300 子 Agent
+    current: true
+  - version: Kimi K3
+    date: 2026-07
+    effect: "前端登顶 #1 · 2.8T 全球最大开源 · 长程 Elo 较 K2.6 +732 · 17 位跃升"
+talents:
+  - kind: skill
+    seal: 程
+    name: 长程编码
+    desc: >-
+      12-13 小时连续作业不崩溃，重构 8 年金融撮合引擎 exchange-core 吞吐翻近 3 倍；多语言（Rust/Zig/Go/Python/asm）通吃。30 天实测者复刻 6
+      小时 Next.js 15 迁移全程无人工介入。
+    metric: 13h 不崩 · 吞吐 0.43→1.24 MT/s（+185%）
+  - kind: burst
+    seal: 群
+    name: Agent 集群
+    desc: >-
+      300 个子 Agent 自动分工、并行搜索、交叉验证，交付完整项目；53AI 实测 12 个子 Agent 一小时产出 PDF+Excel+15 页 PPT；30 天实测者用 Swarm
+      5 个子 Agent 20 分钟完成发布全套物料。
+    metric: 300 子 Agent · 4000 步上限
+  - kind: normal
+    seal: 思
+    name: 双模思考
+    desc: >-
+      思考/非思考双模式；思考模式解空间探索更充分，@teortaxesTex 实测约 30 分钟解出 AIME 2026 第 15 题（K2.5 做不到）；但代价是复杂题 token
+      消耗可达竞品 3-6 倍。
+    metric: AIME 2026 96.4% · 排名 3/18
+  - kind: passive
+    seal: 价
+    name: 开源性价比
+    desc: >-
+      Modified MIT 协议免费商用（月活超 1 亿或月收入超 $2000 万需署名）；API 约为 Opus 4.7 的 1/8–1/10，HN DeathArrow
+      实测「coding 20x cheaper」；社区称「开源社区不再追赶，开始引领」。
+    metric: $0.95/$4 · 约 Opus 4.7 的 1/8
+community:
+  strengths:
+    - 长程编码稳定
+    - 编程工程
+    - Agent 集群
+    - 前端审美
+    - 开源性价比
+  weaknesses:
+    - 推理体验差
+    - 思考效率低
+    - 知识维度薄弱
+    - 速度慢输出冗长
+    - 工程上下文盲区
+  upgradeConsensus: worth
+  platforms:
+    - name: Reddit
+      tone: mix
+      summary: >-
+        偏正面不狂热（55% 正/30% 负）：「K2.6 is perfect」、mighty turtle 92 赞、Unsloth GGUF 105
+        赞、r/SillyTavernAI「best LLM for slowburn」253 赞（角色扮演长文强正面）；「NOT worth the hype」131 赞、「isn't
+        really worth it」51 赞成负面对照；r/ClaudeCode「NOT an Opus replacement」6 赞/48 评论提示定位在 Opus
+        之下；r/LLMDevs「vs Opus 4.7 autonomous coding」61 赞偏实测向。
+    - name: HackerNews
+      tone: pos
+      summary: >-
+        发布帖 710 分/372 评论为系列最高（Algolia 实测核对一致）；pjerem 称「等效 Opus、价格便宜一个量级」；corlinp「11X less than Opus
+        for similar smarts」；Balinares「open weights Opus ballpark is seismic」；DeathArrow 实测「coding
+        20x cheaper，正用 Claude Code 接」；0xbadcafebee 对盲测持怀疑（45% 正/35% 负）；mpeg/SeriousM 指出 K2.6 只参加最后 5
+        场盲测，按参赛场次算为第一。
+    - name: 知乎
+      tone: pos
+      summary: >-
+        「载人绕月」评价获高赞，承认推理进步至国模第一；同时指出思考效率问题——「顶着思考预算上限跑，复杂题消耗比前代高 3 倍以上」——与非推理模式退步；@teortaxesTex 实测
+        30 分钟解出 AIME 2026 第 15 题，K2.5 做不到；专题问答浏览热度中等偏上但未达现象级。
+    - name: V2EX
+      tone: neg
+      summary: >-
+        OP 帖《推理过程给人一种极其难受的感觉》20 回复直斥「无限否定自己」「堪比 qwq-32b」，跟帖 codele 反馈「循环十几分钟」、drbuglu「本来还想买个 go
+        的试试的。。。很劝退」；但也有 laoyutang「编码能力可以，基本一次能写对」、beyondstars「前端审美不错，glm 适合写 go
+        更讲逻辑」、ProphetN「opencode 是垃圾，用 CC 和 Droid 接 Kimi 没问题」。
+    - name: Linux.do
+      tone: mix
+      summary: >-
+        benchmark 可视化帖结论「kimi k2.6 不是总的第一」，Agentic 亮眼但两榜仅 K2.6/2.5 参与（对比参考有限）；Unity C# 横向评测速度排名第
+        13；有用户反馈长上下文后「madly calling ida mcp to do useless things」，工具调用在超长运行中会失控。
+    - name: X
+      tone: pos
+      summary: >-
+        Yuchen Jin 称「An S-tier open-source model team」；官方宣传开源 SOTA 成绩，发布推文 11.5K 观看/536 转推；Arena.ai
+        确认 Frontend Code Arena #18（后被 K3 以 #1 超越、跃升 17 位）；企业背书（Vercel「Next.js benchmark 提升
+        50%+」、Factory.ai「自家 benchmark +15%」、Augment Code「大代码库手术级精准」）。
+  quotes:
+    - text: K2.6 is perfect, much better and smarter than stupid Claude.
+      source: Reddit · r/LocalLLaMA
+      tone: pos
+    - text: 编码能力可以，基本一次能写对。
+      source: V2EX · laoyutang
+      tone: pos
+    - text: 如果说前代 K2.5 算是无人绕月，那这一代 K2.6 可以算载人绕月。
+      source: 知乎高赞
+      tone: pos
+    - text: 推理不到点子上，整个推理过程就是无限的否定自己。
+      source: V2EX · defaw
+      tone: neg
+    - text: It doesn't compete with Opus... just still nowhere near opus or gpt 5.4.
+      source: Reddit · A/B 测试者
+      tone: neg
+    - text: Dirt cheap on OpenRouter for how good it is.
+      source: HN · regularfry
+      tone: pos
+    - text: It got my work done, but it really thinks a lot.
+      source: Reddit · mighty turtle 帖
+      tone: neg
+    - text: 它不是六边形战士，而是一个在某些维度极为突出的偏科生。
+      source: 蓝戒博客
+      tone: neg
+  controversies:
+    - event: >-
+        推理「无限否定」争议：V2EX OP 帖（2026-04-24，20 回复）曝光推理过程「无限否定自己」「堪比 qwq-32b」，用户 codele
+        反馈「一个小问题循环了十几分钟」，用户 drbuglu 被劝退，触发中文社区对推理质量的广泛质疑；HN nikcub 同步定性「below sonnet and opus 4.0 on
+        capability」。
+      response: >-
+        官方未直接回应推理差评，转而强调编程成绩与长程编码案例；后以发布 K3（Frontend Code Arena #18→#1 跃升 17 位，长程 Elo 1547 较 K2.6
+        +732）间接回应。
+    - event: >-
+        「偏科」争议：Linux.do benchmark 可视化揭示 K2.6 推理与知识维度落后第一梯队（BenchLM 知识 13th 百分位、Agent 18th），且 Agentic
+        亮眼榜中「两个榜只有 K2.6 和 2.5」参与，打破「全面碾压」叙事。
+      response: >-
+        官方博客公布完整 benchmark 对比表，承认已知局限：纯数学推理与 GPT-5.4 存在 2-4 分差距、Toolathlon 50.0 低于 GPT-5.4、视觉理解整体落后
+        GPT-4.5。
+    - event: >-
+        DoorDash 国会调查（2026-07-31）：House Select Committee on China 主席 Moolenaar 与 Homeland Security
+        主席 Garbarino 联名致函 DoorDash CEO Tony Xu，要求 8/14 前披露所用中国模型清单与安全测试、8/21 当面简报——起因是联合创始人 Andy
+        Fang 在 X 透露将低层级工程路由给 K2.6、Fable 5 留给最难任务；其 AI 实验室称「K2.6 与 Fable 5 大幅优于更便宜的 Sonnet 4.6/Opus
+        4.8 harness」。
+      response: >-
+        月之暗面未直接回应；背景是国会 4 月起对 PRC 开源模型联合调查（先发函 Anysphere/Airbnb），7/22 白宫 OSTP 主任指 Moonshot
+        或运行隐蔽平台对美国模型大规模蒸馏。
+    - event: >-
+        长程编码案例真实性争议：蓝戒博客指出 12-13 小时长程案例「均来自官方或官方合作方展示」，社区独立复现的同类长时间任务反馈有限（30 天实测者复刻 6
+        小时迁移属较短的独立验证）；DoorDash DashBench 实测（K2.6 scout + Fable 5 reviewer：weighted recall 65.2%、F1
+        75.3%、$3.81/PR）提供企业级独立佐证。
+  subBoards:
+    - name: BenchLM 数学
+      rank: "100th 百分位 · #1/7"
+      note: 5/5 项已验证
+    - name: BenchLM 编程
+      rank: "60th 百分位 · #53/130"
+      note: 8/8 项已验证
+    - name: BenchLM Agent
+      rank: "18th 百分位 · #106/129"
+      note: 与官方 SOTA 宣传形成反差
+    - name: BenchLM 知识
+      rank: "13th 百分位 · #48/55"
+      note: 明显薄弱
+    - name: Frontend Code Arena
+      rank: "#18"
+      note: "后被 K3 以 #1 超越（17 位跃升）"
+  heat:
+    - label: HN 发布帖
+      value: 710 pts
+    - label: HN 评论
+      value: "372"
+    - label: Reddit 最高赞
+      value: "253"
+    - label: HF 下载量
+      value: 20.8 万
+  expertQuotes:
+    - text: K2.6 在 SWE-Bench Pro 上取得 58.6，为开源模型 SOTA；已知局限是纯数学推理与 GPT-5.4 存在 2-4 分差距、视觉理解整体落后 GPT-4.5。
+      name: Kimi 官方博客
+      role: 官方发布 · 技术博客
+      tone: mix
+    - text: "K2.6 智能指数排名 #6/100（44/100，中位数 25），但速度排名 #54、价格排名 #63；评测 Intelligence Index 总花费 $840.64。"
+      name: DataLearnerAI
+      role: 第三方评测机构
+      tone: mix
+    - text: 模型已标记 deprecated，部分 workload 数据不再更新；输出极度冗长（170M vs 中位数 99M output tokens）。
+      name: Artificial Analysis
+      role: 评测机构
+      tone: neg
+    - text: Moonshot 自报私有长程知识评测 K3 Elo 1547，较 K2.6 +732；K3 token 用量较 K2.6 少 21%——反衬 K2.6 的思考冗余是实打实的短板。
+      name: Simon Willison
+      role: K3 发布博客 · 技术评论人
+      tone: neg
+    - text: Kimi is shipping faster and faster. An S-tier open-source model team.
+      name: Yuchen Jin (@Yuchenj_UW)
+      role: X · 技术 KOL
+      tone: pos
+    - text: Lem Test 生成 74 页思维链，只得到「okay-ish」的答案。
+      name: Ethan Mollick
+      role: 沃顿商学院教授 · Lem Test
+      tone: neg
+    - text: K2.6 能力低于 Sonnet 和 Opus 4.0，仅比 K2.5 略好；领域特定任务表现挣扎。
+      name: nikcub
+      role: HackerNews · 盲测帖热评
+      tone: neg
+    - text: Dirt cheap on OpenRouter for how good it is.
+      name: regularfry
+      role: HackerNews · 发布帖热评
+      tone: pos
+    - text: K2.6 花了约 30 分钟思考解出 AIME 2026 第 15 题——K2.5 做不到的里程碑。
+      name: "@teortaxesTex"
+      role: X · 数学实测
+      tone: pos
+    - text: That's about 11X less than Opus for similar smarts.
+      name: corlinp
+      role: HackerNews · 发布帖热评
+      tone: pos
+    - text: >-
+        Quite curious how well real usage will back the benchmarks, because even if it's only Opus
+        ballpark, open weights Opus ballpark is seismic.
+      name: Balinares
+      role: HackerNews · 发布帖热评
+      tone: pos
+    - text: >-
+        Getting a coding plan from Kimi.com will make coding 20x cheaper than using Anthropic. BTW,
+        I am using it with Claude Code.
+      name: DeathArrow
+      role: HackerNews · 盲测帖热评
+      tone: pos
+    - text: Kimi K2.6 和 Fable 5 大幅优于我们用过的其他 Anthropic 模型（包括更便宜的 Sonnet 4.6 / Opus 4.8 harness）。
+      name: DoorDash AI 研究实验室
+      role: X · 企业实测（后遭国会质询）
+      tone: pos
+    - text: K2.6 在开发者最关心的能力上较 K2.5 大幅提升：我们 Next.js benchmark 提升超过 50%。
+      name: Vercel
+      role: 企业官方背书（经 LinkedIn 转载）
+      tone: pos
+    - text: 它不是六边形战士，而是一个在某些维度极为突出的偏科生；跑分是跑分，干活是干活。
+      name: 蓝戒博客
+      role: 社区反馈综述
+      tone: neg
+    - text: 推理不到点子上，整个推理过程就是无限的否定自己，推理能力堪比 qwq-32b；还出现识别不了 kt 工程的低级错误。
+      name: V2EX · defaw
+      role: OP 帖 · 20 回复
+      tone: neg
+    - text: 编码能力可以，基本一次能写对。
+      name: V2EX · laoyutang
+      role: Claude Code 接入实测
+      tone: pos
+    - text: 如果说前代 K2.5 算是无人绕月，那这一代 K2.6 可以算载人绕月。其推理能力也显著提高，来到了国模第一。
+      name: 知乎高赞共识
+      role: 知乎 · 专题问答
+      tone: pos
+    - text: K2.6 会顶着思考预算上限跑，复杂逻辑题的消耗反而可能比前代高 3 倍以上；如何提高思考效率是 Kimi 下一代需要面对的问题。
+      name: 知乎实测
+      role: 知乎 · 思考效率专项
+      tone: neg
+    - text: >-
+        It doesn't compete with Opus, but it's still quite good. Just still nowhere near opus or gpt
+        5.4.
+      name: u/ A/B 测试者
+      role: Reddit · 实测对照
+      tone: neg
+    - text: 同一 Prompt 两次运行给出截然相反的结论（英伟达财报效应 vs 财报交易策略无效）——注意该测试实为 K2.5。
+      name: 极客公园
+      role: Agent 可靠性测试
+      tone: mix
+    - text: kimi k2.6 不是总的第一……Agentic 表现很亮眼，但注意其中两个榜只有 k2.6 和 2.5；opus 几乎没掉出过前三。
+      name: Linux.do 可视化帖
+      role: 社区热榜评测
+      tone: mix
+  timeline:
+    - date: 04-13
+      event: K2.6-code-preview 低调上线（HN 帖 14 分/5 评论，kimi.com/code）
+    - date: 04-20
+      event: 正式开源发布，官方博客与技术报告发布，HN 帖 710 分/372 评论（系列最高，Algolia 实测核对）
+    - date: 04-24
+      event: V2EX 推理差评帖《推理过程给人一种极其难受的感觉》发布（20 回复），引发「无限否定」讨论
+    - date: 04-30
+      event: thinkpol.ca 发布编程盲测复盘：K2.6 以 22 积分 7-1-0 获全球第一
+    - date: 05-03
+      event: >-
+        HN 热帖「Kimi K2.6 just beat Claude, GPT-5.5, and Gemini in a coding challenge」（380 分/219
+        评论，bazlightyear 提交）
+    - date: 05-15
+      event: OpenHands Index 官方评测补充 SWE-bench-Multimodal 41.2 等数据（框架下落后第一梯队 7-12 分）
+    - date: 07-16
+      event: Kimi K3 发布，K2.6 被标记 Superseded/deprecated，随后从 NVIDIA NIM 等平台下架
+    - date: 07-31
+      event: DoorDash 因使用 K2.6 遭美国国会两委员会质询（8/14 披露、8/21 简报），HN 帖 11 分/4 评论
+  sources:
+    - title: "Kimi K2.6: Advancing Open-Source Coding"
+      platform: Kimi 官方博客
+      url: https://www.kimi.com/blog/kimi-k2-6
+    - title: HN Kimi K2.6 Advancing open-source coding 710pts 372comments
+      platform: Hacker News
+      url: https://news.ycombinator.com/item?id=47835735
+    - title: HN Kimi K2.6 beat Claude GPT-5.5 Gemini 380pts 219comments
+      platform: Hacker News
+      url: https://news.ycombinator.com/item?id=47993235
+    - title: US lawmakers investigate DoorDash use of Moonshot AI Kimi K2.6
+      platform: SCMP
+      url: >-
+        https://www.scmp.com/news/china/diplomacy/article/3362616/us-lawmakers-investigate-doordashs-use-moonshot-ais-kimi-k26-model
+    - title: "OpenHands Index: Add swe-bench results for Kimi-K2.6"
+      platform: OpenHands Index
+      url: https://github.com/OpenHands/openhands-index-results/pull/1006
+    - title: I Tried Kimi k2.6 on Claude Code
+      platform: Medium · Joe Njenga
+      url: >-
+        https://medium.com/@joe.njenga/i-tried-kimi-k2-6-on-claude-code-and-forgot-opus-4-6-exists-5d9ba4c01911
+    - title: I Used Both Kimi Code and Claude Code on Real Production Code
+      platform: LinkedIn · Ayaz Ullah Sharif
+      url: >-
+        https://www.linkedin.com/pulse/i-used-both-kimi-code-claude-real-production-heres-ayaz-ullah-sharif-l66bf
+    - title: "Kimi K2.6 & Kimi Code Review: Saving 88% Coding Costs?"
+      platform: Medium · @tentenco
+      url: https://medium.com/@tentenco/kimi-k2-6-kimi-code-review-saving-88-coding-costs-b7e8c5eaf5f1
+    - title: Kimi K3, and what we can still learn from the pelican benchmark
+      platform: Simon Willison
+      url: https://simonw.substack.com/p/kimi-k3-and-what-we-can-still-learn
+    - title: Kimi K2.6 真有那么强？社区反馈综述
+      platform: 蓝戒博客
+      url: https://www.webzsky.com/archives/2157
+  uncertainties:
+    - AIME 2026 官方 93.3% 与 DataLearner 96.4% 双版本（可能因评测模式不同），取 DataLearner 排名口径
+    - >-
+      定价来源差异：Medium/@tentenco 报道 $0.60/$2.50、towardsai $0.60/$3.00、DataLearner/AA
+      $0.95/$4.00（可能因发布早期调价或 API 端点差异），取主流 $0.95/$4.00
+    - 300 子 Agent 可靠性独立复现有限，主要来自官方展示（极客公园相反结论实为 K2.5 测试；OpenHands 框架下未复现 Agent 优势）
+    - 长程编码 12-13 小时案例均来自官方或官方合作方，第三方独立验证有限（30 天实测者复刻 6 小时迁移属较短验证）
+    - Cursor × K2.6 无第一手实测：Composer 2 基于 K2.5，K2.6 直接进 Cursor 的体验为间接推断
+    - AA 数据为该模型 deprecated 后的历史快照，部分 workload 数据可能不再更新；Reddit 赞数为 2026-08-09 网关快照
+  versionDelta:
+    base: Kimi K2.5
+    improves:
+      - SWE-Bench Pro 提升至 58.6，开源 SOTA（超 GPT-5.4 57.7、Opus 4.6 53.4）
+      - 编程评测 83 → 89 分（K2.6-code-preview）
+      - Agent 集群 100 子/1500 步 → 300 子/4000 步，完成任务步骤数 −35%、长上下文稳定性 +18%
+      - 长程编码 12-13 小时不崩溃；exchange-core 吞吐 0.43 → 1.24 MT/s（+185%）
+      - 前端审美显著提升，Shader/菲涅尔/次表面散射达专业水平（蓝戒「3 万块设计师稿」）
+      - "AIME 2026 96.4%（3/18）· GPQA Diamond 90.5%（18/187）· BenchLM 数学 #1/7"
+      - 发布帖热度 710 分/372 评论为系列最高（HN Algolia 实测核对）
+    regresses:
+      - 复杂逻辑题 token 消耗最高可超前代 3 倍（竞品仅为其 1/2–1/6）
+      - 思维链「无限否定自己」，推理体验不如 GLM 5.1 言之有物
+      - 非推理模式行为退化，被称「思考预算较少的低配模型」
+      - API 价格小幅上涨（单价档 21→27），AA 标记为 expensive
+      - 速度偏慢：39 tok/s（#54/100）· 输出冗长（170M vs 中位数 99M）
+      - Kotlin 工程识别失败：grep java 文件后报找不到（V2EX defaw）
+      - 后续被 K3 标记 Superseded，NVIDIA NIM 等平台下架（r/kimi 54 赞帖佐证）
+  harnessReviews:
+    - id: claude-code
+      text: >-
+        Joe Njenga 实测一条命令接入、CRUD 一次跑通；Ayaz 三周 A/B：30 个文件内印象深刻，跨服务依赖会跟丢；HN 称「coding 20x cheaper」。定位
+        Opus 之下的长程批量主力，复杂推理切旗舰。
+    - id: cursor
+      text: >-
+        硬事实：Composer 2 底座即 K2.5，DeathArrow 直言为 K2 系付 Cursor 溢价不划算、建议 CC 直连；antirez 对 RL 包装成效持观望。可经
+        OpenAI 兼容层接入，UI 生成场景可试。
+    - id: openhands
+      text: >-
+        官方 Index：SWE-bench 57.14、多模态 41.2，落后第一梯队约 7-12 分；LiteLLM 一行接入无机制障碍，但 300 子 Agent
+        宣传未在框架下复现，跑分待补。
+  demos:
+    - title: 12 小时长程编码马拉松
+      desc: >-
+        官方展示用 Zig 语言在 Mac 本地部署并优化 Qwen3.5-0.8B，连续 12 小时 4000+ 次工具调用不崩溃；Mejba Ahmed 独立复现 11h49m 内
+        4127 次工具调用构建浏览器内 Mac OS 克隆。
+    - title: exchange-core 金融撮合引擎重构
+      desc: 连续 13 小时 1000+ 次工具调用重构 8 年历史开源引擎，线程拓扑 4ME+2RE → 2ME+1RE，吞吐 0.43 → 1.24 MT/s（+185%）、峰值 +133%。
+    - title: 300 子 Agent 集群自动分工
+      desc: >-
+        自动组建 300 个子 Agent 并行搜索、交叉验证、分工交付完整项目；53AI 实测 12 个子 Agent 一小时生成 PDF+Excel+15 页 PPT；30 天实测者
+        Swarm 5 子 Agent 20 分钟完成发布物料。
+relations:
+  rivals:
+    - kimi-k2
+    - glm-5
+    - deepseek-v4
+  teams:
+    - budget-vanguard
+    - puppet-workshop
+  guides:
+    - mech-toolcall
+    - mech-context-decay
+    - beginner-budget
+    - case-refactor
+  bestInSlot:
+    - id: claude-code
+      note: 实测最充分的装备线：一条命令接入、成本仅 Opus 4.7 的 1/8，长程批量编程主力。
+    - id: cursor
+      note: 无直接实测，但 Composer 2 底座即 K2.5；为 K2 系付溢价不划算，前端审美强适合 UI 生成。
+    - id: openhands
+      note: 官方 Index 实测 SWE-bench 57.14，落后第一梯队；批量任务可试，Agent 集群能力待验证。
+  trialGood:
+    - label: 长程代码重构
+      to: /scenarios#refactor
+    - label: Agent 集群开发
+      to: /scenarios#agent
+    - label: 前端 UI 生成
+      to: /scenarios#frontend
+    - label: 性价比全栈开发
+      to: /scenarios#fullstack
+  trialBad:
+    - label: 复杂算法推理
+      to: /scenarios#algo
+      note: 推理无限否定、token 消耗 3 倍以上，建议换 glm-5
+    - label: 知识密集型问答
+      to: /scenarios#docs
+      note: 知识维度 13th 百分位，建议换 gemini-3-pro
+    - label: 跨服务 Monorepo 重构
+      to: /scenarios#refactor
+      note: 30 文件后上下文吃紧、gRPC 依赖跟丢，建议换 claude-opus-4-8
+    - label: 响应速度敏感
+      to: /scenarios#frontend
+      note: 39 tok/s 偏慢，建议换 deepseek-v4-flash
+---
+
+## 一句话点评
+
+开源编程偏科王：SWE Pro 58.6 开源 SOTA、盲测全球第一；代价是推理无限否定、输出冗长，按场景选型。
+
+## 社区反馈 · 编程
+
+最受好评维度，多条实测背书：SWE-Bench Pro 58.6 开源 SOTA、盲测挑战赛 22 分 7-1-0 全球第一（HN 380 分/219 评论）；30 天全职实测（Manu Nayyar R）称 SWE-Bench Verified 80.2 vs Opus 4.6 80.8「0.6 分差距不值 8 倍差价」，第 4 天取消 Claude 订阅、第 12 天弃用 Copilot；Joe Njenga 用 Ollama Cloud 一条命令接入 Claude Code，React+Tailwind 项目「CRUD 一次跑通、组件结构干净、Tailwind 风格一致」。也有保留：Reddit A/B 测试者称「still nowhere near opus or gpt 5.4」，知乎将其定位在 Sonnet 4.6 水平；LinkedIn 3 周 A/B 实测（Ayaz Sharif）发现约 30 个文件后 Kimi 上下文管理开始吃紧、跨服务 gRPC 依赖会跟丢（漏读 Python protobuf 定义）；mighty turtle 帖反馈「really thinks a lot，频繁 /compact」。
+
+## 社区反馈 · 推理
+
+最大争议点：V2EX OP 帖（20 回复）直斥「无限否定自己」「堪比 qwq-32b」，用户 codele 反馈「一个小问题循环了十几分钟」；知乎承认长链推理较 K2.5 改善、解空间探索更充分，但代价是思考效率极低——复杂题 token 消耗可达竞品 3-6 倍，AA 实测 Intelligence Index 烧掉 170M output tokens（中位数仅 99M、GPT-5.4 为 110M），Ethan Mollick Lem Test 74 页思维链仅得「okay-ish」；HN nikcub 直言「below sonnet and opus 4.0 on capability」。BenchLM 知识维度仅 13th 百分位，「偏科生」成最普遍定位；Simon Willison 测 K3 时反衬「K3 较 K2.6 输出 token 少 21%」——K2.6 的冗余是实打实的短板。
+
+## 社区反馈 · 中文
+
+中文为国产模型基础能力，无显著负面；前端生成审美被中文社区认可（蓝戒博客称「和 3 万块的设计师稿子几乎是同一个水平」，V2EX beyondstars 称「kimi 做前端感觉审美还不错的」）；知乎/V2EX 中文技术讨论流畅，V2EX laoyutang「编码能力可以，基本一次能写对」；未见中文能力专项缺陷反馈。
+
+## 升级共识
+
+编程与 Agent 场景值得升级——SWE Pro 58.6 开源 SOTA、长程编码 13h 不崩、API 仅为 Opus 4.7 的 1/8，HN DeathArrow 实测「coding 20x cheaper」、30 天实测者「0.6 分差距不值 8 倍差价」；但推理/知识场景建议等下版或继续用 GLM 5.1（知乎「偏科生」定位、BenchLM 知识 13th 百分位），复杂推理宁可切 Opus 4.7——按场景选型而非全面替换。
+
+## 榜单与实测落差
+
+「分数高但体感差」集中在推理：SWE-Bench Pro 58.6 开源 SOTA、盲测全球第一、Terminal-Bench 66.7 超 GPT-5.4，但 AIME/GPQA 与头部差 2-4 分、HLE 无工具版仅 34.7%、AA 实测推理烧 170M output tokens（中位数 99M）、复杂题 token 消耗达竞品 3-6 倍。根因是长链思考探索充分但收敛效率差，「无限否定」加剧体感恶化（V2EX defaw/codele 实测循环十几分钟）；HN 视角认为盲测第一有赛制因素（只参加最后 5 场）。编程/Agent 场景放心用，推理场景换 GLM 5.1 或等 K3。

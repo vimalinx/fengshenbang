@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: claude-sonnet-5
+tier: T1
+stars: 5
+composite: 90
+stats:
+  code: 88
+  reasoning: 75
+  context: 85
+  speed: 85
+  multimodal: 50
+  value: 55
+sentiment:
+  positive: 40
+  mixed: 15
+  negative: 45
+radar:
+  - axis: 长程任务
+    value: 82
+  - axis: 编程工程
+    value: 88
+  - axis: 抽象推理
+    value: 75
+  - axis: 上下文利用
+    value: 85
+  - axis: 中文能力
+    value: 72
+  - axis: 响应速度
+    value: 85
+  - axis: 稳定性
+    value: 70
+  - axis: 指令遵循
+    value: 88
+  - axis: 易用性
+    value: 80
+  - axis: 性价比
+    value: 55
+danmaku:
+  - text: 修复了卡 Opus 4.8 好几天的严重 Bug
+    platform: reddit
+    main: true
+  - text: 同价更差：worse than Opus
+    platform: reddit
+    main: true
+  - text: HN 发布帖 1266 分，中端性能获理性讨论
+    platform: hn
+    main: true
+  - text: 这不是能力不行，这是性价比不行
+    platform: zhihu
+    main: true
+  - text: 拿到了 Opus 的智商，只收 Sonnet 的价格
+    platform: zhihu
+    main: true
+  - text: Sonnet 5 比 DeepSeek 贵了整整 57 倍
+    platform: x
+    main: true
+  - text: Actually worth using?
+    platform: reddit
+    main: false
+  - text: 质疑 33% 折扣为何对标 2025 年的 Sonnet 4
+    platform: reddit
+    main: false
+  - text: Sonnet 用 low，否则换 Opus
+    platform: hn
+    main: false
+  - text: medium 以上永远别用，Opus 同价总赢（doctoboggan）
+    platform: hn
+    main: false
+  - text: 临时降价 + tokenizer 暗中加大 50%
+    platform: hn
+    main: false
+  - text: 打不过千问和 Minimax，性价比全面翻车
+    platform: zhihu
+    main: false
+  - text: 它思考了整整一个世纪，烧光我的额度
+    platform: zhihu
+    main: false
+  - text: token 膨胀最高 35%，账单偷偷涨
+    platform: linuxdo
+    main: false
+  - text: 没啥看点，都在聊 token 膨胀和封号
+    platform: v2ex
+    main: false
+  - text: 完成任务成本比 Opus 更贵（theo）
+    platform: x
+    main: false

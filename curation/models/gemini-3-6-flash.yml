@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: gemini-3-6-flash
+tier: T1
+stars: 5
+composite: 88.5
+stats:
+  code: 78
+  reasoning: 70
+  context: 80
+  speed: 98
+  multimodal: 86
+  value: 85
+sentiment:
+  positive: 55
+  mixed: 15
+  negative: 30
+radar:
+  - axis: 长程任务
+    value: 76
+  - axis: 编程工程
+    value: 78
+  - axis: 抽象推理
+    value: 70
+  - axis: 上下文利用
+    value: 80
+  - axis: 中文能力
+    value: 82
+  - axis: 响应速度
+    value: 98
+  - axis: 稳定性
+    value: 62
+  - axis: 指令遵循
+    value: 68
+  - axis: 易用性
+    value: 88
+  - axis: 性价比
+    value: 85
+danmaku:
+  - text: 速度离谱：550+ tokens/sec
+    platform: reddit
+    main: true
+  - text: 终结轻量模型必定逊色的铁律
+    platform: zhihu
+    main: true
+  - text: precisely 0% smarter（快 2 倍）
+    platform: reddit
+    main: true
+  - text: 写码峰值 1141 tps（44K 上下文）
+    platform: linuxdo
+    main: true
+  - text: Fable/Sol 规划，3.6 Flash 执行
+    platform: hn
+    main: true
+  - text: 其他模型一轮交付，它补 9 轮还没做完
+    platform: bilibili
+    main: true
+  - text: The laziest AI model LOL
+    platform: reddit
+    main: false
+  - text: over-sold, under-provisioned
+    platform: hn
+    main: false
+  - text: good writer, good coder
+    platform: reddit
+    main: false
+  - text: Google 版 Sonnet，定价却远离前代
+    platform: reddit
+    main: false
+  - text: 营销大于实质——缺 Pro 版同步发布
+    platform: hn
+    main: false
+  - text: Gemini 3 Flash 用着挺香，工具调用稳
+    platform: v2ex
+    main: false
+  - text: Everyone uses Gemini 3.6 Flash anyway
+    platform: hn
+    main: false
+  - text: 输出 ONE LINE，烧掉 16000 tokens
+    platform: reddit
+    main: false
+  - text: 等 3.5 Pro 更明智
+    platform: zhihu
+    main: false
+  - text: 长上下文检索翻倍：128K 91.8%
+    platform: linuxdo
+    main: false

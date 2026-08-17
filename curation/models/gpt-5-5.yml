@@ -1,0 +1,85 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: gpt-5-5
+tier: T1
+stars: 5
+composite: 90
+stats:
+  code: 60
+  reasoning: 62
+  context: 75
+  speed: 55
+  multimodal: 88
+  value: 35
+sentiment:
+  positive: 20
+  mixed: 22
+  negative: 58
+radar:
+  - axis: 长程任务
+    value: 45
+  - axis: 编程工程
+    value: 60
+  - axis: 抽象推理
+    value: 62
+  - axis: 上下文利用
+    value: 75
+  - axis: 中文能力
+    value: 58
+  - axis: 响应速度
+    value: 55
+  - axis: 稳定性
+    value: 40
+  - axis: 指令遵循
+    value: 45
+  - axis: 易用性
+    value: 60
+  - axis: 性价比
+    value: 35
+danmaku:
+  - text: 思考一到 516 就断，越难越翻车
+    platform: zhihu
+    main: true
+  - text: 82% 的精确 516 截断来自 GPT-5.5
+    platform: hn
+    main: true
+  - text: Codex GPT 5.5 is UNUSABLE right now
+    platform: reddit
+    main: true
+  - text: 花最贵的钱，买最烂的体验
+    platform: zhihu
+    main: true
+  - text: 24 小时不睡觉的超级实习生
+    platform: zhihu
+    main: true
+  - text: 听不懂人话：137 回复实锤
+    platform: v2ex
+    main: false
+  - text: 失去它像被截肢（英伟达内测工程师）
+    platform: zhihu
+    main: false
+  - text: 5.5 是执行的神，opus 是规划的神
+    platform: v2ex
+    main: false
+  - text: 修改系统提示词可缓解 xhigh 降智
+    platform: linuxdo
+    main: false
+  - text: GPT 5.5 pro is hallucinating like crazy
+    platform: reddit
+    main: false
+  - text: 静默降级：UI 没变，模型偷偷换 mini
+    platform: zhihu
+    main: false
+  - text: Save GPT-5.5：5.6 上线后用户挽留
+    platform: hn
+    main: false
+  - text: 5.5 蠢的没法用，不如 composer2.5
+    platform: v2ex
+    main: false
+  - text: SWE-Bench Pro 仅 +1%，这才是重点
+    platform: reddit
+    main: false
+  - text: still does everything thrown at it except UI
+    platform: reddit
+    main: false

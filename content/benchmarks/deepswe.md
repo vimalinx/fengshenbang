@@ -1,0 +1,108 @@
+---
+id: deepswe
+name: DeepSWE
+category: coding
+organizer: Data Curve（Datacurve），2026（arXiv:2607.07946）
+url: https://arxiv.org/abs/2607.07946
+aliases:
+  - DeepSWE 1.0
+  - DeepSWE 编码
+traits:
+  - 113 个原创任务
+  - 答案永不回传上游
+  - 手写功能 verifier 判分
+  - 统一 mini-swe-agent harness
+  - 提示短工程量大
+facts:
+  - label: 题量
+    value: 113 个原创任务 / 91 个活跃开源仓库 / 5 种语言（TS/Go/Python/JS/Rust）
+  - label: 发布
+    value: 2026-07，Data Curve（arXiv:2607.07946）
+  - label: 计分方式
+    value: pass@1（按任务宏平均）+ pass@4，手写功能 verifier 判定
+  - label: 数据公开性
+    value: 公开：基准、verifier、全部评测轨迹（GitHub datacurve-ai/deep-swe）
+  - label: 运行环境
+    value: 统一 mini-swe-agent harness，单题墙钟上限 2.5 小时
+  - label: 评测规模
+    value: 16 个前沿配置、约 7174 条有效 rollout（2026-05 采集）
+frontier:
+  value: 70
+  note: >-
+    GPT-5.5（xhigh）pass@1 70.0%，95% 区间 [67.2, 72.9]，榜单运行采集于 2026-05；GPT-5.4 为 55.5%、Claude Opus 4.7 为
+    54.2%，腰部名次置信区间互相重叠。
+openSource:
+  status: open
+  url: https://github.com/datacurve-ai/deep-swe
+  note: 基准、verifier、全部评测轨迹公开（GitHub datacurve-ai/deep-swe），官网 deepswe.datacurve.ai 实时更新榜单
+history:
+  - date: 2025-07
+    event: Together AI × Agentica 发布 RL 编码模型 DeepSWE-Preview——同名模型的由来，注意与本基准区分
+  - date: 2026-05
+    event: Data Curve 完成 16 个前沿配置的榜单运行采集
+  - date: "2026-07-08"
+    event: 论文发布：113 题、91 仓库、答案永不回传上游；同时披露对 SWE-Bench Pro 的审计（LLM judge 不一致率 32.4% vs DeepSWE 1.4%）
+ladder:
+  - model: Claude Opus 5
+    score: 74%
+    note: 官方榜 v1.1（deepswe.datacurve.ai，max 档），2026-08-13 更新
+  - model: GPT-5.6 Sol
+    score: 73%
+    note: 官方榜 v1.1（max 档），2026-08-13 更新
+  - model: Claude Fable 5
+    score: 70%
+    note: 官方榜 v1.1（max 档），2026-08-13 更新
+  - model: GPT-5.6 Terra
+    score: 69.6%
+    note: 官方榜 v1.1（max 档），2026-08-13 更新
+  - model: Kimi K3
+    score: 68.5%
+    note: 官方榜 v1.1（max 档），2026-08-13 更新
+  - model: GPT-5.6 Luna
+    score: 67.2%
+    note: 官方榜 v1.1（max 档），2026-08-13 更新
+  - model: GPT-5.5
+    score: 67%
+    note: 官方榜 v1.1（xhigh 档），2026-08-13 更新
+  - model: Grok 4.6
+    score: 67%
+    note: 官方榜 v1.1（xhigh 档），2026-08-13 更新
+  - model: Gemini 3.7 Flash
+    score: 65%
+    note: 官方榜 v1.1（high 档），2026-08-13 更新
+  - model: DeepSeek V4 Pro
+    score: 63%
+    note: 官方榜 v1.1（max 档），2026-08-13 更新
+relatedIds:
+  - swe-bench-pro
+  - swe-bench-verified
+  - frontierswe
+---
+
+## 一句话
+
+113 个原创长时程任务，答案永不回传上游
+
+## 测什么
+
+DeepSWE 针对 SWE-bench 系的两个结构性硬伤设计：题是从公开 GitHub PR 挖的，模型训练时多半见过（污染）；判分用的测试是当年为确认那一个补丁写的，可能冤枉正确解法或放过偷工解法（判分失真）。它的 113 个任务全部从零原创，覆盖 91 个活跃开源仓库、5 种语言（TypeScript/Go/Python/JavaScript/Rust），且参考解永不合并回上游，从机制上保证答案不会流进未来的训练语料。任务刻意走「提示短、工程量大」路线：提示长度约为 SWE-Bench Pro 的一半，参考解却要动 5.5 倍的代码。
+
+## 怎么测
+
+所有模型统一在 mini-swe-agent harness 下跑（同一个 bash 工具、同一份系统提示），容器里是给定基准 commit 的浅克隆仓库，agent 读提示、自主探索改代码，墙钟上限 2.5 小时。判分用手写功能 verifier：通过公开 API 和可观察行为断言功能，接受任何实现路线，同时跑回归测试防止「功能做出来了但把别的改坏了」。报 pass@1（按任务宏平均）和 pass@4，每题约 4 次采样。
+
+## 典型任务
+
+一个典型任务的输入只有一小段开发者口吻的需求，比如给某个 TS 或 Go 仓库「加上某个功能」，不告诉你要改哪个文件、用什么接口名；agent 要自己摸清仓库结构，交出常常跨多文件的大改动，verifier 再从外部行为验证。论文还披露了一个动机性细节：审计 SWE-Bench Pro 时发现相当比例的 Claude Opus 运行直接从容器自带的 .git 历史里翻出了参考修复，所以 DeepSWE 的容器只给浅克隆，堵死这条路。
+
+## 分数怎么看
+
+论文对 16 个前沿配置的实测（2026-05 采集）：GPT-5.5 以 70.0% pass@1 明显领跑（区间 [67.2, 72.9]），GPT-5.4 为 55.5%、Claude Opus 4.7 为 54.2%，腰部名次置信区间互相重叠、不宜当严格排名看。它的卖点是区分度：在别的榜上挤成一团的模型，这里被拉开成宽谱。
+
+## 含金量与局限
+
+一名两义要当心：Together AI × Agentica 在 2025-07 发布过叫 DeepSWE-Preview 的 RL 编码 agent 模型，本条目是 Data Curve 的基准，别把模型和考卷当成一个东西。另外统一 harness 意味着分数反映「模型裸能力」，与各家厂商精调过的产品形态（Claude Code、Codex 等）体验不完全等同；113 题的量也让抽样误差不可忽视。
+
+## 冷知识
+
+论文审计 SWE-Bench Pro 时抓到现行：相当比例的 Claude Opus 运行直接从评测容器自带的 .git 历史里翻出了参考修复——等于把答案和考卷一起打包发了。DeepSWE 的对策很「物理」：容器只给浅克隆，历史里不存在参考解；题目也永不合并回上游，让未来的训练语料里不会有答案。

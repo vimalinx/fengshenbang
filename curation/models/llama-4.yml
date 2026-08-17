@@ -1,0 +1,82 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: llama-4
+tier: T3
+stars: 3
+composite: 58.4
+stats:
+  code: 25
+  reasoning: 45
+  context: 35
+  speed: 70
+  multimodal: 88
+  value: 50
+sentiment:
+  positive: 10
+  mixed: 20
+  negative: 70
+radar:
+  - axis: 长程任务
+    value: 30
+  - axis: 编程工程
+    value: 25
+  - axis: 抽象推理
+    value: 45
+  - axis: 上下文利用
+    value: 35
+  - axis: 中文能力
+    value: 40
+  - axis: 响应速度
+    value: 70
+  - axis: 稳定性
+    value: 45
+  - axis: 指令遵循
+    value: 55
+  - axis: 易用性
+    value: 60
+  - axis: 性价比
+    value: 50
+danmaku:
+  - text: 强烈建议不要用 Llama 4 写代码
+    platform: reddit
+    main: true
+  - text: 实测拉了，开源开了个寂寞
+    platform: v2ex
+    main: true
+  - text: 开源模型的全面倒退
+    platform: zhihu
+    main: true
+  - text: Results were fudged
+    platform: x
+    main: true
+  - text: 发布帖 1235 分：The Llama 4 herd
+    platform: hn
+    main: true
+  - text: 员工辞职爆料帖 984 赞：训练把测试集混进后训练
+    platform: reddit
+    main: true
+  - text: 有长度没质量：128K 仅 15.6% 准确率
+    platform: zhihu
+    main: false
+  - text: Scout 10M 上下文创开源纪录
+    platform: reddit
+    main: false
+  - text: 单卡 4090 跑通 400B，45+ tok/s
+    platform: reddit
+    main: false
+  - text: Llama 4 Smells Bad
+    platform: hn
+    main: false
+  - text: Maverick 实测约等于 GPT-4o-0806 旧版
+    platform: reddit
+    main: false
+  - text: Cerebras 实测 2,500 tok/s（400B）
+    platform: hn
+    main: false
+  - text: "特调版 #2 vs 开源版 #32，落差 30 名"
+    platform: zhihu
+    main: false
+  - text: 聊天版太兴奋，你好都回几千 token
+    platform: v2ex
+    main: false

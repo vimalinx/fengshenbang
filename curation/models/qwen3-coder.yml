@@ -1,0 +1,82 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: qwen3-coder
+tier: T2
+stars: 4
+composite: 77.9
+stats:
+  code: 80
+  reasoning: 64
+  context: 46
+  speed: 76
+  multimodal: 22
+  value: 95
+sentiment:
+  positive: 50
+  mixed: 25
+  negative: 25
+radar:
+  - axis: 长程任务
+    value: 82
+  - axis: 编程工程
+    value: 90
+  - axis: 抽象推理
+    value: 58
+  - axis: 上下文利用
+    value: 78
+  - axis: 中文能力
+    value: 88
+  - axis: 响应速度
+    value: 70
+  - axis: 稳定性
+    value: 60
+  - axis: 指令遵循
+    value: 66
+  - axis: 易用性
+    value: 72
+  - axis: 性价比
+    value: 90
+danmaku:
+  - text: Qwen3-Coder is here! 发布帖 1.9K 赞
+    platform: reddit
+    main: true
+  - text: Is Qwen3-coder the best kept secret out there?
+    platform: reddit
+    main: true
+  - text: 发布帖 765 pts：开源 agentic 新王
+    platform: hn
+    main: true
+  - text: 1,434 转推：最强大的开源 agentic 代码模型
+    platform: x
+    main: true
+  - text: 41 万浏览：编程能力比肩 Claude 4
+    platform: zhihu
+    main: true
+  - text: Qwen Code 已成 Claude Code 国产平替
+    platform: linuxdo
+    main: true
+  - text: 480B 工具调用已修复，需重新下载权重
+    platform: reddit
+    main: false
+  - text: 30B-Coder 有点 agentic 过拟合，还是通用版好用
+    platform: reddit
+    main: false
+  - text: swyx：说开源模型 hack 榜单是不诚恳的
+    platform: hn
+    main: false
+  - text: Cerebras 2000 tok/s 上线 Windsurf
+    platform: x
+    main: false
+  - text: 工具循环一旦陷入，成本无限上涨
+    platform: zhihu
+    main: false
+  - text: 国内跑更稳定，费用相对较低
+    platform: linuxdo
+    main: false
+  - text: 号称媲美 Sonnet 4，试了一下效果还不错
+    platform: v2ex
+    main: false
+  - text: 8 月中各种截断报错，基本没法用了
+    platform: v2ex
+    main: false

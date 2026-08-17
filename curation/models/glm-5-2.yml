@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: glm-5-2
+tier: T1
+stars: 5
+composite: 90
+stats:
+  code: 92
+  reasoning: 88
+  context: 95
+  speed: 40
+  multimodal: 45
+  value: 80
+sentiment:
+  positive: 60
+  mixed: 28
+  negative: 12
+radar:
+  - axis: 长程任务
+    value: 90
+  - axis: 编程工程
+    value: 92
+  - axis: 抽象推理
+    value: 88
+  - axis: 上下文利用
+    value: 95
+  - axis: 中文能力
+    value: 86
+  - axis: 响应速度
+    value: 40
+  - axis: 稳定性
+    value: 72
+  - axis: 指令遵循
+    value: 84
+  - axis: 易用性
+    value: 76
+  - axis: 性价比
+    value: 80
+danmaku:
+  - text: GLM-5.2 is a win for local AI
+    platform: reddit
+    main: true
+  - text: 开源史上最大单代跃升：FrontierSWE +43.9
+    platform: reddit
+    main: true
+  - text: It's literally Opus 4.7 quality at stupid prices
+    platform: hn
+    main: true
+  - text: 国产编程模型天花板
+    platform: zhihu
+    main: true
+  - text: 很强，已处于跟 GPT、Claude 第一梯队
+    platform: linuxdo
+    main: true
+  - text: 前沿智能不应只属于少数人
+    platform: x
+    main: false
+  - text: first non-Claude model that feels close to Opus
+    platform: reddit
+    main: true
+  - text: 15 分钟推理才写第一行代码
+    platform: hn
+    main: false
+  - text: 45k token 烧掉才动笔
+    platform: hn
+    main: false
+  - text: 偏科：只有编程强
+    platform: zhihu
+    main: false
+  - text: 不能看截图调 UI，无视觉
+    platform: reddit
+    main: false
+  - text: UI 挤得像早高峰秋石高架
+    platform: zhihu
+    main: false
+  - text: GPT-5.5 hallucinates 3x more than GLM-5.2
+    platform: hn
+    main: false
+  - text: wrong variable name 小幻觉，不敢用于严肃项目
+    platform: hn
+    main: false
+  - text: model 脑子跟上了，腿还没跟上
+    platform: zhihu
+    main: false
+  - text: 1M 上下文一次吞下整个仓库
+    platform: x
+    main: false

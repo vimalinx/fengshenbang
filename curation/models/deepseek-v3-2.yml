@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: deepseek-v3-2
+tier: T1
+stars: 5
+composite: 89.4
+stats:
+  code: 85
+  reasoning: 82
+  context: 68
+  speed: 80
+  multimodal: 45
+  value: 95
+sentiment:
+  positive: 70
+  mixed: 20
+  negative: 10
+radar:
+  - axis: 长程任务
+    value: 72
+  - axis: 编程工程
+    value: 85
+  - axis: 抽象推理
+    value: 82
+  - axis: 上下文利用
+    value: 68
+  - axis: 中文能力
+    value: 90
+  - axis: 响应速度
+    value: 70
+  - axis: 稳定性
+    value: 62
+  - axis: 指令遵循
+    value: 70
+  - axis: 易用性
+    value: 85
+  - axis: 性价比
+    value: 95
+danmaku:
+  - text: DeepSeek V3 is absolutely astonishing
+    platform: reddit
+    main: true
+  - text: Deepseek v3.2 is soo good! R1-level good!（266 赞）
+    platform: reddit
+    main: true
+  - text: 3.2 is just crazy good!
+    platform: reddit
+    main: true
+  - text: 982 分 465 评：685B 知识 37B 成本
+    platform: hn
+    main: true
+  - text: 开源第一、国产第一
+    platform: zhihu
+    main: true
+  - text: First Open Model that does that, not even GLM 4.6 could
+    platform: reddit
+    main: true
+  - text: 把 7 分钟速通说成 7 秒
+    platform: linuxdo
+    main: false
+  - text: 不管问什么都要先夸我的问题
+    platform: v2ex
+    main: false
+  - text: Something is just OFF with deepseek
+    platform: reddit
+    main: false
+  - text: far behind OpenAI，不只是百分比
+    platform: reddit
+    main: false
+  - text: 像 Claude 3.5 Sonnet，还很便宜
+    platform: reddit
+    main: false
+  - text: IMO 金牌：开源首次超闭源
+    platform: zhihu
+    main: false
+  - text: OpenHands 实测 SWE 45.1%，榜单 73.1%
+    platform: reddit
+    main: false
+  - text: 越狱太容易，安全像纸糊的
+    platform: linuxdo
+    main: false
+  - text: 缓存命中 1/10，价格屠夫
+    platform: hn
+    main: false
+  - text: API 要大幅涨价，廉价时代终结？
+    platform: reddit
+    main: false

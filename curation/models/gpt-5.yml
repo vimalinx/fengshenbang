@@ -1,0 +1,82 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: gpt-5
+tier: T0
+stars: 6
+composite: 95.2
+stats:
+  code: 95
+  reasoning: 85
+  context: 85
+  speed: 62
+  multimodal: 90
+  value: 78
+sentiment:
+  positive: 30
+  mixed: 20
+  negative: 50
+radar:
+  - axis: 长程任务
+    value: 90
+  - axis: 编程工程
+    value: 95
+  - axis: 抽象推理
+    value: 85
+  - axis: 上下文利用
+    value: 85
+  - axis: 中文能力
+    value: 70
+  - axis: 响应速度
+    value: 62
+  - axis: 稳定性
+    value: 72
+  - axis: 指令遵循
+    value: 82
+  - axis: 易用性
+    value: 70
+  - axis: 性价比
+    value: 78
+danmaku:
+  - text: GPT5 is horrible：5110 赞 1880 评
+    platform: reddit
+    main: true
+  - text: Realising how good GPT-5 is
+    platform: reddit
+    main: true
+  - text: "Coding: a 3->4 level jump"
+    platform: hn
+    main: true
+  - text: GPT-5 one-shotted it（依赖冲突实测）
+    platform: hn
+    main: true
+  - text: "LMArena 全榜 #1 · 史上最高分"
+    platform: x
+    main: true
+  - text: 没能炸场，却精准打脸了竞品
+    platform: zhihu
+    main: true
+  - text: 多轮反馈后代码自己坏掉了
+    platform: reddit
+    main: false
+  - text: 变蠢了：创意写作不如 4o 有温度
+    platform: reddit
+    main: false
+  - text: 为 10 亿用户降本，而非性能突破
+    platform: hn
+    main: false
+  - text: Gary Marcus Day：开喷有理
+    platform: x
+    main: false
+  - text: 并未带来新范式，仅渐进式升级
+    platform: zhihu
+    main: false
+  - text: 把 GPT 接入 Claude Code 用，体验如何
+    platform: v2ex
+    main: false
+  - text: slower + over explanation 浪费时间
+    platform: reddit
+    main: false
+  - text: GPT-5 Pro 才是真 SOTA，Plus 被限制
+    platform: x
+    main: false

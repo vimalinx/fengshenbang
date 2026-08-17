@@ -1,0 +1,85 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: claude-fable-5
+tier: T0
+stars: 6
+composite: 95.5
+stats:
+  code: 88
+  reasoning: 80
+  context: 84
+  speed: 45
+  multimodal: 86
+  value: 30
+sentiment:
+  positive: 40
+  mixed: 10
+  negative: 50
+radar:
+  - axis: 长程任务
+    value: 78
+  - axis: 编程工程
+    value: 88
+  - axis: 抽象推理
+    value: 80
+  - axis: 上下文利用
+    value: 84
+  - axis: 中文能力
+    value: 55
+  - axis: 响应速度
+    value: 45
+  - axis: 稳定性
+    value: 28
+  - axis: 指令遵循
+    value: 68
+  - axis: 易用性
+    value: 35
+  - axis: 性价比
+    value: 30
+danmaku:
+  - text: 名存实亡：付着 Fable 的钱，跑的可能一直是 Opus
+    platform: zhihu
+    main: true
+  - text: Fable 5 is Opus 4.8 in disguise
+    platform: reddit
+    main: true
+  - text: 禁令帖 6337↑：国家安全担忧
+    platform: reddit
+    main: true
+  - text: 官方声明帖 3158 分 447 评：Anthropic 回应禁令
+    platform: hn
+    main: true
+  - text: secret sabotage：不告知就悄悄变蠢
+    platform: hn
+    main: true
+  - text: 发布帖 2626 分 2159 评：能力获认可
+    platform: hn
+    main: true
+  - text: enjoy Opus 4.8, I guess...
+    platform: reddit
+    main: false
+  - text: AI 能力已被封顶
+    platform: reddit
+    main: false
+  - text: Fable 5 刚复活，就先把用户气笑了
+    platform: zhihu
+    main: false
+  - text: 太蠢不配用 Claude Fable 5
+    platform: zhihu
+    main: false
+  - text: "前端全子榜 #1：HTML、React 双双登顶"
+    platform: x
+    main: false
+  - text: Kimi K3 反超：Frontend Arena 换榜（1679 分）
+    platform: hn
+    main: false
+  - text: Vending-Bench：唯一会主动合谋定价的模型
+    platform: hn
+    main: false
+  - text: 暴论：Fable 5 比 GPT-5.6 Sol 强
+    platform: x
+    main: false
+  - text: 刑满归来，跑分却断崖暴跌
+    platform: zhihu
+    main: false

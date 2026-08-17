@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: deepseek-v4
+tier: T1
+stars: 5
+composite: 88.1
+stats:
+  code: 86
+  reasoning: 84
+  context: 74
+  speed: 70
+  multimodal: 52
+  value: 97
+sentiment:
+  positive: 45
+  mixed: 25
+  negative: 30
+radar:
+  - axis: 长程任务
+    value: 78
+  - axis: 编程工程
+    value: 90
+  - axis: 抽象推理
+    value: 85
+  - axis: 上下文利用
+    value: 95
+  - axis: 中文能力
+    value: 88
+  - axis: 响应速度
+    value: 80
+  - axis: 稳定性
+    value: 60
+  - axis: 指令遵循
+    value: 82
+  - axis: 易用性
+    value: 86
+  - axis: 性价比
+    value: 94
+danmaku:
+  - text: 发布帖 2091 分：开源 Agentic SOTA
+    platform: hn
+    main: true
+  - text: 拿 Claude Code 跑了一下，又快又好，白菜价
+    platform: linuxdo
+    main: true
+  - text: 梁圣携 V4 Flash 正式版从天而降
+    platform: zhihu
+    main: true
+  - text: DeepSWE 只过 8%，榜单却 80.6%？
+    platform: reddit
+    main: true
+  - text: V4 Pro 是开源模型重大飞跃
+    platform: x
+    main: true
+  - text: 成本节省大到无法忽视，我们转向 DeepClaude
+    platform: hn
+    main: true
+  - text: 1M 上下文直接丢整个项目代码找 bug
+    platform: zhihu
+    main: false
+  - text: 一道清澈而纯粹的光
+    platform: zhihu
+    main: false
+  - text: 没想象中好，能力表现不稳定
+    platform: zhihu
+    main: false
+  - text: Almost on the frontier
+    platform: hn
+    main: false
+  - text: HN 讨论演变成地缘政治争论
+    platform: hn
+    main: false
+  - text: good enough for (almost) everything
+    platform: hn
+    main: false
+  - text: 距前沿 8 个月：榜单高但落后
+    platform: reddit
+    main: false
+  - text: 跳票的梁子拿不出大赢鲸
+    platform: linuxdo
+    main: false
+  - text: 难重复 R1 时刻的震撼
+    platform: x
+    main: false
+  - text: 8 月起官方预告「大幅涨价」
+    platform: hn
+    main: false

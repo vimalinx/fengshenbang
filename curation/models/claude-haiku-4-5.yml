@@ -1,0 +1,82 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: claude-haiku-4-5
+tier: T2
+stars: 4
+composite: 77.2
+stats:
+  code: 70
+  reasoning: 66
+  context: 54
+  speed: 94
+  multimodal: 58
+  value: 84
+sentiment:
+  positive: 55
+  mixed: 25
+  negative: 20
+radar:
+  - axis: 长程任务
+    value: 55
+  - axis: 编程工程
+    value: 78
+  - axis: 抽象推理
+    value: 62
+  - axis: 上下文利用
+    value: 55
+  - axis: 中文能力
+    value: 68
+  - axis: 响应速度
+    value: 94
+  - axis: 稳定性
+    value: 72
+  - axis: 指令遵循
+    value: 76
+  - axis: 易用性
+    value: 80
+  - axis: 性价比
+    value: 95
+danmaku:
+  - text: Feels like a fast sonnet 4
+    platform: reddit
+    main: true
+  - text: 发布帖 1,098 赞：性能不输，价格砍半
+    platform: reddit
+    main: true
+  - text: Haiku 4.5 在 agentic coding 上超过 gpt-5
+    platform: linuxdo
+    main: true
+  - text: 以 1/3 成本追平 Sonnet 4，两倍以上速度
+    platform: hn
+    main: true
+  - text: 高智能不再昂贵，速度与效率才是下一个王座
+    platform: zhihu
+    main: true
+  - text: 现在明白为什么 Claude 不发布新 Haiku 了
+    platform: x
+    main: true
+  - text: 有明确 plan 时它出奇地擅长写代码
+    platform: reddit
+    main: false
+  - text: Anthropic 正在无视自家小模型
+    platform: x
+    main: false
+  - text: claude --model haiku 缓解配额焦虑
+    platform: v2ex
+    main: false
+  - text: 用起来又快又省、但还能干大事的小模型
+    platform: linuxdo
+    main: false
+  - text: 多语言能力接近旗舰档
+    platform: hn
+    main: false
+  - text: 简单任务默认档位，复杂任务别指望
+    platform: zhihu
+    main: false
+  - text: 输出内容相对冗长
+    platform: zhihu
+    main: false
+  - text: 定价虽好，如今有更便宜的可比模型
+    platform: hn
+    main: false

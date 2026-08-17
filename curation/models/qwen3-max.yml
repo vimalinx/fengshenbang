@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: qwen3-max
+tier: T1
+stars: 5
+composite: 83.6
+stats:
+  code: 84
+  reasoning: 78
+  context: 62
+  speed: 72
+  multimodal: 64
+  value: 92
+sentiment:
+  positive: 45
+  mixed: 40
+  negative: 15
+radar:
+  - axis: 长程任务
+    value: 72
+  - axis: 编程工程
+    value: 88
+  - axis: 抽象推理
+    value: 82
+  - axis: 上下文利用
+    value: 70
+  - axis: 中文能力
+    value: 92
+  - axis: 响应速度
+    value: 85
+  - axis: 稳定性
+    value: 65
+  - axis: 指令遵循
+    value: 80
+  - axis: 易用性
+    value: 75
+  - axis: 性价比
+    value: 70
+danmaku:
+  - text: Pretty knowledgeable and very fast
+    platform: reddit
+    main: true
+  - text: The benchmarks are favouring Qwen3 max
+    platform: reddit
+    main: true
+  - text: Qwen is never going to open source Qwen 3.7
+    platform: reddit
+    main: false
+  - text: Max was always closed
+    platform: reddit
+    main: false
+  - text: No tiene nada de especial q3 max
+    platform: reddit
+    main: false
+  - text: Thinking 帖 502 points：scaling works
+    platform: hn
+    main: true
+  - text: 正式版发布帖仅 5 分，Thinking 版才引爆
+    platform: hn
+    main: false
+  - text: spend more to get more，不是 get more for less
+    platform: hn
+    main: false
+  - text: Qwen3时代的最强一击
+    platform: zhihu
+    main: true
+  - text: 编程秒了 Opus4，一次成功无需抽卡
+    platform: zhihu
+    main: false
+  - text: 中位甚至只提了 9%
+    platform: zhihu
+    main: false
+  - text: 写代码建议先别碰这个模型
+    platform: zhihu
+    main: false
+  - text: Max推理版用起来费用不低
+    platform: zhihu
+    main: false
+  - text: Qoder 里 0.2 倍积分，性价比很高
+    platform: v2ex
+    main: false
+  - text: Just Scale it——官方博客标题成社区标签
+    platform: x
+    main: true
+  - text: blazing fast，比 ChatGPT 还快
+    platform: x
+    main: false

@@ -1,0 +1,85 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: minimax-m3
+tier: T1
+stars: 5
+composite: 89
+stats:
+  code: 80
+  reasoning: 45
+  context: 88
+  speed: 65
+  multimodal: 88
+  value: 78
+sentiment:
+  positive: 40
+  mixed: 25
+  negative: 35
+radar:
+  - axis: 长程任务
+    value: 85
+  - axis: 编程工程
+    value: 80
+  - axis: 抽象推理
+    value: 45
+  - axis: 上下文利用
+    value: 88
+  - axis: 中文能力
+    value: 88
+  - axis: 响应速度
+    value: 65
+  - axis: 稳定性
+    value: 45
+  - axis: 指令遵循
+    value: 62
+  - axis: 易用性
+    value: 72
+  - axis: 性价比
+    value: 78
+danmaku:
+  - text: Another model that has vision
+    platform: reddit
+    main: true
+  - text: thinks for THOUSANDS of tokens
+    platform: reddit
+    main: true
+  - text: prefer it to opus in agentic workflows
+    platform: reddit
+    main: true
+  - text: M3 not far behind DS4
+    platform: hn
+    main: true
+  - text: 平替天花板，体感超 Sonnet 4.6
+    platform: zhihu
+    main: true
+  - text: 又背刺老用户，骂声一片
+    platform: v2ex
+    main: true
+  - text: token plan is very cheap
+    platform: hn
+    main: false
+  - text: It's open weights, not open source
+    platform: hn
+    main: false
+  - text: M2.7 出好代码，M3 老出语法错误
+    platform: reddit
+    main: false
+  - text: 实际成本 49 涨到 175，+257%
+    platform: v2ex
+    main: false
+  - text: 1M 上下文真正可用而非仅标注
+    platform: zhihu
+    main: false
+  - text: MSA 支持已合入 llama.cpp
+    platform: hn
+    main: false
+  - text: 2.7T 参数模型在路上
+    platform: reddit
+    main: false
+  - text: 长任务用 M3，小快活交给 M2.7
+    platform: reddit
+    main: false
+  - text: M3?!!! So gooooooood!!!
+    platform: x
+    main: false

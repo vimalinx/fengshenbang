@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: gemini-3-1-pro
+tier: T0
+stars: 6
+composite: 94.6
+stats:
+  code: 74
+  reasoning: 92
+  context: 86
+  speed: 68
+  multimodal: 90
+  value: 80
+sentiment:
+  positive: 55
+  mixed: 10
+  negative: 35
+radar:
+  - axis: 长程任务
+    value: 62
+  - axis: 编程工程
+    value: 74
+  - axis: 抽象推理
+    value: 92
+  - axis: 上下文利用
+    value: 86
+  - axis: 中文能力
+    value: 78
+  - axis: 响应速度
+    value: 68
+  - axis: 稳定性
+    value: 55
+  - axis: 指令遵循
+    value: 72
+  - axis: 易用性
+    value: 62
+  - axis: 性价比
+    value: 80
+danmaku:
+  - text: ARC-AGI-2 77.1%：推理较 3 Pro 翻倍
+    platform: hn
+    main: true
+  - text: Stunningly good at reasoning, but falls over on real work
+    platform: hn
+    main: true
+  - text: raw intelligence is genuinely impressive
+    platform: reddit
+    main: true
+  - text: biggest regression yet
+    platform: reddit
+    main: true
+  - text: 新王登场：一口气手搓 Win11 操作系统
+    platform: zhihu
+    main: true
+  - text: 核心推理翻倍，Pichai 亲自宣传
+    platform: x
+    main: true
+  - text: How is Gemini 3.1 at the top of SWE-bench?
+    platform: reddit
+    main: false
+  - text: Gemini 3.1 pro is sh*t
+    platform: reddit
+    main: false
+  - text: "Impossible to use for coding: can't reliably call tools"
+    platform: x
+    main: false
+  - text: It tucked up indentation across my codebase
+    platform: reddit
+    main: false
+  - text: 几乎全用 thinking tokens，做完也不告诉你
+    platform: hn
+    main: false
+  - text: 前端 SVG 领先 Opus 4.6 达 95 分
+    platform: x
+    main: false
+  - text: 掀翻 Claude 4.6 强势登顶
+    platform: zhihu
+    main: false
+  - text: 不知疲倦的代码推土机
+    platform: zhihu
+    main: false
+  - text: 2M 上下文，单次吞下整个 monorepo
+    platform: hn
+    main: false
+  - text: Gemini-Mona 两个月烧掉 $38k（Andon Café）
+    platform: x
+    main: false

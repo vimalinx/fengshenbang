@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Node 内置 TS 剥离（≥23 默认开启），构建脚本无需 tsx
+          node-version: 24
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Install
+        working-directory: app
+        run: npm ci
+
+      # ---- 阻塞门 ----
+
+      # 内容分层与 schema 校验。会拦住：
+      #   · Tier 1 事实层混入未定义字段（如把主观打分塞进 frontmatter）
+      #   · 必填散文小节缺失、小节标题写错
+      #   · 取值越界（frontier.value 不在 0-100）、枚举非法
+      #   · id 与文件名不一致、id 重复、relatedIds 悬空或自引
+      - name: 内容校验（分层与 schema）
+        working-directory: app
+        run: npm run content:check
+
+      # 含 tsc -b：同时覆盖 src/、schema/、scripts/，
+      # 并检查生成的 JSON 是否仍满足从 schema 推导出的类型
+      - name: 类型检查与构建
+        working-directory: app
+        run: npm run build
+
+      # ---- 非阻塞（有已知基线） ----
+
+      # 基线：15 个既有错误，均非本阶段引入——
+      #   8 个 react-refresh/only-export-components，来自 src/components/ui/**
+      #     （shadcn 生成的 vendored 代码，该规则关乎 HMR 体验而非正确性）
+      #   5 个 setState-in-effect，位于 Tools/Harnesses/Scenarios/Navbar
+      #   1 个 impure-function-during-render，位于 ui/sidebar.tsx
+      # 清零后请去掉 continue-on-error，让它变成阻塞门。
+      - name: Lint（非阻塞 · 基线 15 个既有错误）
+        working-directory: app
+        run: npm run lint
+        continue-on-error: true

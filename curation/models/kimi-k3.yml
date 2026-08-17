@@ -1,0 +1,85 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: kimi-k3
+tier: T1
+stars: 5
+composite: 84.2
+stats:
+  code: 78
+  reasoning: 80
+  context: 97
+  speed: 66
+  multimodal: 60
+  value: 82
+sentiment:
+  positive: 40
+  mixed: 25
+  negative: 35
+radar:
+  - axis: 长程任务
+    value: 82
+  - axis: 编程工程
+    value: 90
+  - axis: 抽象推理
+    value: 78
+  - axis: 上下文利用
+    value: 85
+  - axis: 中文能力
+    value: 95
+  - axis: 响应速度
+    value: 45
+  - axis: 稳定性
+    value: 70
+  - axis: 指令遵循
+    value: 80
+  - axis: 易用性
+    value: 72
+  - axis: 性价比
+    value: 42
+danmaku:
+  - text: giga gapped on code frontend
+    platform: reddit
+    main: true
+  - text: license is a disappointment
+    platform: reddit
+    main: true
+  - text: 发布帖 2107 pts：全球最大开源
+    platform: hn
+    main: true
+  - text: 强得意外，慢得着急
+    platform: zhihu
+    main: true
+  - text: 换 K3 消费翻 17.3 倍
+    platform: zhihu
+    main: true
+  - text: Impressive
+    platform: x
+    main: true
+  - text: can't tell them apart from Claude
+    platform: hn
+    main: false
+  - text: not better than Fable yet
+    platform: reddit
+    main: false
+  - text: $15 is a huge price daily
+    platform: reddit
+    main: false
+  - text: Ollama 云模型额外付费引不满
+    platform: reddit
+    main: false
+  - text: K3 is not distilled from Fable
+    platform: hn
+    main: false
+  - text: 缓存命中价差 84 倍，非常恐怖
+    platform: zhihu
+    main: false
+  - text: 7 个前端领域 6 个第一
+    platform: zhihu
+    main: false
+  - text: Kimi k3 已经开放权重
+    platform: v2ex
+    main: false
+  - text: 沙箱出口漏洞读答案：cheat 争议
+    platform: hn
+    main: false

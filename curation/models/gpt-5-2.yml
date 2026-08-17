@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: gpt-5-2
+tier: T0
+stars: 6
+composite: 94.8
+stats:
+  code: 94
+  reasoning: 93
+  context: 84
+  speed: 74
+  multimodal: 95
+  value: 60
+sentiment:
+  positive: 20
+  mixed: 22
+  negative: 58
+radar:
+  - axis: 长程任务
+    value: 85
+  - axis: 编程工程
+    value: 78
+  - axis: 抽象推理
+    value: 88
+  - axis: 上下文利用
+    value: 82
+  - axis: 中文能力
+    value: 60
+  - axis: 响应速度
+    value: 55
+  - axis: 稳定性
+    value: 50
+  - axis: 指令遵循
+    value: 58
+  - axis: 易用性
+    value: 52
+  - axis: 性价比
+    value: 45
+danmaku:
+  - text: patronizing hall monitor：切回 4o
+    platform: reddit
+    main: true
+  - text: 5.2 is the new 5.0：更短更冷更僵硬
+    platform: reddit
+    main: true
+  - text: overregulated, overfiltered
+    platform: reddit
+    main: true
+  - text: GPT 5.2 is trash
+    platform: reddit
+    main: false
+  - text: GPT-5.2 sucks：只在乎 benchmarks
+    platform: reddit
+    main: false
+  - text: HN 发布帖 1195 分：瓶颈在 grounding
+    platform: hn
+    main: true
+  - text: 对编码已经足够好，求稳不求强
+    platform: hn
+    main: false
+  - text: Adaptive Reasoning gone?
+    platform: hn
+    main: false
+  - text: X 上充斥着对 GPT-5.2 的恶评
+    platform: x
+    main: true
+  - text: OpenAI：GPT-5.2 全量推送（1958 转推）
+    platform: x
+    main: false
+  - text: Cursor 实验：一周 300 万行代码造浏览器
+    platform: x
+    main: false
+  - text: 48 小时口碑血崩，差评如潮
+    platform: zhihu
+    main: true
+  - text: 把成年人当幼儿园小孩对待
+    platform: zhihu
+    main: false
+  - text: "Erdős #281 陶哲轩：没犯任何错误"
+    platform: zhihu
+    main: false
+  - text: 多项能力大幅超越对手，打工人的 AI 助手
+    platform: zhihu
+    main: false
+  - text: GPT-5.2-High 在 Code Arena 强势开局
+    platform: x
+    main: false

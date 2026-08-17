@@ -1,0 +1,124 @@
+---
+id: webdev-arena
+name: WebDev Arena
+category: arena
+organizer: LMArena，2024-12 上线（web.lmarena.ai），与 E2B 合作提供运行沙箱
+url: https://web.lmarena.ai
+aliases:
+  - LMArena WebDev 榜
+  - WebDev Arena（0528）
+  - Website Arena
+  - Code Arena（各变体）
+  - Frontend Code Arena
+  - Chatbot Arena WebDev
+  - WebDev 榜/子榜
+  - WebDev/前端榜
+  - WebDev/编程子榜
+  - Code（WebDev）子榜
+  - 编程子榜（Arena）
+  - QwenWebDev 以外的前端 Arena 提法
+traits:
+  - 一句话需求生成完整可交互网页应用
+  - E2B 沙箱实际运行，用户上手体验后盲投
+  - 统一 React + TypeScript + Tailwind 技术栈
+  - Bradley-Terry 拟合 Elo（同母站方法论）
+  - 只测一发入魂的前端小应用，不测大型工程
+facts:
+  - label: 上线
+    value: 2024-12，LMArena 旗下（web.lmarena.ai）
+  - label: 任务形态
+    value: 一句话需求 → 完整可交互网页应用
+  - label: 技术栈
+    value: 统一 React + TypeScript + Tailwind，E2B 沙箱实际运行
+  - label: 角色设定
+    value: 系统提示为「资深前端 React 工程师 + 优秀 UI/UX 设计师」
+  - label: 数据规模
+    value: 2025-03 官方称超 8 万票；早期统计平局率约 26%
+  - label: 算法
+    value: Bradley-Terry 拟合 Elo，与母榜同方法论
+frontier:
+  value: null
+  note: >-
+    Elo 相对分，无 0-100 口径。官方 2025-03 博客快照：Claude 3.7 Sonnet 以约 76% 平均胜率居首、Claude 3.5 Sonnet 第二、DeepSeek
+    R1 第三；此后排名随新模型发布持续洗牌，当前座次以 web.lmarena.ai 实时榜为准。
+openSource:
+  status: partial
+  url: https://web.lmarena.ai
+  note: 榜单实时公开，方法论同母站论文（arXiv:2403.04132）；WebDev 对战数据未单独公开，平台为 Arena Intelligence 专有
+history:
+  - date: "2024-12-16"
+    event: 正式上线，Simon Willison 当日撰文介绍引发开发者圈关注
+  - date: "2025-03-10"
+    event: 官方博客复盘：已收超 8 万票，Claude 3.7 Sonnet 居首
+  - date: 2026-01
+    event: 随母站更名归入 Arena 体系，web.lmarena.ai 域名沿用
+ladder:
+  - model: Claude Opus 5 (Max)
+    score: "1692"
+    note: 官方榜 2026-08（arena.ai Code/WebDev Arena Elo）
+  - model: Kimi K3 (Max)
+    score: "1674"
+    note: 官方榜 2026-08（arena.ai Code/WebDev Arena Elo）
+  - model: Qwen3.8 Max
+    score: "1667"
+    note: 官方榜 2026-08（arena.ai Code/WebDev Arena Elo）
+  - model: Claude Opus 5 (High)
+    score: "1663"
+    note: 官方榜 2026-08（arena.ai Code/WebDev Arena Elo）
+  - model: Grok 4.6 (High)
+    score: "1631"
+    note: 官方榜 2026-08（arena.ai Code/WebDev Arena Elo）
+  - model: Claude Fable 5
+    score: "1627"
+    note: 官方榜 2026-08（arena.ai Code/WebDev Arena Elo）
+  - model: GPT-5.6 Sol xHigh (codex-harness)
+    score: "1622"
+    note: 官方榜 2026-08（arena.ai Code/WebDev Arena Elo）
+  - model: Gemini 3.7 Flash (High)
+    score: "1588"
+    note: 官方榜 2026-08（arena.ai Code/WebDev Arena Elo）
+  - model: GLM-5.2 Max
+    score: "1585"
+    note: 官方榜 2026-08（arena.ai Code/WebDev Arena Elo）
+  - model: DeepSeek V4 Pro (High)
+    score: "1585"
+    note: 官方榜 2026-08（arena.ai Code/WebDev Arena Elo）
+  - model: DeepSeek V4 Flash (High)
+    score: "1581"
+    note: 官方榜 2026-08（arena.ai Code/WebDev Arena Elo）
+  - model: Claude Opus 4.8 (High)
+    score: "1564"
+    note: 官方榜 2026-08（arena.ai Code/WebDev Arena Elo）
+relatedIds:
+  - lmarena
+  - design-arena
+  - qwenwebdev
+---
+
+## 一句话
+
+同一句话，两模型各做一个网页应用，你投好用的那个
+
+## 测什么
+
+LMArena 旗下专攻网页开发的编程子榜：测的不是算法题，而是「一句话需求做出一个能跑的完整网页应用」。官方认为 HumanEval 这类传统编程榜只测孤立函数，而真实开发还包括 UI 生成、依赖处理和完整应用结构。参赛模型被统一设定为「资深前端 React 工程师 + 优秀 UI/UX 设计师」，用 React + TypeScript + Tailwind 出活。本站把它单列成条目，但口径上它是 LMArena 的子榜。
+
+## 怎么测
+
+用户提交需求，两个匿名模型各自现场生成完整网页应用并在沙箱中实际运行，用户可以与两个成品真实交互——点开页面、按按钮、玩一玩——然后盲投更好的一方（可投平局）。投票按 Bradley-Terry 模型拟合成 Elo 排名。上线初期统计约 6.1 万票、平局率 26%；官方博客 2025-03 更新时称已收集超 8 万票。
+
+## 典型任务
+
+官方博客给的典型任务：「做一个 Hacker News 克隆」「搭一个能玩的国际象棋游戏」，社区里流行的还有「克隆 Notion 主页」「做个计算器」「设计一个简洁的电商首页」「生成 Twitter 个人主页布局」。模型交的不是代码片段而是能交互的成品：象棋要能真的走子吃子，计算器按了要真出数——用户上手玩两把，谁做得扎实立刻见分晓。
+
+## 分数怎么看
+
+读法和主榜一样是 Elo 相对分，但样本量小得多，分差更难拉开——早期平局率约 26% 就说明多数任务里头部模型旗鼓相当。官方博客 2025 年初的快照里 Claude 3.7 Sonnet 以约 76% 平均胜率居首，此后排名随新模型发布持续洗牌。它与文本总榜排名并不完全同步，写代码好看的模型未必聊天讨喜。
+
+## 含金量与局限
+
+只测「一发入魂的前端小应用」，不测大型工程、后端逻辑、调试协作这些真实开发的大头；投票者以开发者玩家为主，不等于生产环境验收标准。交互成品比纯代码更难糊弄（样式再好看，按钮点不动立刻露馅），这是它相对普通编程榜的独特价值，但别把它的排名当成「编程能力总排名」。
+
+## 冷知识
+
+早期约每四票就有一票是「平局」——做个计算器、克隆个知名网站主页这类题，头部模型都能做到八九不离十，用户上手玩一圈也常分不出高下。26% 的平局率本身就是「前端小应用正在同质化」的注脚。

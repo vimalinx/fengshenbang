@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: grok-5
+tier: T1
+stars: 5
+composite: 0
+stats:
+  code: 0
+  reasoning: 0
+  context: 0
+  speed: 0
+  multimodal: 0
+  value: 0
+sentiment:
+  positive: 35
+  mixed: 25
+  negative: 40
+radar:
+  - axis: 长程任务
+    value: 80
+  - axis: 编程工程
+    value: 75
+  - axis: 抽象推理
+    value: 85
+  - axis: 上下文利用
+    value: 88
+  - axis: 中文能力
+    value: 60
+  - axis: 响应速度
+    value: 85
+  - axis: 稳定性
+    value: 45
+  - axis: 指令遵循
+    value: 65
+  - axis: 易用性
+    value: 55
+  - axis: 性价比
+    value: 70
+danmaku:
+  - text: Grok 5 年底前发布，纳入 SpaceX 全量语料
+    platform: x
+    main: true
+  - text: It's really going to feel sentient
+    platform: x
+    main: true
+  - text: will it hell, gemini will be there before grok gets there
+    platform: reddit
+    main: true
+  - text: LOL no. grok is the loserest of all the LLMs
+    platform: reddit
+    main: true
+  - text: 一切还得看成品
+    platform: zhihu
+    main: true
+  - text: 6T 巨兽 or battleship Yamato of AI?
+    platform: reddit
+    main: true
+  - text: Musk claims 与 Putin warns 并列的 bullshit
+    platform: reddit
+    main: false
+  - text: Considering the rate Grok is improving, he's likely correct
+    platform: reddit
+    main: false
+  - text: 51% Polymarket：3/31 前发布（已错过）
+    platform: reddit
+    main: false
+  - text: 实时视频输入 + 电脑使用，真要乱套了
+    platform: reddit
+    main: false
+  - text: V9-Medium 不是 Grok 5，别被标题骗了
+    platform: hn
+    main: false
+  - text: 两度跳票：Q1 错过、Q2 错过、Q3 都悬
+    platform: hn
+    main: false
+  - text: Grok 4 训练数据 = Grok 2 的 100 倍
+    platform: zhihu
+    main: false
+  - text: 宗教末世感和科幻宿命论
+    platform: zhihu
+    main: false
+  - text: 2026 挑战 LOL 顶级战队 T1（像素级视觉）
+    platform: x
+    main: false
+  - text: 挑战 Karpathy 编程对决被礼貌拒绝
+    platform: hn
+    main: false

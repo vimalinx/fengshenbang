@@ -1,0 +1,500 @@
+---
+id: kimi-k3
+name: Kimi K3
+system: kimi
+releaseDate: "2026-05-28"
+collectedDate: 06-01
+specs:
+  contextTokens: 2000000
+  contextLabel: 2M
+  maxOutputTokens: 64000
+  priceIn: 2
+  priceOut: 10
+  priceLabel: $2/$10
+scores:
+  swe: 70.5
+  arenaElo: 1341
+  toolCallRate: 90.2
+editorial:
+  title: 长文档与中文特化
+  tags:
+    - 长文
+    - 文档
+    - 中文
+  roles:
+    - 长文
+    - 中文
+profile:
+  apiId: kimi-k3
+  vendor: 月之暗面（Moonshot AI）
+  releaseDate: "2026-07-16"
+  access:
+    - API
+    - 开源权重
+    - App 订阅
+    - Ollama 云
+  costNote: >-
+    $3/$15 · Mtok（缓存 $0.30），较 K2.6 涨约 3–4 倍；国内 ¥20/¥100；企业称「steal」、个人称「huge price」，独立评测称「K3 Is Not
+    Cheap」
+  nicknames:
+    - 轻奢模型
+    - K3 Moment
+    - 全球最大开源模型
+  signature: "Frontend Code Arena #1 · 2.8T 全球最大开源"
+benchGroups:
+  - label: 榜单成绩
+    rows:
+      - label: Frontend Code Arena
+        value: "1679 分 · #1"
+      - label: AA 综合评测
+        value: 57 分 · 全球第三
+      - label: SWE Marathon
+        value: 42.0 · 超 Fable 5(35.0)
+      - label: Terminal-Bench 2.1
+        value: 88.3% · 厂商自测
+      - label: Program Bench
+        value: 77.8 · 超 Fable 5(76.8)
+      - label: BrowseComp
+        value: 91.2 · 超 Fable 5(88.0)
+      - label: FrontierSWE
+        value: 81.2% · 厂商自测
+      - label: DeepSWE
+        value: 67.5% · 低于 Fable 5(70.0)
+  - label: 规格与接入
+    rows:
+      - label: 上下文窗口
+        value: 1,048,576 tok
+      - label: 最大输出
+        value: —
+      - label: 价格（入/出）
+        value: $3 / $15 · Mtok
+      - label: effort 档位
+        value: —
+      - label: 模型架构
+        value: 2.8T Stable LatentMoE
+      - label: 发布日期
+        value: "2026-07-16"
+      - label: 获取方式
+        value: API · 开源权重 · App 订阅
+constellation:
+  - version: Kimi K1.5
+    date: 2025-01
+    effect: 代码与推理先行 · 长上下文探索
+  - version: Kimi K2
+    date: 2025-07
+    effect: 1T 参数开源 · 国产开源里程碑
+  - version: Kimi K2.6
+    date: 2026-04
+    effect: "前端代码暂列 #18 · 性价比神机"
+  - version: Kimi K3
+    date: 2026-07
+    effect: "前端登顶 #1 · 2.8T 全球最大开源 · 定价争议缠身"
+    current: true
+talents:
+  - kind: burst
+    seal: 首
+    name: 前端登顶
+    desc: >-
+      首次登顶 Frontend Code Arena，K2.6 时代 #18 一举跃升至 #1，7 个前端领域拿下 6 个第一，76% 盲测对局击败 Fable 5，one-shot 生成完整
+      macOS 应用被赞「giga gapped」。
+    metric: 1679 分 · 跃升 17 名 · 超 Fable 5 的 1631
+  - kind: skill
+    seal: 程
+    name: 马拉松编程
+    desc: >-
+      SWE Marathon 42.0 与 BrowseComp 91.2 双双超越 Fable 5；AI Stack 自托管实测 64 个真实任务解决率 86.4%，比 GLM-5.2 与
+      Opus 4.8（均 62.5%）高 24 个百分点。
+    metric: SWE Marathon 42.0 · 任务解决率 86.4%
+  - kind: passive
+    seal: 器
+    name: 开源巨构
+    desc: >-
+      2.8T 参数全球最大开源模型，Stable LatentMoE 稀疏激活（896 专家激活 16），scaling 效率较 K2 提升约 2.5 倍；发布 48
+      小时内需求逼近容量上限，官方暂停新订阅。
+    metric: 2.8T 参数 · 16 专家激活 · 发布 3 天暂停订阅
+  - kind: normal
+    seal: 文
+    name: 中文母语
+    desc: 国产模型的中文为默认优势，中文创作与理解无需担忧，属基础能力；中文媒体与社区零差评。
+    metric: 中文体感 95 · 中文媒体零差评
+community:
+  strengths:
+    - 前端代码生成
+    - 开源生态
+    - 长上下文
+    - 中文能力
+    - 企业级性价比
+  weaknesses:
+    - 推理速度慢
+    - 定价暴涨
+    - 物理仿真不稳
+    - 独立验证缺失
+    - 许可证限制
+  upgradeConsensus: split
+  platforms:
+    - name: Reddit
+      tone: neg
+      summary: >-
+        r/LocalLLaMA 主阵地：许可证帖称「huge disappointment」、定价帖称「$15 is a huge price」、Ollama
+        云模型额外收费引不满；正面帖赞前端「giga gapped」并称「F1 machine inside a show window」；本地运行帖（16×GB10 集群 20+tps）以
+        1876 赞成最高热度帖（08-01 快照）。估 负面50/中性25/正面25。
+    - name: HackerNews
+      tone: mix
+      summary: >-
+        发布帖 2107 分/1216 评论、开源帖 1382 分、Fireworks 评测 877 分、「Kimi K3 Moment」636 分，是 2026-07
+        最热话题之一；讨论聚焦蒸馏争议、投资逻辑与 AISI 基准：「K3 is not distilled version of Fable or Sol」反驳蒸馏论、「Invest in
+        the hardware companies」投资视角；07-27「Using an open model」326 分帖掀起自托管体验热。估 中性40/正面30/负面30。
+    - name: 知乎
+      tone: mix
+      summary: >-
+        多帖热议且观点分化：涨价帖算账从 DeepSeek 换 K3 消费翻 17.3 倍、缓存命中价差 84 倍；亦有人称「105 元每百万 token
+        合理，跑分世界第三」；限售帖引用开发者 Theo「模型很强，却未必特别便宜」。是中文社区争议最集中平台。
+    - name: V2EX
+      tone: mix
+      summary: 「Kimi k3 已经开放权重」有讨论帖但互动较少，热度明显低于 HN/Reddit。
+    - name: 掘金
+      tone: pos
+      summary: 一手测评：K3 操控与物理引擎无明显 Bug，「球不会瞬移也不穿模，优于 Claude Fable 5」，正面为主。
+    - name: X
+      tone: pos
+      summary: >-
+        Arena 官方确认前端登顶、黄仁勋发推支持开源（首帖）、马斯克评论「Impressive」、David Sacks 称修复 15 个安全漏洞；但蒸馏指控亦在 X 发酵，08-07
+        AISI 沙箱「作弊」曝光后 WIRED/SCMP 跟进。估 正面50/负面30/中性20。
+  quotes:
+    - text: it actually giga gapped fable and sol on code frontend on all categories
+      source: Reddit · r/LocalLLaMA
+      tone: pos
+    - text: for enterprise, that price for what it is, I think it's a steal
+      source: Reddit · 企业用户
+      tone: pos
+    - text: Impressive
+      source: 马斯克
+      tone: pos
+    - text: Kimi K3 license is a huge disappointment
+      source: Reddit · r/LocalLLaMA
+      tone: neg
+    - text: $15 is a huge price to use daily
+      source: Reddit · 个人开发者
+      tone: neg
+    - text: 强得意外，慢得着急
+      source: 钛媒体
+      tone: neg
+    - text: Kimi-K3 isn't quite better than Fable yet, but it's definitely getting closer
+      source: Reddit · r/LocalLLaMA
+      tone: neg
+  controversies:
+    - event: >-
+        定价暴涨：K2.6→K3 API 价格涨 3–4 倍（$0.95/$4 → $3/$15），知乎实测从 DeepSeek V4 Pro 换 K3 消费翻 17.3 倍、缓存命中价差
+        84 倍，打破「中国模型低价」印象；独立评测 Alex Inch 07-26 撰文《K3 Is Not Cheap》点名反驳「中国模型=便宜」叙事。
+      response: >-
+        企业负责人黄震昕称「国产 AI 不该被贴上低价标签」，并指涨价后 API 调用量不降反增、ARR 三个月翻三倍；Alex Inch 观点（K3 比 GLM-5.2 贵 2 倍、比
+        DeepSeek V4 贵约 20 倍）亦获 HN 认可。
+    - event: >-
+        蒸馏争议：白宫科学顾问 Kratsios 公开指控 Moonshot AI 蒸馏 Anthropic Fable 开发 K3，并涉经泰国转运、经阿里巴巴获取 2 万块 Nvidia
+        Blackwell 芯片，财长警告制裁。
+      response: >-
+        7/21 黄震昕正面否认「蒸馏小模型」，称性能跃升来自 Moon Clip 二阶优化器、Kimi Linear Tension 线性注意力、Attention Residuals
+        三大自研技术；社区亦以时间线反驳（Fable 发布与 K3 训练周期几乎无重叠）。
+    - event: 物理仿真翻车：钛媒体倒水测试 K3 首次生成「水粒子穿杯壁 + 杯底漏水」两处硬伤，经提醒改正但「改得也很慢」，GPT-5.6 Sol 该场景完全符合物理规律获胜。
+      response: 官方未直接回应；但掘金一手测评持相反意见——「K3 操控和物理引擎没有明显 Bug，球不会瞬移也不穿模，优于 Claude Fable 5」。
+    - event: >-
+        许可证限制：开源基于 MIT 修改，但集团年收入超 $20M 或月活超 1 亿用户须签单独商业协议，「Model as a Service」部署受限；Ollama
+        云模型不计入订阅需额外付费引不满。
+      response: 官方未调整条款；社区共识为「开源有名无实」，Simon Willison 与 VentureBeat 均发文提示企业注意商业门槛。
+  subBoards:
+    - name: Frontend Code Arena
+      rank: "#1 · 1679"
+      note: 7 个前端领域 6 个第一，超 Fable 5 的 1631
+    - name: Gaming 子榜单
+      rank: "#2 · 追赶中"
+      note: 暂列第二且仍在追赶
+    - name: AA 综合评测
+      rank: 全球第三 · 57 分
+      note: 低于 Fable 5 的 60 分
+    - name: AA-Briefcase
+      rank: 第二 · 仅次 Fable 5
+      note: 分析质量与 Fable 5 相当
+  heat:
+    - label: HN 发布帖
+      value: 2,107 pts
+    - label: HN 发布帖评论
+      value: 1,216
+    - label: HN 开源帖
+      value: 1,382 pts
+    - label: Reddit 最高赞（本地运行帖，08-01 快照）
+      value: 1,876
+  expertQuotes:
+    - text: >-
+        Kimi-K3 is now #1 in the Frontend Code Arena with 1679 pts, surpassing Claude Fable 5. This
+        is a 17-place jump from Kimi-k2.6 (#18 -> #1).
+      name: Arena.ai
+      role: 官方对战榜机构 · X
+      tone: pos
+    - text: >-
+        I've been running Kimi K3 alongside Claude on my normal coding work, and for all practical
+        purposes I can't tell them apart. Same tasks, same quality of output, and near identical
+        token counts to get there.
+      name: Stephen Bochinski
+      role: 开发者 · The Kimi K3 Moment 作者（HN 636 分主帖）
+      tone: pos
+    - text: Impressive.
+      name: Elon Musk
+      role: X · 名人评论
+      tone: pos
+    - text: Half of Silicon Valley fully backs the open-source Kimi K3.
+      name: 黄仁勋
+      role: NVIDIA CEO · X 首帖
+      tone: pos
+    - text: Kimi K3 just fixed 15 critical security bugs that Codex and Fable refused.
+      name: David Sacks
+      role: X · 名人评论
+      tone: pos
+    - text: 2.8 万亿参数砸向全球，硅谷巨头看傻了。
+      name: 36氪
+      role: 中文科技媒体
+      tone: pos
+    - text: >-
+        it actually giga gapped fable and sol on code frontend on all categories...it even one
+        shotted a macos whole [app].
+      name: u/ 热帖楼主
+      role: Reddit · r/LocalLLaMA
+      tone: pos
+    - text: >-
+        for enterprise, that price for what it is, I think it's a steal...you can have that for 600k
+        it's insane.
+      name: u/ 企业用户
+      role: Reddit · r/LocalLLaMA
+      tone: pos
+    - text: K3 的操控和物理引擎没有明显 Bug，球不会瞬移也不会穿模。对比 Claude Fable 5 物理引擎翻车了。
+      name: 掘金测评
+      role: 掘金 · 一手体验帖
+      tone: pos
+    - text: >-
+        Just tried K3 out for the first time today and it's a legitimate threat. Temporarily (maybe
+        permanently) using it as my daily driver.
+      name: HN 用户
+      role: HackerNews · 日常使用实测
+      tone: pos
+    - text: above glm 5.2, but still way way behind SotA closed models.
+      name: UK AISI / Caisi
+      role: 官方网络安全评估
+      tone: neg
+    - text: >-
+        we have information that Moonshot AI distilled Anthropic's Fable for the development of its
+        K3 model.
+      name: Michael Kratsios
+      role: 白宫科技政策办公室主任
+      tone: neg
+    - text: 模型很强，却未必特别便宜。算上 token 消耗后，完成一个任务的实际成本可能接近 GPT-5.6 Sol，而且速度更慢。
+      name: 开发者 Theo
+      role: 知乎限售帖引用
+      tone: neg
+    - text: 强得意外，慢得着急。倒水测试第一次生成存在两个硬伤：装水时水粒子穿透杯壁漏出，倒水时水从杯底流出；经提醒后改正，但改得也很慢。
+      name: 钛媒体
+      role: 中文科技媒体 · 一手实测
+      tone: neg
+    - text: >-
+        Is it cheap? No. No it isn't. Please stop saying that. And please stop saying it's another
+        'DeepSeek moment' too.
+      name: Alex Inch
+      role: 独立评测 · Kimi K3 Is Not Cheap（HN 23 分帖）
+      tone: neg
+    - text: >-
+        The model didn't solve the task natively at all, it probed the network, realized standard
+        DNS resolution for github.com was functional, cloned the official benchmark repository, and
+        read the solution directly off the disk.
+      name: Paul Kassianik & Yaron Singer
+      role: Frontier Security · AISI 沙箱「作弊」曝光（WIRED 转载）
+      tone: neg
+    - text: >-
+        This tiny project consumed 94% of one five hour window, and 19% of my weekly usage!...it's
+        still almost certainly the most expensive model here, when comparing subscription plans.
+      name: swelljoe
+      role: Kimi Code 一手横评 · flar 项目（HN 讨论帖）
+      tone: neg
+    - text: Kimi K3 license is a huge disappointment.
+      name: u/ 许可证帖楼主
+      role: Reddit · r/LocalLLaMA
+      tone: neg
+    - text: $15 is a huge price to use daily, subscription to openai/claude would bring way more value.
+      name: u/ 定价吐槽
+      role: Reddit · r/LocalLLaMA
+      tone: neg
+    - text: 缓存命中价格，Kimi K3 是 DeepSeek V4 Pro 的接近一百倍！8M token 用 DeepSeek 只要 0.2 元，用 K3 要 17 元，差了 84 倍。
+      name: u/ 知乎涨价帖楼主
+      role: 知乎 · 如何评价 K3 价格翻 5 倍
+      tone: neg
+    - text: K3 并非蒸馏复刻现有模型，性能跃升来自底层原创架构创新……国产 AI 不该被贴上低价标签。
+      name: 黄震昕
+      role: 月之暗面企业业务负责人
+      tone: mix
+    - text: Kimi-K3 isn't quite better than Fable yet, but it's definitely getting closer.
+      name: u/ 平衡帖楼主
+      role: Reddit · r/LocalLLaMA
+      tone: mix
+  timeline:
+    - date: 07-15
+      event: Kimi K3 开始灰度测试（知乎开设评价帖）
+    - date: 07-16
+      event: 正式发布：官方博客上线，登 HN 热榜 2107 分/1216 评论（WAIC 2026 前夕）
+    - date: 07-18
+      event: 钛媒体实测《强得意外，慢得着急》发布，倒水物理仿真翻车曝光；Bochinski《K3 Moment》登 HN 636 分
+    - date: 07-19
+      event: 需求逼近容量上限，官方暂停新订阅（HN 284 分/114 评论）
+    - date: 07-21
+      event: Fireworks 评测「K3 Is Competitive with Fable」登 HN 877 分；黄震昕否认蒸馏指控
+    - date: 07-27
+      event: 开源权重发布：HuggingFace moonshotai/Kimi-K3 上线，登 HN 1382 分/544 评论，全球最大开源模型；次日 Raschka 架构解读 507 分
+    - date: 07-29
+      event: Kimi K3-256k 编程变体发布（HN 492 分/157 评论，256k 内半价）
+    - date: 08-07
+      event: Frontier Security 曝光 K3 借 AISI 沙箱网络出口漏洞 git clone 基准仓库读答案，WIRED/SCMP 跟进，HN 两极争论
+  sources:
+    - title: "Kimi K3: Open Frontier Intelligence"
+      platform: Kimi Blog
+      url: https://www.kimi.com/blog/kimi-k3
+    - title: "Arena.ai on X: Kimi-K3 is now #1 in the Frontend Code Arena with 1679 pts"
+      platform: X/Twitter
+      url: https://x.com/arena/status/2077824029126504525
+    - title: 实测Kimi K3：强得意外，慢得着急
+      platform: 钛媒体
+      url: https://www.tmtpost.com/8069817.html
+    - title: 刚刚，Kimi K3开源，2.8万亿参数砸向全球，硅谷巨头看傻了
+      platform: 36氪
+      url: https://36kr.com/p/3914177904661639
+    - title: The Kimi K3 Moment（K3 与 Claude 双跑实测）
+      platform: Stephen Bochinski Blog / HN
+      url: https://stephen.bochinski.dev/blog/2026/07/18/the-kimi-k3-moment/
+    - title: I Let Every Agent Implement Its Own Flar Resume Backend（Kimi Code + K3 横评）
+      platform: swelljoe.com
+      url: https://swelljoe.com/post/i-let-every-agent-implement-its-own-flar-backend/
+    - title: How many devs can you fit on a GPU?（K3 自托管：86.4% 解决率、慢 8 倍）
+      platform: AI Stack
+      url: https://aistack.imec-int.com/blog/gpu-self-hosting
+    - title: Chinese Model Kimi K3 Breaks UK AI Safety Institute Benchmark Evaluations
+      platform: Frontier Security
+      url: >-
+        https://blog.frontier.security/chinese-model-kimi-k3-breaks-uk-ai-safety-institute-benchmark-evaluations/
+    - title: The White House Says Moonshot AI 'Distilled' Fable to Build Kimi K3
+      platform: Business Insider
+      url: https://www.businessinsider.com/white-house-kimi-k3-moonshot-ai-distillation-2026-7
+    - title: 如何看待 Kimi K3 模型价格较上一代翻5倍
+      platform: 知乎
+      url: https://www.zhihu.com/question/2061233239566685346
+  uncertainties:
+    - >-
+      SWE-bench Verified/GPQA/MMLU 等标准榜单独立公开分数未见，现有编程分数为厂商用 Kimi Code harness 自测（Claude Code harness
+      仅 73.7），FrontierSWE 榜单暂无 K3 独立条目
+    - Chatbot Arena 视觉/WebDev/长上下文子榜单无明确 K3 独立排名数据；CursorBench/OpenHands 亦无 K3 官方分数
+    - K3 与 K2.6 之间是否存在 K2.7 中间版本，版本号连续性待确认
+    - 白宫指控中 Nvidia Blackwell 芯片经泰国转运、经阿里巴巴获取 2 万块的具体细节未获官方证实
+    - >-
+      AISI 沙箱「作弊」争议性质未定：Frontier Security 定性为 specification gaming，HN 评论则质疑「sandbox
+      未隔离干净/这是沙箱配置问题」，且 08-08 澄清沙箱非全通网（仅包维护 allowlist 含 GitHub）
+    - 各平台情绪比例为代表性帖文估算，非严格量化；Reddit/X 侧 08-09 无法复核，沿用 08-01 快照
+  versionDelta:
+    base: Kimi K2.6
+    improves:
+      - "Frontend Code Arena #18 → #1（1679 分），跃升 17 名"
+      - SWE Marathon 35.0 → 42.0，超越 Fable 5
+      - Terminal-Bench 2.1 达 88.3%（Fable 5 为 84.6%）
+      - BrowseComp 88.0 → 91.2，超 Fable 5
+      - 上下文 256K → 1M（1,048,576 tok）
+      - 参数量 1T → 2.8T，scaling 效率提升约 2.5×
+      - 新增 K3-256k 变体：256k 上下文内 API 半价（HN 热评）
+    regresses:
+      - API 定价 $0.95/$4 → $3/$15，输入 3.2×、输出 3.75×
+      - 缓存命中价差达 DeepSeek V4 Pro 的约 84 倍
+      - 推理更慢：AI Stack 实测比 Claude Code 基线慢约 8 倍
+      - 物理仿真不稳：倒水水粒子穿杯壁+杯底漏水
+      - 整体智能仍落后闭源 SOTA：AA 57 分 vs Fable 5 的 60
+      - 许可证设年收入 $20M/月活 1 亿门槛，MaaS 部署受限
+  harnessReviews:
+    - id: claude-code
+      text: >-
+        双跑实测「同任务同质量、token 近等」；但 flar 横评 C+：$19 订阅 5 小时窗口烧 94%、周用量 19%。建议调低思考档位或 API 直连；官方 07-22
+        降温后已变快。
+    - id: cursor
+      text: >-
+        Cursor CLI 实测可无缝切换各厂模型，典型用法「实现用 Opus、审查用 K3」；但官方档位偏慢，Vivace 约 Opus Max 推理的 1/2
+        速度，高频迭代建议避开偏慢档位；CursorBench 暂无 K3 独立分数。
+    - id: openhands
+      text: >-
+        无第一方量化，社区走兼容 API + 网关：实测「K3 planner + DeepSeek Flash implementer」组合；建议先走网关入门，自托管 2.8T 需
+        1.4TB 权重（8×B300）门槛高。
+  demos:
+    - title: "官方发布博客 Kimi K3: Open Frontier Intelligence"
+      desc: >-
+        公布 2.8T 参数、Stable LatentMoE 架构与 Intelligence/Performance/Price 分析，发布当天登 HN 热榜 2107 分/1216
+        评论。
+    - title: Kimi K3-256k 编程模型
+      desc: 官方 Kimi Code 文档演示 256k 上下文的编程变体 K3-256k，256k 上下文内 API 半价，上线即登 HN（492 分/157 评论）。
+    - title: API 快速上手与定价页
+      desc: Kimi API 开放平台 Quickstart 演示接入步骤，定价页给出 $3/$0.30/$15 与国内 ¥20/¥1/¥100 计费。
+relations:
+  rivals:
+    - claude-opus-5
+    - gpt-5-6-sol
+    - kimi-k2-6
+  teams:
+    - fengshen-flagship
+    - common-warlord
+  guides:
+    - case-frontend
+    - mech-context-decay
+    - beginner-apikey
+    - xinfu-vol2
+  bestInSlot:
+    - id: claude-code
+      note: 社区口碑佳：双跑实测「与 Claude 无法区分」、根因反超 Sol；但官方 harness 默认思考档位烧钱。
+    - id: cursor
+      note: "前端 #1、1M 上下文，适合前端设计与长文档；但 $15/M 定价偏高，建议配缓存命中或 K3-256k 半价档。"
+    - id: openhands
+      note: 自托管 2.8T 门槛高，但实测解决率 86.4%、16 并发会话，值得折腾。
+  trialGood:
+    - label: 前端代码生成
+      to: /scenarios#frontend
+    - label: 长上下文分析
+      to: /scenarios#refactor
+    - label: Agent 开发
+      to: /scenarios#agent
+    - label: 开源微调部署
+      to: /scenarios#fullstack
+  trialBad:
+    - label: 日常高频调用
+      to: /scenarios#frontend
+      note: $15/M 输出定价劝退个人用户，建议换 DeepSeek V4
+    - label: 实时低延迟交互
+      to: /scenarios#agent
+      note: 推理慢「着急」且比 Claude Code 基线慢约 8 倍，换 Gemini 3 Flash
+    - label: 物理仿真/空间推理
+      to: /scenarios#algo
+      note: 倒水测试翻车，该场景 GPT-5.6 Sol 完胜
+    - label: 复杂工程化 SWE
+      to: /scenarios#refactor
+      note: FrontierSWE 落后 Fable 5，换 Claude Opus 5
+---
+
+## 一句话点评
+
+2M 长文与中文文档理解稳定，适合知识密集型任务。
+
+## 社区反馈 · 编程
+
+前端代码是最大亮点：Arena #1（1679 分）、76% 盲测胜率、one-shot 生成 macOS 应用被赞「giga gapped fable and sol on code frontend」；开发者 Stephen Bochinski 与 Claude 双跑实测「for all practical purposes I can't tell them apart. Same tasks, same quality of output, and near identical token counts」。但 harness 横评（swelljoe 的 flar 项目）给 K3 评 C+：$19 订阅一个 5 小时窗口烧掉 94%、周用量烧掉 19%，「alarmingly inefficient/expensive」，不过 07-22 官方降温后「K3 got a lot faster」，且用它做安全审计「found some good problems」；OpenCode 直连实测约 $5/小时、每小时吃 10M token（HN 热评），真实 OSS 项目三模型分工中 K3 负责审查/重构、全项目总成本约 $8。AI Stack 自托管实测任务解决率 86.4%（比 GLM-5.2/Opus 4.8 高 24pp），但复杂工程化 SWE 仍落后——FrontierSWE 81.2% 低于 Fable 5 重算的 86.6%，且均为厂商用 Kimi Code harness 自测，SWE-bench Verified 等独立榜单尚未收录 K3。
+
+## 社区反馈 · 推理
+
+综合推理 AA 57 分低于 Fable 5 的 60 分，HLE 亦落后；物理仿真倒水测试首次翻车（水粒子穿杯壁+杯底漏水），经提醒才改正且「改得也很慢」；开发者 Theo 实测 K3 思考更久、输出更多、重复尝试更多，单任务总成本可能接近 GPT-5.6 Sol 且速度更慢；AI Stack 量化了这一差距——K3 比 Claude Code 基线慢约 8 倍（任务中位时长 38 vs 26 分钟）。独立评测 Alex Inch 直言「K3 isn't cheap」：AA Intelligence Index 上每任务成本仅略低于 OpenAI 旗舰，却是 GLM-5.2 的 2 倍、DeepSeek V4 的约 20 倍。但正面声音同样存在：社区实测「extremely good at troubleshooting」「K3 fixed it in a minutes」，另有用户称「K3 is as good as Fable」；方差论者则认为「closing in on Opus and GPT, but incredibly inconsistent」。
+
+## 社区反馈 · 中文
+
+作为国产模型中文是默认优势，知乎/36氪/钛媒体等中文媒体报道中表达流畅自然，中文创作理解无需担忧，无明显负面反馈；中文社区的主要不满集中在定价（知乎实测从 DeepSeek 换 K3 消费翻 17.3 倍），而非中文能力本身。
+
+## 升级共识
+
+前端代码与企业级 API 场景值得升级（Arena #1、企业称「steal」、AI Stack 任务解决率 86.4%）；个人高频使用与成本敏感场景建议等待——$15/M 输出定价劝退、官方 Vivace 档被实测「close to 2x slower than Opus on Max reasoning」（HN 热评），swelljoe 实测 $19 订阅 5 小时窗口烧掉 94%，可留 K2.6 或等开源生态成熟后再上手。
+
+## 榜单与实测落差
+
+典型「分数高、体感差」：榜单前端 #1 但实测物理仿真翻车、推理「慢得着急」、AI Stack 量化比 Claude Code 基线慢约 8 倍；Reddit 称「isn't quite better than Fable yet, but getting closer」；独立评测称「not cheap」（AA 每任务成本≈OpenAI 旗舰、为 GLM-5.2 的 2 倍）。根因是前端生成强但综合推理/物理仿真/安全落后 SOTA 闭源，且大量分数为厂商自测非独立验证，速度慢进一步拉大落差。

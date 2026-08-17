@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: doubao-2-0-lite
+tier: T2
+stars: 4
+composite: 82
+stats:
+  code: 60
+  reasoning: 62
+  context: 70
+  speed: 55
+  multimodal: 88
+  value: 88
+sentiment:
+  positive: 40
+  mixed: 25
+  negative: 35
+radar:
+  - axis: 长程任务
+    value: 68
+  - axis: 编程工程
+    value: 60
+  - axis: 抽象推理
+    value: 62
+  - axis: 上下文利用
+    value: 70
+  - axis: 中文能力
+    value: 90
+  - axis: 响应速度
+    value: 55
+  - axis: 稳定性
+    value: 45
+  - axis: 指令遵循
+    value: 50
+  - axis: 易用性
+    value: 85
+  - axis: 性价比
+    value: 88
+danmaku:
+  - text: 能说会道的小天才，主战场不在推理
+    platform: zhihu
+    main: true
+  - text: 录屏直出网页代码，比原版还炫酷
+    platform: zhihu
+    main: true
+  - text: very strong in visual reasoning and math
+    platform: reddit
+    main: true
+  - text: 豆包2.0是Claude开源版
+    platform: x
+    main: true
+  - text: 中文综合 73.9%，总排名前进至第 4 位
+    platform: zhihu
+    main: true
+  - text: 5.4 元/千次，同梯队综合成本最低
+    platform: zhihu
+    main: true
+  - text: 一本正经胡说八道，嬉皮笑脸认真道歉
+    platform: zhihu
+    main: false
+  - text: 被豆包坑走 600 块，血泪教训
+    platform: zhihu
+    main: false
+  - text: 幻觉顽疾 Lite 再劣化，捞针任务过于随机
+    platform: zhihu
+    main: false
+  - text: 平均耗时 33s 暴增至 276s，退步 8.4 倍
+    platform: zhihu
+    main: false
+  - text: 黎元洪搜出范伟 PS 图，图片识别翻车
+    platform: zhihu
+    main: false
+  - text: weaker in coding，且不开源关注度低
+    platform: reddit
+    main: false
+  - text: 闭源商业模型市场领导者（492 赞帖）
+    platform: reddit
+    main: false
+  - text: TRAE 配 Doubao-Seed-Code 登顶 SWE-bench
+    platform: reddit
+    main: false
+  - text: 音频 19 语种转写，多项超 Gemini-3.1-Pro
+    platform: x
+    main: false
+  - text: HN 仅 15 pts：Seed 2.0 家族发布帖遇冷
+    platform: hn
+    main: false

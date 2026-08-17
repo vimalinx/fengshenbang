@@ -1,0 +1,82 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: claude-sonnet-4-6
+tier: T1
+stars: 5
+composite: 85.9
+stats:
+  code: 88
+  reasoning: 82
+  context: 76
+  speed: 82
+  multimodal: 72
+  value: 74
+sentiment:
+  positive: 42
+  mixed: 23
+  negative: 35
+radar:
+  - axis: 长程任务
+    value: 88
+  - axis: 编程工程
+    value: 90
+  - axis: 抽象推理
+    value: 68
+  - axis: 上下文利用
+    value: 92
+  - axis: 中文能力
+    value: 66
+  - axis: 响应速度
+    value: 82
+  - axis: 稳定性
+    value: 58
+  - axis: 指令遵循
+    value: 85
+  - axis: 易用性
+    value: 80
+  - axis: 性价比
+    value: 84
+danmaku:
+  - text: 发布帖 1346 分：roughly as good as Opus 4.5
+    platform: hn
+    main: true
+  - text: GDPval-AA 1633 Elo，反超 Opus 4.6 全场第一
+    platform: zhihu
+    main: true
+  - text: 免费用户也能用 Opus 级编程能力
+    platform: zhihu
+    main: true
+  - text: 70% 开发者偏好：比 4.5 更少偷懒、更听话
+    platform: reddit
+    main: true
+  - text: Opus-tier quality at 1/5 the price
+    platform: x
+    main: true
+  - text: 1M 上下文 GA：全窗口标准价无加价
+    platform: hn
+    main: true
+  - text: most quiet launch of a sonnet model so far
+    platform: reddit
+    main: false
+  - text: 我是 DeepSeek（中文身份错乱翻车）
+    platform: x
+    main: false
+  - text: 30k token 答错，GPT-5.2 500 token 就对了
+    platform: reddit
+    main: false
+  - text: WTF 频率 25→484/周，质量回退被量化
+    platform: reddit
+    main: false
+  - text: my sonnet 4.6 is back to normal 🥹
+    platform: reddit
+    main: false
+  - text: 偷偷摸摸去掉了 sonnet 独立周限
+    platform: v2ex
+    main: false
+  - text: 全平台已更新，附切换教程
+    platform: linuxdo
+    main: false
+  - text: 从没见 4.6 思考超过几秒，结果却很好
+    platform: x
+    main: false

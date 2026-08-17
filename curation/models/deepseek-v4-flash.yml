@@ -1,0 +1,85 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: deepseek-v4-flash
+tier: T1
+stars: 5
+composite: 90.5
+stats:
+  code: 85
+  reasoning: 78
+  context: 74
+  speed: 86
+  multimodal: 45
+  value: 95
+sentiment:
+  positive: 60
+  mixed: 25
+  negative: 15
+radar:
+  - axis: 长程任务
+    value: 62
+  - axis: 编程工程
+    value: 85
+  - axis: 抽象推理
+    value: 78
+  - axis: 上下文利用
+    value: 74
+  - axis: 中文能力
+    value: 60
+  - axis: 响应速度
+    value: 86
+  - axis: 稳定性
+    value: 70
+  - axis: 指令遵循
+    value: 62
+  - axis: 易用性
+    value: 78
+  - axis: 性价比
+    value: 95
+danmaku:
+  - text: 新 DeepSeek 模型像圣诞节一样让人兴奋
+    platform: hn
+    main: true
+  - text: 性价比之王：$60 内实测 15.8 万请求/月
+    platform: reddit
+    main: true
+  - text: market crash：又要引发一次市场震动
+    platform: reddit
+    main: true
+  - text: 竟然完爆 V4 Pro Preview，正式版还得了
+    platform: v2ex
+    main: true
+  - text: frontier-adjacent at Haiku-tier pricing
+    platform: x
+    main: true
+  - text: ARC-AGI-1 89.0%，每任务只要 $0.02
+    platform: hn
+    main: true
+  - text: 更新帖 1065 分，r/LocalLLaMA 当月最高
+    platform: reddit
+    main: false
+  - text: benchmarks are cherry picked
+    platform: reddit
+    main: false
+  - text: 3.6 倍 token 才追平 Gemini 3.6 Flash
+    platform: hn
+    main: false
+  - text: final 比 preview 慢 2.5 倍，不再算快模型
+    platform: hn
+    main: false
+  - text: 用 2 亿 token 没体验出智能，和 Minimax 一桌
+    platform: v2ex
+    main: false
+  - text: 官方预告大幅涨价，便宜窗口要关了
+    platform: reddit
+    main: false
+  - text: 接近 GPT-5.4-xhigh 和 Luna Max
+    platform: linuxdo
+    main: false
+  - text: 本地可跑：Q8 168GB / 3-bit 110GB，M3 Max 功耗 50W
+    platform: x
+    main: false
+  - text: 审查漂移：LineageEval gap +32→+44
+    platform: hn
+    main: false

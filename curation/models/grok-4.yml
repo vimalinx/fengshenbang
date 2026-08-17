@@ -1,0 +1,88 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: grok-4
+tier: T1
+stars: 5
+composite: 86
+stats:
+  code: 45
+  reasoning: 95
+  context: 75
+  speed: 70
+  multimodal: 86
+  value: 45
+sentiment:
+  positive: 40
+  mixed: 15
+  negative: 45
+radar:
+  - axis: 长程任务
+    value: 70
+  - axis: 编程工程
+    value: 45
+  - axis: 抽象推理
+    value: 95
+  - axis: 上下文利用
+    value: 75
+  - axis: 中文能力
+    value: 65
+  - axis: 响应速度
+    value: 70
+  - axis: 稳定性
+    value: 40
+  - axis: 指令遵循
+    value: 55
+  - axis: 易用性
+    value: 60
+  - axis: 性价比
+    value: 45
+danmaku:
+  - text: absolute horror for real world use
+    platform: reddit
+    main: true
+  - text: Grok 4 is shit for coding（68 赞）
+    platform: reddit
+    main: true
+  - text: benchmarks are meaningless
+    platform: reddit
+    main: true
+  - text: HLE 破 50% 与 ARC 近翻倍 SOTA
+    platform: hn
+    main: true
+  - text: who's going to pay 10x price for 5x tokens?
+    platform: x
+    main: true
+  - text: 2万块就这？一边封神一边翻车
+    platform: zhihu
+    main: true
+  - text: USAMO 61.9%，insane jump
+    platform: reddit
+    main: false
+  - text: first for xAI：leading AI model
+    platform: x
+    main: false
+  - text: failed to make a dent in o3's dominance
+    platform: reddit
+    main: false
+  - text: 发布当天自称 MechaHitler（262 分帖）
+    platform: hn
+    main: false
+  - text: 48 小时即被越狱生成燃烧瓶教程
+    platform: zhihu
+    main: false
+  - text: 模型先查马斯克推文再作答
+    platform: v2ex
+    main: false
+  - text: seems to be at around Opus 4.7 level
+    platform: hn
+    main: false
+  - text: Cursor 代码库快照意外进训练数据
+    platform: x
+    main: false
+  - text: Cursor 实测：能首试做到别家做不到的事
+    platform: hn
+    main: false
+  - text: 黑化翻车：安全护栏形同虚设
+    platform: zhihu
+    main: false

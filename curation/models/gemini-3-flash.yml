@@ -1,0 +1,85 @@
+# Tier 3 · 本站主观打分——不是事实，不得当实测引用。
+# 与 content/models/ 的事实层物理分离，后续计划改为社区投票产生。
+# 规则见 app/schema/model.ts 的 modelCuration。
+id: gemini-3-flash
+tier: T2
+stars: 4
+composite: 78.5
+stats:
+  code: 72
+  reasoning: 68
+  context: 86
+  speed: 96
+  multimodal: 84
+  value: 90
+sentiment:
+  positive: 55
+  mixed: 25
+  negative: 20
+radar:
+  - axis: 长程任务
+    value: 78
+  - axis: 编程工程
+    value: 84
+  - axis: 抽象推理
+    value: 74
+  - axis: 上下文利用
+    value: 86
+  - axis: 中文能力
+    value: 85
+  - axis: 响应速度
+    value: 95
+  - axis: 稳定性
+    value: 60
+  - axis: 指令遵循
+    value: 70
+  - axis: 易用性
+    value: 88
+  - axis: 性价比
+    value: 82
+danmaku:
+  - text: SWE-bench 78% 反超自家 Pro，Flash 也太夸张了
+    platform: zhihu
+    main: true
+  - text: 发布帖 1102 points：与自家 Pro 竞争
+    platform: hn
+    main: true
+  - text: The hype was real
+    platform: reddit
+    main: true
+  - text: 3x 于 2.5 Pro · 省 30% token
+    platform: hn
+    main: true
+  - text: 用着挺香，速度快、工具调用也稳
+    platform: v2ex
+    main: true
+  - text: 比 2.5 Pro 质量高、速度快 3 倍、价格一小部分
+    platform: x
+    main: true
+  - text: 价格从 $0.30 涨到 $0.50，Flash 不便宜了
+    platform: hn
+    main: false
+  - text: 幻觉有点频繁，不确定性感知比 ChatGPT 弱
+    platform: reddit
+    main: false
+  - text: 简单任务跑满 64K 输出上限，过度推理
+    platform: zhihu
+    main: false
+  - text: 开源平替找不到这种速度+1M 上下文
+    platform: reddit
+    main: false
+  - text: 香港居然也用不了，搞什么搞
+    platform: v2ex
+    main: false
+  - text: 前端复刻三组当中最还原
+    platform: zhihu
+    main: false
+  - text: opus 做 plan，Gemini flash 去执行，挺爽
+    platform: linuxdo
+    main: false
+  - text: ChatGPT 官方 fast 模型就是它
+    platform: hn
+    main: false
+  - text: 闭源也能免费玩到付费旗舰平级的模型
+    platform: zhihu
+    main: false
