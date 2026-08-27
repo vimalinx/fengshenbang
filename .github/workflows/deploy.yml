@@ -17,7 +17,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # 内容构建脚本直接执行 TypeScript，需 Node 24 的原生类型剥离支持。
+          node-version: 24
           cache: npm
           cache-dependency-path: app/package-lock.json
 
