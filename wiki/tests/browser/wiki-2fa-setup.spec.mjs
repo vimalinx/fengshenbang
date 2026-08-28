@@ -49,12 +49,12 @@ test('all operational roles enroll TOTP and can log in with it', async ({ browse
     expect(values.length).toBeGreaterThan(2);
     const secret = values[0];
     const recoveryCodes = values.slice(1);
-    await page.locator('#mw-input-token').fill(totp(secret));
+    await page.locator('input[name="token"]').fill(totp(secret));
     await Promise.all([
       page.waitForLoadState('networkidle'),
       page.locator('.mw-htmlform-submit').click(),
     ]);
-    await expect(page.locator('body')).toContainText('已验证双重认证凭据');
+    await expect(page.locator('body')).toContainText(/已验证双重(?:身份验证|认证)凭据/);
     await context.close();
 
     const waitMs = (31 - (Math.floor(Date.now() / 1000) % 30)) * 1000;
