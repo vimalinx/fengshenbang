@@ -34,15 +34,15 @@ test('public rendering and moderated publication work in a real browser', async 
 
   await publicPage.goto(wikiUrl('首页'));
   await expect(publicPage).toHaveTitle(/封神榜 Wiki/);
-  await expect(publicPage.getByRole('heading', { level: 1 })).toContainText('首页');
+  await expect(publicPage.locator('#firstHeading')).toContainText('首页');
   await expect(publicPage.locator('body')).toContainText('面向公众协作的大模型知识库');
-  await expect(publicPage.getByRole('link', { name: /创建账户|加入封神榜 Wiki/ }).first()).toBeVisible();
+  await expect(publicPage.getByRole('link', { name: /创建账号|注册参与/ }).first()).toBeVisible();
   await publicPage.screenshot({ path: path.join(artifactDir, '01-home-desktop.png'), fullPage: true });
 
   const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true });
   const mobilePage = await mobile.newPage();
   await mobilePage.goto(wikiUrl('首页'));
-  await expect(mobilePage.getByRole('heading', { level: 1 })).toBeVisible();
+  await expect(mobilePage.locator('#firstHeading')).toBeVisible();
   const overflow = await mobilePage.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(2);
   await mobilePage.screenshot({ path: path.join(artifactDir, '02-home-mobile.png'), fullPage: true });
