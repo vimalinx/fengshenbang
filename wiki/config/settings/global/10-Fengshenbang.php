@@ -124,14 +124,20 @@ $wgRateLimits['sendemail']['user'] = [ 5, 86400 ];
 // Optional SMTP. Internet registration must not be opened with email
 // confirmation enabled until these values have been tested end-to-end.
 if ( getenv( 'WIKI_SMTP_HOST' ) ) {
+    $smtpEncryption = strtolower( getenv( 'WIKI_SMTP_ENCRYPTION' ) ?: 'tls' );
+    $smtpHost = getenv( 'WIKI_SMTP_HOST' );
+    if ( $smtpEncryption === 'ssl' ) {
+        $smtpHost = 'ssl://' . $smtpHost;
+    }
     $wgSMTP = [
-        'host' => getenv( 'WIKI_SMTP_HOST' ),
+        'host' => $smtpHost,
         'IDHost' => parse_url( $wgServer, PHP_URL_HOST ) ?: 'fengshenbang.wiki',
         'port' => (int)( getenv( 'WIKI_SMTP_PORT' ) ?: 587 ),
         'auth' => (bool)getenv( 'WIKI_SMTP_USER' ),
         'username' => getenv( 'WIKI_SMTP_USER' ) ?: '',
         'password' => getenv( 'WIKI_SMTP_PASSWORD' ) ?: '',
-        'secure' => getenv( 'WIKI_SMTP_ENCRYPTION' ) ?: 'tls',
+        'starttls' => $smtpEncryption === 'tls',
+        'timeout' => 20,
     ];
 }
 

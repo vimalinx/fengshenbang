@@ -17,7 +17,7 @@ test('public registration requires a real mailbox confirmation before editing', 
   await page.locator('#wpPassword2').fill(fixture.password);
   await page.locator('#wpRetype').fill(fixture.password);
   await page.locator('#wpEmail').fill(fixture.email);
-  await page.locator('#wpCaptchaWord').fill(fixture.captchaAnswer);
+  await page.locator('#mw-input-captchaWord').fill(fixture.captchaAnswer);
   await Promise.all([
     page.waitForLoadState('networkidle'),
     page.locator('#wpCreateaccount').click(),
