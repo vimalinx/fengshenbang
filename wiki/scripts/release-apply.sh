@@ -108,7 +108,7 @@ rollback() {
   apply_tree "$previous_tree"
   rm -rf "$previous_tree"
   configure_and_start
-  WIKI_DIR="$remote_dir" "$candidate/scripts/verify-live.sh"
+  WIKI_DIR="$remote_dir" ./scripts/verify-live.sh
   ROLLBACK_RELEASE_ID="$release_id" ROLLBACK_COMMIT="$commit" python3 - <<'PY'
 import json
 import os
@@ -144,7 +144,7 @@ on_error() {
 trap on_error ERR
 
 cd "$remote_dir"
-WIKI_DIR="$remote_dir" "$candidate/scripts/verify-live.sh"
+WIKI_DIR="$remote_dir" ./scripts/verify-live.sh
 backup_output=$(./scripts/backup.sh)
 printf '%s\n' "$backup_output"
 prebackup=$(sed -n 's/^Backup created: //p' <<<"$backup_output")
