@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-WIKI_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+WIKI_DIR=${WIKI_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}
+WIKI_DIR=$(cd "$WIKI_DIR" && pwd)
 BACKUP_ROOT=$(realpath -m "$WIKI_DIR/backups")
 
 usage() {

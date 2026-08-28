@@ -2,7 +2,8 @@
 set -euo pipefail
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-wiki_dir="$(cd -- "$script_dir/.." && pwd)"
+wiki_dir=${WIKI_DIR:-$(cd -- "$script_dir/.." && pwd)}
+wiki_dir=$(cd -- "$wiki_dir" && pwd)
 cd "$wiki_dir"
 
 if [[ ! -f .env ]]; then
@@ -63,7 +64,7 @@ for header in 'strict-transport-security:' 'x-content-type-options: nosniff' 'x-
 done
 echo "PASS security-headers: HSTS, nosniff and SAMEORIGIN"
 
-python3 scripts/verify-permissions.py --url "$WIKI_PUBLIC_URL"
+python3 "$script_dir/verify-permissions.py" --url "$WIKI_PUBLIC_URL"
 
 counts="$("${compose[@]}" exec -T db mariadb \
     -uroot "-p${MARIADB_ROOT_PASSWORD}" "$WIKI_DB_NAME" -N \
@@ -90,5 +91,5 @@ if [[ -z "$latest_backup" ]]; then
     echo "FAIL: no remote backup exists" >&2
     exit 1
 fi
-./scripts/restore.sh --from "$latest_backup" --check >/dev/null
+"$script_dir/restore.sh" --from "$latest_backup" --check >/dev/null
 echo "PASS backup: $latest_backup checksums are valid"
