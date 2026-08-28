@@ -1,0 +1,145 @@
+name: fengshenbang-wiki
+
+x-wiki-environment: &wiki-environment
+  MW_SITE_SERVER: ${WIKI_PUBLIC_URL}
+  MW_SECRET_KEY: ${MW_SECRET_KEY}
+  MYSQL_HOST: db
+  MYSQL_PORT: "3306"
+  MYSQL_USER: ${WIKI_DB_USER}
+  MYSQL_PASSWORD: ${WIKI_DB_PASSWORD}
+  MYSQL_SSL: "false"
+  CANASTA_ENABLE_VARNISH: "false"
+  MW_AUTOUPDATE: "true"
+  MW_ENABLE_JOB_RUNNER: "true"
+  PHP_UPLOAD_MAX_FILESIZE: 20M
+  PHP_POST_MAX_SIZE: 24M
+  PHP_MAX_INPUT_VARS: "3000"
+  WIKI_REQUIRE_EMAIL_CONFIRMATION: ${WIKI_REQUIRE_EMAIL_CONFIRMATION:-false}
+  WIKI_ENABLE_APPROVED_REVS: ${WIKI_ENABLE_APPROVED_REVS:-true}
+  WIKI_CAPTCHA_QUESTION: ${WIKI_CAPTCHA_QUESTION:-}
+  WIKI_CAPTCHA_ANSWER: ${WIKI_CAPTCHA_ANSWER:-}
+  WIKI_SMTP_HOST: ${WIKI_SMTP_HOST:-}
+  WIKI_SMTP_PORT: ${WIKI_SMTP_PORT:-587}
+  WIKI_SMTP_USER: ${WIKI_SMTP_USER:-}
+  WIKI_SMTP_PASSWORD: ${WIKI_SMTP_PASSWORD:-}
+  WIKI_SMTP_ENCRYPTION: ${WIKI_SMTP_ENCRYPTION:-tls}
+  WIKI_NOTIFICATION_EMAIL: ${WIKI_NOTIFICATION_EMAIL:-}
+
+x-wiki-volumes: &wiki-volumes
+  - ./config:/mediawiki/config
+  - ./data/images:/mediawiki/images
+  - ./data/public-assets:/mediawiki/public_assets
+  - wiki-cache:/mediawiki/cache
+  - ./extensions:/var/www/mediawiki/w/user-extensions
+  - ./skins:/var/www/mediawiki/w/user-skins
+  - wiki-logs:/var/log/mediawiki
+
+services:
+  db:
+    image: mariadb:11.4@sha256:611a2fcc5fa7c6ceb8644c6f74b25ede004ff6c3a6b38c8f8c23d3bbf6c26430
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${WIKI_DB_NAME}
+      MARIADB_USER: ${WIKI_DB_USER}
+      MARIADB_PASSWORD: ${WIKI_DB_PASSWORD}
+      MARIADB_AUTO_UPGRADE: "1"
+    command:
+      - mariadbd
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --expire-logs-days=3
+      - --secure-file-priv=
+    healthcheck:
+      test: ["CMD-SHELL", "healthcheck.sh --connect --innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+    volumes:
+      - wiki-db:/var/lib/mysql
+    logging:
+      options:
+        max-size: 20m
+        max-file: "3"
+
+  web:
+    build:
+      context: .
+    image: fengshenbang/wiki:local
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment: *wiki-environment
+    volumes: *wiki-volumes
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/server-status"]
+      interval: 15s
+      timeout: 5s
+      retries: 20
+      start_period: 90s
+    logging:
+      options:
+        max-size: 20m
+        max-file: "3"
+
+  caddy:
+    image: caddy:2.10.2-alpine@sha256:4c6e91c6ed0e2fa03efd5b44747b625fec79bc9cd06ac5235a779726618e530d
+    restart: unless-stopped
+    depends_on:
+      web:
+        condition: service_healthy
+    environment:
+      CADDY_SITE_ADDRESS: ${WIKI_CADDY_ADDRESS:-:80}
+    ports:
+      - ${WIKI_BIND_IP:-127.0.0.1}:${WIKI_HTTP_PORT:-18088}:80
+      - ${WIKI_BIND_IP:-127.0.0.1}:${WIKI_HTTPS_PORT:-18443}:443
+    volumes:
+      - ./config/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    logging:
+      options:
+        max-size: 20m
+        max-file: "3"
+
+  bootstrap:
+    profiles: [tools]
+    image: fengshenbang/wiki:local
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      <<: *wiki-environment
+      WIKI_PUBLIC_URL: ${WIKI_PUBLIC_URL}
+      WIKI_SITE_NAME: ${WIKI_SITE_NAME}
+      WIKI_DB_NAME: ${WIKI_DB_NAME}
+      WIKI_DB_USER: ${WIKI_DB_USER}
+      WIKI_DB_PASSWORD: ${WIKI_DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      WIKI_ADMIN_USER: ${WIKI_ADMIN_USER}
+      WIKI_ADMIN_PASSWORD: ${WIKI_ADMIN_PASSWORD}
+    volumes:
+      - ./config:/mediawiki/config
+      - ./data/images:/mediawiki/images
+      - ./data/public-assets:/mediawiki/public_assets
+      - wiki-cache:/mediawiki/cache
+      - ./extensions:/var/www/mediawiki/w/user-extensions
+      - ./skins:/var/www/mediawiki/w/user-skins
+      - ./generated/seed:/seed:ro
+      - ./scripts/bootstrap.sh:/opt/wiki/bootstrap.sh:ro
+      - wiki-logs:/var/log/mediawiki
+    entrypoint: ["/bin/bash", "/opt/wiki/bootstrap.sh"]
+
+volumes:
+  wiki-db:
+  wiki-logs:
+  wiki-cache:
+  caddy-data:
+  caddy-config:

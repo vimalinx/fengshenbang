@@ -1,0 +1,15 @@
+# Extensions and skins are bundled by Canasta unless noted otherwise.
+extensions:
+  - AbuseFilter
+  - ApprovedRevs
+  - ConfirmEdit
+  - ConfirmEdit/QuestyCaptcha
+  - Moderation
+  - PageForms
+  - ParserFunctions
+  - SemanticMediaWiki
+  - SpamBlacklist
+  - TitleBlacklist
+  - VisualEditor
+skins:
+  - Vector

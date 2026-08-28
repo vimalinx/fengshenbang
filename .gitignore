@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!wiki/.env.example
 
 # vercel
 .vercel
@@ -41,3 +42,13 @@ yarn-error.log*
 next-env.d.ts
 ak-gateway-guide.md
 opus5-fullpage.png
+
+# Local MediaWiki staging state
+/wiki/.env
+/wiki/backups/
+/wiki/data/
+/wiki/generated/
+/wiki/config/wikis.yaml
+/wiki/config/persistent/
+/wiki/config/composer.local.json
+/wiki/scripts/__pycache__/

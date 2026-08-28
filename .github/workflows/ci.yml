@@ -56,3 +56,26 @@ jobs:
         working-directory: app
         run: npm run lint
         continue-on-error: true
+
+  wiki-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: wiki/requirements.txt
+
+      - name: Install importer dependency
+        run: python -m pip install -r wiki/requirements.txt
+
+      - name: Validate scripts, seed corpus and Compose stack
+        working-directory: wiki
+        run: |
+          python -m compileall -q scripts
+          bash -n scripts/*.sh
+          make seed
+          make init
+          make validate
