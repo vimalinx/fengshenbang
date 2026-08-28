@@ -68,8 +68,25 @@ jobs:
           cache: pip
           cache-dependency-path: wiki/requirements.txt
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: wiki/package-lock.json
+
       - name: Install importer dependency
-        run: python -m pip install -r wiki/requirements.txt
+        run: |
+          python -m pip install -r wiki/requirements.txt
+          npm ci --prefix wiki
+
+      - name: ShellCheck operations scripts
+        run: >-
+          docker run --rm -v "$PWD:/mnt:ro" -w /mnt
+          koalaman/shellcheck@sha256:61862eba1fcf09a484ebcc6feea46f1782532571a34ed51fedf90dd25f925a8d
+          wiki/scripts/*.sh
+
+      - name: Discover browser acceptance tests
+        run: npm --prefix wiki run test:browser -- --list
 
       - name: Validate scripts, seed corpus and Compose stack
         working-directory: wiki

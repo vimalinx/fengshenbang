@@ -5,6 +5,7 @@ WIKI_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$WIKI_DIR"
 [[ -f .env ]] || { echo "Run make init first." >&2; exit 1; }
 set -a
+# shellcheck disable=SC1091
 source .env
 set +a
 

@@ -52,3 +52,7 @@ opus5-fullpage.png
 /wiki/config/persistent/
 /wiki/config/composer.local.json
 /wiki/scripts/__pycache__/
+/wiki/node_modules/
+/wiki/test-results/
+/wiki/playwright-report/
+/wiki/release-artifacts/

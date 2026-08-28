@@ -6,12 +6,13 @@ from __future__ import annotations
 import argparse
 import http.cookiejar
 import json
+import os
 import secrets
 import subprocess
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
-import urllib.error
 from pathlib import Path
 
 
@@ -205,6 +206,57 @@ def cleanup_acceptance(
     return len(reviewers), len(titles)
 
 
+def prepare_browser_fixture(wiki_dir: Path, base_url: str, output: Path) -> None:
+    suffix = secrets.token_hex(4)
+    contributor = f"AcceptanceContributor{suffix}"
+    reviewer = f"AcceptanceReviewer{suffix}"
+    contributor_password = "Wiki-" + secrets.token_urlsafe(24)
+    reviewer_password = "Wiki-" + secrets.token_urlsafe(24)
+    marker = f"browser-moderation-acceptance-{secrets.token_hex(10)}"
+    title = f"模型:验收沙盒-{suffix}"
+
+    run_compose(
+        wiki_dir,
+        "exec",
+        "-T",
+        "web",
+        "php",
+        "maintenance/createAndPromote.php",
+        contributor,
+        contributor_password,
+    )
+    run_compose(
+        wiki_dir,
+        "exec",
+        "-T",
+        "web",
+        "php",
+        "maintenance/createAndPromote.php",
+        "--custom-groups=moderator",
+        reviewer,
+        reviewer_password,
+    )
+
+    payload = {
+        "baseUrl": base_url,
+        "contributor": contributor,
+        "contributorPassword": contributor_password,
+        "reviewer": reviewer,
+        "reviewerPassword": reviewer_password,
+        "title": title,
+        "marker": marker,
+    }
+    output.parent.mkdir(parents=True, exist_ok=True)
+    descriptor = os.open(output, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+    with os.fdopen(descriptor, "w", encoding="utf-8") as fixture:
+        json.dump(payload, fixture, ensure_ascii=False)
+        fixture.write("\n")
+    print(
+        f"PASS browser-fixture: contributor={contributor}; reviewer={reviewer}; "
+        f"path={output}"
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--wiki-dir", type=Path, required=True)
@@ -213,6 +265,11 @@ def main() -> None:
         "--provision-contributor",
         action="store_true",
         help="create the contributor through maintenance for repeat tests after registration rate limits",
+    )
+    parser.add_argument(
+        "--prepare-browser-fixture",
+        type=Path,
+        help="provision temporary browser-test users and write a mode-0600 fixture file",
     )
     args = parser.parse_args()
     wiki_dir = args.wiki_dir.resolve()
@@ -242,6 +299,12 @@ def main() -> None:
         print(
             f"PASS cleanup: revoked {reviewers} temporary reviewers; "
             f"deleted {pages} acceptance pages"
+        )
+        return
+
+    if args.prepare_browser_fixture:
+        prepare_browser_fixture(
+            wiki_dir, base_url, args.prepare_browser_fixture.resolve()
         )
         return
 

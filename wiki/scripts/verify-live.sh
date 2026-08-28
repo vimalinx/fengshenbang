@@ -54,6 +54,17 @@ if [[ "$registration_page" != *"$WIKI_CAPTCHA_QUESTION"* ]]; then
 fi
 echo "PASS registration-page: public account creation and CAPTCHA are visible"
 
+headers="$(curl -fsSI "${WIKI_PUBLIC_URL%/}/wiki/首页")"
+for header in 'strict-transport-security:' 'x-content-type-options: nosniff' 'x-frame-options: sameorigin'; do
+    if ! grep -qi "^$header" <<<"$headers"; then
+        echo "FAIL: missing security header: $header" >&2
+        exit 1
+    fi
+done
+echo "PASS security-headers: HSTS, nosniff and SAMEORIGIN"
+
+python3 scripts/verify-permissions.py --url "$WIKI_PUBLIC_URL"
+
 counts="$("${compose[@]}" exec -T db mariadb \
     -uroot "-p${MARIADB_ROOT_PASSWORD}" "$WIKI_DB_NAME" -N \
     -e "SELECT CONCAT(page_namespace, ':', COUNT(*)) FROM page WHERE page_namespace IN (3000,3002,3004) GROUP BY page_namespace ORDER BY page_namespace")"
@@ -66,7 +77,15 @@ for expected in 3000:42 3002:74 3004:42; do
 done
 echo "PASS inventory: models=42; benchmarks=74; curation=42"
 
-latest_backup="$(find backups -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' 2>/dev/null | sort -nr | head -1 | cut -d' ' -f2-)"
+available_kib=$(df -Pk "$wiki_dir" | awk 'NR == 2 {print $4}')
+if (( available_kib < 1048576 )); then
+    echo "FAIL: less than 1 GiB is available on the Wiki volume" >&2
+    exit 1
+fi
+echo "PASS capacity: available-kib=$available_kib"
+
+latest_backup="$(find backups -mindepth 2 -maxdepth 2 -type f -name SHA256SUMS \
+    -printf '%T@ %h\n' 2>/dev/null | sort -nr | head -1 | cut -d' ' -f2-)"
 if [[ -z "$latest_backup" ]]; then
     echo "FAIL: no remote backup exists" >&2
     exit 1

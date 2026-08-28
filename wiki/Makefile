@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-.PHONY: init config seed build up bootstrap start status smoke backup verify-live down validate
+.PHONY: init config seed build up bootstrap start status permissions smoke backup verify-live qualify qualify-restore release-bundle browser-e2e down validate
 
 init:
 	./scripts/init-env.sh
@@ -25,6 +25,9 @@ start: bootstrap
 status:
 	docker compose --env-file .env -f compose.yaml ps
 
+permissions:
+	@set -a; source .env; set +a; python3 scripts/verify-permissions.py --url "$$WIKI_PUBLIC_URL"
+
 smoke:
 	python3 scripts/smoke-moderation.py --wiki-dir .
 
@@ -33,6 +36,18 @@ backup:
 
 verify-live:
 	./scripts/verify-live.sh
+
+qualify:
+	./scripts/qualify-release.sh
+
+qualify-restore:
+	./scripts/qualify-release.sh --full-restore
+
+release-bundle:
+	./scripts/build-release.sh
+
+browser-e2e:
+	./scripts/browser-e2e.sh "$${SSH_HOST:-newserver}"
 
 down:
 	docker compose --env-file .env -f compose.yaml down

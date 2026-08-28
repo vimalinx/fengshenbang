@@ -61,8 +61,21 @@ php maintenance/update.php --quick
 if [[ -f /seed/manifest.tsv ]]; then
   imported=0
   skipped=0
+  replaced_installer_home=0
   while IFS=$'\t' read -r title filename; do
     [[ -n "$title" && -n "$filename" ]] || continue
+    if [[ "$title" == "首页" ]]; then
+      current_home=$(php maintenance/getText.php "$title" 2>/dev/null || true)
+      revision_count=$(mariadb -h db -u "$WIKI_DB_USER" -p"$WIKI_DB_PASSWORD" \
+        "$WIKI_DB_NAME" -Nse \
+        "SELECT COUNT(*) FROM revision JOIN page ON rev_page=page_id WHERE page_namespace=0 AND page_title='首页'" || true)
+      if [[ "$revision_count" == 1 && "$current_home" == *"<strong>已安装MediaWiki。</strong>"* ]]; then
+        php maintenance/edit.php --user "$WIKI_ADMIN_USER" \
+          --summary "用封神榜首页替换安装器默认页" "$title" < "/seed/$filename"
+        replaced_installer_home=$((replaced_installer_home + 1))
+        continue
+      fi
+    fi
     if php maintenance/edit.php --createonly --user "$WIKI_ADMIN_USER" \
       --summary "从现有封神榜内容初始化" "$title" < "/seed/$filename"; then
       imported=$((imported + 1))
@@ -70,7 +83,7 @@ if [[ -f /seed/manifest.tsv ]]; then
       skipped=$((skipped + 1))
     fi
   done < /seed/manifest.tsv
-  echo "Seed pages created: $imported; existing pages preserved: $skipped"
+  echo "Seed pages created: $imported; installer home replaced: $replaced_installer_home; existing pages preserved: $skipped"
 fi
 
 php maintenance/run.php initSiteStats --update || true

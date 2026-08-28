@@ -1,0 +1,51 @@
+name: Build Wiki release candidate
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "wiki-v*"
+
+permissions:
+  contents: read
+
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: wiki/requirements.txt
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: wiki/package-lock.json
+
+      - name: Install qualification dependencies
+        run: |
+          python -m pip install -r wiki/requirements.txt
+          npm ci --prefix wiki
+
+      - name: Validate browser test discovery
+        run: npm --prefix wiki run test:browser -- --list
+
+      - name: Build commit-bound candidate
+        working-directory: wiki
+        run: ./scripts/build-release.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fengshenbang-wiki-${{ github.sha }}
+          path: |
+            wiki/release-artifacts/*.tar.gz
+            wiki/release-artifacts/*.sha256
+          if-no-files-found: error
+          retention-days: 30
