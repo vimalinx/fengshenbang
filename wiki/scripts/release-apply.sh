@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -Eeuo pipefail
 
 usage() {
   echo "Usage: $0 --bundle <path> --sha256 <hex> --domain <domain> [--remote-dir /opt/path] [--simulate-postcheck-failure]" >&2

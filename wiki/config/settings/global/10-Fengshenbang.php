@@ -119,7 +119,7 @@ $wgEmailConfirmToEdit = filter_var(
 $wgRateLimits['createaccount']['ip'] = [ 3, 86400 ];
 $wgRateLimits['edit']['user'] = [ 30, 60 ];
 $wgRateLimits['mailpassword']['ip'] = [ 5, 3600 ];
-$wgRateLimits['emailuser']['user'] = [ 5, 86400 ];
+$wgRateLimits['sendemail']['user'] = [ 5, 86400 ];
 
 // Optional SMTP. Internet registration must not be opened with email
 // confirmation enabled until these values have been tested end-to-end.
