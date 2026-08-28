@@ -39,7 +39,9 @@ jobs:
 
       - name: Build commit-bound candidate
         working-directory: wiki
-        run: ./scripts/build-release.sh
+        run: |
+          ./scripts/init-env.sh
+          ./scripts/build-release.sh
 
       - uses: actions/upload-artifact@v4
         with:
