@@ -6,9 +6,11 @@ $wgLocaltimezone = 'Asia/Shanghai';
 $wgDefaultSkin = 'vector-2022';
 $wgEnableUploads = true;
 $wgEnableEmail = true;
-$wgEnableUserEmail = true;
+$wgEnableUserEmail = false;
+$wgEmailAuthentication = true;
 $wgEmergencyContact = getenv( 'WIKI_NOTIFICATION_EMAIL' ) ?: 'noreply@fengshenbang.wiki';
 $wgPasswordSender = $wgEmergencyContact;
+$wgPasswordResetRoutes = [ 'username' => false, 'email' => true ];
 
 // Purpose-specific namespaces keep facts, editorial curation and forms distinct.
 define( 'NS_MODEL', 3000 );
@@ -42,6 +44,12 @@ $wgGroupPermissions['user']['upload'] = false;
 
 // reviewer = Moderation's built-in moderator group.
 $wgGroupPermissions['moderator']['moderation'] = true;
+
+// Release acceptance uses a non-assignable, short-lived reviewer group so
+// production moderators can require 2FA without disabling automated release
+// qualification. Only maintenance scripts can add this group and every test
+// revokes it during cleanup.
+$wgGroupPermissions['acceptance-reviewer']['moderation'] = true;
 
 // curator = trusted editorial group. It can publish without the queue and is
 // the only non-admin group allowed to edit the subjective curation namespace.
@@ -81,6 +89,19 @@ $wgApprovedRevsAutomaticApprovals = true;
 $wgApprovedRevsShowNotApprovedMessage = true;
 $wgGroupPermissions['moderator']['approverevisions'] = true;
 
+// Production operators lose their privileged groups until they enroll TOTP.
+// Enable this only after the initial administrators have completed enrollment.
+$requireTwoFactor = filter_var(
+    getenv( 'WIKI_REQUIRE_2FA' ) ?: 'false',
+    FILTER_VALIDATE_BOOLEAN
+);
+$wgOATHAuthAccountPrefix = $wgSitename;
+$wgOATHAuthWindowRadius = 1;
+$wgOATHRequiredForGroups = $requireTwoFactor ? [ 'sysop', 'moderator', 'curator' ] : [];
+$wgOATHExclusiveRights = $requireTwoFactor ? [
+    'userrights', 'delete', 'protect', 'block', 'moderation', 'approverevisions'
+] : [];
+
 // Registration and link-spam defense. QuestyCaptcha's answer stays in .env.
 $captchaQuestion = getenv( 'WIKI_CAPTCHA_QUESTION' );
 $captchaAnswer = getenv( 'WIKI_CAPTCHA_ANSWER' );
@@ -97,6 +118,8 @@ $wgEmailConfirmToEdit = filter_var(
 );
 $wgRateLimits['createaccount']['ip'] = [ 3, 86400 ];
 $wgRateLimits['edit']['user'] = [ 30, 60 ];
+$wgRateLimits['mailpassword']['ip'] = [ 5, 3600 ];
+$wgRateLimits['emailuser']['user'] = [ 5, 86400 ];
 
 // Optional SMTP. Internet registration must not be opened with email
 // confirmation enabled until these values have been tested end-to-end.

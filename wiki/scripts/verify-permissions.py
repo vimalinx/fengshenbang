@@ -42,7 +42,14 @@ def main() -> None:
     )
     groups = {group["name"]: group for group in siteinfo["query"]["usergroups"]}
     rights = {name: set(group.get("rights", [])) for name, group in groups.items()}
-    required_groups = {"*", "user", "moderator", "curator", "sysop"}
+    required_groups = {
+        "*",
+        "user",
+        "moderator",
+        "curator",
+        "sysop",
+        "acceptance-reviewer",
+    }
     if missing_groups := required_groups - rights.keys():
         raise SystemExit(f"FAIL: missing groups: {sorted(missing_groups)}")
 
@@ -52,10 +59,13 @@ def main() -> None:
     forbid(rights, "user", {"skip-moderation", "moderation", "upload", "move"})
     require(rights, "moderator", {"moderation", "approverevisions"})
     forbid(rights, "moderator", {"skip-moderation", "edit-curation"})
+    require(rights, "acceptance-reviewer", {"moderation"})
     require(rights, "curator", {"edit-curation", "skip-moderation"})
     require(rights, "sysop", {"moderation", "skip-moderation", "delete"})
     if not {"moderator", "curator"}.issubset(set(groups["sysop"].get("add", []))):
         raise SystemExit("FAIL: sysop cannot grant moderator and curator groups")
+    if "acceptance-reviewer" in set(groups["sysop"].get("add", [])):
+        raise SystemExit("FAIL: sysop can grant the maintenance-only acceptance group")
 
     auth = api(
         args.url,
@@ -76,7 +86,8 @@ def main() -> None:
 
     print(
         "PASS permissions: anonymous/read-register; contributor/queued-edit; "
-        "moderator/review; curator/direct-curation; sysop/admin; CAPTCHA/required"
+        "moderator/review; curator/direct-curation; sysop/admin; "
+        "maintenance-only acceptance reviewer; CAPTCHA/required"
     )
 
 

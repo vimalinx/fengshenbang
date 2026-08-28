@@ -1,0 +1,12 @@
+[Unit]
+Description=Fetch and verify Fengshenbang Wiki off-site backup
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/Projects/fengshenbang/wiki/scripts/offsite-backup.sh newserver /opt/fengshenbang-wiki %h/storage/Backups/fengshenbang-wiki
+ExecStartPost=%h/Projects/fengshenbang/wiki/scripts/verify-offsite-backup.sh %h/storage/Backups/fengshenbang-wiki
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

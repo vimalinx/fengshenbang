@@ -20,6 +20,7 @@ def main() -> None:
         "ConfirmEdit",
         "ConfirmEdit/QuestyCaptcha",
         "Moderation",
+        "OATHAuth",
         "PageForms",
         "SemanticMediaWiki",
         "VisualEditor",
@@ -52,7 +53,7 @@ def main() -> None:
     manifest = wiki / "generated/seed/manifest.tsv"
     if manifest.exists():
         entries = [line for line in manifest.read_text(encoding="utf-8").splitlines() if line]
-        expected = model_count + benchmark_count + curation_count + 8
+        expected = model_count + benchmark_count + curation_count + 13
         if len(entries) != expected:
             raise SystemExit(f"seed manifest has {len(entries)} pages; expected {expected}")
 

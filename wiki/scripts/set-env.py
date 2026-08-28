@@ -17,6 +17,10 @@ def quote(value: str) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--env", type=Path, required=True)
+    parser.add_argument(
+        "--stdin-key",
+        help="read one sensitive value from standard input without putting it in argv",
+    )
     parser.add_argument("assignments", nargs="+")
     args = parser.parse_args()
 
@@ -27,6 +31,14 @@ def main() -> None:
         key, value = assignment.split("=", 1)
         if not key or not key.replace("_", "").isalnum() or not key[0].isalpha():
             raise SystemExit(f"invalid environment key: {key}")
+        updates[key] = value
+    if args.stdin_key:
+        key = args.stdin_key
+        if not key.replace("_", "").isalnum() or not key[0].isalpha():
+            raise SystemExit(f"invalid environment key: {key}")
+        value = os.read(0, 65536).decode().rstrip("\r\n")
+        if not value:
+            raise SystemExit("stdin value is empty")
         updates[key] = value
 
     lines = args.env.read_text(encoding="utf-8").splitlines()

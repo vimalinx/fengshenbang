@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily Fengshenbang Wiki off-site backup
+
+[Timer]
+OnCalendar=*-*-* 03:20:00 Asia/Shanghai
+RandomizedDelaySec=20m
+Persistent=true
+Unit=fengshenbang-wiki-offsite-backup.service
+
+[Install]
+WantedBy=timers.target

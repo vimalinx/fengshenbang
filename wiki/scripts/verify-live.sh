@@ -35,6 +35,7 @@ generator = payload["query"]["general"]["generator"]
 extensions = {item["name"] for item in payload["query"]["extensions"]}
 required = {
     "Moderation",
+    "OATHAuth",
     "Approved Revs",
     "PageForms",
     "SemanticMediaWiki",
@@ -47,6 +48,20 @@ if generator != "MediaWiki 1.43.9" or missing:
     )
 print(f"PASS api: generator={generator}; required extensions={len(required)}")
 PY
+
+if [[ "${WIKI_REQUIRE_EMAIL_CONFIRMATION:-false}" == true ]]; then
+    for name in WIKI_SMTP_HOST WIKI_SMTP_USER WIKI_SMTP_PASSWORD WIKI_NOTIFICATION_EMAIL; do
+        if [[ -z "${!name:-}" ]]; then
+            echo "FAIL: email confirmation is enabled but $name is empty" >&2
+            exit 1
+        fi
+    done
+    echo "PASS email-config: confirmation required and SMTP settings are present"
+fi
+
+if [[ "${WIKI_REQUIRE_2FA:-false}" == true ]]; then
+    echo "PASS two-factor-config: privileged groups require OATHAuth"
+fi
 
 registration_page="$(curl -fsS "${WIKI_PUBLIC_URL%/}/wiki/特殊:创建账户")"
 if [[ "$registration_page" != *"$WIKI_CAPTCHA_QUESTION"* ]]; then

@@ -62,6 +62,7 @@ if tar -tzf "$bundle" | grep -Eq '(^|/)(\.env|backups|data|persistent|wikis\.yam
   exit 1
 fi
 
-echo "PASS release-bundle: commit=$commit; seed-pages=166"
+seed_pages=$(find wiki/generated/seed -maxdepth 1 -type f -name '*.wiki' | wc -l)
+echo "PASS release-bundle: commit=$commit; seed-pages=$seed_pages"
 echo "Release bundle: $(realpath "$bundle")"
 echo "Release checksum: $(realpath "$bundle.sha256")"

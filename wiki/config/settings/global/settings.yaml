@@ -5,6 +5,7 @@ extensions:
   - ConfirmEdit
   - ConfirmEdit/QuestyCaptcha
   - Moderation
+  - OATHAuth
   - PageForms
   - ParserFunctions
   - SemanticMediaWiki

@@ -115,7 +115,12 @@ class WikiClient:
             raise RuntimeError(f"public account creation failed: {result}")
 
 
-def run_compose(wiki_dir: Path, *command: str, capture: bool = False) -> str:
+def run_compose(
+    wiki_dir: Path,
+    *command: str,
+    capture: bool = False,
+    input_text: str | None = None,
+) -> str:
     result = subprocess.run(
         [
             "docker",
@@ -129,6 +134,7 @@ def run_compose(wiki_dir: Path, *command: str, capture: bool = False) -> str:
         cwd=wiki_dir,
         check=True,
         text=True,
+        input=input_text,
         stdout=subprocess.PIPE if capture else subprocess.DEVNULL,
         stderr=subprocess.PIPE if capture else subprocess.DEVNULL,
     )
@@ -151,62 +157,110 @@ def page_text(client: WikiClient, title: str) -> str:
     return page.get("revisions", [{}])[0].get("slots", {}).get("main", {}).get("content", "")
 
 
+def sql_value(value: str) -> str:
+    return "'" + value.replace("'", "''") + "'"
+
+
+def db_query(wiki_dir: Path, env: dict[str, str], sql: str) -> str:
+    return run_compose(
+        wiki_dir,
+        "exec",
+        "-T",
+        "db",
+        "mariadb",
+        "-N",
+        "-u",
+        env["WIKI_DB_USER"],
+        f"-p{env['WIKI_DB_PASSWORD']}",
+        env["WIKI_DB_NAME"],
+        "-e",
+        sql,
+        capture=True,
+    )
+
+
+def confirm_acceptance_email(
+    wiki_dir: Path, env: dict[str, str], username: str
+) -> None:
+    timestamp = time.strftime("%Y%m%d%H%M%S", time.gmtime())
+    db_query(
+        wiki_dir,
+        env,
+        "UPDATE user SET user_email="
+        + sql_value(f"{username}@invalid.example")
+        + ", user_email_authenticated="
+        + sql_value(timestamp)
+        + " WHERE user_name="
+        + sql_value(username),
+    )
+
+
 def cleanup_acceptance(
-    admin: WikiClient, reviewer: str | None = None, title: str | None = None
+    wiki_dir: Path,
+    env: dict[str, str],
+    reviewer: str | None = None,
+    title: str | None = None,
 ) -> tuple[int, int]:
     if reviewer is None:
-        users = admin.request(
-            {
-                "action": "query",
-                "list": "allusers",
-                "auprefix": "AcceptanceReviewer",
-                "auprop": "groups",
-                "aulimit": "max",
-            }
-        )["query"]["allusers"]
-        reviewers = [user["name"] for user in users if "moderator" in user.get("groups", [])]
+        result = db_query(
+            wiki_dir,
+            env,
+            "SELECT DISTINCT u.user_name FROM user u "
+            "JOIN user_groups ug ON ug.ug_user=u.user_id "
+            "WHERE u.user_name LIKE 'AcceptanceReviewer%' "
+            "AND ug.ug_group IN ('moderator','acceptance-reviewer')",
+        )
+        reviewers = [line for line in result.splitlines() if line]
     else:
         reviewers = [reviewer]
 
     if title is None:
-        pages = admin.request(
-            {
-                "action": "query",
-                "list": "allpages",
-                "apnamespace": str(3000),
-                "apprefix": "验收沙盒-",
-                "aplimit": "max",
-            }
-        )["query"]["allpages"]
-        titles = [page["title"] for page in pages]
+        result = db_query(
+            wiki_dir,
+            env,
+            "SELECT CONCAT('模型:', page_title) FROM page "
+            "WHERE page_namespace=3000 AND page_title LIKE '验收沙盒-%'",
+        )
+        titles = [line for line in result.splitlines() if line]
     else:
         titles = [title]
 
-    for username in reviewers:
-        admin.request(
-            {
-                "action": "userrights",
-                "user": username,
-                "remove": "moderator",
-                "reason": "自动化验收完成，撤销临时审核权限",
-                "token": admin.userrights_token(),
-            },
-            post=True,
+    if reviewers:
+        names = ",".join(sql_value(username) for username in reviewers)
+        db_query(
+            wiki_dir,
+            env,
+            "DELETE ug FROM user_groups ug JOIN user u ON u.user_id=ug.ug_user "
+            f"WHERE u.user_name IN ({names}) "
+            "AND ug.ug_group IN ('moderator','acceptance-reviewer')",
         )
-    for page_title in titles:
-        admin.request(
-            {
-                "action": "delete",
-                "title": page_title,
-                "reason": "自动化审批闭环验收清理",
-                "token": admin.csrf(),
-            },
-            post=True,
+    if titles:
+        run_compose(
+            wiki_dir,
+            "exec",
+            "-T",
+            "web",
+            "php",
+            "maintenance/run.php",
+            "deleteBatch",
+            "--u",
+            env["WIKI_ADMIN_USER"],
+            "--r",
+            "自动化审批闭环验收清理",
+            input_text="\n".join(titles) + "\n",
         )
+    db_query(
+        wiki_dir,
+        env,
+        "DELETE FROM moderation WHERE mod_user_text LIKE 'AcceptanceContributor%' "
+        "OR mod_user_text LIKE 'AcceptanceEmail%' "
+        "OR mod_title LIKE '验收沙盒-%'",
+    )
     return len(reviewers), len(titles)
 
 
 def prepare_browser_fixture(wiki_dir: Path, base_url: str, output: Path) -> None:
+    env = read_env(wiki_dir / ".env")
     suffix = secrets.token_hex(4)
     contributor = f"AcceptanceContributor{suffix}"
     reviewer = f"AcceptanceReviewer{suffix}"
@@ -225,6 +279,8 @@ def prepare_browser_fixture(wiki_dir: Path, base_url: str, output: Path) -> None
         contributor,
         contributor_password,
     )
+    if env.get("WIKI_REQUIRE_EMAIL_CONFIRMATION") == "true":
+        confirm_acceptance_email(wiki_dir, env, contributor)
     run_compose(
         wiki_dir,
         "exec",
@@ -232,7 +288,7 @@ def prepare_browser_fixture(wiki_dir: Path, base_url: str, output: Path) -> None
         "web",
         "php",
         "maintenance/createAndPromote.php",
-        "--custom-groups=moderator",
+        "--custom-groups=acceptance-reviewer",
         reviewer,
         reviewer_password,
     )
@@ -293,9 +349,7 @@ def main() -> None:
         raise SystemExit("FAIL: MediaWiki API did not become ready")
 
     if args.cleanup_only:
-        admin = WikiClient(api_url)
-        admin.login(env["WIKI_ADMIN_USER"], env["WIKI_ADMIN_PASSWORD"])
-        reviewers, pages = cleanup_acceptance(admin)
+        reviewers, pages = cleanup_acceptance(wiki_dir, env)
         print(
             f"PASS cleanup: revoked {reviewers} temporary reviewers; "
             f"deleted {pages} acceptance pages"
@@ -327,6 +381,8 @@ def main() -> None:
             contributor,
             contributor_password,
         )
+        if env.get("WIKI_REQUIRE_EMAIL_CONFIRMATION") == "true":
+            confirm_acceptance_email(wiki_dir, env, contributor)
         print("PASS provision: repeat-test contributor created through maintenance")
     else:
         registrar = WikiClient(api_url)
@@ -344,7 +400,7 @@ def main() -> None:
         "web",
         "php",
         "maintenance/createAndPromote.php",
-        "--custom-groups=moderator",
+        "--custom-groups=acceptance-reviewer",
         reviewer,
         reviewer_password,
     )
@@ -408,9 +464,9 @@ def main() -> None:
         if marker in page_text(public, title):
             print("PASS approved: reviewer approval published the exact contribution")
             print(f"PASS role: reviewer={reviewer}; page={title}; moderation_id={mod_id}")
-            admin = WikiClient(api_url)
-            admin.login(env["WIKI_ADMIN_USER"], env["WIKI_ADMIN_PASSWORD"])
-            reviewers, pages = cleanup_acceptance(admin, reviewer, title)
+            reviewers, pages = cleanup_acceptance(
+                wiki_dir, env, reviewer, title
+            )
             print(
                 f"PASS cleanup: revoked {reviewers} temporary reviewer; "
                 f"deleted {pages} acceptance page"
