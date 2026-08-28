@@ -86,6 +86,22 @@ if [[ -f /seed/manifest.tsv ]]; then
   echo "Seed pages created: $imported; installer home replaced: $replaced_installer_home; existing pages preserved: $skipped"
 fi
 
+# Preserve community edits while making newly introduced governance pages
+# discoverable from home. This append-only migration is idempotent.
+current_home=$(php maintenance/getText.php "首页" 2>/dev/null || true)
+if [[ -n "$current_home" && "$current_home" != *"[[封神榜 Wiki:社区规则"* ]]; then
+  {
+    printf '%s\n\n' "$current_home"
+    printf '%s\n' '== 社区治理 =='
+    printf '%s\n' '* [[封神榜 Wiki:社区规则|社区规则]]'
+    printf '%s\n' '* [[封神榜 Wiki:反滥用规则|反滥用规则]]'
+    printf '%s\n' '* [[封神榜 Wiki:申诉流程|申诉流程]]'
+    printf '%s\n' '* [[封神榜 Wiki:隐私政策|隐私政策]]'
+    printf '%s\n' '* [[封神榜 Wiki:公开试运行|公开试运行状态]]'
+  } | php maintenance/edit.php --user "$WIKI_ADMIN_USER" \
+    --summary "在首页公开社区治理入口" "首页"
+fi
+
 php maintenance/run.php initSiteStats --update || true
 php extensions/SemanticMediaWiki/maintenance/rebuildData.php --quiet || true
 echo "Bootstrap complete."

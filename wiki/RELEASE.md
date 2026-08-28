@@ -12,6 +12,11 @@
 | 浏览器 | 桌面/移动渲染、UI 登录、源码编辑、审核列表、批准后公开 | `scripts/browser-e2e.sh newserver` |
 | 数据恢复 | 校验和、完整数据库/上传/config 恢复、恢复后 live checks | `./scripts/qualify-release.sh --full-restore` |
 | 线上运行 | 容器、API/扩展、权限、注册页、安全头、库存、磁盘、备份 | `make verify-live` |
+| 真实邮件 | 浏览器注册、确认前禁编、Migadu 收件与确认、确认后待审 | `make email-e2e` |
+| 运维身份 | 主管理员、恢复管理员、审核员逐个 TOTP 开通与重新登录 | `make setup-2fa` |
+| 反滥用 | 管理员导入规则，新用户批量外链被真实阻止 | `make setup-abuse-filter` |
+| 异地恢复 | 独立磁盘备份校验，并从空实例完整恢复 | `scripts/offsite-restore-drill.sh <bundle>` |
+| 公开试运行 | 每日快照，至少连续七天后才可通过主域门禁 | `make trial-observe` / `make verify-production` |
 | 发布失败 | 发布前备份 + 旧源码快照 + 自动恢复 + 恢复后 live checks | `release-ssh.sh --simulate-postcheck-failure` |
 
 ## 构建候选包

@@ -71,3 +71,13 @@ make backup
 若目标主机已有 Nginx，把 `WIKI_BIND_IP=127.0.0.1`、`WIKI_HTTP_PORT=18088`、`WIKI_CADDY_ADDRESS=:80` 保持不变，由 Nginx 的独立 vhost 把 staging 域名反代到 `127.0.0.1:18088`；不要抢占现有 80/443。若主机专供此 Wiki，才把 bind 地址和端口改为 `0.0.0.0`、`80/443`，并把 `WIKI_CADDY_ADDRESS` 设为域名让 Caddy 直接签发证书。
 
 已有 Docker 的 SSH 主机可用 `./scripts/deploy-ssh.sh <host> <domain>` 同步非秘密文件、在远端生成独立凭据并启动。Nginx 样例位于 `deploy/nginx-wiki-staging.conf`；证书、DNS 和 SMTP 仍要按目标环境单独验收。
+
+## 面向公众的运行门禁
+
+公开注册要求真实邮箱确认；`make email-e2e` 会在浏览器注册、从 Migadu 实际收件、打开确认链接，并证明确认前不能编辑、确认后只能进入审核队列。管理员、恢复管理员和审核员使用 OATHAuth TOTP，初始化入口是 `make setup-2fa`，凭据与恢复码只进入本机 GNOME Keyring。
+
+`make setup-abuse-filter` 由已启用 2FA 的管理员导入保守规则，并验证新用户一次加入至少四个外链会被阻止。社区规则、反滥用、申诉、隐私和公开试运行页面由种子内容初始化，已有社区修改不会被覆盖。
+
+异地备份每天同步到独立磁盘 `/home/vimalinx/storage/Backups/fengshenbang-wiki`。安装并启用 `deploy/systemd/user/fengshenbang-wiki-offsite-backup.timer` 与 `fengshenbang-wiki-public-trial.timer` 后，分别用 `make verify-offsite` 和 `make trial-observe` 核对。
+
+`make verify-production` 是主域切换的最终门禁：线上检查、邮箱、三类 2FA 运维账号、反滥用规则、异地备份和至少七天公开试运行必须全部通过。脚本只验收，不会自动替换 `fengshenbang.wiki` 的现有门户。

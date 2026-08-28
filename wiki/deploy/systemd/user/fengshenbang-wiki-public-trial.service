@@ -1,0 +1,8 @@
+[Unit]
+Description=Record Fengshenbang Wiki public trial health observation
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/vimalinx/Projects/fengshenbang/wiki/scripts/public-trial-check.sh newserver

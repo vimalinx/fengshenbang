@@ -28,7 +28,9 @@ cleanup() {
     docker compose --env-file "$drill_root/wiki/.env" \
       -f "$drill_root/wiki/compose.yaml" down -v --remove-orphans >/dev/null 2>&1
   fi
-  rm -rf -- "$drill_root"
+  if [[ "$drill_root" == /tmp/tmp.* && -d "$drill_root" ]]; then
+    sudo rm -rf -- "$drill_root"
+  fi
 }
 trap cleanup EXIT
 
@@ -63,7 +65,9 @@ python3 scripts/render-config.py --env .env --output config/wikis.yaml
 stamp=$(basename "$backup")
 mkdir -p "backups/$stamp"
 rsync -a "$backup/" "backups/$stamp/"
-make start
+docker compose --env-file .env -f compose.yaml build web
+docker compose --env-file .env -f compose.yaml up -d db web caddy
+docker compose --env-file .env -f compose.yaml --profile tools run --rm bootstrap
 ./scripts/restore.sh --from "backups/$stamp" --confirm
 ./scripts/verify-live.sh
 python3 scripts/smoke-moderation.py --wiki-dir . --provision-contributor
