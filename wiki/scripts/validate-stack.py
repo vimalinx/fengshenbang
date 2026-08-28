@@ -40,6 +40,8 @@ def main() -> None:
         raise SystemExit("Canasta base image is not digest-pinned")
     if "MODERATION_COMMIT=" not in dockerfile:
         raise SystemExit("Moderation extension is not commit-pinned")
+    if "OATHAUTH_COMMIT=" not in dockerfile:
+        raise SystemExit("OATHAuth extension is not commit-pinned")
 
     model_count = len(list((repo / "content/models").glob("*.md")))
     benchmark_count = len(list((repo / "content/benchmarks").glob("*.md")))
