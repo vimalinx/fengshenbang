@@ -36,7 +36,7 @@ test('public registration requires a real mailbox confirmation before editing', 
   ], { stdio: ['ignore', 'inherit', 'inherit'] });
   const confirmationUrl = fs.readFileSync(fixture.confirmationUrl, 'utf8').trim();
   await page.goto(confirmationUrl);
-  await expect(page.locator('body')).toContainText(/已确认|确认.*成功|电子邮件地址.*认证/);
+  await expect(page.locator('body')).toContainText(/已经确认|已确认|确认.*成功/);
 
   await page.goto(wikiUrl(fixture.title, '?action=edit&veswitched=1'));
   await expect(page.locator('#wpTextbox1')).toBeVisible();
