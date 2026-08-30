@@ -27,8 +27,8 @@ jobs:
         run: |
           npm ci
           npm run content:check
-          npm test
           npm run build
+          npm test
           npm run seo:check
 
       - name: Deploy to Cloudflare Pages
