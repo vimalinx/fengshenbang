@@ -6,6 +6,7 @@
   "scripts": {
     "content": "node scripts/build-content.ts",
     "content:check": "node scripts/build-content.ts --check",
+    "test": "node --test tests/*.test.ts",
     "predev": "npm run content",
     "dev": "vite",
     "prebuild": "npm run content",

@@ -1,7 +1,10 @@
 import { Link } from 'react-router';
 import { NAV_LINKS } from './Navbar';
+import { useWikiData } from './wikiDataContext';
+import { wikiPageUrl } from '@/data/wikiBackend';
 
 export default function Footer() {
+  const wikiData = useWikiData();
   return (
     <footer className="mt-16 border-t border-line bg-white">
       <div className="mx-auto grid max-w-[1280px] gap-10 px-4 py-12 md:grid-cols-3 md:px-6">
@@ -45,11 +48,19 @@ export default function Footer() {
             <br className="hidden md:block" />
             仅供选型参考，不构成采购建议。
           </p>
+          <a
+            href={wikiPageUrl('封神榜 Wiki:参与编辑')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-block text-[13px] font-medium text-accent underline-offset-4 hover:underline"
+          >
+            数据由公开 Wiki 审核维护 · 参与编辑 →
+          </a>
         </div>
       </div>
       <div className="border-t border-line">
         <p className="mx-auto max-w-[1280px] px-4 py-4 text-center font-mono text-[11px] tracking-wider text-ink-3 md:px-6">
-          DATA SNAPSHOT 2026-08-15 · RESEARCH NOTES IN REPO · MIT LICENSE
+          {wikiData.source === 'wiki' ? 'LIVE DATA FROM MODERATED WIKI' : 'FALLBACK DATA SNAPSHOT'} · RESEARCH NOTES IN REPO · MIT LICENSE
         </p>
       </div>
     </footer>

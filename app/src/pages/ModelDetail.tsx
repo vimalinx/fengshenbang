@@ -8,6 +8,7 @@ import StarRating from '@/components/StarRating';
 import HarnessCard from '@/components/HarnessCard';
 import TeamCard from '@/components/TeamCard';
 import { Reveal } from '@/components/Reveal';
+import WikiEditLink from '@/components/WikiEditLink';
 import { modelMap, systemMap } from '@/data/models';
 import { modelDetails, type DanmakuItem, type PlatformId } from '@/data/modelDetails';
 import { harnessMap } from '@/data/harnesses';
@@ -490,14 +491,17 @@ export default function ModelDetail() {
             <span className="text-ink-3">/</span>
             <span className="text-ink-3">{model.name}</span>
           </motion.nav>
-          <motion.span
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.15 }}
-            className="font-mono text-xs text-ink-3"
+            className="flex flex-wrap items-center justify-end gap-3"
           >
-            {model.unreleased ? '状态 未发布' : `发布 ${model.releaseDate}`} · 收录 {model.collectedDate} · 本词条持续更新
-          </motion.span>
+            <span className="font-mono text-xs text-ink-3">
+              {model.unreleased ? '状态 未发布' : `发布 ${model.releaseDate}`} · 收录 {model.collectedDate} · 本词条持续更新
+            </span>
+            <WikiEditLink title={`数据:模型:${model.id}`} label="编辑数据" />
+          </motion.div>
         </div>
       </section>
 

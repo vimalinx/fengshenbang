@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import html
+import json
 import re
 import shutil
 from pathlib import Path
@@ -137,6 +138,78 @@ def curation_page(data: dict[str, Any], source: str) -> tuple[str, str]:
         "[[分类:主观编排]]"
     )
     return f"编排:{ident}", text
+
+
+def data_page(title: str, payload: dict[str, Any]) -> tuple[str, str]:
+    """Render a canonical machine-readable page in MediaWiki's JSON namespace."""
+    return title, json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=False)
+
+
+def frontend_data_pages(repo: Path) -> list[tuple[str, str]]:
+    """Publish the validated frontend shape as individually moderated Wiki records.
+
+    The React portal deliberately consumes the same flattened contract that its
+    checked-in fallback snapshot uses.  Per-entry pages keep review diffs small,
+    allow one record to be reverted independently, and stay below MediaWiki's
+    maximum page size even for the richest model dossiers.
+    """
+    generated = repo / "app/src/data/generated"
+    required = {
+        "models": generated / "models.json",
+        "model_details": generated / "model-details.json",
+        "benchmarks": generated / "benchmarks.json",
+    }
+    missing = [str(path.relative_to(repo)) for path in required.values() if not path.is_file()]
+    if missing:
+        raise SystemExit(f"missing validated frontend data: {', '.join(missing)}")
+
+    models = json.loads(required["models"].read_text(encoding="utf-8"))
+    details = json.loads(required["model_details"].read_text(encoding="utf-8"))
+    benchmarks = json.loads(required["benchmarks"].read_text(encoding="utf-8"))
+    if not isinstance(models, list) or not isinstance(details, dict) or not isinstance(benchmarks, list):
+        raise SystemExit("validated frontend data has an unexpected top-level shape")
+
+    pages: list[tuple[str, str]] = []
+    model_index: list[dict[str, str]] = []
+    for card in models:
+        ident = scalar(card.get("id")) if isinstance(card, dict) else ""
+        name = scalar(card.get("name")) if isinstance(card, dict) else ""
+        detail = details.get(ident)
+        if not ident or not name or not isinstance(detail, dict):
+            raise SystemExit(f"model frontend payload is incomplete: {ident or '<missing id>'}")
+        title = f"数据:模型:{ident}"
+        model_index.append({"id": ident, "title": title})
+        pages.append(data_page(title, {
+            "schemaVersion": 1,
+            "kind": "model",
+            "id": ident,
+            "wikiTitle": f"模型:{name}",
+            "card": card,
+            "detail": detail,
+        }))
+
+    benchmark_index: list[dict[str, str]] = []
+    for entry in benchmarks:
+        ident = scalar(entry.get("id")) if isinstance(entry, dict) else ""
+        name = scalar(entry.get("name")) if isinstance(entry, dict) else ""
+        if not ident or not name:
+            raise SystemExit(f"benchmark frontend payload is incomplete: {ident or '<missing id>'}")
+        title = f"数据:测试集:{ident}"
+        benchmark_index.append({"id": ident, "title": title})
+        pages.append(data_page(title, {
+            "schemaVersion": 1,
+            "kind": "benchmark",
+            "id": ident,
+            "wikiTitle": f"测试集:{name}",
+            "entry": entry,
+        }))
+
+    index = {
+        "schemaVersion": 1,
+        "models": model_index,
+        "benchmarks": benchmark_index,
+    }
+    return [data_page("数据:索引", index), *pages]
 
 
 STATIC_PAGES = {
@@ -338,6 +411,7 @@ def main() -> None:
     for path in sorted((repo / "curation/models").glob("*.yml")):
         data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         pages.append(curation_page(data, str(path.relative_to(repo))))
+    pages.extend(frontend_data_pages(repo))
 
     titles: set[str] = set()
     manifest: list[str] = []
@@ -355,7 +429,8 @@ def main() -> None:
         f"Generated {len(pages)} seed pages: "
         f"{len(list((repo / 'content/models').glob('*.md')))} models, "
         f"{len(list((repo / 'content/benchmarks').glob('*.md')))} benchmarks, "
-        f"{len(list((repo / 'curation/models').glob('*.yml')))} curation records"
+        f"{len(list((repo / 'curation/models').glob('*.yml')))} curation records, "
+        f"{1 + len(list((repo / 'content/models').glob('*.md'))) + len(list((repo / 'content/benchmarks').glob('*.md')))} frontend data pages"
     )
 
 

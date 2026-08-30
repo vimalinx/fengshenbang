@@ -129,3 +129,8 @@ export interface ModelDetailData {
  * （talents[].kind、platforms[].tone、danmaku[].platform 等）退化成 string 这一点。
  */
 export const modelDetails = rawDetails as unknown as Record<string, ModelDetailData>;
+
+export function replaceModelDetails(next: Record<string, ModelDetailData>): void {
+  for (const key of Object.keys(modelDetails)) delete modelDetails[key];
+  Object.assign(modelDetails, next);
+}

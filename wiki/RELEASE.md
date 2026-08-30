@@ -8,7 +8,8 @@
 |---|---|---|
 | 内容与源码 | 42 模型、74 测试集、42 编排，Python/Shell/PHP/Compose 校验 | `./scripts/qualify-release.sh` |
 | 权限 | 匿名只读/注册、贡献者待审、审核员审批、编排员直发、管理员授权 | `scripts/verify-permissions.py` |
-| 后端闭环 | 投稿不可提前公开、审批后精确公开、临时权限与沙盒自动清理 | `scripts/smoke-moderation.py` |
+| 后端闭环 | 正文和 `数据:` JSON 投稿不可提前公开、审批后精确公开、临时权限与沙盒自动清理 | `scripts/smoke-moderation.py` / `--data-namespace` |
+| 前后端整合 | React 发出真实 Wiki API 请求、显示实时状态、详情页直达对应数据编辑页、390px 无横向溢出 | `tests/browser/portal-wiki-backend.spec.mjs` |
 | 浏览器 | 桌面/移动渲染、UI 登录、源码编辑、审核列表、批准后公开 | `scripts/browser-e2e.sh newserver` |
 | 数据恢复 | 校验和、完整数据库/上传/config 恢复、恢复后 live checks | `./scripts/qualify-release.sh --full-restore` |
 | 线上运行 | 容器、API/扩展、权限、注册页、安全头、库存、磁盘、备份 | `make verify-live` |
@@ -28,7 +29,7 @@ cd wiki
 ./scripts/build-release.sh
 ```
 
-输出为 `release-artifacts/fengshenbang-wiki-<commit>.tar.gz` 及 SHA-256 文件。包内含提交绑定的源码、166 个生成页面和 `release-manifest.json`，明确排除 `.env`、数据库、上传、备份与运行时配置。
+输出为 `release-artifacts/fengshenbang-wiki-<commit>.tar.gz` 及 SHA-256 文件。包内含提交绑定的源码、人类可编辑词条、逐条 JSON 数据页和 `release-manifest.json`，明确排除 `.env`、数据库、上传、备份与运行时配置。
 
 ## staging 发布
 

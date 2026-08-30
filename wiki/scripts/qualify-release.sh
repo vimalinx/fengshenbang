@@ -15,12 +15,14 @@ set +a
 
 cd "$repo_dir"
 npm --prefix app run content:check
+npm --prefix app test
 npm --prefix app run build
 bash -n wiki/scripts/*.sh
 python3 -m compileall -q wiki/scripts
 make -C wiki seed validate
 python3 wiki/scripts/verify-permissions.py --url "$WIKI_PUBLIC_URL"
 python3 wiki/scripts/smoke-moderation.py --wiki-dir wiki --provision-contributor
+python3 wiki/scripts/smoke-moderation.py --wiki-dir wiki --provision-contributor --data-namespace
 
 cd "$wiki_dir"
 backup_output=$(./scripts/backup.sh)

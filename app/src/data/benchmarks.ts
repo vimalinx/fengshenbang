@@ -29,6 +29,10 @@ export type { BenchmarkCategory, BenchmarkEntry };
  */
 export const benchmarks = benchmarksJson as BenchmarkEntry[];
 
+export function replaceBenchmarks(next: BenchmarkEntry[]): void {
+  benchmarks.splice(0, benchmarks.length, ...next);
+}
+
 export function getBenchmark(id: string): BenchmarkEntry | undefined {
   return benchmarks.find((b) => b.id === id);
 }

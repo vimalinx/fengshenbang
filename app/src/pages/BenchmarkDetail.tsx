@@ -3,6 +3,7 @@ import { Link, Navigate, useParams } from 'react-router';
 import { motion } from 'framer-motion';
 import { ExternalLink, Quote } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
+import WikiEditLink from '@/components/WikiEditLink';
 import { getBenchmark, getBenchmarkAppearances } from '@/data/benchmarks';
 import type { BenchmarkAppearance, BenchmarkEntry } from '@/data/benchmarks';
 import { models } from '@/data/models';
@@ -11,7 +12,7 @@ import { cn } from '@/lib/utils';
 
 /* ---------- 天梯模型名 → 本站模型 id（规范化后精确匹配，匹配不上就不链） ---------- */
 const normalizeName = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
-const MODEL_ID_BY_NAME = new Map(models.map((m) => [normalizeName(m.name), m.id]));
+const modelIdByName = (name: string) => models.find((model) => normalizeName(model.name) === normalizeName(name))?.id;
 
 /* ---------- 头部水平：刻度尺 + 朱砂指针（无 ladder 条目的左栏降级内容） ---------- */
 function FrontierContent({ entry }: { entry: BenchmarkEntry }) {
@@ -124,7 +125,7 @@ function LadderBoard({ entry }: { entry: BenchmarkEntry }) {
                 const width = !Number.isNaN(v) && !Number.isNaN(max) && max > 0
                   ? Math.max(3, (v / max) * 100)
                   : null;
-                const modelId = MODEL_ID_BY_NAME.get(normalizeName(row.model));
+                const modelId = modelIdByName(row.model);
                 return (
                   <li
                     key={`${row.model}-${i}`}
@@ -477,6 +478,7 @@ export default function BenchmarkDetail() {
                   <ExternalLink className="h-3.5 w-3.5" />
                 </a>
               )}
+              <WikiEditLink title={`数据:测试集:${entry.id}`} label="编辑数据" />
               {entry.aliases.length > 0 && (
                 <p className="font-mono text-[11px] leading-relaxed text-ink-3">
                   站内也叫：{entry.aliases.join(' / ')}

@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, Search, X } from 'lucide-react';
+import { ExternalLink, Menu, Search, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useWikiData } from './wikiDataContext';
+import { wikiPageUrl } from '@/data/wikiBackend';
 
 export const NAV_LINKS = [
   { to: '/', label: '首页' },
@@ -22,6 +24,13 @@ export default function Navbar() {
   const [focus, setFocus] = useState(false);
   const location = useLocation();
   const drawerRef = useRef<HTMLDivElement>(null);
+  const wikiData = useWikiData();
+  const dataLabel = wikiData.source === 'wiki'
+    ? wikiData.warnings.length > 0 ? 'Wiki 数据 · 部分降级' : 'Wiki 实时数据'
+    : '发布快照';
+  const dataTitle = wikiData.source === 'wiki'
+    ? `内容来自已审核的 Wiki 版本${wikiData.lastModified ? `，最近修订 ${new Date(wikiData.lastModified).toLocaleString('zh-CN')}` : ''}${wikiData.warnings.length ? `；${wikiData.warnings.length} 条记录使用快照` : ''}`
+    : `Wiki 暂不可用，正在使用构建时快照${wikiData.error ? `：${wikiData.error}` : ''}`;
 
   useEffect(() => {
     setOpen(false);
@@ -85,9 +94,26 @@ export default function Navbar() {
               className="w-full bg-transparent text-[13px] text-ink outline-none placeholder:text-ink-3"
             />
           </div>
-          <span className="hidden shrink-0 rounded-[4px] border border-line px-2 py-0.5 font-mono text-[11px] text-ink-2 xl:block">
-            2026-08 数据
+          <span
+            className={cn(
+              'hidden shrink-0 items-center gap-1.5 rounded-[4px] border px-2 py-1 font-mono text-[11px] xl:inline-flex',
+              wikiData.source === 'wiki' ? 'border-emerald-700/30 text-emerald-800' : 'border-amber-700/30 text-amber-800',
+            )}
+            role="status"
+            title={dataTitle}
+          >
+            <span className={cn('h-1.5 w-1.5 rounded-full', wikiData.source === 'wiki' ? 'bg-emerald-600' : 'bg-amber-600')} aria-hidden />
+            {dataLabel}
           </span>
+          <a
+            href={wikiPageUrl('封神榜 Wiki:参与编辑')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden min-h-9 items-center gap-1.5 rounded-[4px] border border-line px-3 text-[13px] font-medium text-ink-2 transition-colors hover:border-accent hover:text-accent md:inline-flex"
+          >
+            参与编辑
+            <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+          </a>
           <button
             className="flex h-9 w-9 items-center justify-center rounded-[4px] text-ink-2 transition-colors duration-150 hover:bg-bg-alt lg:hidden"
             onClick={() => setOpen(true)}
@@ -145,9 +171,16 @@ export default function Navbar() {
                 </motion.div>
               ))}
               <div className="mt-6 px-4">
-                <span className="rounded-[4px] border border-line px-2 py-0.5 font-mono text-[11px] text-ink-2">
-                  2026-08 数据
-                </span>
+                <p className="font-mono text-[11px] text-ink-3" title={dataTitle}>{dataLabel}</p>
+                <a
+                  href={wikiPageUrl('封神榜 Wiki:参与编辑')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-[4px] border border-line px-4 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+                >
+                  参与 Wiki 编辑
+                  <ExternalLink className="h-4 w-4" aria-hidden />
+                </a>
               </div>
             </nav>
           </motion.div>

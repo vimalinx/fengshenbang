@@ -38,6 +38,10 @@ jobs:
         working-directory: app
         run: npm run content:check
 
+      - name: Wiki 数据合同测试
+        working-directory: app
+        run: npm test
+
       # 含 tsc -b：同时覆盖 src/、schema/、scripts/，
       # 并检查生成的 JSON 是否仍满足从 schema 推导出的类型
       - name: 类型检查与构建

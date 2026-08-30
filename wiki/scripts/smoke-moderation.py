@@ -157,6 +157,17 @@ def page_text(client: WikiClient, title: str) -> str:
     return page.get("revisions", [{}])[0].get("slots", {}).get("main", {}).get("content", "")
 
 
+def page_content_model(client: WikiClient, title: str) -> str:
+    result = client.request(
+        {
+            "action": "query",
+            "titles": title,
+            "prop": "info",
+        }
+    )
+    return result["query"]["pages"][0].get("contentmodel", "")
+
+
 def sql_value(value: str) -> str:
     return "'" + value.replace("'", "''") + "'"
 
@@ -218,8 +229,10 @@ def cleanup_acceptance(
         result = db_query(
             wiki_dir,
             env,
-            "SELECT CONCAT('模型:', page_title) FROM page "
-            "WHERE page_namespace=3000 AND page_title LIKE '验收沙盒-%'",
+            "SELECT CONCAT(CASE page_namespace "
+            "WHEN 3000 THEN '模型:' WHEN 3006 THEN '数据:' END, page_title) "
+            "FROM page WHERE page_namespace IN (3000,3006) "
+            "AND page_title LIKE '验收沙盒-%'",
         )
         titles = [line for line in result.splitlines() if line]
     else:
@@ -327,6 +340,11 @@ def main() -> None:
         type=Path,
         help="provision temporary browser-test users and write a mode-0600 fixture file",
     )
+    parser.add_argument(
+        "--data-namespace",
+        action="store_true",
+        help="exercise the moderated JSON namespace consumed by the React portal",
+    )
     args = parser.parse_args()
     wiki_dir = args.wiki_dir.resolve()
     env = read_env(wiki_dir / ".env")
@@ -368,7 +386,25 @@ def main() -> None:
     contributor_password = "Wiki-" + secrets.token_urlsafe(24)
     reviewer_password = "Wiki-" + secrets.token_urlsafe(24)
     marker = f"moderation-acceptance-{secrets.token_hex(10)}"
-    title = f"模型:验收沙盒-{suffix}"
+    title = (
+        f"数据:验收沙盒-{suffix}"
+        if args.data_namespace
+        else f"模型:验收沙盒-{suffix}"
+    )
+    contribution = (
+        json.dumps(
+            {
+                "schemaVersion": 1,
+                "kind": "acceptance",
+                "id": f"acceptance-{suffix}",
+                "marker": marker,
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+        if args.data_namespace
+        else f"== 审批闭环验收 ==\n{marker}"
+    )
 
     if args.provision_contributor:
         run_compose(
@@ -411,7 +447,7 @@ def main() -> None:
         {
             "action": "edit",
             "title": title,
-            "text": f"== 审批闭环验收 ==\n{marker}",
+            "text": contribution,
             "summary": "自动化审批闭环验收",
             "token": author.csrf(),
         },
@@ -463,6 +499,10 @@ def main() -> None:
     for _ in range(20):
         if marker in page_text(public, title):
             print("PASS approved: reviewer approval published the exact contribution")
+            if args.data_namespace:
+                if page_content_model(public, title) != "json":
+                    raise SystemExit("FAIL: approved data page is not using the JSON content model")
+                print("PASS data-contract: approved portal data uses the JSON content model")
             print(f"PASS role: reviewer={reviewer}; page={title}; moderation_id={mod_id}")
             reviewers, pages = cleanup_acceptance(
                 wiki_dir, env, reviewer, title

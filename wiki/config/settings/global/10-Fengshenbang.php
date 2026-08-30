@@ -19,13 +19,18 @@ define( 'NS_BENCHMARK', 3002 );
 define( 'NS_BENCHMARK_TALK', 3003 );
 define( 'NS_CURATION', 3004 );
 define( 'NS_CURATION_TALK', 3005 );
+define( 'NS_DATA', 3006 );
+define( 'NS_DATA_TALK', 3007 );
 $wgExtraNamespaces[NS_MODEL] = '模型';
 $wgExtraNamespaces[NS_MODEL_TALK] = '模型讨论';
 $wgExtraNamespaces[NS_BENCHMARK] = '测试集';
 $wgExtraNamespaces[NS_BENCHMARK_TALK] = '测试集讨论';
 $wgExtraNamespaces[NS_CURATION] = '编排';
 $wgExtraNamespaces[NS_CURATION_TALK] = '编排讨论';
-$wgContentNamespaces = [ NS_MAIN, NS_MODEL, NS_BENCHMARK ];
+$wgExtraNamespaces[NS_DATA] = '数据';
+$wgExtraNamespaces[NS_DATA_TALK] = '数据讨论';
+$wgNamespaceContentModels[NS_DATA] = CONTENT_MODEL_JSON;
+$wgContentNamespaces = [ NS_MAIN, NS_MODEL, NS_BENCHMARK, NS_DATA ];
 $smwgNamespacesWithSemanticLinks[NS_MODEL] = true;
 $smwgNamespacesWithSemanticLinks[NS_BENCHMARK] = true;
 $smwgNamespacesWithSemanticLinks[NS_CURATION] = true;
@@ -71,7 +76,10 @@ $wgRemoveGroups['sysop'] = array_values( array_unique( array_merge(
 
 // Moderation is the publication gate for model, benchmark and normal pages.
 $wgModerationEnable = true;
-$wgModerationOnlyInNamespaces = [ NS_MAIN, NS_MODEL, NS_BENCHMARK, NS_TALK, NS_MODEL_TALK, NS_BENCHMARK_TALK, NS_FILE ];
+$wgModerationOnlyInNamespaces = [
+    NS_MAIN, NS_MODEL, NS_BENCHMARK, NS_DATA,
+    NS_TALK, NS_MODEL_TALK, NS_BENCHMARK_TALK, NS_DATA_TALK, NS_FILE,
+];
 $wgModerationEnableEditChange = false;
 $wgModerationUseAjax = false;
 $wgModerationNotificationEnable = (bool)getenv( 'WIKI_NOTIFICATION_EMAIL' );

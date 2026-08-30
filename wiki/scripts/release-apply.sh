@@ -172,6 +172,7 @@ cd "$remote_dir"
 ./scripts/verify-live.sh
 python3 scripts/verify-permissions.py --url "https://$domain"
 python3 scripts/smoke-moderation.py --wiki-dir . --provision-contributor
+python3 scripts/smoke-moderation.py --wiki-dir . --provision-contributor --data-namespace
 ./scripts/verify-live.sh
 
 RELEASE_ID="$release_id" RELEASE_COMMIT="$commit" RELEASE_SHA="$expected_sha" \
@@ -189,7 +190,7 @@ receipt = {
     "domain": os.environ["RELEASE_DOMAIN"],
     "preReleaseBackup": os.environ["PREBACKUP"],
     "releasedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-    "checks": ["live", "permissions", "moderation", "cleanup", "backup"],
+    "checks": ["live", "permissions", "moderation", "data-namespace", "cleanup", "backup"],
     "status": "passed",
 }
 Path("release-receipt.json").write_text(json.dumps(receipt, indent=2) + "\n")

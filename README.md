@@ -1,6 +1,6 @@
 # 封神榜 · 大模型游戏化 Wiki
 
-一个用游戏 Wiki 方式整理大模型生态的纯前端静态站点：模型是「角色」，Harness 是「装备」，配队、攻略、测试集（Benchmark）图鉴一应俱全。
+一个用游戏 Wiki 方式整理大模型生态的公共协作站：模型是「角色」，Harness 是「装备」，配队、攻略、测试集（Benchmark）图鉴一应俱全。React 主站负责面向读者的展示，MediaWiki 负责模型与测试集数据、公众投稿、审核和版本历史。
 
 ## 页面
 
@@ -14,7 +14,27 @@
 
 ## 技术栈
 
-React 19 + Vite 7 + TypeScript + Tailwind CSS 3 + react-router 7 + framer-motion + recharts。纯前端，无后端，数据全部内置。
+React 19 + Vite 7 + TypeScript + Tailwind CSS 3 + react-router 7 + framer-motion + recharts；数据后端为 MediaWiki 1.43。主站匿名读取 Wiki `数据:` 命名空间中已公开的 JSON 修订，Wiki 不可用或单条记录无效时自动降级到随版本发布的已校验快照。
+
+## Wiki 数据后端
+
+数据流是：公众在 Wiki 提交编辑 → Moderation 队列 → 审核员批准 → `数据:` 页公开 → React 主站下一次加载时读取公开修订。待审稿不会出现在匿名 API，也不会提前影响主站。
+
+- `数据:索引`：模型与测试集页面清单；
+- `数据:模型:<id>`：模型卡片和详情 JSON；
+- `数据:测试集:<id>`：测试集档案 JSON；
+- `模型:`、`测试集:`：面向编辑者的人类可读词条；
+- `编排:`：站内主观评分与编排内容。
+
+默认后端是 <https://wiki-staging.fengshenbang.wiki>。本地联调可在构建或开发前设置：
+
+```bash
+VITE_WIKI_BASE_URL=http://localhost:18088 \
+VITE_WIKI_API_URL=http://localhost:18088/w/api.php \
+npm --prefix app run dev
+```
+
+首页导航会明确显示“Wiki 实时数据”“Wiki 数据 · 部分降级”或“发布快照”，模型/测试集详情页提供直达对应 JSON 页的编辑入口。
 
 ## 本地运行
 
@@ -22,15 +42,18 @@ React 19 + Vite 7 + TypeScript + Tailwind CSS 3 + react-router 7 + framer-motion
 cd app
 npm install
 npm run dev      # http://localhost:5173
+npm test         # Wiki JSON 数据合同
 npm run build    # 产物在 app/dist/
 ```
 
 ## 目录结构
 
 ```
-app/src/data/            # 全部站点数据（TS 结构化文件）
+app/src/data/            # Wiki 运行时适配器、合同与发布快照
   models.ts              # 模型卡片与六维属性
   details/<id>.ts        # 每个模型的详情页数据（社区反馈、榜单成绩等）
+  wikiBackend.ts         # MediaWiki Action API、逐条降级与数据注入
+  wikiContract.ts        # Wiki JSON 运行时合同
   benchmarks.ts          # 测试集图鉴：类型 + 聚合 + 战绩反查
   benchmarks/<id>.ts     # 每个 benchmark 一条档案
   harnesses.ts / teams.ts / guides.ts / ...
@@ -53,7 +76,7 @@ src/                     # 早期 Next.js 原型，已停止维护，现行站�
 
 取数规则：官方数据只信官方公告，社区引文记录平台与热度快照，估算值一律进 `uncertainties` 诚实标注。详见根目录 `model-research-requirements.md` 与 `model-detail-checklist.md`。
 
-本站无遥测、无用户账号，因此**不存在**任何「使用率」「阅读量」「通关率」类数据；此前版本中的这类占位数字已全部移除。`更新日志` 的每一条对应仓库里一个真实 commit。
+React 主站无遥测、无主站账号；投稿账号只存在于独立 Wiki。因此**不存在**任何「使用率」「阅读量」「通关率」类数据；此前版本中的这类占位数字已全部移除。`更新日志` 的每一条对应仓库里一个真实 commit。
 
 ## 声明
 

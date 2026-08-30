@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 from pathlib import Path
 
@@ -26,9 +27,17 @@ def main() -> None:
         "VisualEditor",
     }
     settings = (wiki / "config/settings/global/settings.yaml").read_text(encoding="utf-8")
+    site_settings = (wiki / "config/settings/global/10-Fengshenbang.php").read_text(encoding="utf-8")
     missing = sorted(name for name in expected_extensions if f"- {name}" not in settings)
     if missing:
         raise SystemExit(f"missing required extensions: {', '.join(missing)}")
+    if "$wgNamespaceContentModels[NS_DATA] = CONTENT_MODEL_JSON" not in site_settings:
+        raise SystemExit("data namespace is not configured with the JSON content model")
+    if "NS_MAIN, NS_MODEL, NS_BENCHMARK, NS_DATA" not in site_settings:
+        raise SystemExit("data namespace is not part of the public content inventory")
+    moderation_match = re.search(r"\$wgModerationOnlyInNamespaces\s*=\s*\[(.*?)\];", site_settings, re.DOTALL)
+    if not moderation_match or "NS_DATA" not in moderation_match.group(1):
+        raise SystemExit("data namespace is not protected by the Moderation publication gate")
 
     compose = (wiki / "compose.yaml").read_text(encoding="utf-8")
     dockerfile = (wiki / "Dockerfile").read_text(encoding="utf-8")
@@ -55,9 +64,16 @@ def main() -> None:
     manifest = wiki / "generated/seed/manifest.tsv"
     if manifest.exists():
         entries = [line for line in manifest.read_text(encoding="utf-8").splitlines() if line]
-        expected = model_count + benchmark_count + curation_count + 13
+        frontend_data_count = 1 + model_count + benchmark_count
+        expected = model_count + benchmark_count + curation_count + 13 + frontend_data_count
         if len(entries) != expected:
             raise SystemExit(f"seed manifest has {len(entries)} pages; expected {expected}")
+        title_to_file = dict(line.split("\t", 1) for line in entries)
+        for title in ["数据:索引", "数据:模型:gpt-5", "数据:测试集:aider-polyglot"]:
+            filename = title_to_file.get(title)
+            if not filename:
+                raise SystemExit(f"seed manifest is missing frontend data page: {title}")
+            json.loads((manifest.parent / filename).read_text(encoding="utf-8"))
 
     env_path = wiki / ".env"
     if env_path.exists():

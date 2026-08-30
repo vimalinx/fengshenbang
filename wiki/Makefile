@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-.PHONY: init config seed build up bootstrap start status permissions smoke backup verify-live verify-offsite verify-production trial-observe qualify qualify-restore release-bundle browser-e2e email-e2e setup-2fa setup-abuse-filter down validate
+.PHONY: init config seed build up bootstrap start status permissions smoke smoke-data backup verify-live verify-frontend-data verify-offsite verify-production trial-observe qualify qualify-restore release-bundle browser-e2e email-e2e setup-2fa setup-abuse-filter down validate
 
 init:
 	./scripts/init-env.sh
@@ -31,11 +31,17 @@ permissions:
 smoke:
 	python3 scripts/smoke-moderation.py --wiki-dir .
 
+smoke-data:
+	python3 scripts/smoke-moderation.py --wiki-dir . --data-namespace
+
 backup:
 	./scripts/backup.sh
 
 verify-live:
 	./scripts/verify-live.sh
+
+verify-frontend-data:
+	python3 scripts/verify-frontend-data.py --url "$${WIKI_PUBLIC_URL:-http://localhost:18088}"
 
 verify-offsite:
 	./scripts/verify-offsite-backup.sh

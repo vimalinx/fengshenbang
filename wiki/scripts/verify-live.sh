@@ -93,6 +93,8 @@ for expected in 3000:42 3002:74 3004:42; do
 done
 echo "PASS inventory: models=42; benchmarks=74; curation=42"
 
+python3 "$script_dir/verify-frontend-data.py" --url "$WIKI_PUBLIC_URL"
+
 available_kib=$(df -Pk "$wiki_dir" | awk 'NR == 2 {print $4}')
 if (( available_kib < 1048576 )); then
     echo "FAIL: less than 1 GiB is available on the Wiki volume" >&2

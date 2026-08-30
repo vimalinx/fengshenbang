@@ -157,7 +157,7 @@ export const modelsByRelease = [...models].sort((a, b) => {
 });
 
 /** 最近发布的已发布模型 */
-export const latestReleased = modelsByRelease.find((m) => !m.unreleased) ?? models[0];
+export let latestReleased = modelsByRelease.find((m) => !m.unreleased) ?? models[0];
 
 /**
  * 性价比榜：由 SWE-bench Verified 成绩 ÷ 输出价格（$/Mtok）实算，取前五。
@@ -170,3 +170,38 @@ export const ladderValue: { rank: number; name: string; modelId: string; ratio: 
   .sort((a, b) => b.ratio - a.ratio)
   .slice(0, 5)
   .map(({ m, ratio }, i) => ({ rank: i + 1, name: m.name, modelId: m.id, ratio }));
+
+/**
+ * Atomically replace the runtime catalogue after the approved Wiki payload has
+ * passed validation.  Arrays and maps are mutated in place so existing imports
+ * across the presentation layer keep their references.
+ */
+export function replaceModels(next: Model[]): void {
+  models.splice(0, models.length, ...next);
+
+  for (const key of Object.keys(modelMap)) delete modelMap[key];
+  for (const model of next) modelMap[model.id] = model;
+
+  ladderComposite.splice(0, ladderComposite.length, ...[...next].sort((a, b) => b.composite - a.composite));
+  ladderCode.splice(0, ladderCode.length, ...[...next].sort((a, b) => b.swe - a.swe));
+
+  const byRelease = [...next].sort((a, b) => {
+    if (a.unreleased !== b.unreleased) return a.unreleased ? 1 : -1;
+    return b.releaseDate.localeCompare(a.releaseDate);
+  });
+  modelsByRelease.splice(0, modelsByRelease.length, ...byRelease);
+  latestReleased = byRelease.find((model) => !model.unreleased) ?? byRelease[0];
+
+  const byValue = next
+    .filter((model) => !model.unreleased && model.priceOut != null && model.priceOut > 0 && model.swe > 0)
+    .map((model) => ({ model, ratio: model.swe / (model.priceOut as number) }))
+    .sort((a, b) => b.ratio - a.ratio)
+    .slice(0, 5)
+    .map(({ model, ratio }, index) => ({
+      rank: index + 1,
+      name: model.name,
+      modelId: model.id,
+      ratio,
+    }));
+  ladderValue.splice(0, ladderValue.length, ...byValue);
+}
