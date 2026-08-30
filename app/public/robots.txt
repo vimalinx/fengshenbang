@@ -1,3 +1,10 @@
+# Search and answer-engine crawlers may index and quote public pages.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
 User-agent: *
 Allow: /
 

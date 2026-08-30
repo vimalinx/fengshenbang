@@ -6,11 +6,15 @@
   "scripts": {
     "content": "node scripts/build-content.ts",
     "content:check": "node scripts/build-content.ts --check",
+    "seo:generate": "node scripts/build-seo.ts public",
+    "seo:pages": "node scripts/build-seo.ts pages",
+    "seo:check": "node scripts/verify-seo.ts",
+    "seo:check:production": "node scripts/verify-production-seo.ts",
     "test": "node --test tests/*.test.ts",
     "predev": "npm run content",
     "dev": "vite",
-    "prebuild": "npm run content",
-    "build": "tsc -b && vite build",
+    "prebuild": "npm run content && npm run seo:generate",
+    "build": "tsc -b && vite build && npm run seo:pages",
     "lint": "eslint .",
     "preview": "vite preview"
   },

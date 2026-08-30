@@ -42,9 +42,20 @@ npm --prefix app run dev
 cd app
 npm install
 npm run dev      # http://localhost:5173
-npm test         # Wiki JSON 数据合同
-npm run build    # 产物在 app/dist/
+npm test         # Wiki JSON 数据合同 + SEO 路由合同
+npm run build    # 构建内容、发现文件和逐路由静态 HTML，产物在 app/dist/
+npm run seo:check # 校验 canonical、元数据、JSON-LD、sitemap、robots 与 llms.txt
 ```
+
+## SEO 与生成式搜索发现
+
+构建流程会从已审核的模型、测试集和对比数据自动生成完整 URL 清单。每个公开路由都有独立的源 HTML 标题、描述、canonical、Open Graph / Twitter 元数据、Schema.org JSON-LD 和无需 JavaScript 即可读取的摘要；浏览器内切换路由时会同步更新同一组信息。
+
+- `sitemap.xml`：只列规范 URL，不伪造统一的 `lastmod`；
+- `robots.txt`：允许普通搜索爬虫，并明确允许 `OAI-SearchBot` 与 `ChatGPT-User`；
+- `llms.txt`：提供站点入口、内容分层和引用约定，作为辅助发现文件；
+- `/methodology`：公开说明信源层级、公众投稿、管理员审核、纠错与引用流程；
+- `404.html`：未知 URL 返回真实 404 并标记 `noindex`；旧的尾斜杠 URL 逐条 301 到无斜杠 canonical。
 
 ## 目录结构
 

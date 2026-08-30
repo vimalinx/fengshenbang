@@ -56,6 +56,14 @@ export default function Footer() {
           >
             数据由公开 Wiki 审核维护 · 参与编辑 →
           </a>
+          <div className="mt-3">
+            <Link
+              to="/methodology"
+              className="text-[13px] text-ink-2 underline-offset-4 transition-colors hover:text-accent hover:underline"
+            >
+              数据方法、信源与编审规范
+            </Link>
+          </div>
         </div>
       </div>
       <div className="border-t border-line">

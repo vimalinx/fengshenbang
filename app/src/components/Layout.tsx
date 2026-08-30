@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import SideDock from './SideDock';
+import SeoManager from './SeoManager';
 
 /**
  * 全局布局（嵌套路由模式：本组件渲染 <Outlet/>，App.tsx 必须使用嵌套 <Route>）。
@@ -17,6 +18,7 @@ export default function Layout() {
 
   return (
     <div className="flex min-h-[100dvh] flex-col">
+      <SeoManager />
       <Navbar />
       <SideDock />
       <main className="flex-1">

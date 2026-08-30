@@ -1,0 +1,24 @@
+# 封神榜 Wiki
+
+> 面向中文开发者、由公开 Wiki 审核维护的大模型、AI 编程 Harness 与 Benchmark 知识库。事实、整理性说明和站点主观评价分层展示。
+
+## 主要入口
+
+- [首页](https://fengshenbang.wiki/): 站点定位与榜单速览
+- [模型图鉴](https://fengshenbang.wiki/models): 模型能力、价格、上下文、公开成绩与使用建议
+- [Harness 库](https://fengshenbang.wiki/harnesses): AI 编程工具、IDE、CLI 与自治 Agent
+- [测试集百科](https://fengshenbang.wiki/benchmarks): Benchmark 的方法、分数解读与局限
+- [模型和工具对比](https://fengshenbang.wiki/compare): 维度、场景和取舍对比
+- [数据方法与编审规范](https://fengshenbang.wiki/methodology): 信源层级、审核、纠错与引用方式
+
+## 内容与引用约定
+
+- 价格、发布日期、上下文与公开榜单成绩属于可核实事实，应以页面列出的原始信源和访问日期为准。
+- 梯队、综合战力、能力维度、配队与对决结论属于站点主观评估，不是独立实验结果。
+- 站点内容由公众在 Wiki 提交，管理员审核后进入主站；页面上的“编辑数据”链接指向对应词条。
+- 引用时优先链接到具体条目，并保留条目名称与访问日期。
+
+## 数据源
+
+- [公开编辑后端](https://wiki-staging.fengshenbang.wiki/wiki/%E9%A6%96%E9%A1%B5): MediaWiki 编辑、版本历史与审核入口
+- [XML Sitemap](https://fengshenbang.wiki/sitemap.xml): 所有可索引规范 URL
