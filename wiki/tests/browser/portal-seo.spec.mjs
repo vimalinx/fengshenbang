@@ -12,12 +12,14 @@ test.describe('portal SEO and answer-engine discoverability', () => {
     expect(html).toContain('<title>GPT-5：能力、价格、测试与使用建议｜封神榜 Wiki</title>');
     expect(html).toContain('<link rel="canonical" href="https://fengshenbang.wiki/models/gpt-5"');
     expect(html).toContain('data-seo-jsonld');
-    expect(html).toContain('data-seo-fallback');
+    expect(html).toContain('<div id="root"></div>');
+    expect(html).toContain('<noscript data-seo-fallback>');
     expect(html).toContain('<h1>GPT-5 模型档案</h1>');
   });
 
   test('updates metadata across client-side navigation', async ({ page }) => {
     await page.goto(new URL('/models', portalUrl).toString(), { waitUntil: 'networkidle' });
+    await expect(page.locator('noscript[data-seo-fallback]')).toBeHidden();
     await expect(page).toHaveTitle('大模型图鉴与能力榜｜封神榜 Wiki');
     await page.locator('a[href="/models/gpt-5"]').first().click();
     await expect(page).toHaveTitle('GPT-5：能力、价格、测试与使用建议｜封神榜 Wiki');

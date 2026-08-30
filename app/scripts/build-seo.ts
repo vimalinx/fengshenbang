@@ -110,17 +110,19 @@ function replaceMeta(html: string, attribute: 'name' | 'property', key: string, 
   return html.replace(pattern, tag);
 }
 
-function fallbackMarkup(page: SeoPage): string {
+function noScriptMarkup(page: SeoPage): string {
   const entities = page.entityNames?.length
     ? `<ul>${page.entityNames.slice(0, 12).map((name) => `<li>${escapeHtml(name)}</li>`).join('')}</ul>`
     : '';
   return [
-    '<main data-seo-fallback style="max-width:960px;margin:0 auto;padding:48px 24px;font-family:system-ui,sans-serif;line-height:1.75;color:#191919">',
+    '<noscript data-seo-fallback>',
+    '<main style="max-width:960px;margin:0 auto;padding:48px 24px;font-family:system-ui,sans-serif;line-height:1.75;color:#191919">',
     `  <h1>${escapeHtml(page.heading)}</h1>`,
     `  <p>${escapeHtml(page.description)}</p>`,
     `  ${entities}`,
     '  <nav aria-label="主要入口"><a href="/models">模型图鉴</a> · <a href="/harnesses">Harness 库</a> · <a href="/benchmarks">测试集</a> · <a href="/compare">对决</a> · <a href="/methodology">方法与规范</a></nav>',
     '</main>',
+    '</noscript>',
   ].join('\n');
 }
 
@@ -134,7 +136,7 @@ function renderPage(baseHtml: string, page: SeoPage): string {
       /<script\s+type="application\/ld\+json"\s+data-seo-jsonld>[\s\S]*?<\/script>/i,
       `<script type="application/ld+json" data-seo-jsonld>${JSON.stringify(buildJsonLd(page)).replaceAll('<', '\\u003c')}</script>`,
     )
-    .replace('<div id="root"></div>', `<div id="root">${fallbackMarkup(page)}</div>`);
+    .replace('<div id="root"></div>', `<div id="root"></div>\n    ${noScriptMarkup(page)}`);
 
   html = replaceMeta(html, 'name', 'description', page.description);
   html = replaceMeta(html, 'name', 'robots', page.robots ?? 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1');

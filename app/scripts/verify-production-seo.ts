@@ -42,7 +42,7 @@ const modelHtml = await model.text();
 assert.match(modelHtml, /<title>GPT-5：能力、价格、测试与使用建议｜封神榜 Wiki<\/title>/);
 assert.match(modelHtml, /<link rel="canonical" href="https:\/\/fengshenbang\.wiki\/models\/gpt-5"/);
 assert.match(modelHtml, /<script type="application\/ld\+json" data-seo-jsonld>/);
-assert.match(modelHtml, /<main data-seo-fallback/);
+assert.match(modelHtml, /<div id="root"><\/div>\s*<noscript data-seo-fallback>/);
 
 const benchmark = await response('/benchmarks/aider-polyglot');
 assert.equal(benchmark.status, 200);

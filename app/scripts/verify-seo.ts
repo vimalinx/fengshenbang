@@ -47,7 +47,7 @@ for (const page of routes) {
   assert.equal(attribute(html, 'link\\s+rel="canonical"', 'href'), expectedCanonical, `canonical mismatch: ${page.path}`);
   assert.equal(attribute(html, 'meta\\s+name="description"', 'content'), page.description, `description mismatch: ${page.path}`);
   assert.equal(attribute(html, 'meta\\s+property="og:url"', 'content'), expectedCanonical, `og:url mismatch: ${page.path}`);
-  assert.match(html, /<main data-seo-fallback[\s\S]*?<h1>[^<]+<\/h1>/, `missing crawlable fallback: ${page.path}`);
+  assert.match(html, /<div id="root"><\/div>\s*<noscript data-seo-fallback>[\s\S]*?<h1>[^<]+<\/h1>/, `missing no-JavaScript fallback: ${page.path}`);
   const jsonLdText = html.match(/<script type="application\/ld\+json" data-seo-jsonld>([\s\S]*?)<\/script>/)?.[1];
   assert.ok(jsonLdText, `missing JSON-LD: ${page.path}`);
   const jsonLd = JSON.parse(jsonLdText);
