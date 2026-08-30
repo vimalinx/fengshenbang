@@ -4,6 +4,10 @@
 $wgLanguageCode = 'zh-hans';
 $wgLocaltimezone = 'Asia/Shanghai';
 $wgDefaultSkin = 'vector-2022';
+$wgLogos = [
+    '1x' => 'https://fengshenbang.wiki/logo.svg',
+    'icon' => 'https://fengshenbang.wiki/logo.svg',
+];
 $wgEnableUploads = true;
 $wgEnableEmail = true;
 $wgEnableUserEmail = false;
@@ -154,3 +158,45 @@ $wgVisualEditorEnableWikitext = true;
 $wgDefaultUserOptions['visualeditor-editor'] = 'visualeditor';
 $wgPageFormsLinkAllRedLinksToForms = true;
 $wgEnableRestAPI = true;
+
+// Keep the public Wiki and its editing/review workflow visually continuous
+// with the React portal. The stylesheet lives beside this configuration so it
+// is included in every immutable release instead of patching Vector in-place.
+$wgResourceModules['site.fengshenbang'] = [
+    'styles' => [ 'fengshenbang-theme.css' ],
+    'localBasePath' => __DIR__,
+];
+$wgHooks['BeforePageDisplay'][] = static function ( $out, $skin ): void {
+    $out->addModuleStyles( [ 'site.fengshenbang' ] );
+    $out->addHeadItem(
+        'fengshenbang-fonts',
+        '<link rel="preconnect" href="https://fonts.googleapis.com">' .
+        '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' .
+        '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">'
+    );
+    $out->addHeadItem( 'fengshenbang-theme-color', '<meta name="theme-color" content="#FAFAFA">' );
+};
+
+// Build the collaboration/navigation bridge in configuration as well as the
+// seeded MediaWiki message. This remains reliable when an older sidebar value
+// is still present in MediaWiki's aggressively cached message store.
+$wgCacheEpoch = '20260830110000';
+$wgSidebarCacheExpiry = 3600;
+$wgHooks['SkinBuildSidebar'][] = static function ( $skin, &$bar ): void {
+    $local = static function ( string $title ): string {
+        $page = Title::newFromText( $title );
+        return $page ? $page->getLocalURL() : '/wiki/' . rawurlencode( $title );
+    };
+    $bar['navigation'] = [
+        [ 'text' => '协作首页', 'href' => $local( '首页' ), 'id' => 'n-fsb-home' ],
+        [ 'text' => '模型知识库', 'href' => $local( '模型:模型索引' ), 'id' => 'n-fsb-models' ],
+        [ 'text' => '测试集知识库', 'href' => $local( '测试集:测试集索引' ), 'id' => 'n-fsb-benchmarks' ],
+        [ 'text' => '参与编辑', 'href' => $local( '封神榜 Wiki:参与编辑' ), 'id' => 'n-fsb-contribute' ],
+        [ 'text' => '审核队列', 'href' => $local( 'Special:Moderation' ), 'id' => 'n-fsb-moderation' ],
+    ];
+    $bar['封神榜主站'] = [
+        [ 'text' => '返回主站', 'href' => 'https://fengshenbang.wiki', 'id' => 'n-fsb-portal' ],
+        [ 'text' => '主站模型榜', 'href' => 'https://fengshenbang.wiki/models', 'id' => 'n-fsb-portal-models' ],
+        [ 'text' => '主站测试集', 'href' => 'https://fengshenbang.wiki/benchmarks', 'id' => 'n-fsb-portal-benchmarks' ],
+    ];
+};

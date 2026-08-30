@@ -86,6 +86,12 @@ if [[ -f /seed/manifest.tsv ]]; then
   echo "Seed pages created: $imported; installer home replaced: $replaced_installer_home; existing pages preserved: $skipped"
 fi
 
+# Interface pages are read through MediaWiki's message cache. Purge the two
+# seeded interface surfaces explicitly so a first deployment shows the new
+# navigation and data-editor notice without waiting for cache expiry.
+printf '%s\n' 'MediaWiki:Sidebar' 'MediaWiki:Sidebar/zh-hans' 'MediaWiki:Editnotice-3006' \
+  | php maintenance/run.php purgePage --quiet || true
+
 # Preserve community edits while making newly introduced governance pages
 # discoverable from home. This append-only migration is idempotent.
 current_home=$(php maintenance/getText.php "首页" 2>/dev/null || true)

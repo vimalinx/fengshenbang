@@ -214,6 +214,33 @@ def frontend_data_pages(repo: Path) -> list[tuple[str, str]]:
 
 STATIC_PAGES = {
     "MediaWiki:Mainpage": "首页",
+    "MediaWiki:Sidebar": """* navigation
+** 首页|协作首页
+** 模型:模型索引|模型知识库
+** 测试集:测试集索引|测试集知识库
+** 封神榜_Wiki:参与编辑|参与编辑
+** Special:Moderation|审核队列
+* portal
+** https://fengshenbang.wiki|返回封神榜主站
+** https://fengshenbang.wiki/models|主站模型榜
+** https://fengshenbang.wiki/benchmarks|主站测试集
+""",
+    "MediaWiki:Sidebar/zh-hans": """* navigation
+** 首页|协作首页
+** 模型:模型索引|模型知识库
+** 测试集:测试集索引|测试集知识库
+** 封神榜_Wiki:参与编辑|参与编辑
+** Special:Moderation|审核队列
+* portal
+** https://fengshenbang.wiki|返回封神榜主站
+** https://fengshenbang.wiki/models|主站模型榜
+** https://fengshenbang.wiki/benchmarks|主站测试集
+""",
+    "MediaWiki:Editnotice-3006": """<div class="fsb-edit-notice">
+<strong>正在编辑主站实时数据</strong>
+<span>此命名空间的已审核版本会驱动封神榜主站。请保持 JSON 结构有效并在编辑摘要中说明来源；提交后先进入审核队列，审核通过前不会影响公开主站。</span>
+<span>[[封神榜 Wiki:参与编辑|查看编辑指南]] · [https://fengshenbang.wiki 返回主站]</span>
+</div>""",
     "首页": """__NOTOC__
 = 封神榜 Wiki =
 

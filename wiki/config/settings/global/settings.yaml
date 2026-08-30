@@ -4,6 +4,7 @@ extensions:
   - ApprovedRevs
   - ConfirmEdit
   - ConfirmEdit/QuestyCaptcha
+  - CodeEditor
   - Moderation
   - OATHAuth
   - PageForms
@@ -12,5 +13,6 @@ extensions:
   - SpamBlacklist
   - TitleBlacklist
   - VisualEditor
+  - WikiEditor
 skins:
   - Vector

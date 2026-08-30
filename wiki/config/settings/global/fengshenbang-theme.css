@@ -1,0 +1,484 @@
+:root {
+    --fsb-bg: #FAFAFA;
+    --fsb-surface: #FFFFFF;
+    --fsb-alt: #F4F4F5;
+    --fsb-line: #E4E4E7;
+    --fsb-ink: #09090B;
+    --fsb-ink-2: #52525B;
+    --fsb-ink-3: #A1A1AA;
+    --fsb-gold: #B8860B;
+    --fsb-gold-soft: #F5F0E6;
+    --fsb-gold-deep: #8F6A08;
+    --fsb-focus: 0 0 0 3px rgb(184 134 11 / 24%);
+    --fsb-radius: 6px;
+}
+
+html,
+body.skin-vector {
+    background: var(--fsb-bg);
+    color: var(--fsb-ink);
+    font-family: Inter, "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+body.skin-vector a,
+.mw-parser-output a.extiw,
+.mw-parser-output a.external {
+    color: var(--fsb-gold-deep);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+body.skin-vector a:hover,
+body.skin-vector a:focus-visible {
+    color: var(--fsb-gold);
+}
+
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--fsb-gold);
+    outline-offset: 2px;
+}
+
+.vector-header-container {
+    background: rgb(255 255 255 / 94%);
+    border-bottom: 1px solid var(--fsb-line);
+    box-shadow: none;
+    min-height: 60px;
+}
+
+.vector-header,
+.mw-page-container,
+.mw-workspace-container {
+    max-width: 1280px;
+}
+
+.vector-header {
+    min-height: 60px;
+}
+
+.mw-logo-icon {
+    border-radius: var(--fsb-radius);
+    height: 32px;
+    width: 32px;
+}
+
+.mw-logo .mw-logo-wordmark {
+    color: var(--fsb-ink);
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    white-space: nowrap;
+}
+
+.mw-page-container {
+    background: transparent;
+    box-shadow: none;
+}
+
+.mw-content-container {
+    max-width: none;
+}
+
+.mw-body {
+    background: var(--fsb-surface);
+    border: 1px solid var(--fsb-line);
+    border-radius: var(--fsb-radius);
+    border-top: 3px solid var(--fsb-gold);
+    box-shadow: none;
+    margin-top: 24px;
+    min-width: 0;
+    padding: 28px 32px 40px;
+}
+
+.mw-body-header,
+.vector-page-toolbar,
+.mw-body-content {
+    font-family: inherit;
+}
+
+body.skin-vector #firstHeading,
+.mw-body h1,
+.mw-body h2,
+.mw-body h3,
+.mw-body h4 {
+    border-color: var(--fsb-line);
+    color: var(--fsb-ink);
+    font-family: Inter, "Noto Sans SC", system-ui, sans-serif;
+    letter-spacing: -.025em;
+}
+
+body.skin-vector #firstHeading {
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.mw-body h2 {
+    font-size: 1.35rem;
+    font-weight: 650;
+}
+
+.vector-menu-tabs .mw-list-item a,
+.vector-page-tools .mw-list-item a,
+.vector-dropdown-label {
+    color: var(--fsb-ink-2);
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.vector-menu-tabs .mw-list-item.selected a,
+.vector-menu-tabs .mw-list-item a:hover {
+    color: var(--fsb-ink);
+}
+
+.vector-menu-tabs .mw-list-item.selected {
+    border-bottom-color: var(--fsb-gold);
+}
+
+.vector-search-box-input,
+.cdx-text-input__input,
+.mw-ui-input,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+select,
+textarea {
+    background: var(--fsb-surface);
+    border: 1px solid #D4D4D8;
+    border-radius: 4px;
+    box-shadow: none;
+    color: var(--fsb-ink);
+    font-family: inherit;
+    min-height: 44px;
+}
+
+.vector-search-box-input:hover,
+.cdx-text-input__input:hover,
+.mw-ui-input:hover,
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: var(--fsb-ink-3);
+}
+
+.vector-search-box-input:focus,
+.cdx-text-input__input:focus,
+.mw-ui-input:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--fsb-gold);
+    box-shadow: var(--fsb-focus);
+    outline: 0;
+}
+
+.cdx-button,
+.mw-ui-button,
+button,
+input[type="button"],
+input[type="submit"] {
+    border-radius: 4px;
+    box-shadow: none;
+    font-family: inherit;
+    font-weight: 600;
+    min-height: 44px;
+}
+
+.cdx-button--action-progressive.cdx-button--weight-primary,
+.mw-ui-button.mw-ui-progressive,
+input[type="submit"].mw-ui-progressive,
+#wpSave {
+    background-color: var(--fsb-ink);
+    border-color: var(--fsb-ink);
+    color: #FFF;
+}
+
+#wpSave,
+#wpLoginAttempt,
+#wpCreateaccount {
+    background-color: var(--fsb-ink) !important;
+    border-color: var(--fsb-ink) !important;
+    color: #FFF !important;
+    height: auto !important;
+    min-height: 44px !important;
+}
+
+.oo-ui-buttonElement-framed.oo-ui-flaggedElement-primary > .oo-ui-buttonElement-button,
+.oo-ui-buttonElement-framed.oo-ui-flaggedElement-progressive > .oo-ui-buttonElement-button {
+    background-color: var(--fsb-ink) !important;
+    border-color: var(--fsb-ink) !important;
+    color: #FFF !important;
+    min-height: 44px;
+}
+
+.cdx-button--action-progressive.cdx-button--weight-primary:hover,
+.mw-ui-button.mw-ui-progressive:hover,
+#wpSave:hover {
+    background-color: #27272A;
+    border-color: #27272A;
+}
+
+.mw-message-box,
+.warningbox,
+.errorbox,
+.successbox {
+    border-radius: 4px;
+    box-shadow: none;
+}
+
+.fsb-edit-notice {
+    align-items: flex-start;
+    background: var(--fsb-gold-soft);
+    border: 1px solid #E6D5A8;
+    border-left: 4px solid var(--fsb-gold);
+    border-radius: 4px;
+    color: var(--fsb-ink-2);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0 0 20px;
+    padding: 14px 16px;
+}
+
+.fsb-edit-notice strong {
+    color: var(--fsb-ink);
+    font-size: 15px;
+}
+
+.action-edit .mw-body,
+.action-submit .mw-body {
+    padding-bottom: 32px;
+}
+
+.action-edit .mw-body-content,
+.action-submit .mw-body-content {
+    max-width: none;
+}
+
+.action-edit #wpTextbox1,
+.action-submit #wpTextbox1,
+.action-edit .ace_editor,
+.action-submit .ace_editor {
+    background: #FCFCFC;
+    border: 1px solid #D4D4D8;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: var(--fsb-ink);
+    font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.65;
+    min-height: 58vh;
+    width: 100%;
+}
+
+.action-edit #wpTextbox1:focus,
+.action-submit #wpTextbox1:focus,
+.action-edit .ace_focus,
+.action-submit .ace_focus {
+    border-color: var(--fsb-gold);
+    box-shadow: var(--fsb-focus);
+    outline: 0;
+}
+
+.action-edit .wikiEditor-ui,
+.action-submit .wikiEditor-ui {
+    border: 1px solid var(--fsb-line);
+    border-radius: 4px;
+    overflow: clip;
+}
+
+.action-edit .wikiEditor-ui-toolbar,
+.action-submit .wikiEditor-ui-toolbar,
+.action-edit .editOptions,
+.action-submit .editOptions {
+    background: var(--fsb-alt);
+    border-color: var(--fsb-line);
+}
+
+.action-edit .editOptions,
+.action-submit .editOptions {
+    border: 1px solid var(--fsb-line);
+    border-radius: 4px;
+    margin-top: 16px;
+    padding: 16px;
+}
+
+.action-edit #wpSummary,
+.action-submit #wpSummary {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.action-edit .editButtons,
+.action-submit .editButtons {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.action-edit .editButtons > *,
+.action-submit .editButtons > * {
+    margin: 0;
+}
+
+.action-edit .vector-appearance-landmark,
+.action-submit .vector-appearance-landmark {
+    display: none;
+}
+
+.action-edit .mw-workspace-container,
+.action-submit .mw-workspace-container {
+    grid-template-columns: minmax(0, 1fr) !important;
+}
+
+.mw-special-Userlogin .mw-body-content,
+.mw-special-CreateAccount .mw-body-content {
+    margin-inline: auto;
+    max-width: 720px;
+}
+
+.mw-special-Userlogin .vector-appearance-landmark,
+.mw-special-CreateAccount .vector-appearance-landmark {
+    display: none;
+}
+
+.mw-special-Userlogin .mw-workspace-container,
+.mw-special-CreateAccount .mw-workspace-container {
+    grid-template-columns: minmax(0, 1fr) !important;
+}
+
+.mw-special-Userlogin .mw-htmlform-field-HTMLTextField,
+.mw-special-CreateAccount .mw-htmlform-field-HTMLTextField {
+    margin-bottom: 16px;
+}
+
+.mw-special-Userlogin .mw-input,
+.mw-special-CreateAccount .mw-input,
+.mw-special-Userlogin .cdx-text-input,
+.mw-special-CreateAccount .cdx-text-input {
+    max-width: none;
+    width: 100%;
+}
+
+.mw-special-Userlogin .oo-ui-inputWidget-input,
+.mw-special-CreateAccount .oo-ui-inputWidget-input,
+#wpName1,
+#wpPassword1 {
+    height: auto !important;
+    min-height: 44px !important;
+}
+
+.mw-special-Moderation .modline {
+    background: var(--fsb-surface);
+    border: 1px solid var(--fsb-line);
+    border-left: 4px solid var(--fsb-gold);
+    border-radius: 4px;
+    margin: 12px 0;
+    padding: 14px 16px;
+}
+
+.mw-special-Moderation .vector-appearance-landmark {
+    display: none;
+}
+
+.mw-special-Moderation .mw-workspace-container {
+    grid-template-columns: minmax(0, 1fr) !important;
+}
+
+.mw-special-Moderation .modline a[href*="modaction=approve"] {
+    background: var(--fsb-ink);
+    border-radius: 4px;
+    color: #FFF;
+    display: inline-flex;
+    font-weight: 600;
+    margin: 6px 4px 0 0;
+    min-height: 36px;
+    padding: 4px 12px;
+    text-decoration: none;
+}
+
+.wikitable,
+.smwtable {
+    background: var(--fsb-surface);
+    border-color: var(--fsb-line);
+    border-radius: 4px;
+    border-spacing: 0;
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.wikitable > * > tr > th,
+.wikitable > tr > th {
+    background: var(--fsb-alt);
+    color: var(--fsb-ink);
+}
+
+.mw-footer {
+    color: var(--fsb-ink-2);
+    font-family: inherit;
+    max-width: 1280px;
+}
+
+@media (max-width: 720px) {
+    body {
+        font-size: 16px;
+    }
+
+    .mw-logo .mw-logo-wordmark {
+        font-size: 15px;
+    }
+
+    .mw-body {
+        border-left: 0;
+        border-radius: 0;
+        border-right: 0;
+        margin-top: 12px;
+        padding: 20px 16px 32px;
+    }
+
+    .action-edit #wpTextbox1,
+    .action-submit #wpTextbox1,
+    .action-edit .ace_editor,
+    .action-submit .ace_editor {
+        font-size: 16px;
+        min-height: 55vh;
+    }
+
+    .action-edit .editOptions,
+    .action-submit .editOptions {
+        padding: 12px;
+    }
+
+    .action-edit .editButtons > *,
+    .action-submit .editButtons > * {
+        min-height: 44px;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .action-edit #wpTextbox1,
+    .action-submit #wpTextbox1,
+    .action-edit .ace_editor,
+    .action-submit .ace_editor {
+        min-height: 70vh;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}

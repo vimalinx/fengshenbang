@@ -37,9 +37,11 @@ required = {
     "Moderation",
     "OATHAuth",
     "Approved Revs",
+    "CodeEditor",
     "PageForms",
     "SemanticMediaWiki",
     "VisualEditor",
+    "WikiEditor",
 }
 missing = sorted(required - extensions)
 if generator != "MediaWiki 1.43.9" or missing:

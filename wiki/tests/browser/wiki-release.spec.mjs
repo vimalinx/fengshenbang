@@ -22,6 +22,17 @@ async function loginThroughUi(page, username, password) {
   await expect(page.locator('body')).toContainText(username);
 }
 
+async function dismissFirstEditWelcome(page) {
+  const dialog = page.locator('.ve-init-mw-welcomeDialog');
+  const appeared = await dialog.waitFor({ state: 'visible', timeout: 3000 })
+    .then(() => true)
+    .catch(() => false);
+  if (appeared) {
+    await dialog.getByRole('button', { name: /开始编辑/ }).click();
+    await expect(dialog).toBeHidden();
+  }
+}
+
 test('public rendering and moderated publication work in a real browser', async ({ browser }) => {
   if (!fixturePath) {
     throw new Error('WIKI_E2E_FIXTURE must point to a mode-0600 browser fixture JSON file');
@@ -53,6 +64,7 @@ test('public rendering and moderated publication work in a real browser', async 
   contributor.on('pageerror', error => pageErrors.push(error.message));
   await loginThroughUi(contributor, fixture.contributor, fixture.contributorPassword);
   await contributor.goto(wikiUrl(fixture.title, '?action=edit&veswitched=1'));
+  await dismissFirstEditWelcome(contributor);
   await expect(contributor.locator('#wpTextbox1')).toBeVisible();
   await contributor.locator('#wpTextbox1').fill(`== 浏览器审批验收 ==\n${fixture.marker}`);
   await contributor.locator('#wpSummary').fill('浏览器端发布审批验收');

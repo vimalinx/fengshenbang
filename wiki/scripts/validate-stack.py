@@ -20,11 +20,13 @@ def main() -> None:
         "ApprovedRevs",
         "ConfirmEdit",
         "ConfirmEdit/QuestyCaptcha",
+        "CodeEditor",
         "Moderation",
         "OATHAuth",
         "PageForms",
         "SemanticMediaWiki",
         "VisualEditor",
+        "WikiEditor",
     }
     settings = (wiki / "config/settings/global/settings.yaml").read_text(encoding="utf-8")
     site_settings = (wiki / "config/settings/global/10-Fengshenbang.php").read_text(encoding="utf-8")
@@ -35,6 +37,15 @@ def main() -> None:
         raise SystemExit("data namespace is not configured with the JSON content model")
     if "NS_MAIN, NS_MODEL, NS_BENCHMARK, NS_DATA" not in site_settings:
         raise SystemExit("data namespace is not part of the public content inventory")
+    theme = wiki / "config/settings/global/fengshenbang-theme.css"
+    if not theme.is_file() or "site.fengshenbang" not in site_settings:
+        raise SystemExit("the versioned Fengshenbang ResourceLoader theme is not configured")
+    if "SkinBuildSidebar" not in site_settings or "https://fengshenbang.wiki/models" not in site_settings:
+        raise SystemExit("the Wiki sidebar does not bridge back to the public portal")
+    theme_text = theme.read_text(encoding="utf-8")
+    for token in ("#FAFAFA", "#09090B", "#B8860B", ".action-edit", "#wpTextbox1"):
+        if token not in theme_text:
+            raise SystemExit(f"the Wiki theme is missing required editor token/selector: {token}")
     moderation_match = re.search(r"\$wgModerationOnlyInNamespaces\s*=\s*\[(.*?)\];", site_settings, re.DOTALL)
     if not moderation_match or "NS_DATA" not in moderation_match.group(1):
         raise SystemExit("data namespace is not protected by the Moderation publication gate")
@@ -65,7 +76,7 @@ def main() -> None:
     if manifest.exists():
         entries = [line for line in manifest.read_text(encoding="utf-8").splitlines() if line]
         frontend_data_count = 1 + model_count + benchmark_count
-        expected = model_count + benchmark_count + curation_count + 13 + frontend_data_count
+        expected = model_count + benchmark_count + curation_count + 16 + frontend_data_count
         if len(entries) != expected:
             raise SystemExit(f"seed manifest has {len(entries)} pages; expected {expected}")
         title_to_file = dict(line.split("\t", 1) for line in entries)
@@ -74,6 +85,9 @@ def main() -> None:
             if not filename:
                 raise SystemExit(f"seed manifest is missing frontend data page: {title}")
             json.loads((manifest.parent / filename).read_text(encoding="utf-8"))
+        for title in ["MediaWiki:Sidebar", "MediaWiki:Sidebar/zh-hans", "MediaWiki:Editnotice-3006"]:
+            if title not in title_to_file:
+                raise SystemExit(f"seed manifest is missing unified editor interface page: {title}")
 
     env_path = wiki / ".env"
     if env_path.exists():
